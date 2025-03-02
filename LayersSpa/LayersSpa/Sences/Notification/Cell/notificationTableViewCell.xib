@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Bold.ttf">
+            <string>Raleway-Bold</string>
+        </array>
+        <array key="Raleway-Medium.ttf">
+            <string>Raleway-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="159" id="KGk-i7-Jjw" customClass="notificationTableViewCell" customModule="LayersSpa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="159"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="406" height="159"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MrR-PP-n4L">
+                        <rect key="frame" x="24" y="8" width="358" height="143"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="tNI-AB-Edl">
+                                <rect key="frame" x="16" y="16" width="326" height="111"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notif1" translatesAutoresizingMaskIntoConstraints="NO" id="o1a-BC-hN6">
+                                        <rect key="frame" x="0.0" y="33.666666666666664" width="44" height="43.999999999999993"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="HZz-3J-6Jk"/>
+                                            <constraint firstAttribute="height" constant="44" id="Sey-VG-Y0d"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Dqr-Zc-uk7">
+                                        <rect key="frame" x="60" y="17" width="266" height="77.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happy Eid" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxz-xe-hMi">
+                                                <rect key="frame" x="0.0" y="0.0" width="266" height="16.666666666666668"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="14"/>
+                                                <color key="textColor" name="DarkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdg-nt-nkf">
+                                                <rect key="frame" x="0.0" y="20.666666666666668" width="266" height="56.666666666666657"/>
+                                                <string key="text">Earn %15 discount on any of our services or products, Use promo-code: EID15 Earn %15 discount on any of our services or products, Use promo-code: EID15</string>
+                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                                <color key="textColor" name="titlesTF"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tNI-AB-Edl" secondAttribute="trailing" constant="16" id="8hb-LY-w2w"/>
+                            <constraint firstItem="tNI-AB-Edl" firstAttribute="top" secondItem="MrR-PP-n4L" secondAttribute="top" constant="16" id="YMR-8l-nLY"/>
+                            <constraint firstAttribute="bottom" secondItem="tNI-AB-Edl" secondAttribute="bottom" constant="16" id="gi9-0J-z5a"/>
+                            <constraint firstItem="tNI-AB-Edl" firstAttribute="leading" secondItem="MrR-PP-n4L" secondAttribute="leading" constant="16" id="uSm-Qi-9vY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="MrR-PP-n4L" secondAttribute="bottom" constant="8" id="bAL-b4-5QQ"/>
+                    <constraint firstAttribute="trailing" secondItem="MrR-PP-n4L" secondAttribute="trailing" constant="24" id="hUy-BA-nzw"/>
+                    <constraint firstItem="MrR-PP-n4L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="kjt-CR-52r"/>
+                    <constraint firstItem="MrR-PP-n4L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="rVO-qx-F0c"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="grayLight"/>
+            <connections>
+                <outlet property="containerView" destination="MrR-PP-n4L" id="bn1-kM-9Se"/>
+                <outlet property="descLabel" destination="Sdg-nt-nkf" id="tnX-17-NKZ"/>
+                <outlet property="notificationImage" destination="o1a-BC-hN6" id="bcC-rb-2T2"/>
+                <outlet property="titleLabel" destination="dxz-xe-hMi" id="nf7-ow-J0F"/>
+            </connections>
+            <point key="canvasLocation" x="24.427480916030532" y="29.225352112676056"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="notif1" width="44" height="44"/>
+        <namedColor name="DarkTextColor">
+            <color red="0.14117647058823529" green="0.12941176470588237" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayLight">
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="titlesTF">
+            <color red="0.35686274509803922" green="0.34901960784313724" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

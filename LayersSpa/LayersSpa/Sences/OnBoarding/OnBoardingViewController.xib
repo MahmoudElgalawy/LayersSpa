@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Bold.ttf">
+            <string>Raleway-Bold</string>
+        </array>
+        <array key="Raleway-Medium.ttf">
+            <string>Raleway-Medium</string>
+        </array>
+        <array key="Raleway-Regular.ttf">
+            <string>Raleway</string>
+            <string>Raleway-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnBoardingViewController" customModule="LayersSpa" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundImage" destination="AFf-Se-eiG" id="ZkI-c9-sCV"/>
+                <outlet property="detailsLabel" destination="9yc-7K-OpB" id="ubZ-7l-uXJ"/>
+                <outlet property="getStartedButton" destination="6z9-4a-5fW" id="mII-9n-8JD"/>
+                <outlet property="haveAccountButton" destination="sCg-iq-oDV" id="S0Q-7Z-0VQ"/>
+                <outlet property="layersLabel" destination="6Fs-31-fAN" id="1VB-MG-atK"/>
+                <outlet property="nextButton" destination="zG5-kL-5K6" id="6CL-4G-Wd2"/>
+                <outlet property="nextStackView" destination="h6F-8o-EHl" id="huq-yx-HgL"/>
+                <outlet property="onboardingImage" destination="Ura-Ch-S4x" id="4ih-YO-uNR"/>
+                <outlet property="onboardingStackView" destination="Lqq-bq-5PR" id="a4Q-9I-Y7Z"/>
+                <outlet property="skipButton" destination="jjz-Hb-icg" id="EtM-xm-wU9"/>
+                <outlet property="stepView1" destination="1Wq-hZ-5HC" id="1WU-kH-DSB"/>
+                <outlet property="stepView2" destination="CkY-AY-0gJ" id="0J5-Zc-nUN"/>
+                <outlet property="subTitleLabel" destination="NXG-k4-Fhm" id="g3b-Zi-rxP"/>
+                <outlet property="ttleLabel" destination="BH4-GN-1w3" id="EGL-Kd-wFc"/>
+                <outlet property="upperImageView" destination="pWg-9Q-GJM" id="jmA-8G-PK3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="welcomeDetailsLabel" destination="fjD-ut-PlE" id="OcR-7T-xDC"/>
+                <outlet property="welcomeLabel" destination="Xas-LQ-xkR" id="Enh-8D-HU0"/>
+                <outlet property="welcomeStackView" destination="j4f-wQ-y0H" id="Ugp-sV-qFg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundOnBoarding1" translatesAutoresizingMaskIntoConstraints="NO" id="AFf-Se-eiG">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="h6F-8o-EHl">
+                    <rect key="frame" x="24" y="762" width="345" height="56"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjz-Hb-icg">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="56"/>
+                            <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Skip intro">
+                                <color key="titleColor" name="WhiteColor"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zG5-kL-5K6">
+                            <rect key="frame" x="289" y="0.0" width="56" height="56"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" backgroundImage="next"/>
+                        </button>
+                    </subviews>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="lKH-Mm-gTH">
+                    <rect key="frame" x="126.66666666666669" y="79" width="140" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="140" id="N6g-ms-ui0"/>
+                        <constraint firstAttribute="height" constant="100" id="WC6-Tu-RxO"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Lqq-bq-5PR">
+                    <rect key="frame" x="24" y="219" width="345" height="494"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="W5l-MV-TPP">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="278"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWg-9Q-GJM">
+                                    <rect key="frame" x="81.666666666666686" y="0.0" width="182" height="278"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding1Image" translatesAutoresizingMaskIntoConstraints="NO" id="Ura-Ch-S4x">
+                                            <rect key="frame" x="0.0" y="0.0" width="182" height="278"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ura-Ch-S4x" firstAttribute="top" secondItem="pWg-9Q-GJM" secondAttribute="top" id="AoX-dr-KXZ"/>
+                                        <constraint firstAttribute="height" constant="278" id="BhR-1U-gLT"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ura-Ch-S4x" secondAttribute="trailing" id="DeU-gC-hNl"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ura-Ch-S4x" secondAttribute="bottom" id="QHu-G9-HWg"/>
+                                        <constraint firstAttribute="width" constant="182" id="V00-M3-fsw"/>
+                                        <constraint firstItem="Ura-Ch-S4x" firstAttribute="leading" secondItem="pWg-9Q-GJM" secondAttribute="leading" id="n92-6Y-vdK"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="8Op-5p-WnP">
+                            <rect key="frame" x="0.0" y="318" width="345" height="176"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7Zm-Ip-Uzu">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="2"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auJ-WZ-EGP">
+                                            <rect key="frame" x="0.0" y="0.0" width="109.66666666666667" height="2"/>
+                                            <color key="backgroundColor" name="WhiteColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="18U-a9-YK0"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Wq-hZ-5HC">
+                                            <rect key="frame" x="117.66666666666666" y="0.0" width="109.66666666666666" height="2"/>
+                                            <color key="backgroundColor" white="1" alpha="0.20440051020408162" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="AeV-gE-Dea"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkY-AY-0gJ">
+                                            <rect key="frame" x="235.33333333333329" y="0.0" width="109.66666666666666" height="2"/>
+                                            <color key="backgroundColor" white="1" alpha="0.20360331632653061" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="EkB-LZ-tqY"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="P60-HQ-FMG">
+                                    <rect key="frame" x="0.0" y="34" width="345" height="142"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover Your" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXG-k4-Fhm">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="37.666666666666664"/>
+                                            <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="32"/>
+                                            <color key="textColor" name="WhiteColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unique Beauty" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BH4-GN-1w3">
+                                            <rect key="frame" x="0.0" y="41.666666666666629" width="345" height="47"/>
+                                            <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="40"/>
+                                            <color key="textColor" name="SecondaryColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yc-7K-OpB">
+                                            <rect key="frame" x="0.0" y="92.666666666666629" width="345" height="49.333333333333343"/>
+                                            <string key="text">At Layers Beauty Salon, we celebrate the diverse layers of beauty within each individual, offering personalized treatments that bring your best self.</string>
+                                            <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="14"/>
+                                            <color key="textColor" name="WhiteColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="j4f-wQ-y0H">
+                    <rect key="frame" x="24" y="586.33333333333337" width="345" height="187.66666666666663"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="sQ6-AM-rKQ">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="92.333333333333329"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Ofw-Hq-KcJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="55.333333333333336"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ylS-4j-gwG">
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="55.333333333333336"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="welcome to" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xas-LQ-xkR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="177.33333333333334" height="55.333333333333336"/>
+                                                    <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="32"/>
+                                                    <color key="textColor" name="PrimaryColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Layers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Fs-31-fAN">
+                                                    <rect key="frame" x="181.33333333333337" y="0.0" width="148.66666666666663" height="55.333333333333336"/>
+                                                    <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="47"/>
+                                                    <color key="textColor" name="grayLight"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unwind and embrace your unique beauty with our w personalized treatments and exceptional service." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjD-ut-PlE">
+                                    <rect key="frame" x="0.0" y="59.333333333333258" width="345" height="33"/>
+                                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="14"/>
+                                    <color key="textColor" name="PrimaryColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fUh-uC-uvH">
+                            <rect key="frame" x="0.0" y="108.33333333333326" width="345" height="79.333333333333314"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6z9-4a-5fW">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="34.333333333333336"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Get Started"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCg-iq-oDV">
+                                    <rect key="frame" x="0.0" y="50.333333333333371" width="345" height="29"/>
+                                    <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Already have an account">
+                                        <color key="titleColor" name="WhiteColor"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="j4f-wQ-y0H" secondAttribute="trailing" constant="24" id="21T-0J-V7f"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Lqq-bq-5PR" secondAttribute="trailing" constant="24" id="Buz-xH-lqC"/>
+                <constraint firstItem="Lqq-bq-5PR" firstAttribute="top" secondItem="lKH-Mm-gTH" secondAttribute="bottom" constant="40" id="FhD-wy-IsC"/>
+                <constraint firstItem="h6F-8o-EHl" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="K44-jL-nRu"/>
+                <constraint firstItem="Lqq-bq-5PR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="KWI-vl-jYU"/>
+                <constraint firstItem="AFf-Se-eiG" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Lcp-Sh-xWr"/>
+                <constraint firstItem="lKH-Mm-gTH" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="OgO-Gy-HOg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h6F-8o-EHl" secondAttribute="trailing" constant="24" id="XHe-mF-vLu"/>
+                <constraint firstItem="lKH-Mm-gTH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Xa7-20-ml2"/>
+                <constraint firstAttribute="bottom" secondItem="AFf-Se-eiG" secondAttribute="bottom" id="Y75-dp-5Zz"/>
+                <constraint firstItem="AFf-Se-eiG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eRT-G6-dqw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="j4f-wQ-y0H" secondAttribute="bottom" constant="44" id="fwT-7N-aiL"/>
+                <constraint firstItem="j4f-wQ-y0H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="iaK-5C-atj"/>
+                <constraint firstItem="h6F-8o-EHl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="kIP-RV-5Zn"/>
+                <constraint firstItem="AFf-Se-eiG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="od3-2h-t3g"/>
+            </constraints>
+            <point key="canvasLocation" x="389" y="-96"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backgroundOnBoarding1" width="626" height="937"/>
+        <image name="logo" width="138" height="100"/>
+        <image name="next" width="56" height="56"/>
+        <image name="onboarding1Image" width="172" height="268"/>
+        <namedColor name="PrimaryColor">
+            <color red="0.64313725490196083" green="0.56470588235294117" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryColor">
+            <color red="0.83921568627450982" green="0.7686274509803922" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WhiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayLight">
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

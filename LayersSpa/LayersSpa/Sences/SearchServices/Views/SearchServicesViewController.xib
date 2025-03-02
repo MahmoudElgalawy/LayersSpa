@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchServicesViewController" customModule="LayersSpa" customModuleProvider="target">
+            <connections>
+                <outlet property="EmptyStateView" destination="9qx-CS-mrQ" id="RaL-mF-aCU"/>
+                <outlet property="SearchCollection" destination="pvJ-7k-zJy" id="R0m-Sf-R1K"/>
+                <outlet property="navigationBar" destination="WK0-Id-1H5" id="HR6-ue-u79"/>
+                <outlet property="searchBar" destination="XIK-7e-Dli" id="KKs-3a-I2o"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewBack" destination="GTc-9A-X11" id="SvK-Ep-3kP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qx-CS-mrQ" customClass="EmptyStateView" customModule="LayersSpa" customModuleProvider="target">
+                    <rect key="frame" x="33.666666666666657" y="290" width="326" height="297"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WK0-Id-1H5">
+                    <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <color key="backgroundColor" name="grayLight"/>
+                    <items>
+                        <navigationItem title="Search Services" id="fU2-Ag-Ui9">
+                            <barButtonItem key="rightBarButtonItem" title="Cancel" id="MjC-bX-pjc">
+                                <color key="tintColor" name="171717"/>
+                                <connections>
+                                    <action selector="cancelBtn:" destination="-1" id="btF-z3-34a"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pvJ-7k-zJy">
+                    <rect key="frame" x="0.0" y="144" width="393" height="749"/>
+                    <color key="backgroundColor" name="grayLight"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="j7h-Z0-ubE">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTc-9A-X11">
+                    <rect key="frame" x="33" y="107" width="326" height="37"/>
+                    <subviews>
+                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XIK-7e-Dli">
+                            <rect key="frame" x="0.0" y="0.0" width="326" height="37"/>
+                            <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                            <textInputTraits key="textInputTraits" smartQuotesType="yes"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="SpF-J3-2VF"/>
+                            </connections>
+                        </searchBar>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="XIK-7e-Dli" secondAttribute="trailing" id="4O5-xt-mY9"/>
+                        <constraint firstItem="XIK-7e-Dli" firstAttribute="top" secondItem="GTc-9A-X11" secondAttribute="top" id="9c6-72-ISF"/>
+                        <constraint firstItem="XIK-7e-Dli" firstAttribute="leading" secondItem="GTc-9A-X11" secondAttribute="leading" id="AHY-vU-djW"/>
+                        <constraint firstAttribute="bottom" secondItem="XIK-7e-Dli" secondAttribute="bottom" id="sPi-EY-pKh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="grayLight"/>
+            <constraints>
+                <constraint firstItem="pvJ-7k-zJy" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.986825" id="5pW-AU-ELq"/>
+                <constraint firstItem="GTc-9A-X11" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.829517" id="7GR-gn-sTs"/>
+                <constraint firstItem="GTc-9A-X11" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0434272" id="ALP-Ma-EYx"/>
+                <constraint firstItem="WK0-Id-1H5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NzT-e0-rHD"/>
+                <constraint firstItem="pvJ-7k-zJy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OJL-7K-6iv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WK0-Id-1H5" secondAttribute="trailing" id="TDQ-dV-xrZ"/>
+                <constraint firstItem="pvJ-7k-zJy" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" id="TpP-Yh-6qE"/>
+                <constraint firstItem="GTc-9A-X11" firstAttribute="top" secondItem="WK0-Id-1H5" secondAttribute="bottom" constant="4" id="Wyc-nq-2U3"/>
+                <constraint firstItem="9qx-CS-mrQ" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="doC-dx-Ari"/>
+                <constraint firstItem="WK0-Id-1H5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="g8V-iK-EHW"/>
+                <constraint firstItem="GTc-9A-X11" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="33" id="kCO-5M-qX1"/>
+                <constraint firstItem="9qx-CS-mrQ" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="mcp-Qo-iua"/>
+                <constraint firstItem="9qx-CS-mrQ" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.391304" id="own-qt-XdF"/>
+                <constraint firstItem="WK0-Id-1H5" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="qkZ-Np-Fv0"/>
+                <constraint firstItem="9qx-CS-mrQ" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.829517" id="urm-Ss-keI"/>
+                <constraint firstItem="pvJ-7k-zJy" firstAttribute="top" secondItem="GTc-9A-X11" secondAttribute="bottom" id="xI0-KY-pdf"/>
+                <constraint firstItem="WK0-Id-1H5" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0516432" id="yyi-NG-x1d"/>
+            </constraints>
+            <point key="canvasLocation" x="78.625954198473281" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="171717">
+            <color red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayLight">
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

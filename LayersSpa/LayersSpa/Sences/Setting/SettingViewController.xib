@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController" customModule="LayersSpa" customModuleProvider="target">
+            <connections>
+                <outlet property="navBar" destination="uhc-EY-B5v" id="F2Y-d9-kQg"/>
+                <outlet property="settingTableView" destination="ZJd-t4-yz7" id="7Mq-SV-4wh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhc-EY-B5v" customClass="NavigationBarWithBack" customModule="LayersSpa" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="108"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="108" id="n2g-qX-Usy"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-t4-yz7">
+                    <rect key="frame" x="0.0" y="108" width="393" height="710"/>
+                    <color key="backgroundColor" name="grayLight"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="qkw-fr-5IT"/>
+            <color key="backgroundColor" name="grayLight"/>
+            <constraints>
+                <constraint firstItem="ZJd-t4-yz7" firstAttribute="top" secondItem="uhc-EY-B5v" secondAttribute="bottom" id="3To-dT-HVt"/>
+                <constraint firstItem="ZJd-t4-yz7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="49C-2T-oUj"/>
+                <constraint firstItem="qkw-fr-5IT" firstAttribute="bottom" secondItem="ZJd-t4-yz7" secondAttribute="bottom" id="HYF-9m-xoC"/>
+                <constraint firstAttribute="trailing" secondItem="ZJd-t4-yz7" secondAttribute="trailing" id="Mqa-uY-Y3g"/>
+                <constraint firstItem="uhc-EY-B5v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rkj-Yc-nAo"/>
+                <constraint firstItem="uhc-EY-B5v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Z64-5F-UV2"/>
+                <constraint firstAttribute="trailing" secondItem="uhc-EY-B5v" secondAttribute="trailing" id="dpk-rF-bwB"/>
+            </constraints>
+            <point key="canvasLocation" x="-9" y="-53"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="grayLight">
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

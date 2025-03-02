@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-SemiBold.ttf">
+            <string>Raleway-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WithdrawViewController" customModule="LayersSpa" customModuleProvider="target">
+            <connections>
+                <outlet property="accountHolderLabel" destination="46c-8v-IlF" id="zoH-MQ-c0s"/>
+                <outlet property="accountHolderTF" destination="itv-nD-11K" id="PLG-ng-o5e"/>
+                <outlet property="accountNumberLabel" destination="4n0-X0-EcL" id="aUw-eg-HpI"/>
+                <outlet property="accountNumberTF" destination="sC3-pD-hpV" id="I9Q-17-5RP"/>
+                <outlet property="bankNameLabel" destination="pwz-RA-zUk" id="iAF-d2-CyC"/>
+                <outlet property="bankNameTF" destination="GJU-vd-aCZ" id="scC-eE-fQN"/>
+                <outlet property="containerView" destination="4N2-bc-G7j" id="ulg-W2-uog"/>
+                <outlet property="ibanLabel" destination="KYb-nU-H2R" id="4Tr-Yv-MGz"/>
+                <outlet property="ibanTF" destination="wWe-sC-ukU" id="cTA-4c-7PU"/>
+                <outlet property="navBar" destination="DOq-8u-zPe" id="PMj-vZ-fJh"/>
+                <outlet property="nextButton" destination="y9J-wm-p0f" id="tfl-kp-TDS"/>
+                <outlet property="progressStackView" destination="blw-es-1MH" id="H4D-fG-dAb"/>
+                <outlet property="progressView" destination="pIr-jU-YwO" id="IDT-7o-M0V"/>
+                <outlet property="stepLabel" destination="lsh-YU-h8u" id="vBt-JX-eed"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DOq-8u-zPe" customClass="NavigationBarWithBack" customModule="LayersSpa" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="108"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="108" id="kv5-rn-sZs"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q4p-C9-tBR">
+                    <rect key="frame" x="0.0" y="108" width="393" height="92"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OmR-Ml-G3s">
+                            <rect key="frame" x="24" y="8" width="345" height="72"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wil-1P-h9t">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="52"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsh-YU-h8u">
+                                            <rect key="frame" x="0.0" y="6" width="40" height="40"/>
+                                            <color key="backgroundColor" name="grayLight"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="RPw-Ww-FfI"/>
+                                                <constraint firstAttribute="height" constant="40" id="cc8-bf-KMy"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gt-0Z-4Nh">
+                                            <rect key="frame" x="48" y="16.666666666666657" width="297" height="19"/>
+                                            <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blw-es-1MH">
+                                    <rect key="frame" x="0.0" y="60" width="345" height="12"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIr-jU-YwO">
+                                            <rect key="frame" x="0.0" y="0.0" width="138" height="12"/>
+                                            <color key="backgroundColor" name="PrimaryColor"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEj-TI-j9z">
+                                            <rect key="frame" x="138" y="0.0" width="207" height="12"/>
+                                            <color key="backgroundColor" name="grayLight"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" name="grayLight"/>
+                                    <constraints>
+                                        <constraint firstItem="pIr-jU-YwO" firstAttribute="width" secondItem="blw-es-1MH" secondAttribute="width" multiplier="0.4" id="1qU-5X-Mte"/>
+                                        <constraint firstAttribute="height" constant="12" id="dKU-QB-iTX"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="OmR-Ml-G3s" secondAttribute="bottom" constant="12" id="7gP-kw-OqM"/>
+                        <constraint firstAttribute="height" constant="92" id="Mtb-g3-bec"/>
+                        <constraint firstAttribute="trailing" secondItem="OmR-Ml-G3s" secondAttribute="trailing" constant="24" id="O70-Dk-dEt"/>
+                        <constraint firstItem="OmR-Ml-G3s" firstAttribute="leading" secondItem="q4p-C9-tBR" secondAttribute="leading" constant="24" id="OD8-Ra-h1O"/>
+                        <constraint firstItem="OmR-Ml-G3s" firstAttribute="top" secondItem="q4p-C9-tBR" secondAttribute="top" constant="8" id="PA7-gh-IPH"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4N2-bc-G7j">
+                    <rect key="frame" x="24" y="216" width="345" height="360"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="OTp-zu-Dg4">
+                            <rect key="frame" x="16" y="16" width="313" height="328"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="63A-qs-a5N">
+                                    <rect key="frame" x="0.0" y="0.0" width="313" height="324"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wOk-ac-qUD">
+                                            <rect key="frame" x="0.0" y="0.0" width="313" height="69"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwz-RA-zUk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="313" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GJU-vd-aCZ">
+                                                    <rect key="frame" x="0.0" y="25" width="313" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="ts4-2u-WD2"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Flag_of_Saudi_Arabia_without_sword"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                            <real key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="user 1"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mxQ-cD-EPC">
+                                            <rect key="frame" x="0.0" y="85" width="313" height="69"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account holder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46c-8v-IlF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="313" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="itv-nD-11K">
+                                                    <rect key="frame" x="0.0" y="25" width="313" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="nKt-RD-9te"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Flag_of_Saudi_Arabia_without_sword"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="email"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                            <real key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3R8-0L-Jgk">
+                                            <rect key="frame" x="0.0" y="170" width="313" height="69"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n0-X0-EcL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="313" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sC3-pD-hpV">
+                                                    <rect key="frame" x="0.0" y="25" width="313" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="sc5-Ee-Bh8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Flag_of_Saudi_Arabia_without_sword"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="email"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                            <real key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IMC-aS-b7J">
+                                            <rect key="frame" x="0.0" y="255" width="313" height="69"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IBAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYb-nU-H2R">
+                                                    <rect key="frame" x="0.0" y="0.0" width="313" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wWe-sC-ukU">
+                                                    <rect key="frame" x="0.0" y="25" width="313" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="soC-sZ-GNZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Flag_of_Saudi_Arabia_without_sword"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="email"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                            <real key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="OTp-zu-Dg4" secondAttribute="bottom" constant="16" id="GhR-Yu-Ufs"/>
+                        <constraint firstAttribute="height" constant="360" id="Qqb-vN-GBf"/>
+                        <constraint firstAttribute="trailing" secondItem="OTp-zu-Dg4" secondAttribute="trailing" constant="16" id="dHb-1I-Ock"/>
+                        <constraint firstItem="OTp-zu-Dg4" firstAttribute="top" secondItem="4N2-bc-G7j" secondAttribute="top" constant="16" id="mkJ-nQ-e9a"/>
+                        <constraint firstItem="OTp-zu-Dg4" firstAttribute="leading" secondItem="4N2-bc-G7j" secondAttribute="leading" constant="16" id="yu0-Cu-yYX"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZh-4U-12J">
+                    <rect key="frame" x="0.0" y="752" width="393" height="100"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uTO-W9-TLs">
+                            <rect key="frame" x="24" y="16" width="345" height="48"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9J-wm-p0f">
+                                    <rect key="frame" x="0.0" y="2" width="345" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="PqP-D6-R2K"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="0fL-K8-9nD"/>
+                        <constraint firstItem="uTO-W9-TLs" firstAttribute="leading" secondItem="BZh-4U-12J" secondAttribute="leading" constant="24" id="6j8-cj-KrO"/>
+                        <constraint firstAttribute="trailing" secondItem="uTO-W9-TLs" secondAttribute="trailing" constant="24" id="Jy4-mv-nTD"/>
+                        <constraint firstAttribute="bottom" secondItem="uTO-W9-TLs" secondAttribute="bottom" constant="36" id="NgB-Z6-GLa"/>
+                        <constraint firstItem="uTO-W9-TLs" firstAttribute="top" secondItem="BZh-4U-12J" secondAttribute="top" constant="16" id="TsZ-fB-eKM"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" name="grayLight"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="BZh-4U-12J" secondAttribute="bottom" id="05o-Pv-ctl"/>
+                <constraint firstAttribute="trailing" secondItem="q4p-C9-tBR" secondAttribute="trailing" id="35n-Ky-zhs"/>
+                <constraint firstAttribute="trailing" secondItem="4N2-bc-G7j" secondAttribute="trailing" constant="24" id="4xJ-Oo-NcD"/>
+                <constraint firstItem="4N2-bc-G7j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="7uV-eT-kWT"/>
+                <constraint firstAttribute="trailing" secondItem="DOq-8u-zPe" secondAttribute="trailing" id="FEn-3A-t68"/>
+                <constraint firstItem="DOq-8u-zPe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KBI-xO-NTg"/>
+                <constraint firstItem="DOq-8u-zPe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LwW-LN-5fm"/>
+                <constraint firstItem="4N2-bc-G7j" firstAttribute="top" secondItem="q4p-C9-tBR" secondAttribute="bottom" constant="16" id="QRd-gi-GsF"/>
+                <constraint firstItem="q4p-C9-tBR" firstAttribute="top" secondItem="DOq-8u-zPe" secondAttribute="bottom" id="aGW-9Q-rvT"/>
+                <constraint firstItem="q4p-C9-tBR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bpC-Dj-bdm"/>
+                <constraint firstItem="BZh-4U-12J" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dEC-Hf-Tqn"/>
+                <constraint firstItem="q4p-C9-tBR" firstAttribute="top" secondItem="DOq-8u-zPe" secondAttribute="bottom" id="upC-om-bPv"/>
+                <constraint firstAttribute="trailing" secondItem="BZh-4U-12J" secondAttribute="trailing" id="xev-fa-8pg"/>
+            </constraints>
+            <point key="canvasLocation" x="18" y="-17"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Flag_of_Saudi_Arabia_without_sword" width="24" height="24"/>
+        <image name="email" width="20" height="20"/>
+        <image name="user 1" width="20" height="20"/>
+        <namedColor name="PrimaryColor">
+            <color red="0.64313725490196083" green="0.56470588235294117" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayLight">
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

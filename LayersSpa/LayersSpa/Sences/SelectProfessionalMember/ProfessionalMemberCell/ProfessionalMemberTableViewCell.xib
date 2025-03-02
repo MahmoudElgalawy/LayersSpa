@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Bold.ttf">
+            <string>Raleway-Bold</string>
+        </array>
+        <array key="Raleway-Medium.ttf">
+            <string>Raleway-Medium</string>
+        </array>
+        <array key="Raleway-Regular.ttf">
+            <string>Raleway</string>
+        </array>
+        <array key="Raleway-SemiBold.ttf">
+            <string>Raleway-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="KGk-i7-Jjw" customClass="ProfessionalMemberTableViewCell" customModule="LayersSpa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="457" height="137"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="457" height="137"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aT2-we-6oW">
+                        <rect key="frame" x="24" y="8" width="409" height="121"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iRX-wR-w8V">
+                                <rect key="frame" x="16" y="12" width="377" height="97"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartProduct" translatesAutoresizingMaskIntoConstraints="NO" id="0fn-gc-hy6">
+                                        <rect key="frame" x="0.0" y="16.666666666666664" width="64" height="63.999999999999993"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="M7j-64-70P"/>
+                                            <constraint firstAttribute="height" constant="64" id="qzS-Zd-UU0"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="IXZ-dE-VfU">
+                                        <rect key="frame" x="72" y="14.333333333333336" width="279" height="68.333333333333314"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mona" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nq5-Xh-rF3">
+                                                <rect key="frame" x="0.0" y="0.0" width="37" height="16.666666666666668"/>
+                                                <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="14"/>
+                                                <color key="textColor" name="DarkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="sQ3-gO-vhu">
+                                                <rect key="frame" x="0.0" y="20.666666666666664" width="64.666666666666671" height="16.666666666666664"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serviceStar" translatesAutoresizingMaskIntoConstraints="NO" id="Nle-EF-5wf">
+                                                        <rect key="frame" x="0.0" y="2.3333333333333357" width="12" height="12"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="12" id="WDv-Fz-D8b"/>
+                                                            <constraint firstAttribute="height" constant="12" id="ZZW-wg-NaQ"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="4.7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPR-DJ-TfJ">
+                                                        <rect key="frame" x="16" y="0.0" width="18.666666666666671" height="16.666666666666668"/>
+                                                        <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="14"/>
+                                                        <color key="textColor" name="PrimaryColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(190)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79b-U4-hOR">
+                                                        <rect key="frame" x="38.666666666666657" y="1.3333333333333366" width="26" height="14.333333333333336"/>
+                                                        <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="12"/>
+                                                        <color key="textColor" name="grayText"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxc-yL-VKE">
+                                                <rect key="frame" x="0.0" y="41.333333333333336" width="76" height="27.000000000000007"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="View profile &gt;">
+                                                    <color key="titleColor" name="titlesTF"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unSelectedRadioButton" translatesAutoresizingMaskIntoConstraints="NO" id="JHw-1m-p9c">
+                                        <rect key="frame" x="359" y="39.666666666666664" width="18" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="PuH-GL-N7N"/>
+                                            <constraint firstAttribute="width" constant="18" id="pCe-kY-jep"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="iRX-wR-w8V" secondAttribute="bottom" constant="12" id="Amw-dt-vUR"/>
+                            <constraint firstItem="iRX-wR-w8V" firstAttribute="top" secondItem="aT2-we-6oW" secondAttribute="top" constant="12" id="BLU-8S-cRo"/>
+                            <constraint firstItem="iRX-wR-w8V" firstAttribute="leading" secondItem="aT2-we-6oW" secondAttribute="leading" constant="16" id="pyF-Vl-aOC"/>
+                            <constraint firstAttribute="trailing" secondItem="iRX-wR-w8V" secondAttribute="trailing" constant="16" id="uhq-34-5Wq"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="aT2-we-6oW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="DOl-6a-JzH"/>
+                    <constraint firstAttribute="trailing" secondItem="aT2-we-6oW" secondAttribute="trailing" constant="24" id="USE-Ib-k7E"/>
+                    <constraint firstAttribute="bottom" secondItem="aT2-we-6oW" secondAttribute="bottom" constant="8" id="Wqd-K3-AOF"/>
+                    <constraint firstItem="aT2-we-6oW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="zSx-k2-Ud9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="grayLight"/>
+            <connections>
+                <outlet property="containerView" destination="aT2-we-6oW" id="gmc-qB-VSP"/>
+                <outlet property="memberImage" destination="0fn-gc-hy6" id="LnP-3e-62l"/>
+                <outlet property="memberNameLabel" destination="Nq5-Xh-rF3" id="nVJ-mv-PM0"/>
+                <outlet property="radioButtonImage" destination="JHw-1m-p9c" id="KSw-ar-46I"/>
+                <outlet property="ratingLabel" destination="mPR-DJ-TfJ" id="qe6-ep-xbU"/>
+                <outlet property="reviewLable" destination="79b-U4-hOR" id="AvA-yd-Ltb"/>
+                <outlet property="viewProfileButton" destination="Vxc-yL-VKE" id="ErK-dh-Bud"/>
+            </connections>
+            <point key="canvasLocation" x="176.33587786259542" y="21.47887323943662"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cartProduct" width="48" height="48"/>
+        <image name="serviceStar" width="12.666666984558105" height="12.666666984558105"/>
+        <image name="unSelectedRadioButton" width="18" height="18"/>
+        <namedColor name="DarkTextColor">
+            <color red="0.14117647058823529" green="0.12941176470588237" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryColor">
+            <color red="0.64313725490196083" green="0.56470588235294117" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayLight">
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayText">
+            <color red="0.61960784313725492" green="0.58039215686274515" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="titlesTF">
+            <color red="0.35686274509803922" green="0.34901960784313724" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

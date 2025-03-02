@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-SemiBold.ttf">
+            <string>Raleway-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectProfessionalMemberViewController" customModule="LayersSpa" customModuleProvider="target">
+            <connections>
+                <outlet property="continueButton" destination="fPo-Fb-uyF" id="jXI-of-cQ4"/>
+                <outlet property="dismissButton" destination="LUR-XW-I56" id="0yu-yD-wV7"/>
+                <outlet property="professionalMemberTableView" destination="dtR-kp-XeQ" id="zRd-5Z-epH"/>
+                <outlet property="titleLabel" destination="cmc-lF-G7j" id="5kd-a7-Lu8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tEo-gp-oN7">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CYG-Fu-mjk">
+                            <rect key="frame" x="24" y="76" width="345" height="24"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUR-XW-I56">
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="vSc-6r-10Y"/>
+                                        <constraint firstAttribute="width" constant="24" id="yGd-pr-91T"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="xIcon"/>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select professional " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmc-lF-G7j">
+                                    <rect key="frame" x="24" y="2.6666666666666714" width="297" height="19"/>
+                                    <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-3f-Pse">
+                                    <rect key="frame" x="321" y="0.0" width="24" height="24"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="yUw-eT-MbH"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="Czq-Wy-9dj"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="CYG-Fu-mjk" firstAttribute="leading" secondItem="tEo-gp-oN7" secondAttribute="leading" constant="24" id="1t7-e1-mQQ"/>
+                        <constraint firstItem="CYG-Fu-mjk" firstAttribute="top" secondItem="tEo-gp-oN7" secondAttribute="top" constant="76" id="74g-VM-4gX"/>
+                        <constraint firstAttribute="height" constant="120" id="8wZ-Sf-i0t"/>
+                        <constraint firstAttribute="trailing" secondItem="CYG-Fu-mjk" secondAttribute="trailing" constant="24" id="aqz-FV-90k"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dtR-kp-XeQ">
+                    <rect key="frame" x="0.0" y="136" width="393" height="608"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-Oc-dvd">
+                    <rect key="frame" x="0.0" y="752" width="393" height="100"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ed0-tW-8hy">
+                            <rect key="frame" x="24" y="16" width="345" height="48"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPo-Fb-uyF">
+                                    <rect key="frame" x="0.0" y="2" width="345" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="79m-UH-hwQ"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="WcR-8b-P6A"/>
+                        <constraint firstItem="ed0-tW-8hy" firstAttribute="top" secondItem="Jna-Oc-dvd" secondAttribute="top" constant="16" id="Zcn-cE-AJq"/>
+                        <constraint firstAttribute="bottom" secondItem="ed0-tW-8hy" secondAttribute="bottom" constant="36" id="a8f-Yo-qsD"/>
+                        <constraint firstItem="ed0-tW-8hy" firstAttribute="leading" secondItem="Jna-Oc-dvd" secondAttribute="leading" constant="24" id="sax-Nc-KLZ"/>
+                        <constraint firstAttribute="trailing" secondItem="ed0-tW-8hy" secondAttribute="trailing" constant="24" id="u9i-dQ-Osh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="DFK-fo-BVc"/>
+            <color key="backgroundColor" name="grayLight"/>
+            <constraints>
+                <constraint firstItem="dtR-kp-XeQ" firstAttribute="leading" secondItem="DFK-fo-BVc" secondAttribute="leading" id="0hK-Jd-NdU"/>
+                <constraint firstItem="tEo-gp-oN7" firstAttribute="leading" secondItem="DFK-fo-BVc" secondAttribute="leading" id="GXU-3a-lu1"/>
+                <constraint firstItem="Jna-Oc-dvd" firstAttribute="leading" secondItem="DFK-fo-BVc" secondAttribute="leading" id="JPB-MO-mF4"/>
+                <constraint firstItem="Jna-Oc-dvd" firstAttribute="top" secondItem="dtR-kp-XeQ" secondAttribute="bottom" constant="8" id="LSp-jV-zyV"/>
+                <constraint firstItem="dtR-kp-XeQ" firstAttribute="top" secondItem="tEo-gp-oN7" secondAttribute="bottom" constant="16" id="Qma-il-8z9"/>
+                <constraint firstItem="tEo-gp-oN7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SUv-2i-bgg"/>
+                <constraint firstAttribute="trailing" secondItem="dtR-kp-XeQ" secondAttribute="trailing" id="eQ5-TE-OwJ"/>
+                <constraint firstItem="Jna-Oc-dvd" firstAttribute="trailing" secondItem="DFK-fo-BVc" secondAttribute="trailing" id="fXn-tR-3GB"/>
+                <constraint firstAttribute="bottom" secondItem="Jna-Oc-dvd" secondAttribute="bottom" id="jYp-Rl-JPy"/>
+                <constraint firstAttribute="trailing" secondItem="tEo-gp-oN7" secondAttribute="trailing" id="o5w-xq-jlA"/>
+            </constraints>
+            <point key="canvasLocation" x="8.3969465648854964" y="-53.521126760563384"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="xIcon" width="11.666666984558105" height="11.666666984558105"/>
+        <namedColor name="grayLight">
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

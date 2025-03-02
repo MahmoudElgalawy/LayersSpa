@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Regular.ttf">
+            <string>Raleway</string>
+        </array>
+        <array key="Raleway-SemiBold.ttf">
+            <string>Raleway-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutLayersViewController" customModule="LayersSpa" customModuleProvider="target">
+            <connections>
+                <outlet property="navBar" destination="kL3-uY-GkM" id="DJy-OW-IpO"/>
+                <outlet property="storyDescLabel" destination="Tu0-A5-e26" id="O9w-HS-h4X"/>
+                <outlet property="valueDescLabel" destination="cZE-KA-bXh" id="WLZ-KR-faO"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="visionDescLabel" destination="VhL-Rt-Z8H" id="Ire-8g-jjS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kL3-uY-GkM" customClass="NavigationBarWithBack" customModule="LayersSpa" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="108"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="108" id="eS3-Vs-J9t"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaN-8T-2n9">
+                    <rect key="frame" x="24" y="108" width="345" height="710"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="na2-MV-TPG">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="710"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ru5-xG-c9R">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="703"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="FC7-GB-tWQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="703"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wdi-Le-VBa">
+                                                    <rect key="frame" x="0.0" y="0.0" width="345" height="132"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnC-uo-4jo">
+                                                            <rect key="frame" x="52.666666666666686" y="0.0" width="240" height="4"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="4" id="nHP-N9-x3Y"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="primaryLogo" translatesAutoresizingMaskIntoConstraints="NO" id="IAP-2h-lbR">
+                                                            <rect key="frame" x="104.66666666666666" y="32" width="136" height="100"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="136" id="8ke-sv-5GW"/>
+                                                                <constraint firstAttribute="height" constant="100" id="oAD-c1-VXB"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GbT-9x-Iu6">
+                                                    <rect key="frame" x="0.0" y="160" width="345" height="151.66666666666663"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chu-9e-Akf">
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="16.666666666666668"/>
+                                                            <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="14"/>
+                                                            <color key="textColor" name="DarkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tu0-A5-e26">
+                                                            <rect key="frame" x="0.0" y="24.666666666666686" width="345" height="127"/>
+                                                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipng elit, sed do eiusmod tempor incididunt ut labore dolore.
+magna.Lorem ipsum dolor sit amet, consectetur adcing elit, sed do eiusmod tempor incididunt ut labore dolore magna.Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </string>
+                                                            <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="12"/>
+                                                            <color key="textColor" name="titlesTF"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KZE-gw-Qqx">
+                                                    <rect key="frame" x="0.0" y="339.66666666666669" width="345" height="151.66666666666669"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNW-ar-IwZ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="16.666666666666668"/>
+                                                            <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="14"/>
+                                                            <color key="textColor" name="DarkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZE-KA-bXh">
+                                                            <rect key="frame" x="0.0" y="24.666666666666629" width="345" height="127"/>
+                                                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipng elit, sed do eiusmod tempor incididunt ut labore dolore.
+magna.Lorem ipsum dolor sit amet, consectetur adcing elit, sed do eiusmod tempor incididunt ut labore dolore magna.Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </string>
+                                                            <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="12"/>
+                                                            <color key="textColor" name="titlesTF"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C0A-jn-xnJ">
+                                                    <rect key="frame" x="0.0" y="519.33333333333337" width="345" height="151.66666666666663"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Vision" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f3-J9-IQy">
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="16.666666666666668"/>
+                                                            <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="14"/>
+                                                            <color key="textColor" name="DarkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhL-Rt-Z8H">
+                                                            <rect key="frame" x="0.0" y="24.666666666666629" width="345" height="127"/>
+                                                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipng elit, sed do eiusmod tempor incididunt ut labore dolore.
+magna.Lorem ipsum dolor sit amet, consectetur adcing elit, sed do eiusmod tempor incididunt ut labore dolore magna.Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </string>
+                                                            <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="12"/>
+                                                            <color key="textColor" name="titlesTF"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vx-Vw-8FO">
+                                                    <rect key="frame" x="0.0" y="699" width="345" height="4"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="4" id="Qd4-Yb-r5F"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="FC7-GB-tWQ" secondAttribute="trailing" id="LGk-Ao-kVN"/>
+                                        <constraint firstAttribute="bottom" secondItem="FC7-GB-tWQ" secondAttribute="bottom" id="bWR-lS-C2e"/>
+                                        <constraint firstItem="FC7-GB-tWQ" firstAttribute="leading" secondItem="ru5-xG-c9R" secondAttribute="leading" id="sWh-Vd-ZBP"/>
+                                        <constraint firstItem="FC7-GB-tWQ" firstAttribute="top" secondItem="ru5-xG-c9R" secondAttribute="top" id="yuP-6r-hDs"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="ru5-xG-c9R" secondAttribute="bottom" id="5pB-pR-cq0"/>
+                                <constraint firstItem="ru5-xG-c9R" firstAttribute="top" secondItem="na2-MV-TPG" secondAttribute="top" id="JrP-aX-JHY"/>
+                                <constraint firstAttribute="trailing" secondItem="ru5-xG-c9R" secondAttribute="trailing" id="P3r-vc-kfN"/>
+                                <constraint firstItem="ru5-xG-c9R" firstAttribute="leading" secondItem="na2-MV-TPG" secondAttribute="leading" id="vcP-sj-5zR"/>
+                            </constraints>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="na2-MV-TPG" firstAttribute="height" secondItem="MaN-8T-2n9" secondAttribute="height" priority="250" id="0eT-uL-Woo"/>
+                        <constraint firstItem="ru5-xG-c9R" firstAttribute="width" secondItem="MaN-8T-2n9" secondAttribute="width" id="XWj-hq-cbZ"/>
+                        <constraint firstItem="na2-MV-TPG" firstAttribute="top" secondItem="MaN-8T-2n9" secondAttribute="top" id="et1-bn-LXg"/>
+                        <constraint firstAttribute="trailing" secondItem="na2-MV-TPG" secondAttribute="trailing" id="t16-RG-C35"/>
+                        <constraint firstItem="na2-MV-TPG" firstAttribute="leading" secondItem="MaN-8T-2n9" secondAttribute="leading" id="u4m-rQ-DnP"/>
+                        <constraint firstAttribute="bottom" secondItem="na2-MV-TPG" secondAttribute="bottom" id="yuH-Ou-MIk"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Ke2-fz-OAQ"/>
+            <color key="backgroundColor" name="grayLight"/>
+            <constraints>
+                <constraint firstItem="kL3-uY-GkM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="J7s-9l-ea9"/>
+                <constraint firstItem="Ke2-fz-OAQ" firstAttribute="bottom" secondItem="MaN-8T-2n9" secondAttribute="bottom" id="Sgw-U6-YgI"/>
+                <constraint firstAttribute="trailing" secondItem="kL3-uY-GkM" secondAttribute="trailing" id="Z5O-vJ-93p"/>
+                <constraint firstItem="MaN-8T-2n9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="ePp-YK-oZb"/>
+                <constraint firstAttribute="trailing" secondItem="MaN-8T-2n9" secondAttribute="trailing" constant="24" id="oWM-ip-O2b"/>
+                <constraint firstItem="kL3-uY-GkM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="q9j-Vg-J8u"/>
+                <constraint firstItem="MaN-8T-2n9" firstAttribute="top" secondItem="kL3-uY-GkM" secondAttribute="bottom" id="zS8-EO-t7z"/>
+            </constraints>
+            <point key="canvasLocation" x="-9" y="-53"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="primaryLogo" width="135" height="100"/>
+        <namedColor name="DarkTextColor">
+            <color red="0.14117647058823529" green="0.12941176470588237" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayLight">
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="titlesTF">
+            <color red="0.35686274509803922" green="0.34901960784313724" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

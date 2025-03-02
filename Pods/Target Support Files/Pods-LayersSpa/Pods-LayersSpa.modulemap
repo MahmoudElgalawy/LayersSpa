@@ -1,0 +1,6 @@
+module Pods_LayersSpa {
+  umbrella header "Pods-LayersSpa-umbrella.h"
+
+  export *
+  module * { export * }
+}

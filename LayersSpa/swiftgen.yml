@@ -1,0 +1,14 @@
+input_dir: LayersSpa/
+output_dir: ../UILayerSpa/Sources/UILayerSpa/Generated/
+
+xcassets:
+  - inputs:
+      - Images.xcassets
+    outputs:
+      - templatePath: Templates/images.stencil
+        output: UIImage.Generated.swift
+  - inputs:
+      - Colors.xcassets
+    outputs:
+      - templatePath: Templates/colors.stencil
+        output:  UIColors.Generated.swift
