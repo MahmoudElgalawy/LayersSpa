@@ -116,7 +116,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="An8-fa-smv">
-                    <rect key="frame" x="253" y="491.66666666666669" width="140.66666666666663" height="30.666666666666686"/>
+                    <rect key="frame" x="238.33333333333337" y="491.66666666666669" width="165.66666666666663" height="30.666666666666686"/>
                     <color key="tintColor" name="Blue(main)"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Forget Password?">
@@ -144,13 +144,13 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The phone can not be blank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEK-cp-C7I">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The phone can not be blank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEK-cp-C7I">
                     <rect key="frame" x="8" y="378.33333333333331" width="337" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" name="redColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The password can not be blank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oR-x6-dZD">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The password can not be blank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oR-x6-dZD">
                     <rect key="frame" x="8" y="478.66666666666669" width="345.66666666666669" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" name="redColor"/>
@@ -201,9 +201,9 @@
                 <constraint firstItem="aS2-k8-vmh" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.961353" id="mAg-Lm-zcd"/>
                 <constraint firstItem="Pnu-Qg-ork" firstAttribute="leading" secondItem="csd-AC-5Hg" secondAttribute="leading" id="mNM-Si-CNw"/>
                 <constraint firstItem="dFT-vz-Ocn" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0226935" id="mWs-Yz-QAu"/>
-                <constraint firstItem="vtr-oi-Gzr" firstAttribute="trailing" secondItem="An8-fa-smv" secondAttribute="trailing" constant="20.333333333333258" id="pvr-hD-Z7O"/>
+                <constraint firstItem="vtr-oi-Gzr" firstAttribute="trailing" secondItem="An8-fa-smv" secondAttribute="trailing" constant="10" id="pvr-hD-Z7O"/>
                 <constraint firstItem="Iw7-oO-cVT" firstAttribute="top" secondItem="vtr-oi-Gzr" secondAttribute="top" id="tgz-S0-FVY"/>
-                <constraint firstItem="An8-fa-smv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.339775" id="zJX-ka-EEp"/>
+                <constraint firstItem="An8-fa-smv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.4" id="zJX-ka-EEp"/>
             </constraints>
             <point key="canvasLocation" x="1.4492753623188408" y="-113.16964285714285"/>
         </view>

@@ -1,0 +1,42 @@
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "0ET-FB-qgW"; */
+"0ET-FB-qgW.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "6pq-1M-zGa"; */
+"6pq-1M-zGa.text" = "Name";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "Tb5-d7-472"; */
+"Tb5-d7-472.text" = "Password";
+
+/* Class = "UILabel"; text = "Email address"; ObjectID = "c40-d1-67F"; */
+"c40-d1-67F.text" = "Email address";
+
+/* Class = "UILabel"; text = "the email can not be blank"; ObjectID = "cX0-5B-TfG"; */
+"cX0-5B-TfG.text" = "the email can not be blank";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "cmp-3r-xQr"; */
+"cmp-3r-xQr.normalTitle" = "Confirm";
+
+/* Class = "UILabel"; text = "the name can not be blank"; ObjectID = "dI8-7q-1Cb"; */
+"dI8-7q-1Cb.text" = "the name can not be blank";
+
+/* Class = "UILabel"; text = "Confirm Password"; ObjectID = "mfG-eE-4Nt"; */
+"mfG-eE-4Nt.text" = "Confirm Password";
+
+/* Class = "UITextField"; placeholder = "Enter your password"; ObjectID = "mfq-me-lMO"; */
+"mfq-me-lMO.placeholder" = "Enter your password";
+
+/* Class = "UILabel"; text = "Complete sign up "; ObjectID = "n6h-5y-4rz"; */
+"n6h-5y-4rz.text" = "Complete sign up ";
+
+/* Class = "UILabel"; text = "the password can not be blank"; ObjectID = "qnt-uF-GFJ"; */
+"qnt-uF-GFJ.text" = "the password can not be blank";
+
+/* Class = "UITextField"; placeholder = "Enter your email password"; ObjectID = "u9o-to-x7a"; */
+"u9o-to-x7a.placeholder" = "Enter your email password";
+
+/* Class = "UILabel"; text = "the confirm passowrd can not be blank"; ObjectID = "v3f-c0-1Rv"; */
+"v3f-c0-1Rv.text" = "the confirm passowrd can not be blank";
+
+/* Class = "UITextField"; placeholder = "Enter your password"; ObjectID = "zV9-Om-8jE"; */
+"zV9-Om-8jE.placeholder" = "Enter your password";

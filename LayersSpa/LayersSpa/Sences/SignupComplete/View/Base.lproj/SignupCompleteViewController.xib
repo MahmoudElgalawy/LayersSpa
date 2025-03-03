@@ -57,7 +57,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gP5-Od-AfW" customClass="RightImgIconeTextField" customModule="UILayerSpa">
+                        <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gP5-Od-AfW" customClass="RightImgIconeTextField" customModule="UILayerSpa">
                             <rect key="frame" x="-8" y="28" width="353" height="53"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -78,7 +78,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u9o-to-x7a" customClass="RightImgIconeTextField" customModule="UILayerSpa">
+                        <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u9o-to-x7a" customClass="RightImgIconeTextField" customModule="UILayerSpa">
                             <rect key="frame" x="-8" y="143.66666666666666" width="353" height="44"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -99,7 +99,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfq-me-lMO" customClass="RightImgIconeTextField" customModule="UILayerSpa">
+                        <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfq-me-lMO" customClass="RightImgIconeTextField" customModule="UILayerSpa">
                             <rect key="frame" x="-8" y="242.66666666666663" width="353" height="44"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -107,7 +107,7 @@
                                 <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Flag_of_Saudi_Arabia_without_sword"/>
                                 <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="password"/>
                                 <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                    <real key="value" value="16"/>
+                                    <real key="value" value="10"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
                                     <real key="value" value="20"/>
@@ -120,7 +120,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zV9-Om-8jE" customClass="RightImgIconeTextField" customModule="UILayerSpa">
+                        <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zV9-Om-8jE" customClass="RightImgIconeTextField" customModule="UILayerSpa">
                             <rect key="frame" x="-8" y="346.66666666666663" width="353" height="44"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -128,7 +128,7 @@
                                 <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Flag_of_Saudi_Arabia_without_sword"/>
                                 <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="password"/>
                                 <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                    <real key="value" value="16"/>
+                                    <real key="value" value="10"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
                                     <real key="value" value="20"/>
@@ -245,8 +245,8 @@
                     <color key="textColor" name="DarkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ozO-Pj-gjz">
-                    <rect key="frame" x="0.0" y="12" width="393" height="817"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ozO-Pj-gjz">
+                    <rect key="frame" x="0.0" y="638" width="377" height="191"/>
                     <color key="color" name="grayText"/>
                 </activityIndicatorView>
             </subviews>

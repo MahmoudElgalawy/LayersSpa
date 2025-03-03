@@ -7,20 +7,24 @@
 
 import UIKit
 import UILayerSpa
+import Networking
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: UIViewController, CustomAlertDelegate {
 
     // MARK: Outlets
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var resetPasswordButton: UIButton!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var navBar: RegistrationNavigationBar!
-    
+    @IBOutlet weak var emailTF: PhoneNumberTextFieldView!
     @IBOutlet weak var blanckPhone: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    
+    
+    
+    
     // MARK: Properties
 
     private var viewModel: ForgotPasswordViewModelType
@@ -41,9 +45,19 @@ class ForgotPasswordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = String(localized: "ForgotTitle")
+        subTitleLabel.text = String(localized: "resetTitle")
+        phoneNumberLabel.text = String(localized: "phoneNumberLbl")
+        blanckPhone.text = String(localized: "Phoneblank")
+        resetPasswordButton.setTitle(String(localized: "ForgotTitle"), for: .normal)
+        
         blanckPhone.isHidden = true
-        emailTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        emailTF.layer.borderWidth = 1
+        emailTF.phoneTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        emailTF.heightAnchor.constraint(equalTo:emailTF.phoneTextField.heightAnchor).isActive = true
+        emailTF.phoneTextField.layer.cornerRadius = 15
+        emailTF.layer.cornerRadius = 15
+        emailTF.layer.borderColor = UIColor.border.cgColor
+        emailTF.clipsToBounds = true
         self.view.setGradientBackground(startColor: .primaryColor, endColor: .whiteColor)
         navBar.navDelegate = self
         bindLabels()
@@ -69,7 +83,7 @@ extension ForgotPasswordViewController {
         
         viewModel.onShowNetworkErrorAlertClosure = { [weak self] alertMessage in
             guard let self = self else { return }
-            self.showError("Invalid", alertMessage)
+            self.showAlert(msg: alertMessage)
             print(alertMessage)
         }
         
@@ -113,7 +127,7 @@ extension ForgotPasswordViewController {
         titleLabel.applyLabelStyle(.screenTitle)
         subTitleLabel.applyLabelStyle(.subtitleLabel)
         phoneNumberLabel.applyLabelStyle(.textFieldTitleLabel)
-        emailTF.applyBordertextFieldStyle("Enter Your Phone Number")
+        //emailTF.applyBordertextFieldStyle("Enter Your Phone Number")
         
     }
     
@@ -129,14 +143,19 @@ extension ForgotPasswordViewController {
 private extension ForgotPasswordViewController {
     
     @objc func resetPasswordIsTapped() {
-        let phone = emailTF.text ?? ""
-           if !phone.isEmpty {
+        let phone = emailTF.getFullPhoneNumber()
+        //let phone = emailTF.text ?? ""
+        if phone.count > 4{
                
                // تخزين الإيميل في UserDefaults
                UserDefaults.standard.set(phone, forKey: "phone")
                
-               // الانتقال إلى شاشة كلمة المرور الجديدة
-               self.navigationController?.pushViewController(NewPasswordViewController(viewModel: ForgotPasswordViewModel()), animated: true)
+            let vc = VerificationViewController(viewModel: VerificationViewModel(remote: VerficationRemote(network: AlamofireNetwork())))
+            vc.phoneNumber = phone
+            viewModel.resetPassword(UserDefaults.standard.string(forKey: "phone") ?? "")
+           // vc.viewModel.getOTP(phone: phone)
+           
+            vc.register = false
            } else {
 //               showError("Invalid", "Phone Numbeer is required")
                blanckPhone.isHidden = false
@@ -144,13 +163,13 @@ private extension ForgotPasswordViewController {
            }
     }
     
-    func showError(_ title: String, _ msg: String) {
-        UIAlertController.Builder()
-            .title(title)
-            .message(msg)
-            .addOkAction()
-            .show(in: self)
-    }
+//    func showError(_ title: String, _ msg: String) {
+//        UIAlertController.Builder()
+//            .title(title)
+//            .message(msg)
+//            .addOkAction()
+//            .show(in: self)
+//    }
 }
 
 extension ForgotPasswordViewController: RegistrationNavigationBarDelegate {
@@ -158,5 +177,15 @@ extension ForgotPasswordViewController: RegistrationNavigationBarDelegate {
     func back() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func showAlert(msg:String) {
+        let alert = CustomAlertViewController()
+        alert.alertDelegate = self
+        alert.show(String(localized: "Invalid"), msg, buttonTitle: String(localized: "Retry"),navigateButtonTitle: "", .redColor, .warning, flag: true)
+    }
+    
+    func alertButtonClicked() {
+    }
+    
 }
 

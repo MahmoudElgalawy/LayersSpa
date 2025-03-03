@@ -31,6 +31,7 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
         delegate = self
         setupTabBarUI()
         setupColoredView()
+        adjustLayoutForCurrentLanguage()
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,57 +41,64 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
-        let home = bindHomeViewController()
-        let appointments = bindAppointmentsViewController()
-        //let gallery = bindGalleryViewController()
-        let cart = bindCartViewController()
-        let myAccount = bindMyAccountViewController()
-        
-        let controllers = [home, appointments, cart, myAccount]
-        self.viewControllers = controllers
-        
-        if Defaults.sharedInstance.getIsNavigateToAppoinment() {
-            selectedIndex = 1
+        setupViewControllersBasedOnLanguage()
+    }
+    
+    // MARK: - Layout Adjustments
+    
+    private func adjustLayoutForCurrentLanguage() {
+        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+            tabBar.semanticContentAttribute = .forceRightToLeft
+        } else {
+            tabBar.semanticContentAttribute = .forceLeftToRight
         }
     }
     
-    // Delegate methods
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        print("Should select viewController: \(viewController.title ?? "") ?")
-        return true
+    private func setupViewControllersBasedOnLanguage() {
+        let home = bindHomeViewController()
+        let appointments = bindAppointmentsViewController()
+        let cart = bindCartViewController()
+        let myAccount = bindMyAccountViewController()
+        
+        var controllers: [UIViewController]
+        
+        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+            controllers = [myAccount, cart, appointments, home] // ترتيب عكسي للعربية
+        } else {
+            controllers = [home, appointments, cart, myAccount] // الترتيب الأصلي للإنجليزية
+        }
+        
+        self.viewControllers = controllers
+        
+        if Defaults.sharedInstance.getIsNavigateToAppoinment() {
+            selectedIndex = controllers.count - 3 // تعديل الفهرس حسب الترتيب
+        }
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        updateColoredViewPosition(animated: true)
-    }
-    
-    // MARK: - Configurations
-    
-    private func setupColoredView() {
-        coloredView.backgroundColor = .grayLight
-        coloredView.layer.cornerRadius = 15
-        coloredView.clipsToBounds = true
-        tabBar.addSubview(coloredView)
-        tabBar.sendSubviewToBack(coloredView)
-    }
-    
+    // MARK: - Colored View Positioning
     
     private func updateColoredViewPosition(animated: Bool) {
-        guard let items = tabBar.items else { return }
+        guard let items = tabBar.items, !items.isEmpty else { return }
         guard let selectedItem = tabBar.selectedItem else { return }
         guard let index = items.firstIndex(of: selectedItem) else { return }
         
-        let itemWidth = tabBar.bounds.width / CGFloat(items.count)
-        let itemFrame = CGRect(x: itemWidth * CGFloat(index), y: 0, width: itemWidth, height: tabBar.bounds.height)
+        let totalItems = CGFloat(items.count)
+        let itemWidth = tabBar.bounds.width / totalItems
+        let xPosition: CGFloat
+        
+        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+            xPosition = tabBar.bounds.width - (itemWidth * (CGFloat(index) + 1))
+        } else {
+            xPosition = itemWidth * CGFloat(index)
+        }
         
         let coloredViewWidth: CGFloat = 60
         let coloredViewHeight: CGFloat = 40
+        let yPosition = tabBar.bounds.height - coloredViewHeight - 31
         let coloredViewFrame = CGRect(
-            x: itemFrame.midX - (coloredViewWidth / 2),
-            y: tabBar.bounds.height - coloredViewHeight - 31,
+            x: xPosition + (itemWidth - coloredViewWidth)/2,
+            y: yPosition,
             width: coloredViewWidth,
             height: coloredViewHeight
         )
@@ -104,69 +112,88 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
         }
     }
     
+    // MARK: - TabBar Setup
     
     private func setupTabBarUI() {
+        tabBar.backgroundColor = .white
+        tabBar.layer.cornerRadius = 30
+        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        tabBar.tintColor = .blackColor
+        tabBar.unselectedItemTintColor = .unselectedIcon
         
-        self.tabBar.backgroundColor = UIColor.white
-        self.tabBar.layer.cornerRadius = 30
-        self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        self.tabBar.tintColor = .blackColor
-        self.tabBar.unselectedItemTintColor = .unselectedIcon
-        
-        // Remove the line
         if #available(iOS 13.0, *) {
-            let appearance = self.tabBar.standardAppearance
+            let appearance = tabBar.standardAppearance
             appearance.shadowImage = nil
             appearance.shadowColor = nil
-            self.tabBar.standardAppearance = appearance
+            tabBar.standardAppearance = appearance
         } else {
-            self.tabBar.shadowImage = UIImage()
-            self.tabBar.backgroundImage = UIImage()
+            tabBar.shadowImage = UIImage()
+            tabBar.backgroundImage = UIImage()
         }
     }
     
-    func bindHomeViewController() -> UIViewController {
-        let item = HomeViewController(viewModel: HomeViewModel())
-        item.view.backgroundColor = .grayLight
-        let icon = UITabBarItem(title: "", image: .home, selectedImage: .home)
-        icon.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right:0)
-        item.tabBarItem = icon
+    private func setupColoredView() {
+           coloredView.backgroundColor = .grayLight
+           coloredView.layer.cornerRadius = 15
+           coloredView.clipsToBounds = true
+           tabBar.addSubview(coloredView)
+           tabBar.sendSubviewToBack(coloredView)
+       }
+       
+    
+    // MARK: - View Controllers Binding
+    
+    private func bindHomeViewController() -> UIViewController {
+        let vc = HomeViewController(viewModel: HomeViewModel())
+        vc.tabBarItem = createTabItem(image: .home, rtlImage: .home)
+        return vc
+    }
+    
+    private func bindAppointmentsViewController() -> UIViewController {
+        let vc = AppointmentsViewController(viewModel: AppointmentsViewModel())
+        vc.tabBarItem = createTabItem(image: .appointment, rtlImage: .appointment)
+        return vc
+    }
+    
+    private func bindCartViewController() -> UIViewController {
+        let vc = CartViewController(viewModel: CartViewModel())
+        vc.tabBarItem = createTabItem(image: .cart, rtlImage: .cart)
+        return vc
+    }
+    
+    private func bindMyAccountViewController() -> UIViewController {
+        let vc = MyAccountViewController(viewModel: MyAccountViewModel())
+        vc.tabBarItem = createTabItem(image: .myAccount, rtlImage: .myAccount)
+        return vc
+    }
+    
+    private func createTabItem(image: UIImage, rtlImage: UIImage) -> UITabBarItem {
+        let iconImage = UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? rtlImage : image
+        let item = UITabBarItem(title: "", image: iconImage, selectedImage: iconImage)
+        item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         return item
     }
     
-    func bindMyAccountViewController() -> UIViewController {
-        let item = MyAccountViewController(viewModel: MyAccountViewModel())
-        item.view.backgroundColor = .grayLight
-        let icon = UITabBarItem(title: "", image: .myAccount, selectedImage: .myAccount)
-        icon.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        item.tabBarItem = icon
-        return item
+    // MARK: - Language Change Handling
+    
+    func reloadForLanguageChange() {
+        adjustLayoutForCurrentLanguage()
+        setupViewControllersBasedOnLanguage()
+        updateColoredViewPosition(animated: true)
     }
     
-    func bindCartViewController() -> UIViewController {
-        let item = CartViewController(viewModel: CartViewModel())
-        item.view.backgroundColor = .grayLight
-        let icon = UITabBarItem(title: "", image: .cart, selectedImage: .cart)
-        icon.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        item.tabBarItem = icon
-        return item
+    // MARK: - Delegate Methods
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        updateColoredViewPosition(animated: true)
     }
     
-    func bindAppointmentsViewController() -> UIViewController {
-        let item = AppointmentsViewController(viewModel: AppointmentsViewModel())
-        item.view.backgroundColor = .grayLight
-        let icon = UITabBarItem(title: "", image: .appointment, selectedImage: .appointment)
-        icon.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        item.tabBarItem = icon
-        return item
-    }
-    
-//    func bindGalleryViewController() -> UIViewController {
-//        let item = GalleryViewController(viewModel: GalleryViewModel())
-//        item.view.backgroundColor = .grayLight
-//        let icon = UITabBarItem(title: "", image: .products, selectedImage: .products)
-//        icon.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-//        item.tabBarItem = icon
-//        return item
-//    }
+    ////    func bindGalleryViewController() -> UIViewController {
+    ////        let item = GalleryViewController(viewModel: GalleryViewModel())
+    ////        item.view.backgroundColor = .grayLight
+    ////        let icon = UITabBarItem(title: "", image: .products, selectedImage: .products)
+    ////        icon.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+    ////        item.tabBarItem = icon
+    ////        return item
+    ////    }
 }

@@ -43,6 +43,11 @@ public class OTCTextField: UITextField {
         textContentType = .oneTimeCode
         addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         delegate = self
+        textAlignment = .left
+        semanticContentAttribute = .forceLeftToRight
+        if #available(iOS 9.0, *) {
+            UIView.appearance(whenContainedInInstancesOf: [OTCTextField.self]).semanticContentAttribute = .forceLeftToRight
+        }
     }
 
     private func createLabelStackView(with count: Int) -> UIStackView {

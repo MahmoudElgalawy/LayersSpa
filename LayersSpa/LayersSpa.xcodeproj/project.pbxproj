@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		1E054E0E2D691D95003CD0BF /* SettingRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E054E0D2D691D95003CD0BF /* SettingRemote.swift */; };
 		1E054E112D691E44003CD0BF /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E054E102D691E44003CD0BF /* SettingModel.swift */; };
 		1E25EDEB2D75E3D1001F1342 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1E25EDEA2D75E3D1001F1342 /* Localizable.xcstrings */; };
+		1E25EDED2D764C68001F1342 /* SignUpLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1E25EDEC2D764C68001F1342 /* SignUpLocalizable.xcstrings */; };
+		1E25EDFB2D764D44001F1342 /* SignupCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E25EDFD2D764D44001F1342 /* SignupCompleteViewController.xib */; };
 		1E5631D22D589E6E0082F264 /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5631D12D589E6E0082F264 /* CalenderModel.swift */; };
 		1E5631D52D589F0D0082F264 /* CalenderRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5631D42D589F0D0082F264 /* CalenderRemote.swift */; };
 		1E5A0C9B2D4D3975007624D7 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A0C9A2D4D3975007624D7 /* UIImageExtension.swift */; };
@@ -215,7 +217,6 @@
 		43C985E62C4AEBAF00BE1C5F /* SignupCompleteViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C985E22C4AEBAF00BE1C5F /* SignupCompleteViewModelType.swift */; };
 		43C985E72C4AEBAF00BE1C5F /* SignupCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C985E32C4AEBAF00BE1C5F /* SignupCompleteViewController.swift */; };
 		43C985E82C4AEBAF00BE1C5F /* SignupCompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C985E42C4AEBAF00BE1C5F /* SignupCompleteViewModel.swift */; };
-		43C985E92C4AEBAF00BE1C5F /* SignupCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C985E52C4AEBAF00BE1C5F /* SignupCompleteViewController.xib */; };
 		43C985ED2C4B231D00BE1C5F /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C985EB2C4B231D00BE1C5F /* CustomAlertViewController.swift */; };
 		43C985EE2C4B231D00BE1C5F /* CustomAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C985EC2C4B231D00BE1C5F /* CustomAlertViewController.xib */; };
 		43C985F32C4B385C00BE1C5F /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C985F22C4B385C00BE1C5F /* CustomTabBarController.swift */; };
@@ -345,6 +346,9 @@
 		1E054E0D2D691D95003CD0BF /* SettingRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRemote.swift; sourceTree = "<group>"; };
 		1E054E102D691E44003CD0BF /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		1E25EDEA2D75E3D1001F1342 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		1E25EDEC2D764C68001F1342 /* SignUpLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = SignUpLocalizable.xcstrings; sourceTree = "<group>"; };
+		1E25EDFC2D764D44001F1342 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SignupCompleteViewController.xib; sourceTree = "<group>"; };
+		1E25EDFE2D764D44001F1342 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/SignupCompleteViewController.xcstrings; sourceTree = "<group>"; };
 		1E5631D12D589E6E0082F264 /* CalenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderModel.swift; sourceTree = "<group>"; };
 		1E5631D42D589F0D0082F264 /* CalenderRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderRemote.swift; sourceTree = "<group>"; };
 		1E5A0C9A2D4D3975007624D7 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -547,7 +551,6 @@
 		43C985E22C4AEBAF00BE1C5F /* SignupCompleteViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCompleteViewModelType.swift; sourceTree = "<group>"; };
 		43C985E32C4AEBAF00BE1C5F /* SignupCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCompleteViewController.swift; sourceTree = "<group>"; };
 		43C985E42C4AEBAF00BE1C5F /* SignupCompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCompleteViewModel.swift; sourceTree = "<group>"; };
-		43C985E52C4AEBAF00BE1C5F /* SignupCompleteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupCompleteViewController.xib; sourceTree = "<group>"; };
 		43C985EB2C4B231D00BE1C5F /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		43C985EC2C4B231D00BE1C5F /* CustomAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAlertViewController.xib; sourceTree = "<group>"; };
 		43C985F22C4B385C00BE1C5F /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -1894,6 +1897,7 @@
 				43D837642C6C122300597837 /* Usecase */,
 				43D837652C6C123900597837 /* ViewModel */,
 				43D837662C6C124E00597837 /* View */,
+				1E25EDEC2D764C68001F1342 /* SignUpLocalizable.xcstrings */,
 			);
 			path = SignupComplete;
 			sourceTree = "<group>";
@@ -2135,7 +2139,7 @@
 		43D837662C6C124E00597837 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				43C985E52C4AEBAF00BE1C5F /* SignupCompleteViewController.xib */,
+				1E25EDFD2D764D44001F1342 /* SignupCompleteViewController.xib */,
 				43C985E32C4AEBAF00BE1C5F /* SignupCompleteViewController.swift */,
 			);
 			path = View;
@@ -2504,6 +2508,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 43328FE12C405BA900CDF41F;
 			packageReferences = (
@@ -2587,7 +2592,7 @@
 				435469142C5873280063DBC3 /* SelectProfessionalMemberViewController.xib in Resources */,
 				3CC431BA2C60DF38000E99B8 /* TransactionsTableViewCell.xib in Resources */,
 				43C985EE2C4B231D00BE1C5F /* CustomAlertViewController.xib in Resources */,
-				43C985E92C4AEBAF00BE1C5F /* SignupCompleteViewController.xib in Resources */,
+				1E25EDFB2D764D44001F1342 /* SignupCompleteViewController.xib in Resources */,
 				434C3B042C6ADF9B00171983 /* AllReviewsViewController.xib in Resources */,
 				43F4778E2C6ABA0E00069AAF /* ReviewTableViewCell.xib in Resources */,
 				3CC4318A2C5A320E000E99B8 /* BookTimeSlotsViewController.xib in Resources */,
@@ -2618,6 +2623,7 @@
 				4354690B2C58686B0063DBC3 /* SelectProfessionalOptionsTableViewCell.xib in Resources */,
 				43328FF52C405BA900CDF41F /* Main.storyboard in Resources */,
 				433290062C407E9F00CDF41F /* swiftgen.yml in Resources */,
+				1E25EDED2D764C68001F1342 /* SignUpLocalizable.xcstrings in Resources */,
 				43C986232C4C32BE00BE1C5F /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2906,6 +2912,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1E25EDFD2D764D44001F1342 /* SignupCompleteViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1E25EDFC2D764D44001F1342 /* Base */,
+				1E25EDFE2D764D44001F1342 /* mul */,
+			);
+			name = SignupCompleteViewController.xib;
+			sourceTree = "<group>";
+		};
 		43328FF32C405BA900CDF41F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

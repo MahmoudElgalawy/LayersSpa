@@ -1,0 +1,174 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "0ET-FB-qgW.text" : {
+      "comment" : "Class = \"UITextView\"; text = \"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.\"; ObjectID = \"0ET-FB-qgW\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
+          }
+        }
+      }
+    },
+    "6pq-1M-zGa.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Name\"; ObjectID = \"6pq-1M-zGa\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "c40-d1-67F.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Email address\"; ObjectID = \"c40-d1-67F\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Email address"
+          }
+        }
+      }
+    },
+    "cmp-3r-xQr.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Confirm\"; ObjectID = \"cmp-3r-xQr\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Confirm"
+          }
+        }
+      }
+    },
+    "cX0-5B-TfG.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"the email can not be blank\"; ObjectID = \"cX0-5B-TfG\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "the email can not be blank"
+          }
+        }
+      }
+    },
+    "dI8-7q-1Cb.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"the name can not be blank\"; ObjectID = \"dI8-7q-1Cb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "the name can not be blank"
+          }
+        }
+      }
+    },
+    "mfG-eE-4Nt.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Confirm Password\"; ObjectID = \"mfG-eE-4Nt\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Confirm Password"
+          }
+        }
+      }
+    },
+    "mfq-me-lMO.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"Enter your password\"; ObjectID = \"mfq-me-lMO\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enter your password"
+          }
+        }
+      }
+    },
+    "n6h-5y-4rz.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Complete sign up \"; ObjectID = \"n6h-5y-4rz\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Complete sign up "
+          }
+        }
+      }
+    },
+    "qnt-uF-GFJ.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"the password can not be blank\"; ObjectID = \"qnt-uF-GFJ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "the password can not be blank"
+          }
+        }
+      }
+    },
+    "Tb5-d7-472.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Password\"; ObjectID = \"Tb5-d7-472\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Password"
+          }
+        }
+      }
+    },
+    "u9o-to-x7a.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"Enter your email password\"; ObjectID = \"u9o-to-x7a\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enter your email password"
+          }
+        }
+      }
+    },
+    "v3f-c0-1Rv.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"the confirm passowrd can not be blank\"; ObjectID = \"v3f-c0-1Rv\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "the confirm passowrd can not be blank"
+          }
+        }
+      }
+    },
+    "zV9-Om-8jE.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"Enter your password\"; ObjectID = \"zV9-Om-8jE\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enter your password"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

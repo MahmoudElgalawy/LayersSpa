@@ -8,7 +8,8 @@
 import UIKit
 import UILayerSpa
 
-class SignupCompleteViewController: UIViewController {
+class SignupCompleteViewController: UIViewController, CustomAlertDelegate {
+  
     
     // MARK: Outlets
     
@@ -55,6 +56,18 @@ class SignupCompleteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = String(localized: "Complete")
+        nameTtleLabel.text = String(localized: "NameLbl")
+        emailAddressLabel.text = String(localized: "Email")
+        passwordLabel.text = String(localized: "passwordLbl")
+        confirmPasswordLabel.text = String(localized: "Confirm Password")
+        confirmButton.setTitle(String(localized: "Confirm"), for: .normal)
+        blankName.text = String(localized: "blankName")
+        blankEmail.text = String(localized: "blankEmail")
+        blankPassword.text = String(localized: "passwordBlank")
+        blankConfirrmPassword.text = String(localized: "ConfirmpasswordBlank")
+        
+        
         blankName.isHidden = true
         blankEmail.isHidden = true
         blankPassword.isHidden = true
@@ -116,7 +129,7 @@ extension SignupCompleteViewController {
         viewModel.onReloadData = { [weak self] result in
             guard let self = self else { return }
             print(result.name, result.phone)
-            NavigateToCustomTabBar()
+            showAlert()
         }
         
         viewModel.onUpdateLoadingStatus = { [weak self] state in
@@ -148,12 +161,12 @@ extension SignupCompleteViewController {
     }
     
     func bindTextFields() {
-        passwordTF.applyBordertextFieldStyle("Enter your password")
+        passwordTF.applyBordertextFieldStyle(String(localized: "passwordTextField"))
         passwordTF.addPasswordToggle()
-        confirmPasswordTF.applyBordertextFieldStyle("Enter your password")
+        confirmPasswordTF.applyBordertextFieldStyle(String(localized: "passwordTextField"))
         confirmPasswordTF.addPasswordToggle()
-        nameTitleTF.applyBordertextFieldStyle("Enter your name")
-        emailAddressTF.applyBordertextFieldStyle("Enter your email address")
+        nameTitleTF.applyBordertextFieldStyle(String(localized: "EnterName"))
+        emailAddressTF.applyBordertextFieldStyle(String(localized: "EnterEmail"))
     }
     
     func bindResetPasswordButton() {
@@ -195,11 +208,11 @@ extension SignupCompleteViewController {
         ]
         
         // Create the attributed string with links
-        let fullText = "By creating an account, I acknowledge that I have read & consent to Terms of Use &  Privacy Policy"
+        let fullText =  String(localized:"check")
         let attributedString = NSMutableAttributedString(string: fullText)
         
-        let linkRange1 = (fullText as NSString).range(of: "Terms of Use")
-        let linkRange2 = (fullText as NSString).range(of: "Privacy Policy")
+        let linkRange1 = (fullText as NSString).range(of: String(localized:"Terms"))
+        let linkRange2 = (fullText as NSString).range(of: String(localized:"Privacy"))
         
         attributedString.addAttribute(.link, value: "action1", range: linkRange1)
         attributedString.addAttribute(.link, value: "action2", range: linkRange2)
@@ -236,7 +249,7 @@ private extension SignupCompleteViewController {
         if passwordTF.text != confirmPasswordTF.text {
                 //showError("Error", "Passwords do not match.")
             confirmPasswordTF.layer.borderColor = UIColor.redColor.cgColor
-            blankConfirrmPassword.text = "Confirm password must be match password"
+            blankConfirrmPassword.text =  String(localized:"matchpassword")
             blankConfirrmPassword.isHidden = false
                 return
             }
@@ -278,7 +291,7 @@ extension SignupCompleteViewController: RegistrationNavigationBarDelegate {
         
         if textField == passwordTF, let password = textField.text, password.count < 6 {
                errorLabel.isHidden = false
-               errorLabel.text = "Password should be at least 6 characters"
+               errorLabel.text = String(localized:"PassNums")
                textField.layer.borderColor = UIColor.red.cgColor
                textField.layer.borderWidth = 1
                return false
@@ -288,5 +301,15 @@ extension SignupCompleteViewController: RegistrationNavigationBarDelegate {
         return true
     }
 
+    func showAlert() {
+        let alert = CustomAlertViewController()
+        alert.alertDelegate = self
+        alert.show("Congratulations", "Your Account Created Successfully", buttonTitle: "Sign in",navigateButtonTitle: "", .primaryColor, .alertImage, flag: true)
+    }
+    
+    func alertButtonClicked() {
+        let vc = LoginViewController(viewModel: LoginViewModel())
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

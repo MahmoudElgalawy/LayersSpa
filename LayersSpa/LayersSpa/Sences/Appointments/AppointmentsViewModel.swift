@@ -33,10 +33,55 @@ extension AppointmentsViewModel: AppointmentsViewModelInput {}
 extension AppointmentsViewModel: AppointmentsViewModelOutput {
 
     
+//    func getAppointment(type: String, completion: @escaping (Bool) -> Void) {
+//        let userId = Defaults.sharedInstance.userData?.userId ?? 0
+//        isDataLoaded = false
+//        reload() // تحديث الواجهة لإخفاء الجدول وعرض الـ indicator
+//        
+//        calenderRemote.getAppointment(userId: userId, type: type, filterDate: "") { [weak self] result in
+//            guard let self = self else { return }
+//            
+//            switch result {
+//            case .success(let data):
+//                self.ordersIds = data.data.reservations.compactMap { $0.ecommOrderID }.joined(separator: ",")
+//                
+//                if self.ordersIds.isEmpty {
+//                    self.calenders = [] // تعيين البيانات إلى فارغة
+//                    self.isDataLoaded = true // تعيين isDataLoaded إلى true لإيقاف المؤشر
+//                    DispatchQueue.main.async {
+//                        self.reload()
+//                    }
+//                    completion(true)
+//                } else {
+//                    self.fetchAppointmentDetails { success in
+//                        self.calenders = data.data.reservations
+//                        self.isDataLoaded = true
+//                        DispatchQueue.main.async {
+//                            self.reload()
+//                        }
+//                        completion(success)
+//                    }
+//                }
+//                
+//            case .failure(let error):
+//                print("❌ Failed to fetch appointments: \(error.localizedDescription)")
+//                self.isDataLoaded = true // تعيين isDataLoaded إلى true لإيقاف المؤشر
+//                DispatchQueue.main.async {
+//                    self.reload()
+//                }
+//                completion(false)
+//            }
+//        }
+//    }
+    
     func getAppointment(type: String, completion: @escaping (Bool) -> Void) {
         let userId = Defaults.sharedInstance.userData?.userId ?? 0
         isDataLoaded = false
-        reload() // تحديث الواجهة لإخفاء الجدول وعرض الـ indicator
+        self.calenders = []
+        self.ordersDetails = []
+        DispatchQueue.main.async { [weak self] in
+            self?.reload()
+        }
         
         calenderRemote.getAppointment(userId: userId, type: type, filterDate: "") { [weak self] result in
             guard let self = self else { return }
@@ -46,30 +91,29 @@ extension AppointmentsViewModel: AppointmentsViewModelOutput {
                 self.ordersIds = data.data.reservations.compactMap { $0.ecommOrderID }.joined(separator: ",")
                 
                 if self.ordersIds.isEmpty {
-                    self.calenders = [] // تعيين البيانات إلى فارغة
-                    self.isDataLoaded = true // تعيين isDataLoaded إلى true لإيقاف المؤشر
                     DispatchQueue.main.async {
+                        self.calenders = []
+                        self.isDataLoaded = true
                         self.reload()
+                        completion(true)
                     }
-                    completion(true)
                 } else {
                     self.fetchAppointmentDetails { success in
-                        self.calenders = data.data.reservations
-                        self.isDataLoaded = true
                         DispatchQueue.main.async {
+                            self.calenders = data.data.reservations
+                            self.isDataLoaded = true
                             self.reload()
+                            completion(success)
                         }
-                        completion(success)
                     }
                 }
                 
             case .failure(let error):
-                print("❌ Failed to fetch appointments: \(error.localizedDescription)")
-                self.isDataLoaded = true // تعيين isDataLoaded إلى true لإيقاف المؤشر
                 DispatchQueue.main.async {
+                    self.isDataLoaded = true
                     self.reload()
+                    completion(false)
                 }
-                completion(false)
             }
         }
     }
