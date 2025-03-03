@@ -51,6 +51,23 @@
         }
       }
     },
+    "categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الفئات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories"
+          }
+        }
+      }
+    },
     "Confirm" : {
       "localizations" : {
         "ar" : {
@@ -417,6 +434,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "A verification code has been sent to: "
+          }
+        }
+      }
+    },
+    "viewAll" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "عرض الكل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View all"
           }
         }
       }
