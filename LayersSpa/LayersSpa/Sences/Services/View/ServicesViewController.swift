@@ -36,7 +36,7 @@ class ServicesViewController: UIViewController, CustomAlertDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("flag"), object: nil)
-        let title = isProduct ? "Products" : "Services"
+        let title = String(localized: isProduct ? "products" : "services")
         navBar.updateTitle(title)
         navBar.delegate = self
         collectionViewSetup()

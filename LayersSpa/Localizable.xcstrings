@@ -18,6 +18,23 @@
         }
       }
     },
+    "allCategories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "جميع الفئات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Categories"
+          }
+        }
+      }
+    },
     "Alreadyhaveanaccount" : {
       "localizations" : {
         "ar" : {
