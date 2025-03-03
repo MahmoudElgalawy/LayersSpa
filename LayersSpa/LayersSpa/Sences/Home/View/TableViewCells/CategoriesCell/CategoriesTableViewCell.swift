@@ -28,7 +28,16 @@ class CategoriesTableViewCell: UITableViewCell, IdentifiableView {
     
     func configeCell(_ categories:  [CategoriesVM]) {
         categoriesInfo = categories
+        titleLabel.text = String(localized: "categories")
+        viewAllButton.setTitle(String(localized: "viewAll"), for: .normal)
+        rotateImageBasedOnLanguage()
         categoriesCollectionView.reloadData()
+    }
+    
+    func rotateImageBasedOnLanguage() {
+        let currentLanguage = Locale.preferredLanguages.first ?? "en"
+        let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
+        arrowImage.transform = CGAffineTransform(rotationAngle: rotationAngle)
     }
     
     func bindViewAllButton() {

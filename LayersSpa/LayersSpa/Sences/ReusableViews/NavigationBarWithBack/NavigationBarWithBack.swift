@@ -18,6 +18,7 @@ class NavigationBarWithBack: UIViewFromNib {
     override func awakeFromNib() {
         super.awakeFromNib()
         bindBackButton()
+        rotateButtonBasedOnLanguage()
     }
     
     func updateTitle(_ title: String) {
@@ -32,4 +33,9 @@ class NavigationBarWithBack: UIViewFromNib {
         delegate?.back()
     }
     
+    private func rotateButtonBasedOnLanguage() {
+        let currentLanguage = Locale.preferredLanguages.first ?? "en"
+        let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
+        backButton.transform = CGAffineTransform(rotationAngle: rotationAngle)
+    }
 }

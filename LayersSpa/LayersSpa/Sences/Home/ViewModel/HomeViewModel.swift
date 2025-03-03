@@ -15,7 +15,7 @@ class HomeViewModel {
     // MARK: - Properties
     private var useCase: HomeUseCase
     private var sectionsItems = [HomeTableViewSectionsItem]()
-    private var branchesList: [BrancheVM] = [BrancheVM(id: "", name: "All Branches", address: "")]
+    private var branchesList: [BrancheVM] = [BrancheVM(id: "", name: String(localized: "allBranches"), address: "")]
     var homeData: HomeVM?
     
     // Callbacks

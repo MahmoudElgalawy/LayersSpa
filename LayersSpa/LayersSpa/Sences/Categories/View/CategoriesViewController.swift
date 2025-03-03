@@ -34,7 +34,7 @@ class CategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        // print("Titles=================================================\(viewModel2.titles)")
-        navBar.updateTitle("All Categories")
+        navBar.updateTitle(String(localized: "allCategories"))
         navBar.delegate = self
         collectionViewSetup()
         bindViewModel()

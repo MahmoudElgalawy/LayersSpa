@@ -28,6 +28,8 @@ class HomeTopView: UIViewFromNib {
     override func awakeFromNib() {
         super.awakeFromNib()
        // bindNotificationButton()
+        setBranchTitleLabel()
+        setBranchNameLabel()
         bindLikesButton()
         bindSelectBranchStackView()
         bindSearchView()
@@ -52,7 +54,15 @@ extension HomeTopView {
             self.branchNameLabel.text = branchName
         }
     }
-//    
+    
+    private func setBranchTitleLabel() {
+        branchTitleLabel.text = String(localized: "branch")
+    }
+    
+    private func setBranchNameLabel() {
+        branchNameLabel.text = String(localized: "allBranches")
+    }
+//
 //    private func bindNotificationButton() {
 //        notificationButton.roundCorners(radius: 16)
 //        notificationButton.addTarget(self, action: #selector(notificationTapped), for: .touchUpInside)
@@ -91,7 +101,7 @@ extension HomeTopView {
 extension HomeTopView {
     
     func bindSearchView() {
-           searchTextField.placeholder = "Search"
+           searchTextField.placeholder = String(localized: "search")
            searchTextField.font = .B2Medium
            searchView.roundCorners(radius: 16)
            

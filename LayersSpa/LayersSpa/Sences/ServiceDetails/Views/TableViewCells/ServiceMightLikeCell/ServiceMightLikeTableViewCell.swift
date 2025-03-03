@@ -12,6 +12,7 @@ class ServiceMightLikeTableViewCell: UITableViewCell, IdentifiableView, CustomAl
 
     @IBOutlet weak var servicesCollectionView: UICollectionView!
     @IBOutlet weak var writeReviewButton: UIButton!
+    @IBOutlet weak var youMightAlsoLikeLabel: UILabel!
     var delegate: ServiceDetailsDelegation?
     private let layout = UICollectionViewFlowLayout()
 
@@ -20,6 +21,7 @@ class ServiceMightLikeTableViewCell: UITableViewCell, IdentifiableView, CustomAl
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        youMightAlsoLikeLabel.text = String(localized: "youMightAlsoLike")
         collectionViewSetup()
         collectionViewLayout()
         bindWriteReviewButton()

@@ -35,7 +35,7 @@ extension UISearchBar {
         let placeholderAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.systemGray4
         ]
-        let attributedPlaceholder = NSAttributedString(string: "Search", attributes: placeholderAttributes)
+        let attributedPlaceholder = NSAttributedString(string: String(localized: "search"), attributes: placeholderAttributes)
         self.searchTextField.attributedPlaceholder = attributedPlaceholder
         
         if let searchIcon = UIImage(systemName: "magnifyingglass") {
