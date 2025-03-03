@@ -32,6 +32,8 @@ class ServiceDescriptionTableViewCell: UITableViewCell, IdentifiableView {
     
     func configureCell(_ data: ServiceDetailVM?) {
         titleLabel.text = data?.description ?? ""
+        readMoreButton.setTitle(String(localized: "readMore"), for: .normal)
+        rotateImageBasedOnLanguage()
     }
     
     func bindReadMoreBtn() {
@@ -40,6 +42,12 @@ class ServiceDescriptionTableViewCell: UITableViewCell, IdentifiableView {
     
     @objc func readMoreTapped() {
         delegate?.readMoreDescription()
+    }
+    
+    private func rotateImageBasedOnLanguage() {
+        let currentLanguage = Locale.preferredLanguages.first ?? "en"
+        let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
+        arrowImage.transform = CGAffineTransform(rotationAngle: rotationAngle)
     }
     
 //    func bindViewAllBtn() {

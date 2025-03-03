@@ -29,7 +29,7 @@ class ServiceImageTableViewCell: UITableViewCell, IdentifiableView {
     }
     
     func configureCell(_ data: ServiceDetailVM?) {
-        totalReviewsLabel.text = "(From \(data?.totalReviews ?? 0) reviews)"
+        totalReviewsLabel.text = "(\(String(localized: "from")) \(data?.totalReviews ?? 0) \(String(localized: "reviews")))"
         ratingLabel.text = "\(data?.rating ?? 0.0)"
         reviewView.updateStarsRating(Double(data?.rating ?? 0.0))
         servicePrice.text = "\(data?.price ?? "0")"

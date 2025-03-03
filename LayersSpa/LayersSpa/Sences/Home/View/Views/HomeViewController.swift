@@ -230,7 +230,7 @@ extension HomeViewController: HomeTopViewDelegation {
                guard let self = self else { return }
                let vc = FilterViewController()
                vc.delegate = self
-               vc.show(self.viewModel.getBrancesList(), "Select Branch", true)
+               vc.show(self.viewModel.getBrancesList(), String(localized: "selectBranch"), true)
               // self.present(vc, animated: true)
            }
     }

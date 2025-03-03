@@ -51,6 +51,13 @@ class ServiceDetailsViewController: UIViewController, CustomAlertDelegate {
         bindBackButton()
         bindViewModel()
         updateFavAndAddButtons()
+        rotateBackButtonBasedOnLanguage()
+    }
+    
+    private func rotateBackButtonBasedOnLanguage() {
+        let currentLanguage = Locale.preferredLanguages.first ?? "en"
+        let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
+        backButton.transform = CGAffineTransform(rotationAngle: rotationAngle)
     }
     
     @objc func handleHomeDataReceived(_ notification: Notification){
@@ -315,9 +322,9 @@ private extension ServiceDetailsViewController {
             }
         }
         if LocalDataManager.sharedInstance.checkProductExist(product.productId, .cart){
-            addToCartButton.setTitle("Remove From Cart", for: .normal)
+            addToCartButton.setTitle(String(localized: "removeFromCart"), for: .normal)
         }else{
-            addToCartButton.setTitle("Add To Cart", for: .normal)
+            addToCartButton.setTitle(String(localized: "addToCart"), for: .normal)
         }
     }
 }
