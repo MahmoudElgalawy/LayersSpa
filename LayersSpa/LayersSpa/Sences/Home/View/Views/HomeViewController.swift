@@ -79,7 +79,7 @@ class HomeViewController: UIViewController, CustomAlertDelegate {
                     self?.topView.updateBranchName(branch.name)
                 } else {
                     self?.viewModel.getHomeData("")
-                    self?.topView.updateBranchName("All Branches")
+                    self?.topView.updateBranchName(String(localized: "allBranches"))
                 }
             }
         }
@@ -205,7 +205,7 @@ extension HomeViewController: HomeTopViewDelegation {
     func showBranchSelection() {
             let vc = FilterViewController()
             vc.delegate = self
-            vc.show(viewModel.getBrancesList(), "Select Branch", true)
+            vc.show(viewModel.getBrancesList(), String(localized: "selectBranch"), true)
     }
     
     func navigateToLikes() {

@@ -40,6 +40,7 @@ class FilterViewController: UIViewController {
        
        override func viewDidLoad() {
            super.viewDidLoad()
+           titleLabel.text = String(localized: "filterby")
            loadBranches()
            filterTableView.showsVerticalScrollIndicator = false
            applyStyle()
@@ -156,7 +157,7 @@ class FilterViewController: UIViewController {
            
            let headerLabel = UILabel()
            headerLabel.translatesAutoresizingMaskIntoConstraints = false
-           headerLabel.text = "Locations"
+           headerLabel.text = String(localized: "locations")
            headerLabel.textColor = .darkTextColor
            headerLabel.font = .B3Medium
            
