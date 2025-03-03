@@ -36,16 +36,26 @@ class ShopAndServicesTableViewCell: UITableViewCell, IdentifiableView {
     
     func configeCellForProducts(_ productsInfo: [ProductVM]) {
         self.productsList = productsInfo
-        titleLabel.text = "Layers shop"
+        titleLabel.text = String(localized: "layersShop")
+        viewAllButton.setTitle(String(localized: "viewAll"), for: .normal)
+        rotateImageBasedOnLanguage()
         isProductCell = true
         productAndServiceCollectionView.reloadData()
     }
     
     func configeCellForServices(_ servicesInfo: [ProductVM]) {
         self.servicesList = servicesInfo
-        titleLabel.text = "Popular services"
+        titleLabel.text = String(localized: "popularServices")
+        viewAllButton.setTitle(String(localized: "viewAll"), for: .normal)
+        rotateImageBasedOnLanguage()
         isProductCell = false
         productAndServiceCollectionView.reloadData()
+    }
+    
+    func rotateImageBasedOnLanguage() {
+        let currentLanguage = Locale.preferredLanguages.first ?? "en"
+        let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
+        viewAllArrow.transform = CGAffineTransform(rotationAngle: rotationAngle)
     }
     
     func bindViewAllButton() {

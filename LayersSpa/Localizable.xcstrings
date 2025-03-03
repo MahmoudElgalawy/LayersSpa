@@ -185,6 +185,23 @@
         }
       }
     },
+    "layersShop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "متجر Layers"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Layers shop"
+          }
+        }
+      }
+    },
     "locations" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -333,6 +350,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Phone Verification"
+          }
+        }
+      }
+    },
+    "popularServices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "الخدمات الرائجة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popular services"
           }
         }
       }
