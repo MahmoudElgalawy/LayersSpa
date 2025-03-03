@@ -50,7 +50,9 @@ class LoginViewController: UIViewController, CustomAlertDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loginTitleLabel.text = String(localized: "LoginButton")
+        phoneBlankWarning.text = String(localized: "Phoneblank")
+        passwordBlank.text = String(localized: "passwordBlank")
         if viewModel.isLoggedIn {
             NavigateToCustomTabBar()
             return
@@ -60,7 +62,7 @@ class LoginViewController: UIViewController, CustomAlertDelegate {
         self.view.setGradientBackground(startColor: .primaryColor, endColor: .whiteColor)
         phoneNumberTFView.phoneTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         phoneNumberTFView.heightAnchor.constraint(equalTo: phoneNumberTFView.phoneTextField.heightAnchor).isActive = true
-        phoneNumberTFView.phoneTextField.layer.cornerRadius = 15
+      //  phoneNumberTFView.phoneTextField.layer.cornerRadius = 15
         bindLabels()
         bindTextFields()
         bindLoginButton()
@@ -83,7 +85,7 @@ class LoginViewController: UIViewController, CustomAlertDelegate {
 //        phoneNumberTFView.layer.borderWidth = 1.0
         phoneBlankWarning.isHidden = true
         passwordBlank.isHidden = true
-        phoneBlankWarning.text = "Phone can not be blank"
+        phoneBlankWarning.text = String(localized: "Phoneblank")
     }
 }
 
@@ -140,13 +142,15 @@ extension LoginViewController {
     func bindLabels() {
         loginTitleLabel.applyLabelStyle(.screenTitle)
         phoneNumberLabel.applyLabelStyle(.textFieldTitleLabel)
+        phoneNumberLabel.text = String(localized: "phoneNumberLbl")
         passwordLabel.applyLabelStyle(.textFieldTitleLabel)
+        passwordLabel.text = String(localized: "passwordLbl")
         haveAccountLabel.applyLabelStyle(.textFieldTitleLabel)
-        haveAccountLabel.text = "Don't have an account?"
+        haveAccountLabel.text = String(localized:"donothaveaccount")
     }
     
     func bindTextFields() {
-        passwordTF.applyBordertextFieldStyle("Enter your password")
+        passwordTF.applyBordertextFieldStyle(String(localized: "passwordTextField"))
         passwordTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordTF.layer.borderColor = UIColor.border.cgColor
         passwordTF.layer.cornerRadius = 15
@@ -154,21 +158,37 @@ extension LoginViewController {
     }
     
     func bindLoginButton() {
-        loginButton.setTitle("Sign in", for: .normal)
+        //loginButton.setTitle("Sign in", for: .normal)
         loginButton.applyButtonStyle(.filled)
         loginButton.addTarget(self, action: #selector(loginIsTapped), for: .touchUpInside)
+        loginButton.setTitle(String(localized: "LoginButton"), for: .normal)
+        forgetPasswordButton.setTitle(String(localized: "forgetPass"), for: .normal)
     }
     
     func bindForgetPasswordButton() {
         //  forgetPasswordButton.setTitle("Forgot password?", for: .normal)
         forgetPasswordButton.applyButtonStyle(.plain)
         forgetPasswordButton.addTarget(self, action: #selector(forgetPasswordIsTapped), for: .touchUpInside)
+        var config = UIButton.Configuration.plain()
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
+            var newAttributes = attributes
+            newAttributes.font = UIFont.systemFont(ofSize: 12)
+            return newAttributes
+        }
+        forgetPasswordButton.configuration = config
     }
     
     func bindSignupButton() {
-        // signupButton.setTitle("Register", for: .normal)
+        var config = UIButton.Configuration.plain()
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
+            var newAttributes = attributes
+            newAttributes.font = UIFont.systemFont(ofSize: 14)
+            return newAttributes
+        }
+        signupButton.configuration = config
         signupButton.applyButtonStyle(.plain)
         signupButton.addTarget(self, action: #selector(signupIsTapped), for: .touchUpInside)
+        signupButton.setTitle(String(localized: "Register"), for: .normal)
     }
     
 //    func bindSocialMediaButtons() {
@@ -231,21 +251,20 @@ extension LoginViewController {
     }
     
 //    @objc func facebookIsTapped() {
-//        
+//
 //    }
-//    
+//
 //    @objc func googleIsTapped() {
-//        
+//
 //    }
     
     func showIncorrectBranchAlert(msg: String) {
         let alert = CustomAlertViewController()
         alert.alertDelegate = self
-        alert.show("Invalid!!", "\(msg)", buttonTitle: "Retry", navigateButtonTitle: "", .redColor, .warning, flag: true)
+        alert.show(String(localized:"Invalid"), "\(msg)", buttonTitle:String(localized:"Retry"), navigateButtonTitle: "", .redColor, .warning, flag: true)
     }
     
     func alertButtonClicked() {
         
     }
 }
-

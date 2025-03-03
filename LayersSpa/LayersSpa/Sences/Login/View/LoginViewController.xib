@@ -96,12 +96,25 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hmk-8p-mKh">
-                    <rect key="frame" x="90" y="613.33333333333337" width="160" height="30.666666666666629"/>
-                    <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo" pointSize="15"/>
-                    <color key="textColor" name="Black(Texts)"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M91-1c-i3y">
+                    <rect key="frame" x="87.333333333333329" y="613.33333333333337" width="239.33333333333337" height="30.666666666666629"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hmk-8p-mKh">
+                            <rect key="frame" x="0.0" y="6.6666666666666288" width="160" height="17.666666666666668"/>
+                            <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo" pointSize="15"/>
+                            <color key="textColor" name="Black(Texts)"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6j-zo-jZR">
+                            <rect key="frame" x="160" y="0.0" width="79.333333333333314" height="30.666666666666668"/>
+                            <color key="tintColor" name="Blue(main)"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Register">
+                                <fontDescription key="titleFontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="14"/>
+                            </buttonConfiguration>
+                        </button>
+                    </subviews>
+                </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="An8-fa-smv">
                     <rect key="frame" x="253" y="491.66666666666669" width="140.66666666666663" height="30.666666666666686"/>
                     <color key="tintColor" name="Blue(main)"/>
@@ -110,7 +123,7 @@
                         <fontDescription key="titleFontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
                     </buttonConfiguration>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pnu-Qg-ork" customClass="RightImgIconeTextField" customModule="UILayerSpa">
+                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pnu-Qg-ork" customClass="RightImgIconeTextField" customModule="UILayerSpa">
                     <rect key="frame" x="8" y="432.66666666666669" width="396" height="44"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -118,7 +131,7 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Flag_of_Saudi_Arabia_without_sword"/>
                         <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="password"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                            <real key="value" value="16"/>
+                            <real key="value" value="11"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
                             <real key="value" value="20"/>
@@ -137,14 +150,6 @@
                     <color key="textColor" name="redColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6j-zo-jZR">
-                    <rect key="frame" x="250.00000000000003" y="613.33333333333337" width="79.333333333333343" height="30.666666666666629"/>
-                    <color key="tintColor" name="Blue(main)"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Register">
-                        <fontDescription key="titleFontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="14"/>
-                    </buttonConfiguration>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The password can not be blank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oR-x6-dZD">
                     <rect key="frame" x="8" y="478.66666666666669" width="345.66666666666669" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -157,17 +162,14 @@
             <constraints>
                 <constraint firstItem="aS2-k8-vmh" firstAttribute="centerX" secondItem="vtr-oi-Gzr" secondAttribute="centerX" id="3X1-57-5Zm"/>
                 <constraint firstItem="cEK-cp-C7I" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0323661" id="3rB-n6-Prb"/>
-                <constraint firstItem="hmk-8p-mKh" firstAttribute="top" secondItem="aS2-k8-vmh" secondAttribute="bottom" constant="33" id="4Ph-C4-I4b"/>
                 <constraint firstItem="vtr-oi-Gzr" firstAttribute="bottom" secondItem="Iw7-oO-cVT" secondAttribute="bottom" id="5R9-T6-EE4"/>
                 <constraint firstItem="csd-AC-5Hg" firstAttribute="top" secondItem="cEK-cp-C7I" secondAttribute="bottom" constant="5" id="7Pm-6o-lYP"/>
                 <constraint firstItem="aS2-k8-vmh" firstAttribute="top" secondItem="Pnu-Qg-ork" secondAttribute="bottom" constant="59.666666666666686" id="7W6-d5-HjL"/>
+                <constraint firstItem="M91-1c-i3y" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5781" id="7iS-h4-bUA"/>
                 <constraint firstItem="0oR-x6-dZD" firstAttribute="width" secondItem="Pnu-Qg-ork" secondAttribute="width" multiplier="0.873057" id="Am2-9L-gkk"/>
                 <constraint firstItem="csd-AC-5Hg" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0226935" id="CJe-Hu-INC"/>
                 <constraint firstItem="0oR-x6-dZD" firstAttribute="height" secondItem="Pnu-Qg-ork" secondAttribute="height" multiplier="0.409091" id="D2g-1R-6w6"/>
-                <constraint firstItem="f6j-zo-jZR" firstAttribute="top" secondItem="hmk-8p-mKh" secondAttribute="top" id="DPq-Iw-XnZ"/>
-                <constraint firstItem="hmk-8p-mKh" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.386473" id="Drq-YF-xrl"/>
                 <constraint firstItem="oQv-Kc-mFa" firstAttribute="top" secondItem="vtr-oi-Gzr" secondAttribute="top" id="FHm-R3-rgN"/>
-                <constraint firstItem="f6j-zo-jZR" firstAttribute="width" secondItem="hmk-8p-mKh" secondAttribute="width" multiplier="0.495833" id="IyH-5z-k4A"/>
                 <constraint firstItem="aS2-k8-vmh" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0491071" id="JaA-tg-vYk"/>
                 <constraint firstItem="cEK-cp-C7I" firstAttribute="top" secondItem="ml3-lS-j98" secondAttribute="bottom" constant="2" id="JdM-Ao-zlT"/>
                 <constraint firstItem="dFT-vz-Ocn" firstAttribute="top" secondItem="uoK-rZ-hW7" secondAttribute="bottom" constant="20" id="L2y-KW-HLy"/>
@@ -175,24 +177,23 @@
                 <constraint firstItem="oQv-Kc-mFa" firstAttribute="centerX" secondItem="vtr-oi-Gzr" secondAttribute="centerX" id="N1z-3U-fRC"/>
                 <constraint firstItem="Pnu-Qg-ork" firstAttribute="top" secondItem="csd-AC-5Hg" secondAttribute="bottom" id="NEh-sM-aah"/>
                 <constraint firstItem="dFT-vz-Ocn" firstAttribute="leading" secondItem="vtr-oi-Gzr" secondAttribute="leading" constant="8" id="P73-V9-OcL"/>
+                <constraint firstItem="M91-1c-i3y" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0342262" id="PB3-yX-VmK"/>
                 <constraint firstItem="Iw7-oO-cVT" firstAttribute="leading" secondItem="vtr-oi-Gzr" secondAttribute="leading" id="Pbh-I6-HQe"/>
+                <constraint firstItem="M91-1c-i3y" firstAttribute="centerX" secondItem="vtr-oi-Gzr" secondAttribute="centerX" id="QwD-jK-6sk"/>
                 <constraint firstItem="ml3-lS-j98" firstAttribute="leading" secondItem="dFT-vz-Ocn" secondAttribute="leading" id="VeK-Ng-lHx"/>
                 <constraint firstItem="csd-AC-5Hg" firstAttribute="leading" secondItem="dFT-vz-Ocn" secondAttribute="leading" id="Vfk-j5-n5u"/>
                 <constraint firstItem="ml3-lS-j98" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.956522" id="WaY-sb-Edo"/>
-                <constraint firstItem="f6j-zo-jZR" firstAttribute="leading" secondItem="hmk-8p-mKh" secondAttribute="trailing" id="Wnd-me-W62"/>
                 <constraint firstItem="ml3-lS-j98" firstAttribute="top" secondItem="dFT-vz-Ocn" secondAttribute="bottom" constant="7" id="ZLl-T3-GJI"/>
-                <constraint firstItem="hmk-8p-mKh" firstAttribute="leading" secondItem="vtr-oi-Gzr" secondAttribute="leading" constant="90" id="apt-rM-Z4k"/>
                 <constraint firstItem="Pnu-Qg-ork" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0491071" id="awD-Fe-h3T"/>
                 <constraint firstItem="cEK-cp-C7I" firstAttribute="leading" secondItem="ml3-lS-j98" secondAttribute="leading" id="azr-vA-jay"/>
                 <constraint firstItem="An8-fa-smv" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0342262" id="b3X-eK-TxF"/>
                 <constraint firstItem="Pnu-Qg-ork" firstAttribute="width" secondItem="ml3-lS-j98" secondAttribute="width" id="csP-Tm-Mtg"/>
-                <constraint firstItem="hmk-8p-mKh" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0342262" id="cy8-f8-PIL"/>
                 <constraint firstItem="0oR-x6-dZD" firstAttribute="leading" secondItem="Pnu-Qg-ork" secondAttribute="leading" id="dVF-NF-bqJ"/>
-                <constraint firstItem="f6j-zo-jZR" firstAttribute="height" secondItem="hmk-8p-mKh" secondAttribute="height" id="dvr-q3-Jpy"/>
                 <constraint firstItem="oQv-Kc-mFa" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.265253" id="dzF-0d-fr9"/>
                 <constraint firstItem="dFT-vz-Ocn" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.980676" id="eGR-xM-vSa"/>
                 <constraint firstItem="oQv-Kc-mFa" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="fMT-Ux-qqR"/>
                 <constraint firstItem="cEK-cp-C7I" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.81401" id="fkC-j6-BaX"/>
+                <constraint firstItem="M91-1c-i3y" firstAttribute="top" secondItem="aS2-k8-vmh" secondAttribute="bottom" constant="33.000000000000114" id="hgB-9d-9cH"/>
                 <constraint firstItem="ml3-lS-j98" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.053" id="iqe-XW-ILK"/>
                 <constraint firstItem="An8-fa-smv" firstAttribute="top" secondItem="Pnu-Qg-ork" secondAttribute="bottom" constant="15" id="izy-S7-FxG"/>
                 <constraint firstItem="vtr-oi-Gzr" firstAttribute="trailing" secondItem="Iw7-oO-cVT" secondAttribute="trailing" id="lmf-wW-XjB"/>

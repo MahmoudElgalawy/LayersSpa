@@ -11,6 +11,7 @@
 		1E054E0B2D68B774003CD0BF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E054E0A2D68B774003CD0BF /* Request.swift */; };
 		1E054E0E2D691D95003CD0BF /* SettingRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E054E0D2D691D95003CD0BF /* SettingRemote.swift */; };
 		1E054E112D691E44003CD0BF /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E054E102D691E44003CD0BF /* SettingModel.swift */; };
+		1E25EDE82D7528ED001F1342 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1E25EDE72D7528ED001F1342 /* Localizable.xcstrings */; };
 		1E5631D22D589E6E0082F264 /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5631D12D589E6E0082F264 /* CalenderModel.swift */; };
 		1E5631D52D589F0D0082F264 /* CalenderRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5631D42D589F0D0082F264 /* CalenderRemote.swift */; };
 		1E5A0C9B2D4D3975007624D7 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A0C9A2D4D3975007624D7 /* UIImageExtension.swift */; };
@@ -343,6 +344,7 @@
 		1E054E0A2D68B774003CD0BF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		1E054E0D2D691D95003CD0BF /* SettingRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRemote.swift; sourceTree = "<group>"; };
 		1E054E102D691E44003CD0BF /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		1E25EDE72D7528ED001F1342 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = ../../../Downloads/Localizable.xcstrings; sourceTree = "<group>"; };
 		1E5631D12D589E6E0082F264 /* CalenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderModel.swift; sourceTree = "<group>"; };
 		1E5631D42D589F0D0082F264 /* CalenderRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderRemote.swift; sourceTree = "<group>"; };
 		1E5A0C9A2D4D3975007624D7 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -1195,6 +1197,7 @@
 		43328FE12C405BA900CDF41F = {
 			isa = PBXGroup;
 			children = (
+				1E25EDE72D7528ED001F1342 /* Localizable.xcstrings */,
 				43328FEC2C405BA900CDF41F /* LayersSpa */,
 				43328FEB2C405BA900CDF41F /* Products */,
 				43F487A92C41F00000961B31 /* Frameworks */,
@@ -2591,6 +2594,7 @@
 				43E1FCDA2C61A15400B010C5 /* CreditCardDetailsViewController.xib in Resources */,
 				43DA9A9C2C4891DE002D20D8 /* NewPasswordViewController.xib in Resources */,
 				436D27082C4F1A0B0091999D /* CategoriesCollectionViewCell.xib in Resources */,
+				1E25EDE82D7528ED001F1342 /* Localizable.xcstrings in Resources */,
 				43F477722C6959BF00069AAF /* ServiceDetailsViewController.xib in Resources */,
 				43CF80F02C6709D200D9E7D6 /* TermsOfUseViewController.xib in Resources */,
 				43328FFD2C405BAA00CDF41F /* LaunchScreen.storyboard in Resources */,

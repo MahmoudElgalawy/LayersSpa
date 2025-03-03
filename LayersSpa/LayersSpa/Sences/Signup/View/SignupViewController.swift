@@ -44,6 +44,8 @@ class SignupViewController: UIViewController, CustomAlertDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        phoneNumberLabel.text = String(localized: "phoneNumberLbl")
+        warningPhone.text = String(localized: "Phoneblank")
         navigationController?.navigationBar.isHidden = true
         warningPhone.isHidden = true
         phoneNumberTFView.phoneTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -54,8 +56,8 @@ class SignupViewController: UIViewController, CustomAlertDelegate {
         bindSignupButton()
        // bindSocialMediaButtons()
         bindViewModel()
+        phoneNumberTFView.layer.cornerRadius = 15
         phoneNumberTFView.layer.borderColor = UIColor.border.cgColor
-        phoneNumberTFView.layer.cornerRadius = 15 // التحكم في الانحناء
         phoneNumberTFView.clipsToBounds = true
         warningPhone.isHidden = true
         
@@ -67,7 +69,7 @@ class SignupViewController: UIViewController, CustomAlertDelegate {
         phoneNumberTFView.layer.borderColor = UIColor.border.cgColor
 //        phoneNumberTFView.layer.borderWidth = 1.0
         warningPhone.isHidden = true
-        warningPhone.text = "Phone can not be blank"
+        warningPhone.text = String(localized: "Phoneblank")
     }
 }
 
@@ -93,8 +95,6 @@ extension SignupViewController {
             guard let self = self else { return }
             
             if result.state {
-//                let vc = SignupCompleteViewController(viewModel: SignupCompleteViewModel())
-//                vc.phoneNumber = phoneNumberTFView.getFullPhoneNumber()
                 
                 let vc = VerificationViewController(viewModel: VerificationViewModel(remote: VerficationRemote(network: AlamofireNetwork())))
                 vc.phoneNumber = phoneNumberTFView.getFullPhoneNumber()
@@ -108,7 +108,7 @@ extension SignupViewController {
         viewModel.onUpdateLoadingStatus = { [weak self] state in
             
             guard let self = self else { return }
-            warningPhone.text = "Phone can not be blank"
+            warningPhone.text = String(localized: "Phoneblank")
             switch state {
             case .error:
                 print("error")
@@ -132,21 +132,23 @@ extension SignupViewController {
 extension SignupViewController {
     func bindLabels() {
         titleLabel.applyLabelStyle(.screenTitle)
-        titleLabel.text = "Create Account"
+        titleLabel.text = String(localized: "CreateAccount")
         phoneNumberLabel.applyLabelStyle(.textFieldTitleLabel)
         haveAccountLabel.applyLabelStyle(.textFieldTitleLabel)
-        haveAccountLabel.text = "Already have an account?"
+        haveAccountLabel.text = String(localized: "Alreadyhaveanaccount")
     }
     
     func bindLoginButton() {
-        signupButton.setTitle("Sign up", for: .normal)
+        signupButton.setTitle(String(localized: "SignUp"), for: .normal)
         signupButton.applyButtonStyle(.filled)
         signupButton.addTarget(self, action: #selector(signupIsTapped), for: .touchUpInside)
     }
     
     func bindSignupButton() {
         loginButton.applyButtonStyle(.plain)
+        loginButton.setTitle(String(localized: "LoginButton"), for: .normal)
         loginButton.addTarget(self, action: #selector(loginIsTapped), for: .touchUpInside)
+        
     }
     
 //    func bindSocialMediaButtons() {
@@ -177,8 +179,9 @@ extension SignupViewController {
         if phone.count > 4 {
             viewModel.checkPhoneExist(phone){}
             phoneNumberTFView.layer.borderColor = UIColor.border.cgColor
-            warningPhone.text = "Phone can not be blank"
+            warningPhone.text = String(localized: "Phoneblank")
             warningPhone.isHidden = true
+            UserDefaults.standard.set(phone, forKey: "phone")
             UserDefaults.standard.set(phoneNumberTFView.countryLabel.text, forKey: "CoutryCode")
         }else {
             //showError("invalid", "phone is required")
@@ -189,11 +192,11 @@ extension SignupViewController {
     }
     
 //    @objc func facebookIsTapped() {
-//        
+//
 //    }
-//    
+//
 //    @objc func googleIsTapped() {
-//        
+//
 //    }
     
     func showError(_ title: String, _ msg: String) {

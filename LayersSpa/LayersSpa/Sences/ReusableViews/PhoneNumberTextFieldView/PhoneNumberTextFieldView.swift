@@ -45,7 +45,7 @@ class PhoneNumberTextFieldView: UIViewFromNib {
                self.countryLabel.text = countryCodes[item] ?? ""
         }
         phoneTextField.addTarget(self, action: #selector(validatePhoneNumber), for: .editingChanged)
-        
+        phoneTextField.placeholder = String(localized: "phoneNumberTextField")
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         countryView.addGestureRecognizer(tapGesture)
     }

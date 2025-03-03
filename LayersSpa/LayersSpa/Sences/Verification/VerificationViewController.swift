@@ -46,6 +46,9 @@ class VerificationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        titleLabel.text = String(localized: "PhoneVerification")
+        subtitleLabel.text = String(localized: "verificationsent")
         resendCodeButton.isHidden = true
         receiveCodeLabel.isHidden = true
         //startCountdown()
@@ -80,13 +83,14 @@ extension VerificationViewController {
     
     func bindConfirmButton() {
         confirmButton.applyButtonStyle(.filled)
+        confirmButton.setTitle(String(localized: "Confirm"), for: .normal)
         confirmButton.addTarget(self, action: #selector(confirmIsTapped), for: .touchUpInside)
     }
     
     func bindResendCodeButton() {
         resendCodeButton.applyButtonStyle(.plain)
-          resendCodeButton.isEnabled = false // تعطيل الزر عند بدء الشاشة
-          resendCodeButton.addTarget(self, action: #selector(resendCodeIsTapped), for: .touchUpInside)
+        resendCodeButton.isEnabled = false // تعطيل الزر عند بدء الشاشة
+        resendCodeButton.addTarget(self, action: #selector(resendCodeIsTapped), for: .touchUpInside)
     }
 }
 
@@ -101,12 +105,13 @@ private extension VerificationViewController {
                 guard let otpText = otpTF.text, !otpText.isEmpty else {
                       //  let alert = CustomAlertViewController()
                     //alert.show("Invalid", "Enter the code which send to your phone", buttonTitle: "Try Again",.redColor,.warning)
-                    showIncorrectBranchAlert(title: "Invalid", msg: "Enter the code which send to your phone", btn: "Try Again")
+                    showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized: "errormsg"), btn: String(localized: "Retry"))
                         return
                     }
         print("Confirm button tapped")
         if register{
             if let otp = otpTF.text {
+                UserDefaults.standard.set(otp, forKey: "otp")
                 viewModel.checkOTP(phone: phoneNumber, otp: Int(otp) ?? 0) { [weak self] flag in
                     if flag {
                         let vc = SignupCompleteViewController(viewModel: SignupCompleteViewModel())
@@ -115,34 +120,31 @@ private extension VerificationViewController {
                     }else{
                        // let alert = CustomAlertViewController()
                       //  alert.show("Invalid", "Code or phone not correct", buttonTitle: "Try Again",.redColor,.warning)
-                        self?.showIncorrectBranchAlert(title: "Invalid", msg: "Code or phone not correct", btn: "Try Again")
+                        self?.showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: "Code or phone not correct", btn: String(localized: "Retry"))
                     }
                 }
             }else{
               //  let alert = CustomAlertViewController()
-                showIncorrectBranchAlert(title: "Invalid", msg: "Enter the code which send to your phone", btn: "Try Again")
+                showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized: "errormsg"), btn: String(localized: "Retry"))
             }
         }else{
-            viewModel.updatePassword(phone: UserDefaults.standard.string(forKey: "phone") ?? "",
-                                     password: UserDefaults.standard.string(forKey: "password") ?? "",
-                                     otp: otpTF.text ?? "",
-                                     completion: { success, message in
-                if success {
-                    // تنفيذ الكود عند النجاح
-                    print(message)  // يمكن عرض رسالة النجاح في Alert
-                    let alert = CustomAlertViewController()
-                    alert.alertDelegate = self
-                    alert.show("Password Reset Successfully", message, buttonTitle: "Sign in", navigateButtonTitle: "",.primaryColor,.alertImage, flag: true)
-                  //e  showIncorrectBranchAlert(title: "Password Reset Successfully", msg: message, btn: "Sign in")
-                } else {
-                    // تنفيذ الكود عند الفشل
-                    print("Failure: \(message)")  // يمكن عرض رسالة الخطأ في Alert
-                    let alert = CustomAlertViewController()
-                   // alert.show("Failure", message, buttonTitle: "Try Again")
-                    self.showIncorrectBranchAlert(title: "Failure", msg: message, btn: "Try Again")
-                    
+//
+            
+            if let otp = otpTF.text {
+                viewModel.checkOTP(phone: phoneNumber, otp: Int(otp) ?? 0) { [weak self] flag in
+                    if flag {
+                        let vc = NewPasswordViewController(viewModel: ForgotPasswordViewModel())
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }else{
+                       // let alert = CustomAlertViewController()
+                      //  alert.show("Invalid", "Code or phone not correct", buttonTitle: "Try Again",.redColor,.warning)
+                        self?.showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: "Code or phone not correct", btn: String(localized: "Retry"))
+                    }
                 }
-            })
+            }else{
+              //  let alert = CustomAlertViewController()
+                showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized: "errormsg"), btn: String(localized: "Retry"))
+            }
         }
            }
     
@@ -154,7 +156,7 @@ private extension VerificationViewController {
 //            alert.show("Invalid", "Enter the code which send to your phone", buttonTitle: "Try Again",.red,.warning)
 //                return
 //            }
-//        
+//
 //        if register{
 //            if let otp = otpTF.text {
 //                viewModel.checkOTP(phone: phoneNumber, otp: Int(otp) ?? 0) { [weak self] flag in
@@ -207,8 +209,7 @@ extension VerificationViewController: RegistrationNavigationBarDelegate {
 
 extension VerificationViewController: CustomAlertDelegate {
     func alertButtonClicked() {
-        let vc = LoginViewController(viewModel: LoginViewModel())
-        self.navigationController?.setViewControllers([vc], animated: true)
+        
     }
 }
 
