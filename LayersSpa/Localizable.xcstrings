@@ -68,6 +68,40 @@
         }
       }
     },
+    "checkOutOurProducts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "اطلع على منتجاتنا"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check out our products"
+          }
+        }
+      }
+    },
+    "checkOutOurServices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "اطلع على خدماتنا"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check out our services"
+          }
+        }
+      }
+    },
     "Confirm" : {
       "localizations" : {
         "ar" : {
@@ -130,6 +164,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enter the code which send to your phone"
+          }
+        }
+      }
+    },
+    "exploreProducts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استكشف المنتجات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explore Products"
+          }
+        }
+      }
+    },
+    "exploreServices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استكشف الخدمات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explore Services"
           }
         }
       }
@@ -202,6 +270,23 @@
         }
       }
     },
+    "likes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "التفضيلات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Likes"
+          }
+        }
+      }
+    },
     "locations" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -232,6 +317,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sign in"
+          }
+        }
+      }
+    },
+    "noLikedItemsYet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "لا توجد عناصر مفضلة بعد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No liked items yet"
           }
         }
       }
@@ -371,6 +473,23 @@
         }
       }
     },
+    "products" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "منتجات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Products"
+          }
+        }
+      }
+    },
     "Register" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -435,6 +554,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select Branch"
+          }
+        }
+      }
+    },
+    "services" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "خدمات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Services"
           }
         }
       }

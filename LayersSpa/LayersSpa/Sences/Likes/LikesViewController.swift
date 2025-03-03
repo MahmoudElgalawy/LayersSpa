@@ -40,8 +40,8 @@ class LikesViewController: UIViewController, CustomAlertDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navBar.updateTitle("Likes")
-        segmentedButtonsView.updateButtonsTitles("Products", "Services")
+        navBar.updateTitle(String(localized: "likes"))
+        segmentedButtonsView.updateButtonsTitles(String(localized: "products"), String(localized: "services"))
         segmentedButtonsView.delegate = self
         navBar.delegate = self
         collectionViewSetup()
@@ -75,7 +75,7 @@ class LikesViewController: UIViewController, CustomAlertDelegate {
 extension LikesViewController {
     func bindEmptyStateView() {
         emptyAlertView.delegate = self
-        emptyAlertView.configeView(.empryLikes, "No liked items yet", "Check out our products", "Explore Products")
+        emptyAlertView.configeView(.empryLikes, String(localized: "noLikedItemsYet"), String(localized: "checkOutOurProducts"), String(localized: "exploreProducts"))
     }
 }
 
@@ -211,7 +211,7 @@ extension LikesViewController: SegmantedButtonsDelegation {
                 likesCollectionView.reloadData()
                 
                 // تحديث نص الزر عند عرض المنتجات
-                emptyAlertView.configeView(.empryLikes, "No liked items yet", "Check out our products", "Explore Products")
+                emptyAlertView.configeView(.empryLikes, String(localized: "noLikedItemsYet"), String(localized: "checkOutOurProducts"), String(localized: "exploreProducts"))
     }
     
     func secondButtonTapped() {
@@ -220,7 +220,7 @@ extension LikesViewController: SegmantedButtonsDelegation {
                 likesCollectionView.reloadData()
                 
                 // تحديث نص الزر عند عرض الخدمات
-                emptyAlertView.configeView(.empryLikes, "No liked items yet", "Check out our services", "Explore Services")
+                emptyAlertView.configeView(.empryLikes, String(localized: "noLikedItemsYet"), String(localized: "checkOutOurServices"), String(localized:"exploreServices") )
             }
     
 }
