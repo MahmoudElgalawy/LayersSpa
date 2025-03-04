@@ -406,6 +406,23 @@
         }
       }
     },
+    "emptyCartMSG" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "يبدو أنك لم تضف أي خدمات إلى سلتك بعد. ابدأ في استكشاف خدماتنا الآن"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It looks like you haven't added any services to your cart yet. Start exploring our services now"
+          }
+        }
+      }
+    },
     "EnterEmail" : {
       "localizations" : {
         "ar" : {
@@ -1486,6 +1503,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your Balance"
+          }
+        }
+      }
+    },
+    "yourCartIsEmpty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "لا يوجد عناصر في السلة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Cart is Empty"
           }
         }
       }
