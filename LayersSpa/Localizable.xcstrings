@@ -557,6 +557,9 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "language" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -964,6 +967,23 @@
         }
       }
     },
+    "recharge" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "إعادة شحن"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recharge"
+          }
+        }
+      }
+    },
     "Register" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1218,6 +1238,23 @@
         }
       }
     },
+    "withdraw" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "سحب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Withdraw"
+          }
+        }
+      }
+    },
     "youMightAlsoLike" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1231,6 +1268,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You might also like"
+          }
+        }
+      }
+    },
+    "yourBalance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "الرصيد الخاص بك"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Balance"
           }
         }
       }
