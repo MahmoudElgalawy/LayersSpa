@@ -35,7 +35,7 @@ class SettingViewController: UIViewController, CustomAlertDelegate, AddToCartAle
     override func viewDidLoad() {
         super.viewDidLoad()
         navBar.delegate = self
-        navBar.updateTitle("Account settings")
+        navBar.updateTitle(String(localized: "accountSettings"))
         tableViewSetup()
         selectFirstRow()
     }
@@ -105,7 +105,8 @@ extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionItem = viewModel.getSectionItem(section)
-        return bindTableViewHeader(sectionItem.type.rawValue)
+        let rawValue  = NSLocalizedString(sectionItem.type.rawValue, comment: "")
+        return bindTableViewHeader(rawValue)
     }
     
 }
@@ -192,7 +193,7 @@ extension SettingViewController : RegistrationNavigationBarDelegate {
     func showInCorrectBranchAlert() {
         let alert =  CustomAlertViewController()
         alert.alertDelegate = self
-        alert.show("Warning!", "You Will Delete Your Account", buttonTitle: "Delete",navigateButtonTitle: "Cancel", .redColor, .warning, flag: false)
+        alert.show(String(localized: "warning") + "!", String(localized: "youWillDeleteYourAccount"), buttonTitle: String(localized: "delete"), navigateButtonTitle: String(localized: "cancel"), .redColor, .warning, flag: false)
     }
     
     func alertButtonClicked() {
@@ -203,7 +204,7 @@ extension SettingViewController : RegistrationNavigationBarDelegate {
                 let vc = LoginViewController(viewModel: LoginViewModel())
                 self.navigationController?.setViewControllers([vc], animated: true)
             }else{
-                CustomAlertViewController().show("Warning!", "Something went wrong please try log out again", buttonTitle: "ok",navigateButtonTitle: "", .redColor, .warning, flag: true)
+                CustomAlertViewController().show(String(localized: "warning") + "!", String(localized: "logOutErrorMSG"), buttonTitle: String(localized: "ok") ,navigateButtonTitle: "", .redColor, .warning, flag: true)
             }
         }
     }

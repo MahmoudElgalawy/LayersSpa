@@ -8,8 +8,8 @@
 import Foundation
 
 enum SettingTableViewSectionsType: String {
-    case Delete = "Account"
-    case appLanguage = "Language"
+    case Delete =  "account"
+    case appLanguage = "language"
 //    case notifications = "Notification"
 //    case account = "Account"
 }

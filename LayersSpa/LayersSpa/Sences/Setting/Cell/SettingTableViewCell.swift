@@ -34,6 +34,7 @@ class SettingTableViewCell: UITableViewCell, IdentifiableView {
     func configeCell(_ setting: settingVM) {
         cellTitle.text = setting.title
         cellIcone.image = setting.icon
+        rotateIconBasedOnLanguage()
         switch setting.type {
         case .Delete:
             self.switch.isHidden = true
@@ -51,6 +52,12 @@ class SettingTableViewCell: UITableViewCell, IdentifiableView {
 //            rightIcone.isHidden = false
 //            rightIcone.image = .blackArrow
         }
+    }
+    
+    private func rotateIconBasedOnLanguage() {
+        let currentLanguage = Locale.preferredLanguages.first ?? "en"
+        let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
+        rightIcone.transform = CGAffineTransform(rotationAngle: rotationAngle)
     }
     
     func languageSelectionStyle() {
