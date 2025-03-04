@@ -16,8 +16,9 @@ class BookTimeSlotsViewController: UIViewController {
     @IBOutlet weak var progressStackView: UIStackView!
     @IBOutlet weak var navBar: NavigationBarWithBack!
     @IBOutlet weak var timeSlotsCollectionView: UICollectionView!
-    // MARK: Properties
+    @IBOutlet weak var timingLabel: UILabel!
     
+    // MARK: Properties
     private var viewModel: BookTimeSlotsViewModelType
     var isPerService = false
     var times = [String]()
@@ -41,6 +42,7 @@ class BookTimeSlotsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        timingLabel.text = String(localized: "timing")
         setupView()
         collectionViewSetup()
         bindContinueButton()
@@ -71,7 +73,7 @@ class BookTimeSlotsViewController: UIViewController {
 extension BookTimeSlotsViewController {
     func setupView() {
         navBar.delegate = self
-        navBar.updateTitle("Booking")
+        navBar.updateTitle(String(localized: "booking"))
         progressStackView.roundCorners(radius: 6)
         stepLabel.roundCorners(radius: 16)
         timeSlotsCollectionView.roundCorners(radius: 16)
@@ -220,7 +222,7 @@ extension BookTimeSlotsViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CustomHeaderView.reuseIdentifier, for: indexPath) as! CustomHeaderView
-            headerView.label.text = "Select from time slots"
+            headerView.label.text = String(localized: "selectFromTimeSlots")
             return headerView
         }
         return UICollectionReusableView()
@@ -236,7 +238,7 @@ extension BookTimeSlotsViewController: UICollectionViewDelegate, UICollectionVie
 
 private extension BookTimeSlotsViewController {
     func bindContinueButton() {
-        continueButton.setTitle("Confirm", for: .normal)
+        continueButton.setTitle(String(localized: "continue"), for: .normal)
         continueButton.applyButtonStyle(.filled)
         continueButton.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
     }

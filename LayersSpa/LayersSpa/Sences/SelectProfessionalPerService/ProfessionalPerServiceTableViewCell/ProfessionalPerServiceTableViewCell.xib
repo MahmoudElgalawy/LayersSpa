@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -100,7 +100,7 @@
                                                                     <constraint firstAttribute="width" constant="32" id="lYf-D6-5UP"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select professional " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xef-l4-bkd">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select professional " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xef-l4-bkd" userLabel="Select professional">
                                                                 <rect key="frame" x="40" y="9" width="188" height="14.333333333333336"/>
                                                                 <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="12"/>
                                                                 <color key="textColor" name="PrimaryColor"/>
@@ -250,12 +250,17 @@
             <color key="backgroundColor" name="grayLight"/>
             <connections>
                 <outlet property="ServiceTitle" destination="Il6-Fb-68e" id="i3K-Cs-KNe"/>
+                <outlet property="arrowImage" destination="WoX-Lw-i9g" id="37J-b3-ghU"/>
+                <outlet property="arrowImage2" destination="Kxi-Bk-ic3" id="RR6-ae-rsb"/>
                 <outlet property="containerView" destination="OFX-vj-aYf" id="E5e-QE-Dcb"/>
                 <outlet property="editButton" destination="a7c-UJ-aaK" id="92Q-VU-7Ew"/>
                 <outlet property="lblSelectedTime" destination="tV1-Eg-4Cf" id="zL8-qg-qDx"/>
+                <outlet property="prfessionalLabel" destination="jpu-dN-zPl" id="iWv-xL-bTz"/>
                 <outlet property="profImage" destination="RDu-pF-x7g" id="86r-4H-7CN"/>
                 <outlet property="profNameLabel" destination="GEr-F7-Ztg" id="b0u-59-TfG"/>
+                <outlet property="selectProfessionalLabel" destination="Xef-l4-bkd" id="J1w-UZ-upS"/>
                 <outlet property="selectProfessionalView" destination="hrk-rT-7Vy" id="PiO-9J-FaI"/>
+                <outlet property="selectTimeLabel" destination="qBs-hD-Dud" id="EfP-fV-3IT"/>
                 <outlet property="selectTimeView" destination="Iqj-1M-gex" id="m2R-az-en9"/>
                 <outlet property="selectedProfInfoStackView" destination="ydE-Jc-R4Q" id="5Af-41-KhN"/>
                 <outlet property="serviceImg" destination="hpT-Df-qwy" id="98i-CL-qRF"/>

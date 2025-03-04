@@ -58,6 +58,7 @@ class ProfessionalMemberTableViewCell: UITableViewCell, IdentifiableView {
         memberNameLabel.text = employee.empData.name
         ratingLabel.text = "4.8"
         reviewLable.text = "(80)"
+        viewProfileButton.setTitle(String(localized: "viewProfile"), for: .normal)
     }
     
 }

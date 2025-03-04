@@ -62,7 +62,7 @@ class SelectProfessionalOptionsViewController: UIViewController, CustomAlertDele
             self?.selectProfessionalTableView.isHidden = false
         }
         viewModel.onError = { [weak self] _ in
-            self?.showSelectOtherAlert(msg:"SomeThing Went Wrong Please Select Branch and Date Again", btnTitle: "Ok")
+            self?.showSelectOtherAlert(msg: String(localized: "selectDateAndBranchMSg"), btnTitle: String(localized: "ok"))
         }
     }
     
@@ -272,7 +272,7 @@ extension SelectProfessionalOptionsViewController {
     func showSelectOtherAlert(msg:String, btnTitle: String) {
         let alertVC = CustomAlertViewController()
         alertVC.alertDelegate = self
-        alertVC.show("We Are Sorry", msg, buttonTitle: btnTitle,navigateButtonTitle: "", .redColor, .warning, flag: true)
+        alertVC.show(String(localized: "weAreSorry"), msg, buttonTitle: btnTitle,navigateButtonTitle: "", .redColor, .warning, flag: true)
         present(alertVC, animated: true, completion: nil)
     }
     
