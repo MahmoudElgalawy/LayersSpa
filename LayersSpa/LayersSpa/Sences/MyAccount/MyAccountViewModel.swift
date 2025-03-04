@@ -76,10 +76,10 @@ class MyAccountViewModel {
 //        BookingSummerySectionsVM(sectionIcon: .terms, sectionTitle: "Terms of Use"),
 //        BookingSummerySectionsVM(sectionIcon: .policy, sectionTitle: "Privacy policy"),
 //        BookingSummerySectionsVM(sectionIcon: .signout, sectionTitle: "Sign out")
-        BookingSummerySectionsVM(sectionIcon: .profile, sectionTitle: "My profile"),
-        BookingSummerySectionsVM(sectionIcon: .setting, sectionTitle: "Account settings"),
-        BookingSummerySectionsVM(sectionIcon: .wallet, sectionTitle: "Wallet"),
-        BookingSummerySectionsVM(sectionIcon: .signout, sectionTitle: "Sign out")
+        BookingSummerySectionsVM(sectionIcon: .profile, sectionTitle: String(localized: "myProfile")),
+        BookingSummerySectionsVM(sectionIcon: .setting, sectionTitle: String(localized: "accountSettings")),
+        BookingSummerySectionsVM(sectionIcon: .wallet, sectionTitle: String(localized: "wallet")),
+        BookingSummerySectionsVM(sectionIcon: .signout, sectionTitle: String(localized: "signOut"))
     ]
 }
 

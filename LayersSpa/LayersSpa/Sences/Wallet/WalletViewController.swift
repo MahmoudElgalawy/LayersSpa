@@ -20,7 +20,7 @@ class WalletViewController: UIViewController {
     @IBOutlet weak var cardBalanceLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var yourBalanceLabel: UILabel!
     // MARK: Properties
 
     private let viewModel: WalletViewModelType
@@ -43,7 +43,10 @@ class WalletViewController: UIViewController {
         super.viewDidLoad()
         indicator.startAnimating()
         navBar.delegate = self
-        navBar.updateTitle("Wallet")
+        navBar.updateTitle(String(localized: "wallet"))
+        yourBalanceLabel.text = String(localized: "yourBalance")
+        withdrawButton.setTitle(String(localized: "withdraw"), for: .normal)
+        rechargeButton.setTitle(String(localized: "recharge"), for: .normal)
         applyViewStyle()
         bindRechargeButton()
         bindWithdrawButton()

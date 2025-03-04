@@ -12,7 +12,7 @@ import Networking
 
 class SettingViewModel {
     private var sectionsItems = [SettingTableViewSectionsItem]()
-    var passwordInfo = settingVM(type: .Delete, title: "Delete Account", icon: .deleteIcone)
+    var passwordInfo = settingVM(type: .Delete, title: String(localized: "deleteAccount"), icon: .deleteIcone)
     var language: [settingVM] = [
         settingVM(type: .appLanguage, title: "العربية", icon: .arabic),
         settingVM(type: .appLanguage, title: "English", icon: .english)

@@ -79,11 +79,12 @@ class MyProfileViewController: UIViewController {
                 }
             }
         navBar.delegate = self
-        navBar.updateTitle("My Profile")
+        navBar.updateTitle(String(localized: "myProfile"))
         bindViewStyle()
         bindLabels()
         bindTextFields()
         bindSaveButton()
+        setTextFieldsHeader()
         userImageView.alpha = 0.5
         if let countryCode = UserDefaults.standard.string(forKey: "CoutryCode"),
                let phoneNumber = Defaults.sharedInstance.userData?.phone {
@@ -161,6 +162,13 @@ extension MyProfileViewController {}
 
 extension MyProfileViewController {
     
+    private func setTextFieldsHeader() {
+        imageTitleLabel.text = String(localized: "profilePicture")
+        phoneTitleLabel.text = String(localized: "phoneNumberLbl")
+        nameTitleLabel.text = String(localized: "NameLbl")
+        emailTitleLabel.text = String(localized: "Email")
+    }
+    
     func bindViewStyle() {
         userImage.roundCorners(radius: 40)
         userImageView.roundCorners(radius: 40)
@@ -180,7 +188,7 @@ extension MyProfileViewController {
     }
     
     func bindSaveButton() {
-        saveChangesButton.setTitle("Save changes", for: .normal)
+        saveChangesButton.setTitle(String(localized: "saveChanges"), for: .normal)
         saveChangesButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
         saveChangesButton.applyButtonStyle(.filled)
     }
@@ -195,7 +203,7 @@ private extension MyProfileViewController {
                   let name = nameTF.text, !name.isEmpty,
                 //  let lastName = lastNametxt.text, !lastName.isEmpty,
               let countryCode = phoneTF.countryLabel.text, !countryCode.isEmpty, let phoneNumber = phoneTF.phoneTextField.text, !phoneNumber.isEmpty else {
-            showEmptyState(title: "Warning", msg: "All Data Required", button: "Ok", image: .warning)
+            showEmptyState(title: String(localized: "warning") + "!", msg: String(localized: "allDatarequired"), button: String(localized: "ok"), image: .warning)
                   indicator.stopAnimating()
                 return
             }
@@ -205,7 +213,7 @@ private extension MyProfileViewController {
                 case .success(let message):
                     print(message)
                     DispatchQueue.main.async {
-                        self?.showEmptyState(title: "Successful Step ✔️", msg: "Your Profile Updated Successfully", button: "Ok", image: .alertImage)
+                        self?.showEmptyState(title: String(localized: "successfulStep")  + "✔️", msg: String(localized: "yourProfileUpdatedSuccessfully"), button: String(localized: "ok"), image: .alertImage)
                         self?.indicator.stopAnimating()
                     }
                     
