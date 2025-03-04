@@ -13,6 +13,10 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
     // MARK: Properties
     var coloredView = UIView()
     
+    private var isRTL: Bool {
+        return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
+    }
+    
     // MARK: Init
     
     init() {
@@ -40,10 +44,12 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        setupViewControllersBasedOnLanguage()
-    }
+            super.viewWillAppear(animated)
+            navigationController?.setNavigationBarHidden(true, animated: animated)
+            setupViewControllersBasedOnLanguage()
+            resetSelectedIndex()
+            selectedIndex = isRTL ? 3:0
+        }
     
     // MARK: - Layout Adjustments
     
@@ -55,6 +61,7 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
         }
     }
     
+    
     private func setupViewControllersBasedOnLanguage() {
         let home = bindHomeViewController()
         let appointments = bindAppointmentsViewController()
@@ -64,15 +71,17 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
         var controllers: [UIViewController]
         
         if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
-            controllers = [myAccount, cart, appointments, home] // ترتيب عكسي للعربية
+            controllers = [myAccount, cart, appointments, home]
         } else {
-            controllers = [home, appointments, cart, myAccount] // الترتيب الأصلي للإنجليزية
+            controllers = [home, appointments, cart, myAccount]
         }
         
         self.viewControllers = controllers
         
         if Defaults.sharedInstance.getIsNavigateToAppoinment() {
-            selectedIndex = controllers.count - 3 // تعديل الفهرس حسب الترتيب
+//            let appointmentsIndex = isRTL ? 2 : 1
+//            selectedIndex = appointmentsIndex
+            Defaults.sharedInstance.navigateToAppoinment(false)
         }
     }
     
@@ -179,6 +188,7 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
     func reloadForLanguageChange() {
         adjustLayoutForCurrentLanguage()
         setupViewControllersBasedOnLanguage()
+        resetSelectedIndex()
         updateColoredViewPosition(animated: true)
     }
     
@@ -186,6 +196,12 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         updateColoredViewPosition(animated: true)
+    }
+    
+    private func resetSelectedIndex() {
+        if !Defaults.sharedInstance.getIsNavigateToAppoinment() {
+            selectedIndex = 0 // تحديد أول تابة بشكل ي
+        }
     }
     
     ////    func bindGalleryViewController() -> UIViewController {
@@ -197,3 +213,58 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
     ////        return item
     ////    }
 }
+
+
+
+
+//
+//override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
+//        setupViewControllersBasedOnLanguage()
+//        resetSelectedIndex() // إضافة هذه الدالة
+//    }
+//    
+//    private func setupViewControllersBasedOnLanguage() {
+//        let home = bindHomeViewController()
+//        let appointments = bindAppointmentsViewController()
+//        let cart = bindCartViewController()
+//        let myAccount = bindMyAccountViewController()
+//        
+//        var controllers: [UIViewController]
+//        
+//        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+//            controllers = [myAccount, cart, appointments, home]
+//        } else {
+//            controllers = [home, appointments, cart, myAccount]
+//        }
+//        
+//        self.viewControllers = controllers
+//        
+//        // تحديد الفهرس المناسب لشاشة المواعيد حسب اللغة
+//        if Defaults.sharedInstance.getIsNavigateToAppoinment() {
+//            let appointmentsIndex = isRTL ? 2 : 1
+//            selectedIndex = appointmentsIndex
+//            Defaults.sharedInstance.setIsNavigateToAppoinment(false)
+//        }
+//    }
+//    
+//    private var isRTL: Bool {
+//        return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
+//    }
+//    
+//    private func resetSelectedIndex() {
+//        if !Defaults.sharedInstance.getIsNavigateToAppoinment() {
+//            selectedIndex = 0 // تحديد أول تابة بشكل افتراضي
+//        }
+//    }
+//    
+//    func reloadForLanguageChange() {
+//        adjustLayoutForCurrentLanguage()
+//        setupViewControllersBasedOnLanguage()
+//        resetSelectedIndex() // إعادة تعيين الفهرس عند تغيير اللغة
+//        updateColoredViewPosition(animated: true)
+//    }
+//    
+//    // ... بقية الأكواد بدون تغيير ...
+//}

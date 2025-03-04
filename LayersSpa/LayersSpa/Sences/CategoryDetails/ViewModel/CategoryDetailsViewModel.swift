@@ -83,6 +83,10 @@ extension CategoryDetailsViewModel: CategoryDetailsViewModelOutput {
         return servicesViewModels[index]
     }
     
+    func getServices() -> [ProductVM] {
+        return servicesViewModels
+    }
+    
     func getServicesNum() -> Int {
         return servicesViewModels.count
     }

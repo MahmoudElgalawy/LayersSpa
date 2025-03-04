@@ -18,6 +18,7 @@ protocol CategoryDetailsViewModelInput {
     func getService(_ index: Int) -> ProductVM
     func getServicesNum() -> Int
     func filterServices(by searchText: String)
+    func getServices() -> [ProductVM]
 }
 
 /// CategoryDetails ViewModel Output

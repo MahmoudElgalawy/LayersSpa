@@ -61,7 +61,7 @@ class ServiceDetailsViewController: UIViewController, CustomAlertDelegate {
     }
     
     @objc func handleHomeDataReceived(_ notification: Notification){
-        if let services = notification.object as? [ProductVM] { // استبدل HomeData بنوع البيانات الفعلي
+        if let services = notification.object as? [ProductVM] {
             servicesList = services
                 }
     }
@@ -155,7 +155,7 @@ extension ServiceDetailsViewController {
 //                }
 //            }
 //    }
-    
+//    
 }
 
 // MARK: - UITableViewDelegate
