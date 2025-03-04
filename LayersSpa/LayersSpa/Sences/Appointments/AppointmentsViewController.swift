@@ -206,11 +206,11 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
                     } else {
                         self?.emptyAlertView.isHidden = true
                         self?.appointmentTableView.isHidden = false
-                        self?.appointmentTableView.reloadRows(at: self?.viewModel.calenders.indices.map { IndexPath(row: $0, section: 0) } ?? [], with: .automatic)
+                        self?.appointmentTableView.reloadData() // استخدم reloadData بدلاً من reloadRows
                     }
                     print("All history appointments fetched successfully.")
                 } else {
-                    self?.showErrorAlert(title: "Warning", msg: "Something went wrong. Please try again.", btnTitle: "OK")
+//                    self?.showErrorAlert(title: "Warning", msg: "Something went wrong. Please try again.", btnTitle: "OK")
                     print("Failed to fetch history appointments.")
                 }
             }
@@ -238,7 +238,7 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
                     }
                     print("All upcoming appointments fetched successfully.")
                 } else {
-                    self?.showErrorAlert(title: "Warning", msg: "Something went wrong. Please try again.", btnTitle: "OK")
+//                    self?.showErrorAlert(title: "Warning", msg: "Something went wrong. Please try again.", btnTitle: "OK")
                     print("Failed to fetch upcoming appointments.")
                 }
             }
