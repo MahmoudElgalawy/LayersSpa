@@ -54,7 +54,8 @@ class CheckOutViewController: UIViewController {
         viewModel.firstRequest()
         tableViewSetup()
         bindContinueButton()
-        navBar.updateTitle("Check-out")
+        navBar.updateTitle(String(localized: "checkOut"))
+        totalLabel.text = String(localized: "total")
         navBar.delegate = self
         
         
@@ -95,7 +96,7 @@ extension CheckOutViewController {
     @objc func addCardPressed() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
             self.checkoutTableView.reloadData()
-            CustomAlertViewController().show("Your new credit card has been added successfully!", "You can now use this card for your transactions.", buttonTitle: "Continue",navigateButtonTitle: "",.primaryColor,.alertImage, flag: true)
+            CustomAlertViewController().show(String(localized: "addCardSuccessTitleMSG") + "!", String(localized: "addCartSuccessSubtitleMSG") + ".", buttonTitle: String(localized: "continue"),navigateButtonTitle: "",.primaryColor,.alertImage, flag: true)
         }
     }
 }
@@ -212,7 +213,7 @@ extension CheckOutViewController {}
 private extension CheckOutViewController {
     
     func bindContinueButton() {
-        continueButton.setTitle("Check-out", for: .normal)
+        continueButton.setTitle(String(localized: "checkOut"), for: .normal)
         continueButton.applyButtonStyle(.filled)
         continueButton.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
     }
@@ -245,14 +246,14 @@ private extension CheckOutViewController {
                                                             self?.visa = true
                                                            // self?.showDismissAlert(message: "Your Order Booked Successful✔️")
                                                             //   self?.visa = true
-                                                            self?.showAlert(title: "Your appointment has been successfully booked", msg: "You will recieve a confiemation email with the appointment details shortly", btnTitle: "VIEW APPOINTMENTS ", buttonColor: .primaryColor, flag: false,image: .alertImage)
+                                                            self?.showAlert(title: String(localized: "orderSuccessTitle"), msg: String(localized: "orderSuccessSubtitle"), btnTitle: String(localized: "viewAppointments"), buttonColor: .primaryColor, flag: false,image: .alertImage)
                                                             self?.clearStoredData()
                                                         }
                                                     }else{
                                                         DispatchQueue.main.async {
                                                             self?.indicator.stopAnimating()
                                                             self?.method = false
-                                                            self?.showAlert(title: "Warning!!", msg:  "SomeThing Went Wrong Please Check Your Card Balance And Try Again", btnTitle: "Ok")
+                                                            self?.showAlert(title: String(localized: "warning") + "!!", msg: String(localized: "serviceAtThisTimeMSG"), btnTitle: String(localized: "ok"))
                                                         }
                                                     }
                                                 }
@@ -261,7 +262,7 @@ private extension CheckOutViewController {
                                                 DispatchQueue.main.async {
                                                     self?.indicator.stopAnimating()
                                                     self?.method = false
-                                                    self?.showAlert(title: "Warning!!", msg:  "There is a service at this time,Please choose different time and Try Check Out Again", btnTitle: "Ok")
+                                                    self?.showAlert(title: String(localized: "warning") + "!!", msg: String(localized: "serviceAtThisTimeMSG"), btnTitle: String(localized: "ok"))
                                                 }
                                             }
                                         })
@@ -269,7 +270,7 @@ private extension CheckOutViewController {
                                         DispatchQueue.main.async {
                                             self?.indicator.stopAnimating()
                                             self?.method = false
-                                            self?.showAlert(title: "Warning!!", msg:  "There is a service at this time,Please choose different time and Try Check Out Again", btnTitle: "Ok")
+                                            self?.showAlert(title: String(localized: "warning") + "!!", msg: String(localized: "serviceAtThisTimeMSG"), btnTitle: String(localized: "ok"))
                                         }
                                     }
                                 }
@@ -277,7 +278,7 @@ private extension CheckOutViewController {
                                 DispatchQueue.main.async {
                                     self?.indicator.stopAnimating()
                                     self?.method = false
-                                    self?.showAlert(title: "Warning", msg:  "There is a service at this time,Please choose different time and Try Check Out Again", btnTitle: "Ok")
+                                    self?.showAlert(title: String(localized: "warning") + "!!", msg: String(localized: "serviceAtThisTimeMSG"), btnTitle: String(localized: "ok"))
                                 }
                             }
                         }
@@ -285,7 +286,7 @@ private extension CheckOutViewController {
                         
                         // Mark:- Did not select card
 
-                        self.showAlert(title: "Warning!!", msg:  "Choose Or Add Your Cart", btnTitle: "Ok")
+                        self.showAlert(title: String(localized: "warning") + "!!", msg:  String(localized: "choosCardMSG"), btnTitle: String(localized: "ok"))
                     }
                 }else{
                     
@@ -302,14 +303,14 @@ private extension CheckOutViewController {
                                                 self?.indicator.stopAnimating()
                                                 self?.method = true
                                              //   self?.showDismissAlert(message: "Your Order Booked Successful")
-                                                self?.showAlert(title: "Your appointment has been successfully booked", msg: "You will recieve a confiemation email with the appointment details shortly", btnTitle: "VIEW APPOINTMENTS ", buttonColor: .primaryColor, flag: false,image: .alertImage)
+                                                self?.showAlert(title: String(localized: "orderSuccessTitle"), msg: String(localized: "orderSuccessSubtitle"), btnTitle: String(localized: "viewAppointments"), buttonColor: .primaryColor, flag: false,image: .alertImage)
                                                 self?.clearStoredData()
                                             }
                                         }else{
                                             DispatchQueue.main.async {
                                                 self?.indicator.stopAnimating()
                                                 self?.method = false
-                                                self?.showAlert(title: "Warning!!", msg:  "There is a service at this time,Please choose different time and Try Check Out Again", btnTitle: "Ok")
+                                                self?.showAlert(title: String(localized: "warning") + "!!", msg: String(localized: "serviceAtThisTimeMSG"), btnTitle: String(localized: "ok"))
                                             }
                                         }
                                     })
@@ -317,7 +318,7 @@ private extension CheckOutViewController {
                                     DispatchQueue.main.async {
                                         self?.indicator.stopAnimating()
                                         self?.method = false
-                                        self?.showAlert(title: "Warning!!", msg: "There is a service at this time,Please choose different time and Try Check Out Again", btnTitle: "Ok")
+                                        self?.showAlert(title: String(localized: "warning") + "!!", msg: String(localized: "serviceAtThisTimeMSG"), btnTitle: String(localized: "ok"))
                                     }
                                 }
                             }
@@ -325,7 +326,7 @@ private extension CheckOutViewController {
                             DispatchQueue.main.async {
                                 self?.indicator.stopAnimating()
                                 self?.method = false
-                                self?.showAlert(title: "Warning!!", msg: "There is a service at this time,Please choose different time and Try Check Out Again", btnTitle: "Ok")
+                                self?.showAlert(title: String(localized: "warning") + "!!", msg: String(localized: "serviceAtThisTimeMSG"), btnTitle: String(localized: "ok"))
                             }
                         }
                     }
@@ -345,14 +346,14 @@ private extension CheckOutViewController {
                                             self?.visa = true
                                          //   self?.showDismissAlert(message: "Your Order Booked Successful✔️")
                                             //   self?.visa = true
-                                            self?.showAlert(title: "Your order has been successfully booked", msg: "You will recieve a confiemation email with the order details shortly", btnTitle: "VIEW APPOINTMENTS ", buttonColor: .primaryColor, flag: false,image: .alertImage)
+                                            self?.showAlert(title: String(localized: "orderSuccessTitle"), msg: String(localized: "orderSuccessSubtitle"), btnTitle: String(localized: "viewAppointments"), buttonColor: .primaryColor, flag: false,image: .alertImage)
                                             self?.clearStoredData()
                                         }
                                     }else{
                                         DispatchQueue.main.async {
                                             self?.indicator.stopAnimating()
                                             self?.method = false
-                                            self?.showAlert(title: "Warning!!", msg:  "Something Went Wrong Please Check Your Card Balance And Try Again", btnTitle: "Ok")
+                                            self?.showAlert(title: String(localized: "warning") + "!!", msg: String(localized: "checkCardBalanceMSG"), btnTitle: String(localized: "ok"))
                                         }
                                     }
                                 }
@@ -361,12 +362,12 @@ private extension CheckOutViewController {
                                 DispatchQueue.main.async {
                                     self?.indicator.stopAnimating()
                                     self?.method = false
-                                    self?.showAlert(title: "Warning!!", msg:  "Something Went Wrong Please Try Check Out Again", btnTitle: "Ok")
+                                    self?.showAlert(title: String(localized: "warning") + "!!", msg:  String(localized: "checkOutFaluireMSG"), btnTitle: String(localized: "ok"))
                                 }
                             }
                         }
                     }else{
-                        self.showAlert(title: "Warning!!", msg:  "Choose card or Add new one", btnTitle: "Ok")
+                        self.showAlert(title: String(localized: "warning") + "!!", msg:  String(localized: "choosCardMSG"), btnTitle: String(localized: "ok"))
                     }
                 }else{
                     indicator.startAnimating()
@@ -378,7 +379,7 @@ private extension CheckOutViewController {
                                 self?.method = true
                                 //// Done
                                // self?.showDismissAlert(message: "Your Order Booked Successful")
-                                self?.showAlert(title: "Your order has been successfully booked", msg: "You will recieve a confiemation email with the order details shortly", btnTitle: "VIEW APPOINTMENTS ", buttonColor: .primaryColor, flag: false,image: .alertImage)
+                                self?.showAlert(title: String(localized: "orderSuccessTitle"), msg: String(localized: "orderSuccessSubtitle"), btnTitle: String(localized: "viewAppointments"), buttonColor: .primaryColor, flag: false,image: .alertImage)
                                 //   self?.visa = true
                                 self?.clearStoredData()
                             }
@@ -386,7 +387,7 @@ private extension CheckOutViewController {
                             DispatchQueue.main.async {
                                 self?.indicator.stopAnimating()
                                 self?.method = false
-                                self?.showAlert(title: "Warning!!", msg:  "Some Thing Wnt Wrong Please Try Check Out Again", btnTitle: "Ok")
+                                self?.showAlert(title: String(localized: "warning") + "!!", msg:  String(localized: "checkOutFaluireMSG"), btnTitle: String(localized: "ok"))
                             }
                         }
                     }
@@ -394,7 +395,7 @@ private extension CheckOutViewController {
             }
             }else{
                 self.method = false
-                self.showAlert(title: "Warning!!", msg: "Please Select Payment Method First", btnTitle: "Ok")
+                self.showAlert(title: String(localized: "warning") + "!!", msg: String(localized: "selectPaymentMSG"), btnTitle: String(localized: "ok"))
             }
         
 

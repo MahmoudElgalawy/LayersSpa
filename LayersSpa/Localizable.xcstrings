@@ -35,6 +35,60 @@
         }
       }
     },
+    "addCardSuccessTitleMSG" : {
+
+    },
+    "addCardSuccessTitleMSGs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "تم إضافة بطاقة الائتمان الجديدة بنجاح"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your new credit card has been added successfully"
+          }
+        }
+      }
+    },
+    "addCartSuccessSubtitleMSG" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "يمكنك الآن استخدام هذه البطاقة في معاملاتك"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can now use this card for your transactions"
+          }
+        }
+      }
+    },
+    "addNew" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "إضافة بطاقة جديدة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add new"
+          }
+        }
+      }
+    },
     "addToCart" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -221,6 +275,23 @@
         }
       }
     },
+    "cash" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نقدًا"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cash"
+          }
+        }
+      }
+    },
     "categories" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -255,6 +326,57 @@
         }
       }
     },
+    "checkCardBalanceMSG" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "حدث خطأ، يرجى التحقق من رصيد بطاقتك والمحاولة مرة أخرى"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something Went Wrong Please Check Your Card Balance And Try Again"
+          }
+        }
+      }
+    },
+    "checkOut" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "إتمام الدفع"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check-out"
+          }
+        }
+      }
+    },
+    "checkOutFaluireMSG" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "حدث خطأ، يرجى محاولة إتمام الدفع مرة أخرى"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some Thing Went Wrong Please Try Check Out Again"
+          }
+        }
+      }
+    },
     "checkOutOurProducts" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -285,6 +407,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Check out our services"
+          }
+        }
+      }
+    },
+    "choosCardMSG" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "اختر بطاقة أو أضف بطاقة جديدة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose card or Add new one"
+          }
+        }
+      }
+    },
+    "chooseCreditCard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "اختر بطاقة ائتمان"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose credit card"
           }
         }
       }
@@ -351,6 +507,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The confirm password can not be blank"
+          }
+        }
+      }
+    },
+    "continue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "متابعة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
           }
         }
       }
@@ -897,6 +1070,40 @@
         }
       }
     },
+    "orderSuccessSubtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ستصلك رسالة تأكيد عبر البريد الإلكتروني مع تفاصيل الطلب قريبًا"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You will recieve a confiemation email with the order details shortly"
+          }
+        }
+      }
+    },
+    "orderSuccessTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "تم حجز طلبك بنجاح"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your order has been successfully booked"
+          }
+        }
+      }
+    },
     "otpNotCorrect" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -995,6 +1202,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enter your password"
+          }
+        }
+      }
+    },
+    "paymentMethod" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "طريقة الدفع"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Method"
           }
         }
       }
@@ -1338,6 +1562,57 @@
         }
       }
     },
+    "selectOneOfPaymentMethods" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "اختر إحدى طرق الدفع"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select One Of Payment Methods"
+          }
+        }
+      }
+    },
+    "selectPaymentMSG" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "يرجى اختيار طريقة الدفع أولاً"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please Select Payment Method First"
+          }
+        }
+      }
+    },
+    "serviceAtThisTimeMSG" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "توجد خدمة في هذا الوقت، يرجى اختيار وقت آخر و محاولة إتمام الدفع مرة أخرى"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There is a service at this time,Please choose different time and Try Check Out Again"
+          }
+        }
+      }
+    },
     "services" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1423,6 +1698,23 @@
         }
       }
     },
+    "total" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "الإجمالي"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total"
+          }
+        }
+      }
+    },
     "verificationsent" : {
       "localizations" : {
         "ar" : {
@@ -1452,6 +1744,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "View all"
+          }
+        }
+      }
+    },
+    "viewAppointments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "عرض المواعيد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VIEW APPOINTMENTS"
+          }
+        }
+      }
+    },
+    "visa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "فيزا"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visa"
           }
         }
       }

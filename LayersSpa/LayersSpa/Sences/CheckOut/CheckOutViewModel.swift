@@ -18,7 +18,7 @@ class CheckOutViewModel {
     var reservationData:ReservationData?
     var selectedPaymentMethod:String?
     var visa: Visa?
-    let sectionsHeaderInfo: [BookingSummerySectionsVM] = [BookingSummerySectionsVM(sectionIcon: .payment, sectionTitle: "Payment Method")]
+    let sectionsHeaderInfo: [BookingSummerySectionsVM] = [BookingSummerySectionsVM(sectionIcon: .payment, sectionTitle: String(localized: "paymentMethod"))]
     var totalPrice  = 0.0
     init(transactionRemote: TransactionRemoteProtocol = TransactionRemote(network: AlamofireNetwork()), paymentRemote: PaymentRemoteProtocol =  PaymentRemote(network: AlamofireNetwork())) {
         self.paymentRemote = paymentRemote
