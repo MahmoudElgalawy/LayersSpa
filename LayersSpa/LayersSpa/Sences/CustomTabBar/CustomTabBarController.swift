@@ -44,12 +44,22 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            navigationController?.setNavigationBarHidden(true, animated: animated)
-            setupViewControllersBasedOnLanguage()
-            resetSelectedIndex()
-            selectedIndex = isRTL ? 3:0
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        setupViewControllersBasedOnLanguage()
+        
+        print("Should navigate to appointments: \(Defaults.sharedInstance.getIsNavigateToAppoinment())")
+        
+        if Defaults.sharedInstance.getIsNavigateToAppoinment() {
+            let appointmentsIndex = isRTL ? 2 : 1
+            selectedIndex = appointmentsIndex
+            Defaults.sharedInstance.navigateToAppoinment(false) // إعادة تعيين القيمة إلى false بعد الانتقال
+        } else {
+            selectedIndex = isRTL ? 3 : 0
         }
+        
+        print("Selected index: \(selectedIndex)")
+    }
     
     // MARK: - Layout Adjustments
     
@@ -77,12 +87,6 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
         }
         
         self.viewControllers = controllers
-        
-        if Defaults.sharedInstance.getIsNavigateToAppoinment() {
-//            let appointmentsIndex = isRTL ? 2 : 1
-//            selectedIndex = appointmentsIndex
-            Defaults.sharedInstance.navigateToAppoinment(false)
-        }
     }
     
     // MARK: - Colored View Positioning

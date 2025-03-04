@@ -40,11 +40,13 @@ class AppointmentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         indicator.startAnimating()
-              //  appointmentTableView.isHidden = true
+              //  appointmentTableView.isHidden = true // إخفاء الجدول حتى اكتمال التحميل
                 
+                // إعداد الأزرار
                 segmentedButtonsView.updateButtonsTitles("History", "Upcoming")
                 segmentedButtonsView.delegate = self
                 
+             //  firstButtonTapped()
                secondButtonTapped()
             
         viewModel.reload = { [weak self] in
@@ -84,6 +86,12 @@ class AppointmentsViewController: UIViewController {
                 self?.appointmentTableView.reloadData()
             }
         }
+        
+//        func viewDidAppear(_ animated: Bool) {
+//            super.viewDidAppear(animated)
+//            self.appointmentTableView.isHidden = true
+//            firstButtonTapped()
+//        }
     }
     
     func tableViewSetup() {
@@ -125,27 +133,48 @@ extension AppointmentsViewController: UITableViewDelegate {
 extension AppointmentsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("🔹 عدد الصفوف: \(viewModel.calenders.count)")
         return viewModel.calenders.count
     }
-  
+    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell: AppointmentTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+//
+//        if viewModel.isDataLoaded {
+//            let price = indexPath.row < viewModel.ordersDetails.count ? "\(viewModel.ordersDetails[indexPath.row].total )": ""
+//            self.appointmentTableView.reloadRows(at: [indexPath], with: .automatic)
+//            cell.configeCell(viewModel.calenders[indexPath.row], price)
+//        } else {
+//            self.appointmentTableView.reloadRows(at: [indexPath], with: .automatic)
+//            cell.configeCell(viewModel.calenders[indexPath.row], "")
+//        }
+//
+//        return cell
+//    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: AppointmentTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        if indexPath.row < viewModel.calenders.count {
-            if viewModel.isDataLoaded {
-                let order = indexPath.row < viewModel.ordersDetails.count ? viewModel.ordersDetails[indexPath.row] : nil
+
+        guard indexPath.row < viewModel.calenders.count else {
+            return cell
+        }
+
+        if viewModel.isDataLoaded {
+            if indexPath.row < viewModel.ordersDetails.count {
+                let order = viewModel.ordersDetails[indexPath.row]
                 print("🔹 Cell \(indexPath.row): Price = \(order)")
-                if let order = order {
-                    cell.configeCell(viewModel.calenders[indexPath.row], order)
-                }
+                cell.configeCell(viewModel.calenders[indexPath.row], order)
             } else {
-                // cell.configeCell(viewModel.calenders[indexPath.row], "")
+                // Handle the case where ordersDetails is empty or has fewer items than calenders
+                cell.configeCell(viewModel.calenders[indexPath.row], nil)
             }
         } else {
-            print("❌ خطأ: indexPath.row (\(indexPath.row)) خارج نطاق calenders.count (\(viewModel.calenders.count))")
+            // Handle the case where data is not loaded yet
+            cell.configeCell(viewModel.calenders[indexPath.row], nil)
         }
+        
         return cell
     }
+
+    
 }
 
 
@@ -168,6 +197,7 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
         viewModel.getAppointment(type: "history") { [weak self] flag in
             DispatchQueue.main.async {
                 self?.indicator.stopAnimating()
+                
                 if flag {
                     if self?.viewModel.calenders.isEmpty == true {
                         self?.bindEmptyStateView(msg: "You don't have any previous appointments")
@@ -176,14 +206,18 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
                     } else {
                         self?.emptyAlertView.isHidden = true
                         self?.appointmentTableView.isHidden = false
-                        self?.appointmentTableView.reloadData()
+                        self?.appointmentTableView.reloadRows(at: self?.viewModel.calenders.indices.map { IndexPath(row: $0, section: 0) } ?? [], with: .automatic)
                     }
+                    print("All history appointments fetched successfully.")
                 } else {
+                    self?.showErrorAlert(title: "Warning", msg: "Something went wrong. Please try again.", btnTitle: "OK")
+                    print("Failed to fetch history appointments.")
                 }
             }
         }
     }
-
+    
+    
     func secondButtonTapped() {
         indicator.startAnimating()
         self.appointmentTableView.isHidden = true
@@ -191,6 +225,7 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
         viewModel.getAppointment(type: "upcoming") { [weak self] flag in
             DispatchQueue.main.async {
                 self?.indicator.stopAnimating()
+                
                 if flag {
                     if self?.viewModel.calenders.isEmpty == true {
                         self?.bindEmptyStateView(msg: "You don't have any upcoming appointments.")
@@ -201,8 +236,10 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
                         self?.appointmentTableView.isHidden = false
                         self?.appointmentTableView.reloadData()
                     }
+                    print("All upcoming appointments fetched successfully.")
                 } else {
-                    
+                    self?.showErrorAlert(title: "Warning", msg: "Something went wrong. Please try again.", btnTitle: "OK")
+                    print("Failed to fetch upcoming appointments.")
                 }
             }
         }
@@ -218,10 +255,11 @@ extension AppointmentsViewController: EmptyStateDelegation {
     }
     
     func showErrorAlert(title: String, msg: String, btnTitle: String) {
+        // التحقق من عدم وجود عرض بالفعل
         if self.presentedViewController == nil {
             let alertVC = CustomAlertViewController()
             alertVC.show(title, msg, buttonTitle: btnTitle,navigateButtonTitle: "", .redColor, .warning, flag: true)
-            //self.present(alertVC, animated: true, completion: nil)
+            self.present(alertVC, animated: true, completion: nil)
         } else {
             print("⚠️ CustomAlertViewController is already presented.")
         }
