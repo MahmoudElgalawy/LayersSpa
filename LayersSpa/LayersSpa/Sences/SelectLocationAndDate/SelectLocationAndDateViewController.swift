@@ -43,7 +43,9 @@ class SelectLocationAndDateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        footerView.dateLabel.text = "Select Date"
+        titleLabel.text = String(localized: "selectLocation&Date")
+        footerView.dateLabel.text = String(localized: "selectDate")
+        footerView.titleLabel.text = String(localized: "selectDate")
         setupView()
         tableViewSetup()
         bindTableViewHeader()
@@ -53,7 +55,7 @@ class SelectLocationAndDateViewController: UIViewController {
             self.viewModel.fetchEmployeeSkills(skillIDs: skillIDs)
         }
         viewModel.errorAlert = {[weak self] in
-            self?.showSelectOtherAlert(msg:"SomeThing Went Wrong Please Select Branch and Services Again", btnTitle: "Ok")
+            self?.showSelectOtherAlert(msg: String(localized: "selectBranchAndServiceMSG"), btnTitle: String(localized: "ok"))
         }
     }
     
@@ -64,7 +66,7 @@ class SelectLocationAndDateViewController: UIViewController {
     
     func setupView() {
         navBar.delegate = self
-        navBar.updateTitle("Booking")
+        navBar.updateTitle(String(localized: "booking") )
         progressStackView.roundCorners(radius: 6)
         progressView.roundCorners(radius: 6)
         stepLabel.roundCorners(radius: 16)
@@ -159,7 +161,7 @@ extension SelectLocationAndDateViewController {
     
     func bindTableViewHeader() {
         let headerLabel = UILabel()
-        headerLabel.text = "layers branch"
+        headerLabel.text = String(localized: "branch") + " " + "layers"
         headerLabel.backgroundColor = .clear
         headerLabel.font = .B3Bold
         let headerContainerView = UIView()
@@ -186,18 +188,18 @@ extension SelectLocationAndDateViewController {
 extension SelectLocationAndDateViewController {
     
     func bindContinueButton() {
-        self.`continue`.setTitle("Continue", for: .normal)
+        self.`continue`.setTitle(String(localized: "continue"), for: .normal)
         self.`continue`.applyButtonStyle(.filled)
         self.`continue`.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
     }
     
     @objc func continueTapped() {
-        if  footerView.dateLabel.text == "Select Date" {
-            showSelectOtherAlert(msg: "You Must Select Date Before Continue", btnTitle: "Ok")
+        if  footerView.dateLabel.text == String(localized: "selectDate") {
+            showSelectOtherAlert(msg: String(localized: "mustSelectDateMSG"), btnTitle: String(localized: "ok"))
         }
         
         if isFriday(dateString:  footerView.dateLabel.text ?? "") {
-            showSelectOtherAlert(msg: "LayersSpa Is Not Available On Friday,Please Choose Different Day", btnTitle: "Ok, Choose Different Day")
+            showSelectOtherAlert(msg: String(localized: "notAvailableMSG"), btnTitle:  String(localized: "okChooseDifferentDay") )
         } else {
             let vc = SelectProfessionalOptionsViewController(viewModel: SelectProfessionalOptionsViewModel())
             vc.viewModel.employeeIDs = viewModel.employeesID
@@ -206,7 +208,7 @@ extension SelectLocationAndDateViewController {
     }
     func showSelectOtherAlert(msg:String, btnTitle: String) {
         let alertVC = CustomAlertViewController()
-        alertVC.show("We Are Sorry", msg, buttonTitle: btnTitle,navigateButtonTitle: "", .redColor, .warning, flag: true)
+        alertVC.show(String(localized: "weAreSorry"), msg, buttonTitle: btnTitle,navigateButtonTitle: "", .redColor, .warning, flag: true)
         present(alertVC, animated: true, completion: nil)
     }
     

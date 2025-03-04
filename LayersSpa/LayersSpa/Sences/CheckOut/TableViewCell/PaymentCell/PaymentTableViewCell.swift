@@ -16,7 +16,7 @@ class PaymentTableViewCell: UITableViewCell, IdentifiableView {
     var selectedIndexes: [Int: IndexPath] = [:]
     var viewModel: CheckOutViewModelType?
     
-    var branches: [BookingSummerySectionsVM] = [ BookingSummerySectionsVM(sectionIcon: .wallet, sectionTitle: "Cash"),BookingSummerySectionsVM(sectionIcon:.visamaster, sectionTitle: "Visa")]
+    var branches: [BookingSummerySectionsVM] = [ BookingSummerySectionsVM(sectionIcon: .wallet, sectionTitle: String(localized: "cash")), BookingSummerySectionsVM(sectionIcon:.visamaster, sectionTitle: String(localized: "visa")) ]
     
     var creditCard: [BookingSummerySectionsVM] = []
     
@@ -82,9 +82,9 @@ extension PaymentTableViewCell: UITableViewDelegate {
         
         let headerView = PaymentHeaderView()
         if section == 0 {
-            headerView.configureView("Select One Of Payment Methods", false)
+            headerView.configureView(String(localized: "selectOneOfPaymentMethods"), false)
         } else {
-            headerView.configureView("Choose credit card", true)
+            headerView.configureView(String(localized: "chooseCreditCard"), true)
             headerView.bindAddNewButton()
         }
         return headerView

@@ -189,7 +189,7 @@ extension ServicesViewController : AddToCartAlerts {
     func showInCorrectBranchAlert() {
         let alert =  CustomAlertViewController()
         alert.alertDelegate = self
-        alert.show("Warning!", "Please select a branch before adding item to cart", buttonTitle: "Navigate To Home",navigateButtonTitle: "Cancel", .redColor, .warning, flag: false)
+        alert.show(String(localized: "warning") + "!", String(localized: "selectABranchMSG"), buttonTitle: String(localized: "navigateToHome"), navigateButtonTitle: String(localized: "cancel"), .redColor, .warning, flag: false)
     }
     
     func alertButtonClicked() {

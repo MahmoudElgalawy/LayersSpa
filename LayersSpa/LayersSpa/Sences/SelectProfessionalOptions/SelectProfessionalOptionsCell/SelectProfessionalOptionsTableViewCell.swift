@@ -33,12 +33,19 @@ class SelectProfessionalOptionsTableViewCell: UITableViewCell, IdentifiableView 
         cellImage.image = option.cellImage
         titleLabel.text = option.title
         subTitleLabel.text = option.subTitle
+        rotateImageBasedOnLanguage()
     }
     
     func configureCellForRecharge(_ item: BookingSummerySectionsVM){
         subTitleLabel.isHidden = true
         cellImage.image = item.sectionIcon
         titleLabel.text = item.sectionTitle
+    }
+    
+    private func rotateImageBasedOnLanguage() {
+        let currentLanguage = Locale.preferredLanguages.first ?? "en"
+        let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
+        arrowImage.transform = CGAffineTransform(rotationAngle: rotationAngle)
     }
     
 }

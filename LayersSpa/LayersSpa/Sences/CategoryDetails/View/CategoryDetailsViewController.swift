@@ -77,7 +77,7 @@ extension CategoryDetailsViewController {
         
         viewModel.onShowNetworkErrorAlertClosure = { [weak self] alertMessage in
             guard let self = self else { return }
-            SomeThingWentWrong(msg: "There Is No Services At This Category Please Choose Another Category", btnTitle: "Ok")
+            SomeThingWentWrong(msg: String(localized: "noServiceMSG"), btnTitle: String(localized: "ok"))
             //self.showError("Invalid", alertMessage)
             print(alertMessage)
         }
@@ -210,14 +210,14 @@ extension CategoryDetailsViewController: AddToCartAlerts {
         eempty = false
         let alert = CustomAlertViewController()
         alert.alertDelegate = self
-        alert.show("Warning!!", "Please select a branch before adding item to cart", buttonTitle: "Navigate To Home",navigateButtonTitle: "Cancel", .redColor, .warning, flag: false)
+        alert.show(String(localized: "warning") + "!!", String(localized: "selectABranchMSG"), buttonTitle: String(localized: "navigateToHome"), navigateButtonTitle: String(localized: "cancel"), .redColor, .warning, flag: false)
     }
     
     func SomeThingWentWrong(msg: String, btnTitle: String) {
         eempty = true
        let alert = CustomAlertViewController()
         alert.alertDelegate = self
-        alert.show("Warning", "\(msg)", buttonTitle: "\(btnTitle)",navigateButtonTitle: "", .redColor, .warning,flag: true)
+        alert.show(String(localized: "warning"), "\(msg)", buttonTitle: "\(btnTitle)",navigateButtonTitle: "", .redColor, .warning,flag: true)
     }
     
 //    func showInCorrectBranchAlert() {

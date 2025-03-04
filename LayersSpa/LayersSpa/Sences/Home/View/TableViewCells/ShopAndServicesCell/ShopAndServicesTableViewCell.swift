@@ -149,6 +149,6 @@ extension ShopAndServicesTableViewCell {
 extension ShopAndServicesTableViewCell: AddToCartAlerts {
     
     func showInCorrectBranchAlert() {
-        delegate?.showIncorrectBranchAlert(msg: "Please select a branch before adding item to cart", buttonTitle: "select branch")
+        delegate?.showIncorrectBranchAlert(msg: String(localized: "selectABranchMSG"), buttonTitle: String(localized: "selectBranch") )
     }
 }

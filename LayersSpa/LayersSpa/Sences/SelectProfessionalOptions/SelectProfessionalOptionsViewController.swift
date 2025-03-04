@@ -25,9 +25,9 @@ class SelectProfessionalOptionsViewController: UIViewController, CustomAlertDele
     
     
     let options: [SelectProfessionalOptionsVM] = [
-        SelectProfessionalOptionsVM(cellImage: .selectProf1, title: "Any Professional", subTitle: "For maximum availability"),
-        SelectProfessionalOptionsVM(cellImage: .selectProf2, title: "Select one professional ", subTitle: "For all services"),
-        SelectProfessionalOptionsVM(cellImage: .selectProf3, title: "Select professional", subTitle: "per service")
+        SelectProfessionalOptionsVM(cellImage: .selectProf1, title: String(localized: "anyProfessional"), subTitle: String(localized: "forMaximumAvailability")),
+        SelectProfessionalOptionsVM(cellImage: .selectProf2, title: String(localized: "selectOneProfessional"), subTitle: String(localized: "forAllServices")),
+        SelectProfessionalOptionsVM(cellImage: .selectProf3, title: String(localized: "selectProfessional"), subTitle: String(localized: "perService"))
     ]
 
     // MARK: Init
@@ -50,6 +50,7 @@ class SelectProfessionalOptionsViewController: UIViewController, CustomAlertDele
         self.setupView()
         self.tableViewSetup()
         setIndicator()
+        titleLabel.text = String(localized: "selectProfessional")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +68,7 @@ class SelectProfessionalOptionsViewController: UIViewController, CustomAlertDele
     
     func setupView() {
         navBar.delegate = self
-        navBar.updateTitle("Booking")
+        navBar.updateTitle(String(localized: "booking"))
         progressStackView.roundCorners(radius: 6)
         progressView.roundCorners(radius: 6)
         stepLabel.roundCorners(radius: 16)

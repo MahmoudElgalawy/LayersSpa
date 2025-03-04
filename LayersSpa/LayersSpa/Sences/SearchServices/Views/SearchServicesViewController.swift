@@ -200,7 +200,7 @@ class SearchServicesViewController: UIViewController, CustomAlertDelegate, AddTo
     func showInCorrectBranchAlert() {
         let alert = CustomAlertViewController()
         alert.alertDelegate = self
-        alert.show("Warning", "Please select a branch before adding item to cart", buttonTitle: "NAVIGATE TO HOME",navigateButtonTitle: "Cancel", .redColor, .warning, flag: false)
+        alert.show(String(localized: "warning"), String(localized: "selectABranchMSG"), buttonTitle: String(localized: "navigateToHome"),navigateButtonTitle: String(localized: "cancel"), .redColor, .warning, flag: false)
     }
     
     @objc func navigateToDetails(_ sender: UITapGestureRecognizer){

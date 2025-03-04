@@ -53,14 +53,14 @@ class CustomDateAlertViewController: UIViewController, CustomAlertDelegate {
         ])
         
         // Configure buttons
-        selectButton.setTitle("Select", for: .normal)
+        selectButton.setTitle(String(localized: "select"), for: .normal)
         selectButton.tintColor = .primaryColor
         selectButton.titleLabel?.font = .B1Bold
         selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
         selectButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(selectButton)
         
-        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.setTitle(String(localized: "cancel"), for: .normal)
         cancelButton.tintColor = .primaryColor
         cancelButton.titleLabel?.font = .B1Bold
         cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
@@ -105,7 +105,7 @@ class CustomDateAlertViewController: UIViewController, CustomAlertDelegate {
     func showSelectOtherAlert() {
         let alertVC = CustomAlertViewController()
         alertVC.alertDelegate = self
-        alertVC.show("Warning", "LayersSpa is closed on friday.", buttonTitle: "Choose another day",navigateButtonTitle: "", .redColor, .warning, flag: true)
+        alertVC.show(String(localized: "warning"), String(localized: "layersSpaIsClosedOnFriday") + ".", buttonTitle:  String(localized: "chooseAnotherDay"), navigateButtonTitle: "", .redColor, .warning, flag: true)
         present(alertVC, animated: true, completion: nil)
     }
     

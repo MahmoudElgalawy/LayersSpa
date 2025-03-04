@@ -26,6 +26,8 @@ class AddNewPaymentViewController: UIViewController {
     @IBOutlet weak var Year: UITextField!
     @IBOutlet weak var Month: UITextField!
     
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
     // MARK: Properties
 
     private let viewModel: AddNewPaymentViewModelType
@@ -48,6 +50,11 @@ class AddNewPaymentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = String(localized: "completePayment")
+        hardHoldeNameLabel.text = String(localized: "cardHolderName")
+        cardNumberLabel.text = String(localized: "cardNumber")
+        yearLabel.text = String(localized: "year")
+        monthLabel.text = String(localized: "month")
         bindTextFields()
         bindAddCardButton()
         bindCloseButton()
@@ -65,15 +72,15 @@ extension AddNewPaymentViewController {}
 extension AddNewPaymentViewController {
     
     func bindTextFields() {
-        cardHolderNameTF.applyBordertextFieldStyle("Enter card holder name")
-        cardNumberTF.applyBordertextFieldStyle("Enter card number")
-        cvvTF.applyBordertextFieldStyle("Enter 3 digits cvv number")
-        Year.applyBordertextFieldStyle("Expire Year")
-        Month.applyBordertextFieldStyle("Expire Month")
+        cardHolderNameTF.applyBordertextFieldStyle(String(localized: "enterCardHolderName"))
+        cardNumberTF.applyBordertextFieldStyle(String(localized: "enterCardNumber"))
+        cvvTF.applyBordertextFieldStyle(String(localized: "enter3DigitsCvvNumber"))
+        Year.applyBordertextFieldStyle(String(localized: "expireYear"))
+        Month.applyBordertextFieldStyle(String(localized: "expireMonth"))
     }
     
     func bindAddCardButton() {
-        addCardButton.setTitle("Add Cart", for: .normal)
+        addCardButton.setTitle(String(localized: "addCard"), for: .normal)
         addCardButton.applyButtonStyle(.filled)
         addCardButton.addTarget(self, action: #selector(addCardTapped), for: .touchUpInside)
     }
@@ -95,7 +102,7 @@ private extension AddNewPaymentViewController {
             let month = Month.text?.trimmingCharacters(in: .whitespacesAndNewlines), !month.isEmpty
         else {
             self.success = false
-            showAlert(title: "Warning!!" , msg:"All Data Required", btnTitle: "Ok")
+            showAlert(title: String(localized: "warning") + "!!" , msg: String(localized: "allDataRequired"), btnTitle: String(localized: "ok"))
             return
         }
         

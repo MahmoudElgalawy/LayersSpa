@@ -28,6 +28,8 @@ class PaymentHeaderView: UIViewFromNib {
         } else {
             addNewButton.isHidden = true
         }
+        
+        addNewButton.setTitle(String(localized: "addNew"), for: .normal)
     }
     
     func bindAddNewButton() {
