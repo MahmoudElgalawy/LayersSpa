@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,8 +26,10 @@
                 <outlet property="cvvLabel" destination="RoF-5P-skI" id="C9s-HX-bjb"/>
                 <outlet property="cvvTF" destination="ay0-hm-euF" id="U38-Kf-yUD"/>
                 <outlet property="hardHoldeNameLabel" destination="ZqC-hO-4Vj" id="xdo-pb-EYv"/>
+                <outlet property="monthLabel" destination="vkG-b8-lmH" id="Jl3-G9-DIU"/>
                 <outlet property="titleLabel" destination="Wy4-VR-kaT" id="joH-da-ers"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="yearLabel" destination="kJp-Uv-u0Z" id="wnN-tc-jzD"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -122,7 +124,7 @@
                                                     <color key="textColor" name="DarkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter card holder name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fWo-Cn-5CO">
+                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter card holder name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fWo-Cn-5CO">
                                                     <rect key="frame" x="0.0" y="27" width="313" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="hOo-nM-ASH"/>
@@ -151,7 +153,7 @@
                                                     <color key="textColor" name="DarkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter card number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tLE-kQ-2Xt">
+                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter card number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tLE-kQ-2Xt">
                                                     <rect key="frame" x="0.0" y="27" width="313" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="nHx-GY-3LX"/>
@@ -180,7 +182,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter 3 digits cvv number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ay0-hm-euF">
+                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter 3 digits cvv number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ay0-hm-euF">
                                                     <rect key="frame" x="0.0" y="27" width="313" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="OhG-hm-I6s"/>

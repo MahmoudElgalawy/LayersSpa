@@ -35,11 +35,24 @@
         }
       }
     },
-    "addCardSuccessTitleMSG" : {
-
-    },
-    "addCardSuccessTitleMSGs" : {
+    "addCard" : {
       "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "إضافة بطاقة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Card"
+          }
+        }
+      }
+    },
+    "addCardSuccessTitleMSG" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -157,6 +170,23 @@
         }
       }
     },
+    "allDataRequired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "جميع البيانات مطلوبة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Data Required"
+          }
+        }
+      }
+    },
     "Alreadyhaveanaccount" : {
       "localizations" : {
         "ar" : {
@@ -254,6 +284,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "cardHolderName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : " اسم حامل البطاقة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card holder name"
+          }
+        }
+      }
+    },
+    "cardNumber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "رقم البطاقة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card number"
           }
         }
       }
@@ -462,6 +526,23 @@
         }
       }
     },
+    "completePayment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "إتمام الدفع"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete Payment"
+          }
+        }
+      }
+    },
     "Confirm" : {
       "localizations" : {
         "ar" : {
@@ -630,6 +711,57 @@
         }
       }
     },
+    "enter3DigitsCvvNumber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "يرجى إدخال رقم CVV المكون من 3 أرقام"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter 3 digits cvv number"
+          }
+        }
+      }
+    },
+    "enterCardHolderName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "أدخل اسم حامل البطاقة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter card holder name"
+          }
+        }
+      }
+    },
+    "enterCardNumber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "أدخل رقم البطاقة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter card number"
+          }
+        }
+      }
+    },
     "EnterEmail" : {
       "localizations" : {
         "ar" : {
@@ -675,6 +807,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enter the code which send to your phone"
+          }
+        }
+      }
+    },
+    "expireMonth" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "شهر الانتهاء"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expire Month"
+          }
+        }
+      }
+    },
+    "expireYear" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "سنة الانتهاء"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expire Year"
           }
         }
       }
@@ -930,6 +1096,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Confirm password must be match password"
+          }
+        }
+      }
+    },
+    "month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "الشهر"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Month"
           }
         }
       }
@@ -1829,6 +2012,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Withdraw"
+          }
+        }
+      }
+    },
+    "year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السنة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Year"
           }
         }
       }
