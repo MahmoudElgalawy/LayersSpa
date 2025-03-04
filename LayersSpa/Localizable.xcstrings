@@ -727,6 +727,23 @@
         }
       }
     },
+    "navigateToHome" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "الانتقال إلى الصفحة الرئيسية"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigate To Home"
+          }
+        }
+      }
+    },
     "NewPassword" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -774,6 +791,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No liked items yet"
+          }
+        }
+      }
+    },
+    "noServiceMSG" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "لا توجد خدمات في هذه الفئة، يرجى اختيار فئة أخرى"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There Is No Services At This Category Please Choose Another Category"
           }
         }
       }
@@ -1198,6 +1232,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search"
+          }
+        }
+      }
+    },
+    "selectABranchMSG" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يرجى اختيار فرع قبل إضافة العنصر إلى السلة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select a branch before adding item to cart"
           }
         }
       }

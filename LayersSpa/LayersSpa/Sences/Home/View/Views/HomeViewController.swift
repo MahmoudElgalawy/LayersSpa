@@ -158,7 +158,7 @@ extension HomeViewController: ViewAllDelegation {
     func showIncorrectBranchAlert(msg: String, buttonTitle: String) {
         let alert = CustomAlertViewController()
         alert.alertDelegate = self
-        alert.show("Warning!!", "\(msg)", buttonTitle: "select branch",navigateButtonTitle: "", .redColor, .warning, flag: true)
+        alert.show(String(localized: "warning") + "!!", "\(msg)", buttonTitle: String(localized: "selectBranch"), navigateButtonTitle: "", .redColor, .warning, flag: true)
     }
     
     //Please select a branch before adding item to cart
