@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -48,7 +48,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNu-eE-G0M">
-                            <rect key="frame" x="0.0" y="393.66666666666669" width="342" height="44.333333333333314"/>
+                            <rect key="frame" x="0.0" y="385.33333333333331" width="342" height="44"/>
                             <color key="backgroundColor" name="Blue(main)"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -62,21 +62,17 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LF7-8N-ld1" customClass="PhoneNumberTextFieldView" customModule="LayersSpa" customModuleProvider="target">
-                            <rect key="frame" x="-8" y="299.33333333333331" width="342" height="44.333333333333314"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mej-AP-JoK">
-                            <rect key="frame" x="-8" y="262.33333333333331" width="350" height="37"/>
+                            <rect key="frame" x="0.0" y="262.33333333333331" width="350" height="37"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KfB-pr-Zb3">
-                            <rect key="frame" x="50" y="475" width="242" height="30.666666666666686"/>
+                            <rect key="frame" x="50" y="466.33333333333337" width="242" height="30.666666666666686"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Uf6-CI-fox">
-                                    <rect key="frame" x="0.0" y="6.3333333333333712" width="173.66666666666666" height="17.666666666666668"/>
+                                    <rect key="frame" x="0.0" y="6.6666666666666288" width="173.66666666666666" height="17.666666666666668"/>
                                     <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo" pointSize="15"/>
                                     <color key="textColor" name="Black(Texts)"/>
                                     <nil key="highlightedColor"/>
@@ -92,15 +88,19 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The phone can not be blank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bc0-cZ-Ir0">
-                            <rect key="frame" x="-8" y="343.66666666666669" width="334.33333333333331" height="28.666666666666686"/>
+                            <rect key="frame" x="0.0" y="346.33333333333331" width="334.33333333333331" height="29"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" name="redColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="IO8-DQ-mxw">
-                            <rect key="frame" x="-24" y="-15" width="390" height="763"/>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="IO8-DQ-mxw">
+                            <rect key="frame" x="-24" y="388" width="390" height="360"/>
                             <color key="color" name="grayText"/>
                         </activityIndicatorView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LF7-8N-ld1" customClass="PhoneNumberTextFieldView" customModule="LayersSpa" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="299.33333333333331" width="345" height="47"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -108,8 +108,9 @@
                         <constraint firstItem="DWl-OW-yJq" firstAttribute="height" secondItem="isF-cq-n8h" secondAttribute="height" multiplier="0.2213" id="45H-MB-jh7"/>
                         <constraint firstItem="cNu-eE-G0M" firstAttribute="width" secondItem="isF-cq-n8h" secondAttribute="width" id="60H-3g-k23"/>
                         <constraint firstItem="Mej-AP-JoK" firstAttribute="top" secondItem="ePQ-cu-mZn" secondAttribute="bottom" constant="8" symbolic="YES" id="6JK-Ui-81r"/>
-                        <constraint firstItem="cNu-eE-G0M" firstAttribute="top" secondItem="LF7-8N-ld1" secondAttribute="bottom" constant="50" id="Dbo-1b-j1c"/>
+                        <constraint firstItem="LF7-8N-ld1" firstAttribute="width" secondItem="isF-cq-n8h" secondAttribute="width" multiplier="1.00877" id="EDu-KE-prE"/>
                         <constraint firstItem="DWl-OW-yJq" firstAttribute="centerX" secondItem="isF-cq-n8h" secondAttribute="centerX" id="GWQ-pk-t00"/>
+                        <constraint firstItem="LF7-8N-ld1" firstAttribute="height" secondItem="isF-cq-n8h" secondAttribute="height" multiplier="0.0646492" id="Gpi-T5-In8"/>
                         <constraint firstItem="LF7-8N-ld1" firstAttribute="top" secondItem="Mej-AP-JoK" secondAttribute="bottom" id="Hvb-DN-sAN"/>
                         <constraint firstItem="Mej-AP-JoK" firstAttribute="width" secondItem="isF-cq-n8h" secondAttribute="width" multiplier="1.02319" id="OPa-Fi-24F"/>
                         <constraint firstItem="bc0-cZ-Ir0" firstAttribute="top" secondItem="LF7-8N-ld1" secondAttribute="bottom" id="U51-SG-BEv"/>
@@ -118,13 +119,12 @@
                         <constraint firstItem="DWl-OW-yJq" firstAttribute="width" secondItem="isF-cq-n8h" secondAttribute="width" multiplier="0.637681" id="WRb-b4-TRg"/>
                         <constraint firstItem="LF7-8N-ld1" firstAttribute="leading" secondItem="Mej-AP-JoK" secondAttribute="leading" id="afC-La-HBZ"/>
                         <constraint firstItem="KfB-pr-Zb3" firstAttribute="height" secondItem="isF-cq-n8h" secondAttribute="height" multiplier="0.0421825" id="cEo-hn-wd9"/>
-                        <constraint firstItem="Mej-AP-JoK" firstAttribute="leading" secondItem="isF-cq-n8h" secondAttribute="leading" constant="-8" id="cRm-qT-LBM"/>
+                        <constraint firstItem="Mej-AP-JoK" firstAttribute="leading" secondItem="isF-cq-n8h" secondAttribute="leading" id="cRm-qT-LBM"/>
                         <constraint firstItem="KfB-pr-Zb3" firstAttribute="width" secondItem="isF-cq-n8h" secondAttribute="width" multiplier="0.707602" id="dw4-qR-T1n"/>
                         <constraint firstItem="ePQ-cu-mZn" firstAttribute="width" secondItem="isF-cq-n8h" secondAttribute="width" multiplier="0.797101" id="eaC-hg-hxO"/>
                         <constraint firstItem="KfB-pr-Zb3" firstAttribute="centerX" secondItem="isF-cq-n8h" secondAttribute="centerX" id="fCL-Ie-hXp"/>
                         <constraint firstItem="KfB-pr-Zb3" firstAttribute="top" secondItem="cNu-eE-G0M" secondAttribute="bottom" constant="37" id="jdD-pZ-U7d"/>
-                        <constraint firstItem="LF7-8N-ld1" firstAttribute="height" secondItem="isF-cq-n8h" secondAttribute="height" multiplier="0.0608575" id="o07-fb-0JG"/>
-                        <constraint firstItem="LF7-8N-ld1" firstAttribute="width" secondItem="isF-cq-n8h" secondAttribute="width" id="pBa-7Y-aox"/>
+                        <constraint firstItem="cNu-eE-G0M" firstAttribute="top" secondItem="bc0-cZ-Ir0" secondAttribute="bottom" constant="10" id="pSk-XQ-eBa"/>
                         <constraint firstItem="ePQ-cu-mZn" firstAttribute="height" secondItem="isF-cq-n8h" secondAttribute="height" multiplier="0.0871369" id="rMi-C1-yKL"/>
                         <constraint firstItem="ePQ-cu-mZn" firstAttribute="top" secondItem="DWl-OW-yJq" secondAttribute="bottom" id="soZ-hY-yDi"/>
                         <constraint firstItem="DWl-OW-yJq" firstAttribute="top" secondItem="isF-cq-n8h" secondAttribute="top" constant="30" id="tIi-0K-y71"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -276,20 +276,6 @@
             <point key="canvasLocation" x="-48.091603053435115" y="-53.521126760563384"/>
         </view>
     </objects>
-    <designables>
-        <designable name="gP5-Od-AfW">
-            <size key="intrinsicContentSize" width="32" height="34"/>
-        </designable>
-        <designable name="mfq-me-lMO">
-            <size key="intrinsicContentSize" width="160.33333333333334" height="34"/>
-        </designable>
-        <designable name="u9o-to-x7a">
-            <size key="intrinsicContentSize" width="198.33333333333334" height="34"/>
-        </designable>
-        <designable name="zV9-Om-8jE">
-            <size key="intrinsicContentSize" width="160.33333333333334" height="34"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Flag_of_Saudi_Arabia_without_sword" width="24" height="24"/>
         <image name="email" width="20" height="20"/>

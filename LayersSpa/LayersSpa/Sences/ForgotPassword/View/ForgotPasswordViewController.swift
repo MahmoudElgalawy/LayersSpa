@@ -154,8 +154,9 @@ private extension ForgotPasswordViewController {
             vc.phoneNumber = phone
             viewModel.resetPassword(UserDefaults.standard.string(forKey: "phone") ?? "")
            // vc.viewModel.getOTP(phone: phone)
-           
             vc.register = false
+            self.navigationController?.pushViewController(vc, animated: true)
+            
            } else {
 //               showError("Invalid", "Phone Numbeer is required")
                blanckPhone.isHidden = false

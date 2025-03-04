@@ -727,6 +727,40 @@
         }
       }
     },
+    "NewPassword" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رقم سري جديد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Password"
+          }
+        }
+      }
+    },
+    "newPasswordTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يجب أن تكون كلمة المرور مختلفة عن كلمات المرور المستخدمة سابقا."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your password must be different from previously used passwords."
+          }
+        }
+      }
+    },
     "noLikedItemsYet" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -757,6 +791,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ok"
+          }
+        }
+      }
+    },
+    "otpNotCorrect" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الرمز أو الهاتف غير صحيح"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code or phone not correct"
+          }
+        }
+      }
+    },
+    "passContain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل وحرف صغير واحد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password must contain at least one uppercase and one lowercase letter"
           }
         }
       }
@@ -1028,6 +1096,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Remove From Cart"
+          }
+        }
+      }
+    },
+    "resetPassSuccess" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم تعيين كلمة المرور بنجاح"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password Reset Successfully"
           }
         }
       }

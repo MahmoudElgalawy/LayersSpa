@@ -50,6 +50,12 @@ class SignupViewController: UIViewController, CustomAlertDelegate {
         warningPhone.isHidden = true
         phoneNumberTFView.phoneTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         phoneNumberTFView.heightAnchor.constraint(equalTo: phoneNumberTFView.phoneTextField.heightAnchor).isActive = true
+        phoneNumberTFView.translatesAutoresizingMaskIntoConstraints = false
+           phoneNumberTFView.phoneTextField.translatesAutoresizingMaskIntoConstraints = false
+
+           NSLayoutConstraint.activate([
+               phoneNumberTFView.heightAnchor.constraint(equalTo: phoneNumberTFView.phoneTextField.heightAnchor, constant: 16) // إضافة هوامش
+           ])
         self.view.setGradientBackground(startColor: .primaryColor, endColor: .whiteColor)
         bindLabels()
         bindLoginButton()

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -82,7 +82,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aS2-k8-vmh">
-                    <rect key="frame" x="8" y="536.33333333333337" width="398" height="44"/>
+                    <rect key="frame" x="8" y="543.33333333333337" width="398" height="44"/>
                     <color key="backgroundColor" name="Blue(main)"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -97,7 +97,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M91-1c-i3y">
-                    <rect key="frame" x="87.333333333333329" y="613.33333333333337" width="239.33333333333337" height="30.666666666666629"/>
+                    <rect key="frame" x="87.333333333333329" y="620.33333333333337" width="239.33333333333337" height="30.666666666666629"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hmk-8p-mKh">
                             <rect key="frame" x="0.0" y="6.6666666666666288" width="160" height="17.666666666666668"/>
@@ -116,7 +116,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="An8-fa-smv">
-                    <rect key="frame" x="238.33333333333337" y="491.66666666666669" width="165.66666666666663" height="30.666666666666686"/>
+                    <rect key="frame" x="238.33333333333337" y="498.66666666666669" width="165.66666666666663" height="30.666666666666686"/>
                     <color key="tintColor" name="Blue(main)"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Forget Password?">
@@ -124,7 +124,7 @@
                     </buttonConfiguration>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pnu-Qg-ork" customClass="RightImgIconeTextField" customModule="UILayerSpa">
-                    <rect key="frame" x="8" y="432.66666666666669" width="396" height="44"/>
+                    <rect key="frame" x="8" y="439.66666666666669" width="396" height="44"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <userDefinedRuntimeAttributes>
@@ -151,7 +151,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The password can not be blank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oR-x6-dZD">
-                    <rect key="frame" x="8" y="478.66666666666669" width="345.66666666666669" height="18"/>
+                    <rect key="frame" x="8" y="485.66666666666669" width="345.66666666666669" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" name="redColor"/>
                     <nil key="highlightedColor"/>
@@ -175,7 +175,7 @@
                 <constraint firstItem="dFT-vz-Ocn" firstAttribute="top" secondItem="uoK-rZ-hW7" secondAttribute="bottom" constant="20" id="L2y-KW-HLy"/>
                 <constraint firstItem="0oR-x6-dZD" firstAttribute="top" secondItem="Pnu-Qg-ork" secondAttribute="bottom" constant="2" id="M1U-Px-aAg"/>
                 <constraint firstItem="oQv-Kc-mFa" firstAttribute="centerX" secondItem="vtr-oi-Gzr" secondAttribute="centerX" id="N1z-3U-fRC"/>
-                <constraint firstItem="Pnu-Qg-ork" firstAttribute="top" secondItem="csd-AC-5Hg" secondAttribute="bottom" id="NEh-sM-aah"/>
+                <constraint firstItem="Pnu-Qg-ork" firstAttribute="top" secondItem="csd-AC-5Hg" secondAttribute="bottom" constant="7" id="NEh-sM-aah"/>
                 <constraint firstItem="dFT-vz-Ocn" firstAttribute="leading" secondItem="vtr-oi-Gzr" secondAttribute="leading" constant="8" id="P73-V9-OcL"/>
                 <constraint firstItem="M91-1c-i3y" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0342262" id="PB3-yX-VmK"/>
                 <constraint firstItem="Iw7-oO-cVT" firstAttribute="leading" secondItem="vtr-oi-Gzr" secondAttribute="leading" id="Pbh-I6-HQe"/>
@@ -208,11 +208,6 @@
             <point key="canvasLocation" x="1.4492753623188408" y="-113.16964285714285"/>
         </view>
     </objects>
-    <designables>
-        <designable name="Pnu-Qg-ork">
-            <size key="intrinsicContentSize" width="160.33333333333334" height="34"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Flag_of_Saudi_Arabia_without_sword" width="24" height="24"/>
         <image name="logo" width="138" height="100"/>

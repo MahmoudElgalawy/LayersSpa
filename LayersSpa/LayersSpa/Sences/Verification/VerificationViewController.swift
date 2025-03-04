@@ -120,7 +120,7 @@ private extension VerificationViewController {
                     }else{
                        // let alert = CustomAlertViewController()
                       //  alert.show("Invalid", "Code or phone not correct", buttonTitle: "Try Again",.redColor,.warning)
-                        self?.showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: "Code or phone not correct", btn: String(localized: "Retry"))
+                        self?.showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized:"otpNotCorrect"), btn: String(localized: "Retry"))
                     }
                 }
             }else{
@@ -131,6 +131,7 @@ private extension VerificationViewController {
 //
             
             if let otp = otpTF.text {
+                UserDefaults.standard.set(otp, forKey: "otp")
                 viewModel.checkOTP(phone: phoneNumber, otp: Int(otp) ?? 0) { [weak self] flag in
                     if flag {
                         let vc = NewPasswordViewController(viewModel: ForgotPasswordViewModel())
@@ -138,7 +139,7 @@ private extension VerificationViewController {
                     }else{
                        // let alert = CustomAlertViewController()
                       //  alert.show("Invalid", "Code or phone not correct", buttonTitle: "Try Again",.redColor,.warning)
-                        self?.showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: "Code or phone not correct", btn: String(localized: "Retry"))
+                        self?.showIncorrectBranchAlert(title:String(localized: "Invalid"), msg:  String(localized:"otpNotCorrect"), btn: String(localized: "Retry"))
                     }
                 }
             }else{
@@ -217,7 +218,7 @@ extension VerificationViewController {
 
     private func startCountdown() {
         resendCodeButton.isEnabled = false
-        updateResendButtonTitle() // تحديث العنوان
+        updateResendButtonTitle() 
         
         countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
     }
@@ -230,7 +231,7 @@ extension VerificationViewController {
                 countdownTimer?.invalidate()
                 countdownTimer = nil
                 resendCodeButton.isEnabled = true
-                resendCodeButton.setTitle("Resend Code", for: .normal) // استعادة النص الأصلي
+                resendCodeButton.setTitle("Resend Code", for: .normal)
             }
     }
     
