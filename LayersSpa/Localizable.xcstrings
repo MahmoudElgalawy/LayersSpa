@@ -203,6 +203,23 @@
         }
       }
     },
+    "anyProfessional" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "أي متخصص"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Any Professional"
+          }
+        }
+      }
+    },
     "blankEmail" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -930,6 +947,23 @@
         }
       }
     },
+    "forAllServices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "لكافة الخدمات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For all services"
+          }
+        }
+      }
+    },
     "forgetPass" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -960,6 +994,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Password"
+          }
+        }
+      }
+    },
+    "forMaximumAvailability" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "لأفضل توفر"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For maximum availability"
           }
         }
       }
@@ -1508,6 +1559,17 @@
         }
       }
     },
+    "perService" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "لكل خدمة على حدة"
+          }
+        }
+      }
+    },
     "Phoneblank" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1932,6 +1994,23 @@
         }
       }
     },
+    "selectOneProfessional" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "اختر أحد المتخصصين"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select one professional"
+          }
+        }
+      }
+    },
     "selectPaymentMSG" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1945,6 +2024,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Please Select Payment Method First"
+          }
+        }
+      }
+    },
+    "selectProfessional" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "اختر المتخصص"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select professional"
           }
         }
       }
