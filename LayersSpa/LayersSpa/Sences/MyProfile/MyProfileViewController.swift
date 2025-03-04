@@ -188,7 +188,7 @@ extension MyProfileViewController {
     }
     
     func bindSaveButton() {
-        saveChangesButton.setTitle("Save changes", for: .normal)
+        saveChangesButton.setTitle(String(localized: "saveChanges"), for: .normal)
         saveChangesButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
         saveChangesButton.applyButtonStyle(.filled)
     }
