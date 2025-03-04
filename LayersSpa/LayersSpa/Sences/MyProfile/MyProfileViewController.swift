@@ -79,11 +79,12 @@ class MyProfileViewController: UIViewController {
                 }
             }
         navBar.delegate = self
-        navBar.updateTitle("My Profile")
+        navBar.updateTitle(String(localized: "myProfile"))
         bindViewStyle()
         bindLabels()
         bindTextFields()
         bindSaveButton()
+        setTextFieldsHeader()
         userImageView.alpha = 0.5
         if let countryCode = UserDefaults.standard.string(forKey: "CoutryCode"),
                let phoneNumber = Defaults.sharedInstance.userData?.phone {
@@ -160,6 +161,13 @@ extension MyProfileViewController {}
 // MARK: - Configurations
 
 extension MyProfileViewController {
+    
+    private func setTextFieldsHeader() {
+        imageTitleLabel.text = String(localized: "profilePicture")
+        phoneTitleLabel.text = String(localized: "phoneNumberLbl")
+        nameTitleLabel.text = String(localized: "NameLbl")
+        emailTitleLabel.text = String(localized: "Email")
+    }
     
     func bindViewStyle() {
         userImage.roundCorners(radius: 40)

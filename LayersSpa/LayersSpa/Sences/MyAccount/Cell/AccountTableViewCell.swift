@@ -32,6 +32,13 @@ class AccountTableViewCell: UITableViewCell, IdentifiableView {
     func configeCell(_ cellInfo: BookingSummerySectionsVM) {
         cellImage.image = cellInfo.sectionIcon
         cellTitle.text = cellInfo.sectionTitle
+        rotateImageBasedOnLanguage()
+    }
+    
+    private func rotateImageBasedOnLanguage() {
+        let currentLanguage = Locale.preferredLanguages.first ?? "en"
+        let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
+        arrowImage.transform = CGAffineTransform(rotationAngle: rotationAngle)
     }
     
 }

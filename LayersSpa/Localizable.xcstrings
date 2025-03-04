@@ -1,6 +1,23 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "accountSettings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "إعدادات الحساب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Settings"
+          }
+        }
+      }
+    },
     "addToCart" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -557,6 +574,23 @@
         }
       }
     },
+    "myProfile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "حسابي الشخصي"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Profile"
+          }
+        }
+      }
+    },
     "NameLbl" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -777,6 +811,23 @@
         }
       }
     },
+    "profilePicture" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "صورة الحساب الشخصي"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile Picture"
+          }
+        }
+      }
+    },
     "readMore" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -818,6 +869,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "إزالة من السلة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove From Cart"
           }
         }
       }
@@ -924,6 +981,23 @@
         }
       }
     },
+    "signOut" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "تسجيل الخروج"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign Out"
+          }
+        }
+      }
+    },
     "SignUp" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -987,6 +1061,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "View all"
+          }
+        }
+      }
+    },
+    "wallet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "المحفظة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wallet"
           }
         }
       }
