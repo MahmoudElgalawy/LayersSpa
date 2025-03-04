@@ -25,14 +25,20 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
     @IBOutlet weak var showSelectedStack: UIStackView!
     @IBOutlet weak var stackViewSelectTime: UIStackView!
     @IBOutlet weak var timeImg: UIImageView!
-    
-    
+    @IBOutlet weak var selectProfessionalLabel: UILabel!
+    @IBOutlet weak var selectTimeLabel: UILabel!
     weak var delegate: ProfessionalPerServiceTableViewCellDelegation?
     var selectedServiceId: String?
+    @IBOutlet weak var arrowImage: UIImageView!
+    @IBOutlet weak var arrowImage2: UIImageView!
+    @IBOutlet weak var prfessionalLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        selectTimeLabel.text = String(localized: "selectTime")
+        selectProfessionalLabel.text = String(localized: "selectProfessional")
+        prfessionalLabel.text = String(localized: "professional")
         containerView.roundCorners(radius: 16)
         profImage.roundCorners(radius: 14)
         bindSelectProfessionalAndTimeViews()
@@ -44,6 +50,7 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
         selectProfessionalView.isUserInteractionEnabled = true
         showSelectedStack.isHidden = false
         selectedProfInfoStackView.isHidden = true
+        rotateImageBasedOnLanguage()
                 }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -62,6 +69,13 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
 //        stackViewSelectTime.isHidden = false
 //        selectTimeView.isUserInteractionEnabled = true
 //        lblSelectedTime.text = ""
+    }
+    
+    private func rotateImageBasedOnLanguage() {
+        let currentLanguage = Locale.preferredLanguages.first ?? "en"
+        let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
+        arrowImage.transform = CGAffineTransform(rotationAngle: rotationAngle)
+        arrowImage2.transform = CGAffineTransform(rotationAngle: rotationAngle)
     }
     
     func resetSelections() {
@@ -178,7 +192,7 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
             // تحقق مما إذا كان الموظف محددًا
             if profNameLabel.text?.isEmpty == true || profImage.image == nil {
                 // إظهار رسالة تنبيه
-                CustomAlertViewController().show("Warning!", "Please select professional first", buttonTitle: "Ok",navigateButtonTitle: "", .redColor, .warning, flag: true)
+                CustomAlertViewController().show(String(localized: "warning") + "!", String(localized: "pleaseSelectProfessionalFirst"), buttonTitle: String(localized: "ok"),navigateButtonTitle: "", .redColor, .warning, flag: true)
                 return
             }
             

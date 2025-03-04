@@ -32,6 +32,10 @@ class BookingDetailsTableViewCell: UITableViewCell, IdentifiableView {
     }
    
     func configureCell() {
+        locationLabel.text = String(localized: "location")
+        dateLabel.text = String(localized: "date")
+        timeSloteLabel.text = String(localized: "startTime")
+        
         LocalDataManager.sharedInstance.getLikeProductsListFromCoreData(.cart) { [weak self] services in
             guard let self = self else { return }
                 // استرجاع البيانات من Dictionary باستخدام serviceID

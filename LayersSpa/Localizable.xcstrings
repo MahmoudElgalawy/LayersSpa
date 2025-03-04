@@ -288,6 +288,40 @@
         }
       }
     },
+    "bookingDetails" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "تفاصيل الحجز"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking details"
+          }
+        }
+      }
+    },
+    "bookingSummery" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "تفاصيل الحجز"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking summery"
+          }
+        }
+      }
+    },
     "branch" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -369,6 +403,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cart"
+          }
+        }
+      }
+    },
+    "cartItems" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "عناصر السلة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cart items"
           }
         }
       }
@@ -673,6 +724,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Create Account"
+          }
+        }
+      }
+    },
+    "date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "التاريخ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
           }
         }
       }
@@ -1134,6 +1202,23 @@
         }
       }
     },
+    "location" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "الموقع"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location"
+          }
+        }
+      }
+    },
     "locations" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1567,6 +1652,12 @@
             "state" : "needs_review",
             "value" : "لكل خدمة على حدة"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per service"
+          }
         }
       }
     },
@@ -1637,6 +1728,40 @@
         }
       }
     },
+    "pleaseSelectAProfessionalBeforeContinuing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "يرجى اختيار المتخصص قبل المتابعة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select a professional before continuing"
+          }
+        }
+      }
+    },
+    "pleaseSelectProfessionalFirst" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "يرجى اختيار المتخصص أولاً"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select professional first"
+          }
+        }
+      }
+    },
     "popularServices" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1684,6 +1809,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Products"
+          }
+        }
+      }
+    },
+    "professional" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "المتخصص:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Professional:"
           }
         }
       }
@@ -1960,6 +2102,40 @@
         }
       }
     },
+    "selectDateAndBranchMSg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "حدث خطأ، يرجى اختيار الفرع والتاريخ مرة أخرى"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SomeThing Went Wrong Please Select Branch and Date Again"
+          }
+        }
+      }
+    },
+    "selectFromTimeSlots" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "اختر من الفترات الزمنية المتاحة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select from time slots"
+          }
+        }
+      }
+    },
     "selectLocation&Date" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2045,6 +2221,57 @@
         }
       }
     },
+    "selectProfessionalForAllServices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "يرجى اختيار متخصص لجميع الخدمات قبل المتابعة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please Select Professional For All Services before book Continue"
+          }
+        }
+      }
+    },
+    "selectTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "اختر الوقت"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Time"
+          }
+        }
+      }
+    },
+    "selectTimeForAllServices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "يرجى تحديد وقت لجميع الخدمات قبل المتابعة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select a time for all services before continuing"
+          }
+        }
+      }
+    },
     "serviceAtThisTimeMSG" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2113,6 +2340,23 @@
         }
       }
     },
+    "startTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "وقت البدء"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Time"
+          }
+        }
+      }
+    },
     "successfulStep" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2143,6 +2387,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terms of Use"
+          }
+        }
+      }
+    },
+    "timing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "التوقيت"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timing"
           }
         }
       }
@@ -2210,6 +2471,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VIEW APPOINTMENTS"
+          }
+        }
+      }
+    },
+    "viewProfile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عرض الملف الشخصي >"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View profile >"
           }
         }
       }

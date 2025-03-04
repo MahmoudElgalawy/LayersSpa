@@ -17,8 +17,8 @@ class BookingSummeryViewModel {
     var productsId: [String] = []
        
     let sectionsHeaderInfo: [BookingSummerySectionsVM] = [
-        BookingSummerySectionsVM(sectionIcon: .details, sectionTitle: "Booking details"),
-        BookingSummerySectionsVM(sectionIcon: .bookingCart, sectionTitle: "Cart items"),
+        BookingSummerySectionsVM(sectionIcon: .details, sectionTitle: String(localized: "bookingDetails")),
+        BookingSummerySectionsVM(sectionIcon: .bookingCart, sectionTitle: String(localized:"cartItems")),
         BookingSummerySectionsVM(sectionIcon: .bookingCart, sectionTitle: "")
     ]
     

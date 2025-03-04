@@ -43,6 +43,7 @@ class SelectProfessionalPerServiceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = String(localized: "selectProfessional")
         professionalPerServiceTableView.showsVerticalScrollIndicator = false
         clearStoredData()
         tableViewSetup()
@@ -177,7 +178,7 @@ extension SelectProfessionalPerServiceViewController: UITableViewDataSource {
 
 extension SelectProfessionalPerServiceViewController {
     func bindContinueButton() {
-        continueButton.setTitle("Continue", for: .normal)
+        continueButton.setTitle(String(localized: "continue"), for: .normal)
         continueButton.applyButtonStyle(.filled)
         continueButton.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
     }
@@ -229,7 +230,7 @@ extension SelectProfessionalPerServiceViewController {
         }
         
         if !allServicesSelected {
-            showNoTimeSelectedAlert(msg: "Please Select Professional For All Services before book Continue", btnTitle: "Select Professional")
+            showNoTimeSelectedAlert(msg: String(localized: "selectProfessionalForAllServices"), btnTitle: String(localized: "selectProfessional"))
             return
         }
         
@@ -239,7 +240,7 @@ extension SelectProfessionalPerServiceViewController {
         }
         
         if !allTimesSelected {
-            showNoTimeSelectedAlert(msg: "Please select a time for all services before continuing", btnTitle: "Select Time")
+            showNoTimeSelectedAlert(msg: String(localized: "selectTimeForAllServices"), btnTitle: String(localized: "selectTime"))
             return
         }
         
@@ -340,7 +341,7 @@ extension SelectProfessionalPerServiceViewController: ProfessionalPerServiceTabl
     }
     
     func showNoTimeSelectedAlert(msg: String, btnTitle: String) {
-        CustomAlertViewController().show("Warning", "\(msg)", buttonTitle: "\(btnTitle)",navigateButtonTitle: "", .redColor, .warning, flag: true)
+        CustomAlertViewController().show(String(localized: "warning"), "\(msg)", buttonTitle: "\(btnTitle)",navigateButtonTitle: "", .redColor, .warning, flag: true)
     }
 }
 

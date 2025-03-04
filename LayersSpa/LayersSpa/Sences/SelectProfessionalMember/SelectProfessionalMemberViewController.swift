@@ -42,6 +42,7 @@ class SelectProfessionalMemberViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = String(localized: "selectProfessional")
         selectedProfessional = nil
         tableViewSetup()
         bindDismissButton()
@@ -131,14 +132,14 @@ extension SelectProfessionalMemberViewController: UITableViewDataSource {
 
 extension SelectProfessionalMemberViewController {
     func bindContinueButton() {
-        continueButton.setTitle("Continue", for: .normal)
+        continueButton.setTitle(String(localized: "continue"), for: .normal)
         continueButton.applyButtonStyle(.filled)
         continueButton.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
     }
     
     @objc func continueTapped() {
         guard let _ = selectedProfessional, let indexPath = professionalMemberTableView.indexPathForSelectedRow else {
-            showNoServicesOrProductAlert(msg: "Please select a professional before continuing", btnTitle: "Select Professional")
+            showNoServicesOrProductAlert(msg: String(localized: "pleaseSelectAProfessionalBeforeContinuing"), btnTitle: String(localized: "selectProfessional"))
                return
            }
            
@@ -151,7 +152,7 @@ extension SelectProfessionalMemberViewController {
     
     func showNoServicesOrProductAlert(msg:String, btnTitle: String) {
         let alertVC = CustomAlertViewController()
-        alertVC.show("Warning", msg, buttonTitle: btnTitle,navigateButtonTitle: "", .redColor, .warning, flag: true)
+        alertVC.show(String(localized: "warning"), msg, buttonTitle: btnTitle,navigateButtonTitle: "", .redColor, .warning, flag: true)
         present(alertVC, animated: true, completion: nil)
     }
 }

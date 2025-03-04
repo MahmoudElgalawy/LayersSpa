@@ -45,7 +45,8 @@ class BookingSummeryViewController: UIViewController, CartDelegation {
         recalculateTotalCost()
         tableViewSetup()
         bindContinueButton()
-        navBar.updateTitle("Booking summery")
+        navBar.updateTitle(String(localized: "bookingSummery"))
+        totalLabel.text = String(localized: "total")
         navBar.delegate = self
        // fetchDetails()
 //        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("chandedunfav"), object: nil)
@@ -179,7 +180,7 @@ extension BookingSummeryViewController {}
 private extension BookingSummeryViewController {
     
     func bindContinueButton() {
-        continueButton.setTitle("Check-out", for: .normal)
+        continueButton.setTitle(String(localized: "checkOut"), for: .normal)
         continueButton.applyButtonStyle(.filled)
         continueButton.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
     }
