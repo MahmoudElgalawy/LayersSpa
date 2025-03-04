@@ -245,8 +245,8 @@
                     <color key="textColor" name="DarkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ozO-Pj-gjz">
-                    <rect key="frame" x="0.0" y="638" width="377" height="191"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ozO-Pj-gjz">
+                    <rect key="frame" x="0.0" y="12" width="393" height="817"/>
                     <color key="color" name="grayText"/>
                 </activityIndicatorView>
             </subviews>

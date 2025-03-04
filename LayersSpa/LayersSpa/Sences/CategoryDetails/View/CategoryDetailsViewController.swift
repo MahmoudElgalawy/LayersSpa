@@ -167,6 +167,7 @@ extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionV
         vc.serviceId = viewModel.getService(indexPath.row).productId
         vc.isProduct = false
         vc.product =  viewModel.getService(indexPath.row)
+        vc.servicesList = viewModel.getServices()
         navigationController?.pushViewController(vc, animated: true)
     }
     
