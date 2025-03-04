@@ -153,6 +153,23 @@
         }
       }
     },
+    "bookAppointment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "حجز موعد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Book appointment"
+          }
+        }
+      }
+    },
     "branch" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -183,6 +200,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "cart" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السلة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cart"
           }
         }
       }
@@ -587,6 +621,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Invalid"
+          }
+        }
+      }
+    },
+    "items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "عناصر"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Items"
           }
         }
       }

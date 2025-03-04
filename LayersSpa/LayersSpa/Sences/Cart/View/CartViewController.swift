@@ -18,7 +18,7 @@ class CartViewController: UIViewController {
     @IBOutlet weak var iremsNumLabel: UILabel!
     @IBOutlet weak var bookButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
-    
+    @IBOutlet weak var itemsLabel: UILabel!
     // MARK: Properties
 
     private var viewModel: CartViewModelType
@@ -40,6 +40,8 @@ class CartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = String(localized: "cart")
+        itemsLabel.text = String(localized: "items")
         tableViewSetup()
         bindBookButton()
         bindEmptyStateView()
@@ -56,7 +58,7 @@ class CartViewController: UIViewController {
        
     func bindBookButton() {
             bookButton.applyButtonStyle(.filled)
-            bookButton.setTitle("Book appointment", for: .normal)
+            bookButton.setTitle(String(localized: "bookAppointment"), for: .normal)
             bookButton.addTarget(self, action: #selector(bookButtonTapped), for: .touchUpInside)
         }
         
