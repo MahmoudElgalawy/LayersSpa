@@ -37,7 +37,7 @@ class AppointmentTableViewCell: UITableViewCell, IdentifiableView {
         // Configure the view for the selected state
     }
     
-    func configeCell(_ appointment: Calender,_ order: Order) {
+    func configeCell(_ appointment: Calender,_ order: Order?) {
             for branch in branches{
                 if appointment.branchID == branch.id{
                     locationLabel.text = branch.name
@@ -51,8 +51,8 @@ class AppointmentTableViewCell: UITableViewCell, IdentifiableView {
         dateLabel.text = "\((dateAndTime?[0])!)"
         timeLabel.text = "\((dateAndTime?[1])!)"
         idLabel.text = "\((appointment.reservationCode)!)"
-        cartDetailsLabel.text = "\(order.service) services / \(order.product) products"
-        priceLabel.text = "\(order.total)"
+        cartDetailsLabel.text = "\(order?.service ?? 5) services / \(order?.product ?? 5) products"
+        priceLabel.text = "\(order?.total ?? 1000)"
     }
     
 }
