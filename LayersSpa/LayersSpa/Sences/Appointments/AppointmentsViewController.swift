@@ -39,11 +39,12 @@ class AppointmentsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = String(localized: "myAppointments")
         indicator.startAnimating()
               //  appointmentTableView.isHidden = true // إخفاء الجدول حتى اكتمال التحميل
                 
                 // إعداد الأزرار
-                segmentedButtonsView.updateButtonsTitles("History", "Upcoming")
+        segmentedButtonsView.updateButtonsTitles(String(localized: "history"), String(localized:"upcoming"))
                 segmentedButtonsView.delegate = self
                 
              //  firstButtonTapped()
@@ -102,7 +103,7 @@ class AppointmentsViewController: UIViewController {
     
     func bindEmptyStateView(msg: String) {
         emptyAlertView.delegate = self
-        emptyAlertView.configeView(.emptyAppointment, msg, "Would you like to book a new appointment?", "Explore services")
+        emptyAlertView.configeView(.emptyAppointment, msg, String(localized: "wouldYouLikeToBookANewAppointment") + "?", String(localized: "exploreServices"))
     }
     
     func bindCalenderButton() {
@@ -200,7 +201,7 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
                 
                 if flag {
                     if self?.viewModel.calenders.isEmpty == true {
-                        self?.bindEmptyStateView(msg: "You don't have any previous appointments")
+                        self?.bindEmptyStateView(msg: String(localized: "youDon'tHaveAnyPreviousAppointments") + ".")
                         self?.emptyAlertView.isHidden = false
                         self?.appointmentTableView.isHidden = true
                     } else {
@@ -228,7 +229,7 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
                 
                 if flag {
                     if self?.viewModel.calenders.isEmpty == true {
-                        self?.bindEmptyStateView(msg: "You don't have any upcoming appointments.")
+                        self?.bindEmptyStateView(msg: String(localized: "youDon'tHaveAnyUpcomingAppointments") + ".")
                         self?.emptyAlertView.isHidden = false
                         self?.appointmentTableView.isHidden = true
                     } else {

@@ -1100,6 +1100,23 @@
         }
       }
     },
+    "history" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "تاريخ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History"
+          }
+        }
+      }
+    },
     "Invalid" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1317,6 +1334,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You Must Select Date Before Continue"
+          }
+        }
+      }
+    },
+    "myAppointments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "مواعيدي"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Appointments"
           }
         }
       }
@@ -2425,6 +2459,23 @@
         }
       }
     },
+    "upcoming" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "قادم"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpComing"
+          }
+        }
+      }
+    },
     "verificationsent" : {
       "localizations" : {
         "ar" : {
@@ -2577,6 +2628,23 @@
         }
       }
     },
+    "wouldYouLikeToBookANewAppointment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل ترغب في حجز موعد جديد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Would you like to book a new appointment"
+          }
+        }
+      }
+    },
     "year" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2607,6 +2675,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You are about to sign out"
+          }
+        }
+      }
+    },
+    "youDon'tHaveAnyPreviousAppointments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ليس لديك أي مواعيد سابقة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You don't have any previous appointments"
+          }
+        }
+      }
+    },
+    "youDon'tHaveAnyUpcomingAppointments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ليس لديك أي مواعيد قادمة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You don't have any upcoming appointments"
           }
         }
       }

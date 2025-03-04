@@ -51,7 +51,7 @@ class AppointmentTableViewCell: UITableViewCell, IdentifiableView {
         dateLabel.text = "\((dateAndTime?[0])!)"
         timeLabel.text = "\((dateAndTime?[1])!)"
         idLabel.text = "\((appointment.reservationCode)!)"
-        cartDetailsLabel.text = "\(order?.service ?? 5) services / \(order?.product ?? 5) products"
+        cartDetailsLabel.text = "\(order?.service ?? 5) \(String(localized: "services")) / \(order?.product ?? 5) \(String(localized: "products"))"
         priceLabel.text = "\(order?.total ?? 1000)"
     }
     
