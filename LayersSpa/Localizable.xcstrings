@@ -86,6 +86,23 @@
         }
       }
     },
+    "allDatarequired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "جميع البيانات مطلوبة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Data Required"
+          }
+        }
+      }
+    },
     "Alreadyhaveanaccount" : {
       "localizations" : {
         "ar" : {
@@ -557,9 +574,6 @@
         }
       }
     },
-    "Key" : {
-      "extractionState" : "manual"
-    },
     "language" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -742,7 +756,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ok"
+            "value" : "Ok"
           }
         }
       }
@@ -1171,6 +1185,23 @@
         }
       }
     },
+    "successfulStep" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "الخطوة الناجحة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successful Step"
+          }
+        }
+      }
+    },
     "Terms" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1319,6 +1350,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your Balance"
+          }
+        }
+      }
+    },
+    "yourProfileUpdatedSuccessfully" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "تم تحديث حسابك الشخصي بنجاح"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Profile Updated Successfully"
           }
         }
       }

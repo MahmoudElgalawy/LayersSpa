@@ -203,7 +203,7 @@ private extension MyProfileViewController {
                   let name = nameTF.text, !name.isEmpty,
                 //  let lastName = lastNametxt.text, !lastName.isEmpty,
               let countryCode = phoneTF.countryLabel.text, !countryCode.isEmpty, let phoneNumber = phoneTF.phoneTextField.text, !phoneNumber.isEmpty else {
-            showEmptyState(title: "Warning", msg: "All Data Required", button: "Ok", image: .warning)
+            showEmptyState(title: String(localized: "warning") + "!", msg: String(localized: "allDatarequired"), button: String(localized: "ok"), image: .warning)
                   indicator.stopAnimating()
                 return
             }
@@ -213,7 +213,7 @@ private extension MyProfileViewController {
                 case .success(let message):
                     print(message)
                     DispatchQueue.main.async {
-                        self?.showEmptyState(title: "Successful Step ✔️", msg: "Your Profile Updated Successfully", button: "Ok", image: .alertImage)
+                        self?.showEmptyState(title: String(localized: "successfulStep")  + "✔️", msg: String(localized: "yourProfileUpdatedSuccessfully"), button: String(localized: "ok"), image: .alertImage)
                         self?.indicator.stopAnimating()
                     }
                     
