@@ -141,7 +141,7 @@ extension MyAccountViewController : UITableViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             let alertVC = CustomAlertViewController()
-            alertVC.show("Warning", "You are about to sign out", buttonTitle: "Sign Out",navigateButtonTitle: "Cancel", .redColor, .warning, flag: false)
+            alertVC.show(String(localized: "warning") + "!", String(localized: "youAreAboutToSignOut"), buttonTitle: String(localized: "signOut"),navigateButtonTitle: String(localized: "cancel"), .redColor, .warning, flag: false)
             alertVC.alertDelegate = self
         default:
             print("Default")

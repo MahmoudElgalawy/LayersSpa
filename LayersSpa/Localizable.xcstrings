@@ -1255,6 +1255,23 @@
         }
       }
     },
+    "youAreAboutToSignOut" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "أنت على وشك تسجيل الخروج"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are about to sign out"
+          }
+        }
+      }
+    },
     "youMightAlsoLike" : {
       "extractionState" : "manual",
       "localizations" : {
