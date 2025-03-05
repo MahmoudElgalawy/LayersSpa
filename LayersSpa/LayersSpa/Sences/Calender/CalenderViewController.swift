@@ -42,7 +42,7 @@ class CalenderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        appointmentTitleLabel.text = String(localized: "Calender")
+        appointmentTitleLabel.text = String(localized: "Appointments")
         getCurrentDateappointment()
         tableViewSetup()
         navBar.updateTitle(String(localized: "Calender"))

@@ -212,7 +212,7 @@ extension SettingViewController : RegistrationNavigationBarDelegate {
                         UserDefaults.standard.set([newLanguage], forKey: "AppleLanguages")
                         UserDefaults.standard.synchronize()
                     }
-           // exit(0)
+            exit(0)
         }else{
             viewModel.logOut { flag in
                 if flag {

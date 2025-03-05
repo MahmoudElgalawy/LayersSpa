@@ -220,6 +220,23 @@
         }
       }
     },
+    "Appointments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المواعيد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appointments"
+          }
+        }
+      }
+    },
     "blankEmail" : {
       "extractionState" : "manual",
       "localizations" : {
