@@ -100,7 +100,8 @@ class CustomDateAlertViewController: UIViewController, CustomAlertDelegate {
     
     private func formatDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d-M-yyyy"   
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "d-M-yyyy"
         return dateFormatter.string(from: date)
     }
     func showSelectOtherAlert() {
