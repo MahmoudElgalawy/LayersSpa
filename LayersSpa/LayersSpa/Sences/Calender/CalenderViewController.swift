@@ -70,6 +70,7 @@ class CalenderViewController: UIViewController {
         viewModel.ordersDetails.removeAll()
         let selectedDate = datePicker.date
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let formattedDate = dateFormatter.string(from: selectedDate)
@@ -164,6 +165,7 @@ extension CalenderViewController {
     func getCurrentDateappointment() {
         indicator.startAnimating()
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "yyyy-MM-dd"
       
         
