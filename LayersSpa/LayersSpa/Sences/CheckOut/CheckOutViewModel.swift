@@ -126,7 +126,15 @@ extension CheckOutViewModel {
             
             for service in sortedServices {
                 if let fullTime = savedTimes["\(service.productId)"] {
-                    let totalTime = fullTime.split(separator: "-")
+                    
+                    let arabicDigits = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"]
+                    let englishDigits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                    var convertedString = fullTime
+                    for (index, arabicDigit) in arabicDigits.enumerated() {
+                        convertedString = convertedString.replacingOccurrences(of: arabicDigit, with: englishDigits[index])
+                    }
+                    
+                    let totalTime = convertedString.split(separator: "-")
                     startTime.append(totalTime[0].trimmingCharacters(in: .whitespaces))
                     endTime.append(totalTime[1].trimmingCharacters(in: .whitespaces))
                 }
