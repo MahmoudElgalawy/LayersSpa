@@ -16,6 +16,7 @@ class RegistrationNavigationBar: UIViewFromNib {
     override func awakeFromNib() {
         super.awakeFromNib()
         bindBackButton()
+        rotateImageBasedOnLanguage()
     }
     
     func bindBackButton() {
@@ -34,7 +35,7 @@ class RegistrationNavigationBar: UIViewFromNib {
             let currentLanguage = Locale.preferredLanguages.first ?? "en"
             let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
             backButton.transform = CGAffineTransform(rotationAngle: rotationAngle)
-        }
+    }
 }
 
 protocol RegistrationNavigationBarDelegate: AnyObject {
