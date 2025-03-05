@@ -63,6 +63,7 @@ class ForgotPasswordViewController: UIViewController, CustomAlertDelegate {
         bindLabels()
         bindResetPasswordButton()
         bindViewModel()
+       // rotateImageBasedOnLanguage()
     }
     
     @objc func textFieldDidChange() {
@@ -187,6 +188,7 @@ extension ForgotPasswordViewController: RegistrationNavigationBarDelegate {
     
     func alertButtonClicked() {
     }
+    
     
 }
 

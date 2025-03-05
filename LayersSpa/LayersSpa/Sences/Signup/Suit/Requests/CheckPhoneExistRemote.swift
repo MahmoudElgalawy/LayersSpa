@@ -22,7 +22,7 @@ public class CheckPhoneExistRemote: Remote, CheckPhoneExistRemoteProtocol {
     public func checkPhoneExist(_ phoneNumber: String, completion: @escaping (Result<CheckPhoneExist, Error>) -> Void) {
         let path = "api/customers/phone_exist"
         let parameters: Parameters = ["phone": phoneNumber]
-        let headers: HTTPHeaders = ["apikey": "efe2db322a53", "Accept-Language": "en"]
+        let headers: HTTPHeaders = ["apikey": "efe2db322a53", "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"]
         
         let request = LayersApiRequest(method: .post, base: Settings.registrationsApiBaseURL, path: path, parameters: parameters, header: headers)
         

@@ -56,7 +56,7 @@ public class ServicesRemote: ServicesRemoteProtocol {
             "secure-business-key": Settings.secureBusinessKey,
             "apiconnection": "appmobile",
             "apikey": "5f28583f26a1a",
-            "Accept-Language": "ar"
+            "lang": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
 
         // تنفيذ الطلب
@@ -91,7 +91,7 @@ public class ServicesRemote: ServicesRemoteProtocol {
             "secure-business-key": Settings.secureBusinessKey,
             "apiconnection": "appmobile",
             "apikey": "5f28583f26a1a",
-            "Accept-Language": "ar"
+            "lang": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
 
         // تنفيذ الطلب
@@ -127,7 +127,7 @@ public class ServicesRemote: ServicesRemoteProtocol {
             "secure-business-key": Settings.secureBusinessKey,
             "apiconnection": "appmobile",
             "apikey": "5f28583f26a1a",
-            "Accept-Language": "ar"
+            "lang": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
 
         // تنفيذ الطلب

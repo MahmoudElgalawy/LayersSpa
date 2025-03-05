@@ -21,6 +21,7 @@ class PaymentRemote: Remote, PaymentRemoteProtocol {
         let url = "https://taccounting.vodoerp.com/api/advanced_payment/moyasar_payment"
         let headers: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130",
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
         let parameters: Parameters = [
             "name": name ,

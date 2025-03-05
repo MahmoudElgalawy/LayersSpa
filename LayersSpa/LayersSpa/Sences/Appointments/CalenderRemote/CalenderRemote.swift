@@ -26,7 +26,7 @@ class CalendersRemote: Remote, CalendersRemoteProtocol {
         
         let headers: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130",
-            "lang": "en"
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
         let parameters: Parameters = [
             "type": type,
@@ -73,7 +73,7 @@ class CalendersRemote: Remote, CalendersRemoteProtocol {
         
         let headers: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130",
-            "lang": "en"
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
         let parameters: Parameters = [
             "orders_id": ordersID

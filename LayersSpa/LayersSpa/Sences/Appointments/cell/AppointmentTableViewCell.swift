@@ -38,6 +38,7 @@ class AppointmentTableViewCell: UITableViewCell, IdentifiableView {
     }
     
     func configeCell(_ appointment: Calender,_ order: Order?) {
+        
             for branch in branches{
                 if appointment.branchID == branch.id{
                     locationLabel.text = branch.name

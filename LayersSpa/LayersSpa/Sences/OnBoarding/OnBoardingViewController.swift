@@ -64,6 +64,7 @@ class OnBoardingViewController: UIViewController {
                    bindLabels()
                    setupLabels()
                }
+        UserDefaults.standard.set("en", forKey: "selectedLanguage")
     }
     
     func setupViwe() {

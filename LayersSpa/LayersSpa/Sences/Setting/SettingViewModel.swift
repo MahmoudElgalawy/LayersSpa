@@ -17,6 +17,7 @@ class SettingViewModel {
         settingVM(type: .appLanguage, title: "العربية", icon: .arabic),
         settingVM(type: .appLanguage, title: "English", icon: .english)
     ]
+    var onLanguageChanged: (() -> Void)?
     let remote: SettingRemoteProtocol =  SettingRemote(network: AlamofireNetwork())
 //    var notification: [settingVM] = [
 //        settingVM(type: .notifications, title: "App Notifications", icon: .notification1),
@@ -88,4 +89,8 @@ private extension SettingViewModel {
 //        
     }
     
+    func changeLanguage(to code: String) {
+            LanguageManager.shared.setLanguage(code)
+            onLanguageChanged?() // تشغيل الـ Closure عند تغيير اللغة
+        }
 }

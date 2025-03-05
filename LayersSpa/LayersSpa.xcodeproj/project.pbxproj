@@ -80,6 +80,7 @@
 		3CC431CA2C60E953000E99B8 /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC431C62C60E953000E99B8 /* WithdrawViewController.swift */; };
 		3CC431CB2C60E953000E99B8 /* WithdrawViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC431C72C60E953000E99B8 /* WithdrawViewModel.swift */; };
 		3CC431CC2C60E953000E99B8 /* WithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CC431C82C60E953000E99B8 /* WithdrawViewController.xib */; };
+		40541AF42D7796530068FD32 /* Bundel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40541AF32D7796440068FD32 /* Bundel.swift */; };
 		431F3C1B2C6051E20052DFAA /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F3C192C6051E20052DFAA /* AccountTableViewCell.swift */; };
 		431F3C1C2C6051E20052DFAA /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 431F3C1A2C6051E20052DFAA /* AccountTableViewCell.xib */; };
 		431F3C222C6063590052DFAA /* MyProfileViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F3C1E2C6063590052DFAA /* MyProfileViewModelType.swift */; };
@@ -412,6 +413,7 @@
 		3CC431C62C60E953000E99B8 /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
 		3CC431C72C60E953000E99B8 /* WithdrawViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewModel.swift; sourceTree = "<group>"; };
 		3CC431C82C60E953000E99B8 /* WithdrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawViewController.xib; sourceTree = "<group>"; };
+		40541AF32D7796440068FD32 /* Bundel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundel.swift; sourceTree = "<group>"; };
 		431F3C192C6051E20052DFAA /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		431F3C1A2C6051E20052DFAA /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		431F3C1E2C6063590052DFAA /* MyProfileViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModelType.swift; sourceTree = "<group>"; };
@@ -837,6 +839,7 @@
 		1ECA76462D331C2D0045BB92 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				40541AF32D7796440068FD32 /* Bundel.swift */,
 				1E5A0C9A2D4D3975007624D7 /* UIImageExtension.swift */,
 				1ECA76472D331C560045BB92 /* SearchControllerExtension.swift */,
 				1ECA76492D34397A0045BB92 /* ViewControllerExtension.swift */,
@@ -2872,6 +2875,7 @@
 				434C3B032C6ADF9B00171983 /* AllReviewsViewModel.swift in Sources */,
 				43C986182C4C328200BE1C5F /* AppointmentsViewController.swift in Sources */,
 				43F477892C6A9E3B00069AAF /* ServiceDetailsTableViewSectionsType.swift in Sources */,
+				40541AF42D7796530068FD32 /* Bundel.swift in Sources */,
 				43FF59142C56FFAD00E50629 /* CustomDatePicker.swift in Sources */,
 				3CC431882C5A320E000E99B8 /* BookTimeSlotsViewController.swift in Sources */,
 				43CF80ED2C6709D200D9E7D6 /* TermsOfUseViewModelType.swift in Sources */,

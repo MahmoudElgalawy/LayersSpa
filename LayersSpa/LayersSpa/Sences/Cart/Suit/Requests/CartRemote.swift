@@ -35,7 +35,7 @@ public class CartRemote: Remote, CartRemoteProtocol {
         let header: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130",
             "user-id": userId,
-            "lang": "en"
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
 
         
@@ -55,7 +55,7 @@ public class CartRemote: Remote, CartRemoteProtocol {
         ]
         let header: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130", //728106399db2b289783.89154521
-            "lang": "en"
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
 
         
@@ -74,7 +74,7 @@ public class CartRemote: Remote, CartRemoteProtocol {
         
         let header: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130",
-            "lang": "en"
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
         
         let request = LayersApiRequest(method: .delete, base: Settings.ecommerceApiBaseURL, path: path, parameters: parameters, header: header, encoderType: JSONEncoding.default)

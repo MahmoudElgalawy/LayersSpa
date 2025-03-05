@@ -29,6 +29,12 @@ class RegistrationNavigationBar: UIViewFromNib {
     @objc func backIsTapped() {
         navDelegate?.back()
     }
+    
+    private func rotateImageBasedOnLanguage() {
+            let currentLanguage = Locale.preferredLanguages.first ?? "en"
+            let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
+            backButton.transform = CGAffineTransform(rotationAngle: rotationAngle)
+        }
 }
 
 protocol RegistrationNavigationBarDelegate: AnyObject {
