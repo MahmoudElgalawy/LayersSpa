@@ -84,7 +84,7 @@ extension ForgotPasswordViewController {
         
         viewModel.onShowNetworkErrorAlertClosure = { [weak self] alertMessage in
             guard let self = self else { return }
-            self.showAlert(msg: alertMessage)
+           // self.showAlert(msg: alertMessage)
             print(alertMessage)
         }
         
