@@ -47,16 +47,19 @@ public class HomeRemote: HomeRemoteProtocol {
             completion(.failure(NSError(domain: "InvalidURL", code: -1, userInfo: nil)))
             return
         }
-
+        let savedLanguages = UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String //as? [String],
+//           let savedLanguage = savedLanguages.first {
+//            print("Saved language: \(savedLanguage)")
+//        }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = [
             "secure-business-key": Settings.secureBusinessKey,
             "platform": Settings.platform,
             "platform-key": Settings.platformKey,
-            "Accept-Language": "en"
+            "Accept-Language": "\((savedLanguages)!)"
         ]
-
+        
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -94,7 +97,7 @@ public class HomeRemote: HomeRemoteProtocol {
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = [
             "business-secure-key": Settings.secureBusinessKey,
-            "Accept-Language": "en"
+            "lang": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
 
         let task = session.dataTask(with: request) { data, response, error in

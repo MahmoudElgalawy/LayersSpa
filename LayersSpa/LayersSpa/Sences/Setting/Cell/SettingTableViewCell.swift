@@ -54,11 +54,11 @@ class SettingTableViewCell: UITableViewCell, IdentifiableView {
         }
     }
     
-    private func rotateIconBasedOnLanguage() {
-        let currentLanguage = Locale.preferredLanguages.first ?? "en"
-        let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
-        rightIcone.transform = CGAffineTransform(rotationAngle: rotationAngle)
-    }
+//    private func rotateIconBasedOnLanguage() {
+//        let currentLanguage = Locale.preferredLanguages.first ?? "en"
+//        let rotationAngle: CGFloat = currentLanguage == "ar" ? .pi : 0
+//        rightIcone.transform = CGAffineTransform(rotationAngle: rotationAngle)
+//    }
     
     func languageSelectionStyle() {
         rightIcone.image = .selectedRadioButton
@@ -72,6 +72,12 @@ class SettingTableViewCell: UITableViewCell, IdentifiableView {
         containerView.layer.borderColor = UIColor.whiteColor.cgColor
         containerView.layer.borderWidth = 1
         cellTitle.textColor = .titlesTF
+    }
+    
+    func rotateIconBasedOnLanguage() {
+        let savedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "en"
+        let rotationAngle: CGFloat = savedLanguage == "ar" ? .pi : 0
+        rightIcone.transform = CGAffineTransform(rotationAngle: rotationAngle)
     }
     
 }

@@ -19,7 +19,8 @@ class CustomerBalanceRemote: CustomerBalanceRemoteProtocol {
     func fetchCustomerBalance(completion: @escaping (Result<WalletModel, Error>) -> Void) {
         let path = "/api/customers/customer_balance/\((Defaults.sharedInstance.userData?.userId)!)/1"
         let headers: HTTPHeaders = [
-            "apikey": "efe2db322a53"
+            "apikey": "efe2db322a53",
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
         
         let url = "\(baseURL)\(path)"

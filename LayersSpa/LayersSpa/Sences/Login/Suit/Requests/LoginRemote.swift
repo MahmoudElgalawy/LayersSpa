@@ -28,7 +28,7 @@ public class LoginRemote: Remote, LoginRemoteProtocol {
             "secure-business-key": Settings.secureBusinessKey,
                  "apiconnection": "appmobile",
                  "apikey": "5f28583f26a1a",
-                 "Accept-Language": "en",
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)",
                  "Platform": "ios",
                  "Platform-key": Settings.platformKey
         ])

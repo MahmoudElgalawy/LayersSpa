@@ -15,7 +15,7 @@ typealias CalenderViewModelType = CalenderViewModelInput & CalenderViewModelOutp
 ///
 protocol CalenderViewModelInput {
     var calenders: [Calender] {get set}
-    var ordersDetails : [Order] {get set}
+    var ordersDetails : [Order?] {get set}
     var isDataLoaded: Bool {get set}
 }
 

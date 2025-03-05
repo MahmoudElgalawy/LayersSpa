@@ -40,6 +40,7 @@ class TransactionRemote: Remote, TransactionRemoteProtocol {
 
     // MARK: - Save Cart Product
     func SaveCartProduct(_ userId: Int, _ productsId: [String], _ itemsQty: [Int]) {
+       
         let url = "https://testecommerce.vodoerp.com/api/v2/abandoned_order"
         let parameters: Parameters = [
             "user_id": userId,
@@ -49,7 +50,7 @@ class TransactionRemote: Remote, TransactionRemoteProtocol {
         
         let headers: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130",
-            "lang": "en"
+            "lang": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
         
         print("🔵 Sending request to: \(url)")
@@ -104,9 +105,8 @@ class TransactionRemote: Remote, TransactionRemoteProtocol {
         request.httpMethod = "PUT"
         request.timeoutInterval = 30
         request.setValue("4765066450c0bd66325.48403130", forHTTPHeaderField: "secure-business-key")
-        request.setValue("en", forHTTPHeaderField: "lang")
+        request.setValue("\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)", forHTTPHeaderField: "lang")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         let parameters: [String: Any] = ["user_id": userId]
         
         do {
@@ -197,7 +197,8 @@ class TransactionRemote: Remote, TransactionRemoteProtocol {
         let headers: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130",
             "Content-Type": "application/json",
-            "user-token" : "\((Defaults.sharedInstance.userData?.token)!)"
+            "user-token" : "\((Defaults.sharedInstance.userData?.token)!)",
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
 
         print("🔵 Sending request to: \(url)")
@@ -242,6 +243,7 @@ class TransactionRemote: Remote, TransactionRemoteProtocol {
         let url = "https://testecommerce.vodoerp.com/api/v2/update_reservation_id/\(orderId)"
         let headers: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130",
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
         let parameters: Parameters = [
             "service_id": servicesIds ?? [],

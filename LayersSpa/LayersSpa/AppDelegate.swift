@@ -16,10 +16,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         IQKeyboardManager.shared.enable = true
-        // Override point for customization after application launch.
+
         return true
     }
+//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        IQKeyboardManager.shared.enable = true
+//        let selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "en"
+//        setApplicationLanguage(selectedLanguage)
+//        if let selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") {
+//            Bundle.setLanguage(selectedLanguage)
+//        }
+//        NotificationCenter.default.addObserver(self, selector: #selector(restartApp), name: NSNotification.Name("LanguageChanged"), object: nil)
+//
+//        return true
+//    }
 
+
+//    private func setApplicationLanguage(_ languageCode: String) {
+//        UserDefaults.standard.set([languageCode], forKey: "AppleLanguages")
+//        UserDefaults.standard.synchronize()
+//    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -78,6 +95,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 

@@ -33,7 +33,7 @@ public class SignupRemote: Remote, SignupRemoteProtocol {
             "secure-business-key": "4765066450c0bd66325.48403130",
             "platform": "android",
             "platform-key": "387666a26a0ad869c9.00802837",
-            "Accept-Language": "en"
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
 
         

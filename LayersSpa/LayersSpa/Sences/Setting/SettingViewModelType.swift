@@ -13,7 +13,9 @@ typealias SettingViewModelType = SettingViewModelInput & SettingViewModelOutput
 
 /// Setting ViewModel Input
 ///
-protocol SettingViewModelInput {}
+protocol SettingViewModelInput {
+    var onLanguageChanged: (() -> Void)? { get set }
+}
 
 /// Setting ViewModel Output
 ///

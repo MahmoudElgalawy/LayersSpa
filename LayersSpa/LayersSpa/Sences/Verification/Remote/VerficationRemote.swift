@@ -33,7 +33,7 @@ public class VerficationRemote: Remote, VerficationRemoteProtocol {
             "secure-business-key": Settings.secureBusinessKey,
             "platform": Settings.platform,
             "platform-key": Settings.platformKey,
-            "Accept-Language": "ar",
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)",
             "apikey": "efe2db322a53"
         ]
 
@@ -60,7 +60,7 @@ public class VerficationRemote: Remote, VerficationRemoteProtocol {
      func getOTP(_ phoneNumber: String, completion: @escaping (Result<OTPResponse, Error>) -> Void) {
        let path = "https://taccounting.vodoerp.com/api/customers/send_otp"
        let parameters: Parameters = ["phone": Int(phoneNumber)!]
-       let headers: HTTPHeaders = [ "secure-business-key": Settings.secureBusinessKey,"apikey": "efe2db322a53"]
+       let headers: HTTPHeaders = [ "secure-business-key": Settings.secureBusinessKey,"apikey": "efe2db322a53", "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"]
 //
 //       let request = LayersApiRequest(method: .post, base: Settings.registrationsApiBaseURL, path: path, parameters: parameters, header: headers, encoderType: JSONEncoding.default)
         
@@ -82,7 +82,7 @@ public class VerficationRemote: Remote, VerficationRemoteProtocol {
     func checkOTP(_ phoneNumber: String,otp: Int, completion: @escaping (Result<OTPVerificationResponse, Error>) -> Void) {
       let path = "https://taccounting.vodoerp.com/api/customers/confirm_otp"
         let parameters: Parameters = ["phone": Int(phoneNumber)!,"code": otp]
-      let headers: HTTPHeaders = [ "secure-business-key": Settings.secureBusinessKey,"apikey": "efe2db322a53"]
+      let headers: HTTPHeaders = [ "secure-business-key": Settings.secureBusinessKey,"apikey": "efe2db322a53", "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"]
 //
 //       let request = LayersApiRequest(method: .post, base: Settings.registrationsApiBaseURL, path: path, parameters: parameters, header: headers, encoderType: JSONEncoding.default)
        

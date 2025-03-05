@@ -24,7 +24,7 @@ class CalenderViewController: UIViewController {
     @IBOutlet weak var navBar: NavigationBarWithBack!
     // MARK: Properties
 
-    private let viewModel: CalenderViewModelType
+    private var viewModel: CalenderViewModelType
 
     // MARK: Init
 
@@ -42,9 +42,10 @@ class CalenderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        appointmentTitleLabel.text = String(localized: "Calender")
         getCurrentDateappointment()
         tableViewSetup()
-        navBar.updateTitle("Calender")
+        navBar.updateTitle(String(localized: "Calender"))
         navBar.delegate = self
         appointmentTableView.reloadData()
         updateTableViewHeight()
@@ -66,6 +67,7 @@ class CalenderViewController: UIViewController {
     
     @objc func dateChanged(_ datePicker: UIDatePicker) {
         indicator.startAnimating()
+        viewModel.ordersDetails.removeAll()
         let selectedDate = datePicker.date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -87,7 +89,7 @@ class CalenderViewController: UIViewController {
                     self?.appointmentTableView.reloadData()
                 }
             }else{
-                self?.showErrorAlert(title: "Warning", msg: "SomeThing Went Wrong,Please Try Again", btnTitle: "Ok")
+//                self?.showErrorAlert(title: "Warning", msg: "SomeThing Went Wrong,Please Try Again", btnTitle: "Ok")
                 self?.appointmentTableView.isHidden = true
                 self?.emptyAlertView.isHidden = false
             }
@@ -139,11 +141,16 @@ extension CalenderViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: AppointmentTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-//        var price = 0.0
-//        if indexPath.row < viewModel.ordersDetails.count {
-//            price = .total
-   //     }
-        cell.configeCell(viewModel.calenders[indexPath.row],viewModel.ordersDetails[indexPath.row])
+        
+        guard indexPath.row < viewModel.calenders.count else {
+            return cell
+        }
+        
+        let calender = viewModel.calenders[indexPath.row]
+        
+        let order = (indexPath.row < viewModel.ordersDetails.count) ? viewModel.ordersDetails[indexPath.row] : nil
+        
+        cell.configeCell(calender, order)
         return cell
     }
     

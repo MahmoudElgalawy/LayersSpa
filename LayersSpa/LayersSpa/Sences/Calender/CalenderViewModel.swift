@@ -18,7 +18,7 @@ class CalenderViewModel {
     
     var calenders = [Calender]()
     var ordersIds = ""
-    var ordersDetails = [Order]()
+    var ordersDetails = [Order?]()
     var data = [Calender]()
     var reload: () -> Void = {}
     var isDataLoaded = false // إضافة حالة التحميل
@@ -39,9 +39,10 @@ extension CalenderViewModel: CalenderViewModelOutput, CalenderViewModelInput {
             case .success(let data):
                 self.ordersIds = data.data.reservations.compactMap { $0.ecommOrderID }.joined(separator: ",")
                 self.data = data.data.reservations
-                
+
                 if self.ordersIds.isEmpty {
                     self.calenders = self.data
+                    self.ordersDetails = Array(repeating: nil, count: self.data.count) // إضافة هنا
                     self.isDataLoaded = true
                     self.reload()
                     completion(true)
@@ -90,8 +91,8 @@ extension CalenderViewModel: CalenderViewModelOutput, CalenderViewModelInput {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
             
-            let orderDict = Dictionary(uniqueKeysWithValues: self.ordersDetails.map { ($0.id, $0) })
-            let sortedOrders = self.data.compactMap { calender -> Order? in
+            let orderDict = Dictionary(uniqueKeysWithValues: self.ordersDetails.compactMap { $0 }.map { ($0.id, $0) })
+            let sortedOrders = self.data.map { calender -> Order? in
                 if let ecommIDString = calender.ecommOrderID, let ecommID = Int(ecommIDString) {
                     return orderDict[ecommID]
                 }
@@ -104,13 +105,12 @@ extension CalenderViewModel: CalenderViewModelOutput, CalenderViewModelInput {
             }
         }
     }
-    
     private func printIDsComparison() {
         print("🔹 OrderDetails IDs vs. Calenders ecommOrderIDs 🔹")
         let maxCount = max(ordersDetails.count, calenders.count)
         
         for i in 0..<maxCount {
-            let orderID = i < ordersDetails.count ? "\(ordersDetails[i].id)" : "N/A"
+            let orderID = i < ordersDetails.count ? "\(ordersDetails[i]?.id)" : "N/A"
             let calenderID = i < calenders.count ? "\(calenders[i].ecommOrderID ?? "N/A")" : "N/A"
             print("🔹 OrderDetails ID: \(orderID)  |  Calender ecommOrderID: \(calenderID)")
         }

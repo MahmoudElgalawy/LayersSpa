@@ -26,7 +26,7 @@ public class ResetPasswordRemote: Remote, ResetPasswordRemoteProtocol {
             "secure-business-key": Settings.secureBusinessKey,
             "platform": Settings.platform,
             "platform-key": Settings.platformKey,
-            "Accept-Language": "ar",
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)",
             "apikey": "efe2db322a53"
         ]
         

@@ -305,6 +305,23 @@
         }
       }
     },
+    "Calender" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التقويم"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calender"
+          }
+        }
+      }
+    },
     "cancel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -403,6 +420,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Categories"
+          }
+        }
+      }
+    },
+    "Change" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تغيير"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change"
+          }
+        }
+      }
+    },
+    "changeLanguage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يحتاج layersSpa إلى إعادة التشغيل لتغيير اللغة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The layersSpa needs to restart to change language"
           }
         }
       }

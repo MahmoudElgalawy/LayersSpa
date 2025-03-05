@@ -17,7 +17,7 @@ class SettingViewController: UIViewController, CustomAlertDelegate, AddToCartAle
 
     private let viewModel: SettingViewModelType
     var selectedIndexes: [Int: IndexPath] = [:]
-
+    var change = false
     // MARK: Init
 
     init(viewModel: SettingViewModelType) {
@@ -37,7 +37,13 @@ class SettingViewController: UIViewController, CustomAlertDelegate, AddToCartAle
         navBar.delegate = self
         navBar.updateTitle(String(localized: "accountSettings"))
         tableViewSetup()
-        selectFirstRow()
+      //  selectFirstRow()
+        selectSavedLanguage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        settingTableView.reloadData()
     }
 }
 
@@ -71,28 +77,28 @@ extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sectionItem = viewModel.getSectionItem(indexPath.section)
+
         switch sectionItem.type {
-            
         case .Delete:
-            if let cell = tableView.cellForRow(at: indexPath) {
-                    
-                    
-                    // إذا كانت لديك خلية مخصصة، يمكنك تحويلها إلى نوعها واستخدام بياناتها
-                    if let customCell = cell as? SettingTableViewCell {
-                        customCell.showAlertDelegate?.showInCorrectBranchAlert()
-                    }
-                }
-//        showInCorrectBranchAlert()
-            
+            if let cell = tableView.cellForRow(at: indexPath) as? SettingTableViewCell {
+                cell.showAlertDelegate?.showInCorrectBranchAlert()
+            }
+
         case .appLanguage:
+            
+            let selectedLanguage = (indexPath.row == 0) ? "ar" : "en"
+            UserDefaults.standard.set(selectedLanguage, forKey: "pendingLanguage")
+//            UserDefaults.standard.set(selectedLanguage, forKey: "selectedLanguage")
+//            UserDefaults.standard.set([selectedLanguage], forKey: "AppleLanguages")
+            changLanuageAlert()
             selectedIndexes[indexPath.section] = indexPath
+                   
             tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
-//        case .notifications:
-//            print("handel Notifications")
-//        case .account:
-//            print("navigate to delete account")
+        default:
+            break
         }
     }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
@@ -136,13 +142,16 @@ extension SettingViewController: UITableViewDataSource {
             
         case .appLanguage:
             cell.configeCell(viewModel.getLanguageRowInfo(indexPath.row))
-            let isSelected = selectedIndexes[indexPath.section] == indexPath
-            if isSelected {
-                cell.languageSelectionStyle()
-            }else {
-                cell.languageUnselectionStyle()
-            }
-            return cell
+                    
+                    let savedLanguage = UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String
+                    let isSelected = (indexPath.row == 0 && savedLanguage == "ar") || (indexPath.row == 1 && savedLanguage == "en")
+                    
+                    if isSelected {
+                        cell.languageSelectionStyle()
+                    } else {
+                        cell.languageUnselectionStyle()
+                    }
+                    return cell
             
 //        case .notifications:
 //            cell.configeCell(viewModel.getNotificationRowInfo(indexPath.row))
@@ -197,14 +206,23 @@ extension SettingViewController : RegistrationNavigationBarDelegate {
     }
     
     func alertButtonClicked() {
-        viewModel.logOut { flag in
-            if flag {
-                self.clearStoredData()
-                Defaults.sharedInstance.logout()
-                let vc = LoginViewController(viewModel: LoginViewModel())
-                self.navigationController?.setViewControllers([vc], animated: true)
-            }else{
-                CustomAlertViewController().show(String(localized: "warning") + "!", String(localized: "logOutErrorMSG"), buttonTitle: String(localized: "ok") ,navigateButtonTitle: "", .redColor, .warning, flag: true)
+        if change {
+            if let newLanguage = UserDefaults.standard.string(forKey: "pendingLanguage") {
+                        UserDefaults.standard.set(newLanguage, forKey: "selectedLanguage")
+                        UserDefaults.standard.set([newLanguage], forKey: "AppleLanguages")
+                        UserDefaults.standard.synchronize()
+                    }
+           // exit(0)
+        }else{
+            viewModel.logOut { flag in
+                if flag {
+                    self.clearStoredData()
+                    Defaults.sharedInstance.logout()
+                    let vc = LoginViewController(viewModel: LoginViewModel())
+                    self.navigationController?.setViewControllers([vc], animated: true)
+                }else{
+                    CustomAlertViewController().show(String(localized: "warning") + "!", String(localized: "logOutErrorMSG"), buttonTitle: String(localized: "ok") ,navigateButtonTitle: "", .redColor, .warning, flag: true)
+                }
             }
         }
     }
@@ -215,4 +233,23 @@ extension SettingViewController : RegistrationNavigationBarDelegate {
         defaults.removeObject(forKey: "selectedServiceTime")
         defaults.synchronize()
     }
+    
+    func selectSavedLanguage() {
+        let savedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "en"
+        let selectedRow = (savedLanguage == "ar") ? 0 : 1
+        let indexPath = IndexPath(row: selectedRow, section: 1)
+        selectedIndexes[indexPath.section] = indexPath
+        
+        settingTableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        
+        settingTableView.reloadSections(IndexSet(integer: indexPath.section), with: .none)
+    }
+
+    func changLanuageAlert() {
+        let alert =  CustomAlertViewController()
+        alert.alertDelegate = self
+        change = true
+        alert.show(String(localized: "warning") + "!", String(localized: "changeLanguage"), buttonTitle: String(localized: "Change"), navigateButtonTitle: String(localized: "cancel"), .redColor, .warning, flag: false)
+    }
 }
+

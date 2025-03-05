@@ -25,7 +25,7 @@ import Networking
         
         let request = LayersApiRequest(method: .post, base: Settings.registrationsApiBaseURL, path: path,header: [
             "secure-business-key": Settings.secureBusinessKey,
-                 "Accept-Language": "en",
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)",
                  "Platform": "ios",
                  "user-token": " \((Defaults.sharedInstance.userData?.token)!)"
         ])

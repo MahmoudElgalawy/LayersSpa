@@ -43,6 +43,7 @@ class CustomDateAlertViewController: UIViewController, CustomAlertDelegate {
         datePicker.minimumDate = Date()
         datePicker.tintColor = .primaryColor
         datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.locale = Locale(identifier: "en_US")
         containerView.addSubview(datePicker)
         
         // Set constraints for date picker

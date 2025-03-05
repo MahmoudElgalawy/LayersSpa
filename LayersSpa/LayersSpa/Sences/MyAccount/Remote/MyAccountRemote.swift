@@ -27,7 +27,7 @@ class MyAccountRemote: MyAccountRemoteProtocol {
             "secure-business-key": "4765066450c0bd66325.48403130",
             "platform": "android",
             "platform-key": "387666a26a0ad869c9.00802837",
-            "Accept-Language": "en",
+            "Accept-Language":"\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)",
             "apikey": "efe2db322a53",
             "user-token": "\((Defaults.sharedInstance.userData?.token)!)"
         ]
@@ -65,7 +65,7 @@ class MyAccountRemote: MyAccountRemoteProtocol {
             "secure-business-key": "4765066450c0bd66325.48403130",
             "platform": "android",
             "platform-key": "387666a26a0ad869c9.00802837",
-            "Accept-Language": "en", // يمكن تغييره إلى "en" عند الحاجة
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)", // يمكن تغييره إلى "en" عند الحاجة
             "apikey": "efe2db322a53",
             "user-token": token
         ]
