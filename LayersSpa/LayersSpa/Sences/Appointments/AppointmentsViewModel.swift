@@ -22,6 +22,19 @@ class AppointmentsViewModel {
     var data = [Calender]()
     var reload : ()->() = {}
     var isDataLoaded = false
+    var currentPage: Int = 0
+    var lastPage: Int = 1
+    
+    func reset() {
+        calenders.removeAll()
+        ordersIds = ""
+        ordersDetails.removeAll()
+        data.removeAll()
+        //reload = {}
+        currentPage = 0
+        lastPage = 1
+        isDataLoaded = false
+    }
 }
 
 // MARK: AppointmentsViewModel
@@ -34,16 +47,31 @@ extension AppointmentsViewModel: AppointmentsViewModelOutput {
 
     
     func getAppointment(type: String, completion: @escaping (Bool) -> Void) {
+        guard currentPage + 1 <= lastPage else {
+            return
+        }
+        currentPage += 1
+        
         let userId = Defaults.sharedInstance.userData?.userId ?? 0
         isDataLoaded = false
-        reload()
         
-        calenderRemote.getAppointment(userId: userId, type: type, filterDate: "", page: 1) { [weak self] result in
+        if currentPage == 1 {
+            reload()
+        }
+        
+        
+        calenderRemote.getAppointment(userId: userId, type: type, filterDate: "", page: currentPage) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .success(let data):
-                self.ordersIds = data.data.reservations.compactMap { $0.ecommOrderID }.joined(separator: ",")
+                self.lastPage = data.data.lastPage
+                
+                if ordersIds == "" {
+                    self.ordersIds = data.data.reservations.compactMap { $0.ecommOrderID }.joined(separator: ",")
+                } else {
+                    self.ordersIds = self.ordersIds + "," + data.data.reservations.compactMap { $0.ecommOrderID }.joined(separator: ",")
+                }
                 
                 if self.ordersIds.isEmpty {
                     self.calenders = [] // تعيين البيانات إلى فارغة
@@ -54,7 +82,7 @@ extension AppointmentsViewModel: AppointmentsViewModelOutput {
                     completion(true)
                 } else {
                     self.fetchAppointmentDetails { success in
-                        self.calenders = data.data.reservations
+                        self.calenders.append(contentsOf: data.data.reservations)
                         self.isDataLoaded = true
                         DispatchQueue.main.async {
                             self.reload()

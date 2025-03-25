@@ -18,12 +18,14 @@ protocol AppointmentsViewModelInput {
     var ordersDetails : [Order] {get set}
     var reload : ()->() {get set}
     var isDataLoaded: Bool {get set}
+    var currentPage: Int {get}
+    var lastPage: Int {get}
 }
 
 /// Appointments ViewModel Output
 ///
 protocol AppointmentsViewModelOutput {
     func getAppointment( type:String, completion: @escaping (Bool) -> Void)
-
+    func reset()
     //func getPrice(for ecommid: Int) -> String?
 }
