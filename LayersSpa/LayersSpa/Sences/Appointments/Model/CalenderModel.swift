@@ -30,8 +30,8 @@ struct CalenderData: Codable {
 }
 
 // MARK: - Reservation
-struct Calender: Codable,Equatable {
-    
+struct Calender: Codable {
+    var orderDetails: Order?
     let id: Int
     let businessID, branchID: String
     let calendarID, customerID, venueID, customerCategoryID: String?

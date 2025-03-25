@@ -51,28 +51,29 @@ class GalleryViewController: UIViewController, EmptyStateDelegation {
 //        if let token = Messaging.messaging().fcmToken {
 //            print("Firebase Token: \(token)")
 //        }
-        viewModel.fetchPhotos()
         collectionViewSetup()
         viewModel.onReloadData = { [weak self] status in
-            guard let self  = self else { return }
-            if status {
-                DispatchQueue.main.async {
-                    self.indicitor.stopAnimating()
-                    self.gallaryCollectionView.reloadData()
-                    if self.viewModel.photos == [] {
-                        self.emptyState.isHidden = false
-                    }else {
-                        self.emptyState.isHidden = true
-                    }
-                }
-            }else{
+            guard let self = self else { return }
+            DispatchQueue.main.async {
                 self.indicitor.stopAnimating()
-                self.emptyState.isHidden = false
+                self.gallaryCollectionView.reloadData()
+
+                if self.viewModel.photos.isEmpty || !status {
+                    self.emptyState.isHidden = false
+                    self.gallaryCollectionView.isHidden = true
+                } else {
+                    self.emptyState.isHidden = true
+                    self.gallaryCollectionView.isHidden = false
+                }
             }
         }
         bindEmptyStateView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchPhotos()
+    }
 }
 
 // MARK: - Configurations
@@ -106,7 +107,9 @@ extension GalleryViewController {
     }
     
     func emptyViewButtonTapped() {
-        
+        let vc = ServicesViewController(viewModel: ServicesViewModel(false))
+        vc.isProduct = false
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

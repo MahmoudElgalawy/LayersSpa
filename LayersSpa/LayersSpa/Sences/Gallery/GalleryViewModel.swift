@@ -17,6 +17,7 @@ class GalleryViewModel {
     let remote = GalleryRemote()
     var photos: [String] = []
     
+    
     func fetchPhotos() {
 //           let fetchOptions = PHFetchOptions()
 //           fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]

@@ -1100,6 +1100,23 @@
         }
       }
     },
+    "failedsave" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشل حفظ الصورة "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to save image!"
+          }
+        }
+      }
+    },
     "filterby" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1623,6 +1640,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No liked items yet"
+          }
+        }
+      }
+    },
+    "nophoto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا توجد صورة لحفظها!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There is no photo to save it!"
           }
         }
       }
@@ -2234,6 +2268,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save Changes"
+          }
+        }
+      }
+    },
+    "saveddone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "تم حفظ الصورة بنجاح."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The image has been saved successfully."
           }
         }
       }

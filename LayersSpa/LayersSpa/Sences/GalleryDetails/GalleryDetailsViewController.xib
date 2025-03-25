@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,9 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gtu-CF-kO6">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gtu-CF-kO6">
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gL2-Rm-KQg">
                     <rect key="frame" x="24" y="83" width="60" height="60"/>
@@ -34,7 +34,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRY-yy-nvw">
                     <rect key="frame" x="58" y="759" width="277" height="38.333333333333371"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button">
+                        <color key="baseForegroundColor" name="g2"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="saveImageBtn:" destination="-1" eventType="touchUpInside" id="f6L-25-hn8"/>
                     </connections>
@@ -43,9 +45,13 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="gtu-CF-kO6" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="8ZJ-Dl-ggD"/>
+                <constraint firstItem="gtu-CF-kO6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Jfy-4A-0aZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZRY-yy-nvw" secondAttribute="bottom" constant="20.666666666666742" id="fbv-Nm-s48"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="gtu-CF-kO6" secondAttribute="top" id="jaY-Jf-7Eh"/>
                 <constraint firstItem="ZRY-yy-nvw" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0449922" id="s8A-4s-Kzo"/>
                 <constraint firstItem="ZRY-yy-nvw" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="t25-PY-2EB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gtu-CF-kO6" secondAttribute="trailing" id="uiC-B8-iyq"/>
                 <constraint firstItem="ZRY-yy-nvw" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.704835" id="yTa-p3-KfG"/>
             </constraints>
             <point key="canvasLocation" x="38.931297709923662" y="-11.267605633802818"/>
@@ -53,6 +59,9 @@
     </objects>
     <resources>
         <image name="registrationBack" width="56" height="56"/>
+        <namedColor name="g2">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

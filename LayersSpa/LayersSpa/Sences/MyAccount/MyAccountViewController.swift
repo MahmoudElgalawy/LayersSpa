@@ -58,18 +58,31 @@ class MyAccountViewController: UIViewController {
         tableViewSetup()
         
         viewModel.onUserProfileFetched = { [weak self] user in
-                DispatchQueue.main.async {
-                    self?.activityIndicator.stopAnimating()
-                    if let user = user {
-                        self?.userName.text = "\(user.firstName) \(user.lastName ?? "")"
-                        self?.userPhoneNumber.text = "\(user.phone)"
-                        let imgURL = URL(string: "\(user.image)")
-                        self?.userImage.kf.setImage(with: imgURL, placeholder: UIImage(named: "Avatar1"))
-                        Defaults.sharedInstance.userData?.name = "\(user.firstName) \(user.lastName ?? "")"
-                        Defaults.sharedInstance.userData?.email = user.email
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.activityIndicator.startAnimating() // ✅ تشغيل المؤشر قبل تحميل الصورة
+                
+                if let user = user {
+                    self.userName.text = "\(user.firstName) \(user.lastName ?? "")"
+                    self.userPhoneNumber.text = "\(user.phone)"
+                    
+                    if let imgURL = URL(string: "\(user.image)") {
+                        self.userImage.kf.setImage(with: imgURL, placeholder: UIImage(named: "Avatar1"), options: nil, progressBlock: nil) { result in
+                            DispatchQueue.main.async {
+                                self.activityIndicator.stopAnimating() // ✅ إيقاف المؤشر بعد تحميل الصورة
+                            }
+                        }
+                    } else {
+                        self.activityIndicator.stopAnimating() // ✅ إيقافه في حالة وجود خطأ
                     }
+                    
+                    Defaults.sharedInstance.userData?.name = "\(user.firstName) \(user.lastName ?? "")"
+                    Defaults.sharedInstance.userData?.email = user.email
+                } else {
+                    self.activityIndicator.stopAnimating() // ✅ إيقافه في حالة عدم وجود بيانات
                 }
             }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,7 +160,14 @@ extension MyAccountViewController : UITableViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             if UserDefaults.standard.bool(forKey: "guest"){
-                
+                if let navController = self.navigationController {
+                    for controller in navController.viewControllers {
+                        if controller is LoginViewController{ 
+                            navController.popToViewController(controller, animated: true)
+                            return
+                        }
+                    }
+                }
             }else{
                 let alertVC = CustomAlertViewController()
                 alertVC.show(String(localized: "warning") + "!", String(localized: "youAreAboutToSignOut"), buttonTitle: String(localized: "signOut"),navigateButtonTitle: String(localized: "cancel"), .redColor, .warning, flag: false)

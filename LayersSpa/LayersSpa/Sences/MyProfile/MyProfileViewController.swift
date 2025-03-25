@@ -69,6 +69,8 @@ class MyProfileViewController: UIViewController {
             emailTF.isUserInteractionEnabled = false
             nameTF.isUserInteractionEnabled = false
             editButton.isUserInteractionEnabled = false
+            updatePhoneButton.isUserInteractionEnabled = false
+            saveChangesButton.isUserInteractionEnabled = false
         }
         saveChangesButton.isUserInteractionEnabled = false
         indicator.startAnimating()

@@ -132,20 +132,32 @@ extension AppointmentsViewModel: AppointmentsViewModelOutput {
             guard let self = self else { return }
             
             let orderDict = Dictionary(uniqueKeysWithValues: self.ordersDetails.map { ($0.id, $0) })
-            let sortedOrders = self.calenders.compactMap { calender -> Order? in
+            
+            // فلترة المواعيد غير المطابقة
+            let validCalenders = self.calenders.filter { calender in
                 if let ecommIDString = calender.ecommOrderID, let ecommID = Int(ecommIDString) {
-                    return orderDict[ecommID]
+                    return orderDict[ecommID] != nil
                 }
-                return nil
+                return false
             }
             
+            var sortedOrders: [Order] = []
+            for calender in validCalenders {
+                if let ecommIDString = calender.ecommOrderID, let ecommID = Int(ecommIDString), let order = orderDict[ecommID] {
+                    sortedOrders.append(order)
+                }
+            }
+
             DispatchQueue.main.async {
                 self.ordersDetails = sortedOrders
+                self.calenders = validCalenders  // تحديث المواعيد المتطابقة فقط
                 self.printIDsComparison()
                 self.reload()
             }
         }
     }
+
+
         
     private func printIDsComparison() {
         print("\n🔹🔹🔹 Final Matching Results 🔹🔹🔹")

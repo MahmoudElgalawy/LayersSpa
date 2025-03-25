@@ -29,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9E-Vh-LwR" customClass="EmptyStateView" customModule="LayersSpa" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="238.66666666666663" width="393" height="400"/>
+                    <rect key="frame" x="20" y="238.66666666666663" width="353" height="400"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yWG-jL-T0d">
@@ -59,8 +59,8 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="jH7-Iu-qTd">
-                    <rect key="frame" x="4" y="108" width="385" height="702"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="0.0" y="123" width="393" height="687"/>
+                    <color key="backgroundColor" name="grayLight"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MD7-Yh-iE1">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -68,7 +68,7 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="5Hq-y2-c6L">
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="5Hq-y2-c6L">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                 </activityIndicatorView>
             </subviews>
@@ -76,19 +76,19 @@
             <color key="backgroundColor" name="grayLight"/>
             <constraints>
                 <constraint firstItem="a9E-Vh-LwR" firstAttribute="centerY" secondItem="jMe-OG-l8Q" secondAttribute="centerY" id="2ba-sx-Ca0"/>
-                <constraint firstItem="jH7-Iu-qTd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="4" id="9pS-4b-ktH"/>
+                <constraint firstItem="a9E-Vh-LwR" firstAttribute="leading" secondItem="jMe-OG-l8Q" secondAttribute="leading" constant="20" id="9Rc-eO-SD8"/>
+                <constraint firstItem="jH7-Iu-qTd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9pS-4b-ktH"/>
                 <constraint firstItem="5Hq-y2-c6L" firstAttribute="leading" secondItem="jMe-OG-l8Q" secondAttribute="leading" id="DXz-pT-M3v"/>
                 <constraint firstAttribute="trailing" secondItem="yWG-jL-T0d" secondAttribute="trailing" id="Hxi-UG-Wd4"/>
                 <constraint firstItem="5Hq-y2-c6L" firstAttribute="top" secondItem="jMe-OG-l8Q" secondAttribute="top" id="JO3-JV-kwD"/>
                 <constraint firstItem="jMe-OG-l8Q" firstAttribute="bottom" secondItem="jH7-Iu-qTd" secondAttribute="bottom" constant="8" id="Pj5-5f-WB8"/>
                 <constraint firstItem="yWG-jL-T0d" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pzu-1t-bGe"/>
                 <constraint firstItem="a9E-Vh-LwR" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.469484" id="WRk-Pz-Vaw"/>
-                <constraint firstItem="a9E-Vh-LwR" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Ztw-Iw-uAV"/>
-                <constraint firstItem="jH7-Iu-qTd" firstAttribute="top" secondItem="yWG-jL-T0d" secondAttribute="bottom" id="axC-FI-mxg"/>
+                <constraint firstItem="jMe-OG-l8Q" firstAttribute="trailing" secondItem="a9E-Vh-LwR" secondAttribute="trailing" constant="20" id="aMg-DV-r4U"/>
+                <constraint firstItem="jH7-Iu-qTd" firstAttribute="top" secondItem="yWG-jL-T0d" secondAttribute="bottom" constant="15" id="axC-FI-mxg"/>
                 <constraint firstItem="jMe-OG-l8Q" firstAttribute="bottom" secondItem="5Hq-y2-c6L" secondAttribute="bottom" id="ckI-oa-MC4"/>
-                <constraint firstItem="a9E-Vh-LwR" firstAttribute="centerX" secondItem="jMe-OG-l8Q" secondAttribute="centerX" id="dhB-lN-Z9C"/>
                 <constraint firstItem="jMe-OG-l8Q" firstAttribute="trailing" secondItem="5Hq-y2-c6L" secondAttribute="trailing" id="kkV-ko-eOy"/>
-                <constraint firstAttribute="trailing" secondItem="jH7-Iu-qTd" secondAttribute="trailing" constant="4" id="mOM-xm-ctt"/>
+                <constraint firstAttribute="trailing" secondItem="jH7-Iu-qTd" secondAttribute="trailing" id="mOM-xm-ctt"/>
                 <constraint firstItem="yWG-jL-T0d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xDz-fk-q62"/>
             </constraints>
             <point key="canvasLocation" x="-41.984732824427482" y="-54.225352112676056"/>
