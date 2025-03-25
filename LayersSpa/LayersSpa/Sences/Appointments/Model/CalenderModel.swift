@@ -18,10 +18,14 @@ struct CalenderResponse: Codable {
 struct CalenderData: Codable {
     let currentPage: Int
     let reservations: [Calender]
+    let nextPageUrl: String?
+    let lastPage: Int
     
     enum CodingKeys: String, CodingKey {
         case currentPage = "current_page"
         case reservations = "data"
+        case nextPageUrl = "next_page_url"
+        case lastPage = "last_page"
     }
 }
 

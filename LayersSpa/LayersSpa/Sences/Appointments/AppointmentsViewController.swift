@@ -50,7 +50,7 @@ class AppointmentsViewController: UIViewController {
             segmentedButtonsView.delegate = self
             
             //  firstButtonTapped()
-            secondButtonTapped()
+            //  secondButtonTapped()
             
             viewModel.reload = { [weak self] in
                 guard let self = self else { return }
@@ -180,7 +180,23 @@ extension AppointmentsViewController: UITableViewDataSource {
         return cell
     }
 
-    
+    // Method to detect if the user has scrolled to the last cell
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            let contentHeight = scrollView.contentSize.height
+            let contentOffsetY = scrollView.contentOffset.y
+            let frameHeight = scrollView.frame.size.height
+            
+            // Check if the user has scrolled to the bottom
+            if contentOffsetY + frameHeight >= contentHeight - 20 {
+                if viewModel.currentPage < viewModel.lastPage {
+                    indicator.startAnimating()
+                    viewModel.getAppointment(type: isHistory ?  "history" : "upcoming") { _ in
+                        self.indicator.stopAnimating()
+                        self.appointmentTableView.reloadData()
+                    }
+                }
+            }
+        }
 }
 
 
@@ -198,6 +214,7 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
     
     func firstButtonTapped() {
         indicator.startAnimating()
+        viewModel.reset()
         self.appointmentTableView.isHidden = true
         isHistory = true
         viewModel.getAppointment(type: "history") { [weak self] flag in
@@ -226,6 +243,7 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
     
     func secondButtonTapped() {
         indicator.startAnimating()
+        viewModel.reset()
         self.appointmentTableView.isHidden = true
         isHistory = false
         viewModel.getAppointment(type: "upcoming") { [weak self] flag in
