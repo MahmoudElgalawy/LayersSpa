@@ -30,7 +30,6 @@ class AppointmentsViewModel {
         ordersIds = ""
         ordersDetails.removeAll()
         data.removeAll()
-        //reload = {}
         currentPage = 0
         lastPage = 1
         isDataLoaded = false
@@ -58,7 +57,6 @@ extension AppointmentsViewModel: AppointmentsViewModelOutput {
         if currentPage == 1 {
             reload()
         }
-        
         
         calenderRemote.getAppointment(userId: userId, type: type, filterDate: "", page: currentPage) { [weak self] result in
             guard let self = self else { return }

@@ -67,7 +67,7 @@ class CalenderViewController: UIViewController {
     
     @objc func dateChanged(_ datePicker: UIDatePicker) {
         indicator.startAnimating()
-        viewModel.ordersDetails.removeAll()
+        viewModel.reset()
         let selectedDate = datePicker.date
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
@@ -147,6 +147,12 @@ extension CalenderViewController: UITableViewDataSource {
             return cell
         }
         
+        if indexPath.row == viewModel.calenders.count - 1 {
+            if viewModel.currentPage < viewModel.lastPage {
+                getCurrentDateappointment()
+            }
+        }
+        
         let calender = viewModel.calenders[indexPath.row]
         
         let order = (indexPath.row < viewModel.ordersDetails.count) ? viewModel.ordersDetails[indexPath.row] : nil
@@ -164,12 +170,13 @@ extension CalenderViewController: UITableViewDataSource {
 extension CalenderViewController {
     func getCurrentDateappointment() {
         indicator.startAnimating()
+        let date = dataPicker.date
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "yyyy-MM-dd"
       
         
-        viewModel.getAppointment(date:dateFormatter.string(from: Date())) {[weak self] flag in
+        viewModel.getAppointment(date:dateFormatter.string(from: date)) {[weak self] flag in
             DispatchQueue.main.async {
                 self?.indicator.stopAnimating()
                 if flag{
