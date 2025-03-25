@@ -32,7 +32,7 @@ class AvailableEmployeeTimesRemote: Remote, AvailableEmployeeTimesRemoteProtocol
             let headers: HTTPHeaders = [
                 "secure-business-key": "4765066450c0bd66325.48403130",
                 "Accept": "application/json",
-                "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
+                "Accept-Language": "en"
             ]
             
             print("🔵 Sending request to: \(url)")

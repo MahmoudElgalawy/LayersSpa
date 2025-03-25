@@ -9,9 +9,9 @@ import UIKit
 import UILayerSpa
 
 class VerificationViewController: UIViewController {
-
+    
     // MARK: Outlets
-
+    
     @IBOutlet weak var resendCodeButton: UIButton!
     @IBOutlet weak var receiveCodeLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
@@ -29,24 +29,25 @@ class VerificationViewController: UIViewController {
     private var countdownTimer: Timer?
     private var remainingTime = 40
     var register = false
-
+    var update = false
+    
     // MARK: Init
-
+    
     init(viewModel: VerificationViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         titleLabel.text = String(localized: "PhoneVerification")
         subtitleLabel.text = String(localized: "verificationsent")
         resendCodeButton.isHidden = true
@@ -98,106 +99,149 @@ extension VerificationViewController {
 
 private extension VerificationViewController {
     @objc func confirmIsTapped() {
-            
-//            resendCodeButton.isEnabled = false
-//            startCountdown()
-        
-                guard let otpText = otpTF.text, !otpText.isEmpty else {
-                      //  let alert = CustomAlertViewController()
-                    //alert.show("Invalid", "Enter the code which send to your phone", buttonTitle: "Try Again",.redColor,.warning)
-                    showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized: "errormsg"), btn: String(localized: "Retry"))
-                        return
-                    }
-        print("Confirm button tapped")
-        if register{
+        if update{
+            // update phone
+            guard let otpText = otpTF.text, !otpText.isEmpty else {
+                //  let alert = CustomAlertViewController()
+                //alert.show("Invalid", "Enter the code which send to your phone", buttonTitle: "Try Again",.redColor,.warning)
+                showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized: "errormsg"), btn: String(localized: "Retry"))
+                return
+            }
+            print("change button tapped")
             if let otp = otpTF.text {
                 UserDefaults.standard.set(otp, forKey: "otp")
                 viewModel.checkOTP(phone: phoneNumber, otp: Int(otp) ?? 0) { [weak self] flag in
+                    guard let self = self else { return }
                     if flag {
-                        let vc = SignupCompleteViewController(viewModel: SignupCompleteViewModel())
-                        vc.phoneNumber = self?.phoneNumber ?? ""
-                        self?.navigationController?.pushViewController(vc, animated: true)
+//                        let vc = SignupCompleteViewController(viewModel: SignupCompleteViewModel())
+//                        vc.phoneNumber = self?.phoneNumber ?? ""
+//                        self?.navigationController?.pushViewController(vc, animated: true)
+                        if let viewControllers = navigationController?.viewControllers {
+                            for controller in viewControllers {
+                                if controller is MyProfileViewController {
+                                    navigationController?.popToViewController(controller, animated: true)
+                                    return
+                                }
+                            }
+                        }
                     }else{
-                       // let alert = CustomAlertViewController()
-                      //  alert.show("Invalid", "Code or phone not correct", buttonTitle: "Try Again",.redColor,.warning)
-                        self?.showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized:"otpNotCorrect"), btn: String(localized: "Retry"))
+                        // let alert = CustomAlertViewController()
+                        //  alert.show("Invalid", "Code or phone not correct", buttonTitle: "Try Again",.redColor,.warning)
+                        self.showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized:"otpNotCorrect"), btn: String(localized: "Retry"))
                     }
                 }
             }else{
-              //  let alert = CustomAlertViewController()
+                //  let alert = CustomAlertViewController()
                 showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized: "errormsg"), btn: String(localized: "Retry"))
             }
         }else{
-//
             
-            if let otp = otpTF.text {
-                UserDefaults.standard.set(otp, forKey: "otp")
-                viewModel.checkOTP(phone: phoneNumber, otp: Int(otp) ?? 0) { [weak self] flag in
-                    if flag {
-                        let vc = NewPasswordViewController(viewModel: ForgotPasswordViewModel())
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                    }else{
-                       // let alert = CustomAlertViewController()
-                      //  alert.show("Invalid", "Code or phone not correct", buttonTitle: "Try Again",.redColor,.warning)
-                        self?.showIncorrectBranchAlert(title:String(localized: "Invalid"), msg:  String(localized:"otpNotCorrect"), btn: String(localized: "Retry"))
+            // create account or change pass
+    
+            //            resendCodeButton.isEnabled = false
+            //            startCountdown()
+            
+            guard let otpText = otpTF.text, !otpText.isEmpty else {
+                //  let alert = CustomAlertViewController()
+                //alert.show("Invalid", "Enter the code which send to your phone", buttonTitle: "Try Again",.redColor,.warning)
+                showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized: "errormsg"), btn: String(localized: "Retry"))
+                return
+            }
+            print("Confirm button tapped")
+            if register{
+                
+                // create account
+                
+                if let otp = otpTF.text {
+                    UserDefaults.standard.set(otp, forKey: "otp")
+                    viewModel.checkOTP(phone: phoneNumber, otp: Int(otp) ?? 0) { [weak self] flag in
+                        if flag {
+                            let vc = SignupCompleteViewController(viewModel: SignupCompleteViewModel())
+                            vc.phoneNumber = self?.phoneNumber ?? ""
+                            self?.navigationController?.pushViewController(vc, animated: true)
+                        }else{
+                            // let alert = CustomAlertViewController()
+                            //  alert.show("Invalid", "Code or phone not correct", buttonTitle: "Try Again",.redColor,.warning)
+                            self?.showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized:"otpNotCorrect"), btn: String(localized: "Retry"))
+                        }
                     }
+                }else{
+                    //  let alert = CustomAlertViewController()
+                    showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized: "errormsg"), btn: String(localized: "Retry"))
                 }
             }else{
-              //  let alert = CustomAlertViewController()
-                showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized: "errormsg"), btn: String(localized: "Retry"))
+                
+                //  change pass
+                
+                if let otp = otpTF.text {
+                    UserDefaults.standard.set(otp, forKey: "otp")
+                    viewModel.checkOTP(phone: phoneNumber, otp: Int(otp) ?? 0) { [weak self] flag in
+                        if flag {
+                            let vc = NewPasswordViewController(viewModel: ForgotPasswordViewModel())
+                            self?.navigationController?.pushViewController(vc, animated: true)
+                        }else{
+                            // let alert = CustomAlertViewController()
+                            //  alert.show("Invalid", "Code or phone not correct", buttonTitle: "Try Again",.redColor,.warning)
+                            self?.showIncorrectBranchAlert(title:String(localized: "Invalid"), msg:  String(localized:"otpNotCorrect"), btn: String(localized: "Retry"))
+                        }
+                    }
+                }else{
+                    //  let alert = CustomAlertViewController()
+                    showIncorrectBranchAlert(title:String(localized: "Invalid"), msg: String(localized: "errormsg"), btn: String(localized: "Retry"))
+                }
             }
         }
-           }
+    }
     
     
     @objc func resendCodeIsTapped() {
         
-//        guard let otpText = otpTF.text, !otpText.isEmpty else {
-//                let alert = CustomAlertViewController()
-//            alert.show("Invalid", "Enter the code which send to your phone", buttonTitle: "Try Again",.red,.warning)
-//                return
-//            }
-//
-//        if register{
-//            if let otp = otpTF.text {
-//                viewModel.checkOTP(phone: phoneNumber, otp: Int(otp) ?? 0) { [weak self] flag in
-//                    if flag {
-//                        let vc = SignupCompleteViewController(viewModel: SignupCompleteViewModel())
-//                        vc.phoneNumber = self?.phoneNumber ?? ""
-//                        self?.navigationController?.pushViewController(vc, animated: true)
-//                    }else{
-//                        let alert = CustomAlertViewController()
-//                        alert.show("Invalid", "Enter the code which send to your phone", buttonTitle: "Try Again",.red,.warning)
-//                    }
-//                }
-//            }
-//         }
+        //        guard let otpText = otpTF.text, !otpText.isEmpty else {
+        //                let alert = CustomAlertViewController()
+        //            alert.show("Invalid", "Enter the code which send to your phone", buttonTitle: "Try Again",.red,.warning)
+        //                return
+        //            }
+        //
+        //        if register{
+        //            if let otp = otpTF.text {
+        //                viewModel.checkOTP(phone: phoneNumber, otp: Int(otp) ?? 0) { [weak self] flag in
+        //                    if flag {
+        //                        let vc = SignupCompleteViewController(viewModel: SignupCompleteViewModel())
+        //                        vc.phoneNumber = self?.phoneNumber ?? ""
+        //                        self?.navigationController?.pushViewController(vc, animated: true)
+        //                    }else{
+        //                        let alert = CustomAlertViewController()
+        //                        alert.show("Invalid", "Enter the code which send to your phone", buttonTitle: "Try Again",.red,.warning)
+        //                    }
+        //                }
+        //            }
+        //         }
         //else{
-//            remainingTime = 40
-//                resendCodeButton.isEnabled = false
-//                startCountdown()
-//            viewModel.updatePassword(phone: UserDefaults.standard.string(forKey: "phone") ?? "",
-//                                      password: UserDefaults.standard.string(forKey: "password") ?? "",
-//                                      otp: otpTF.text ?? "",
-//                                      completion: { success, message in
-//                                          if success {
-//                                              // تنفيذ الكود عند النجاح
-//                                              print(message)  // يمكن عرض رسالة النجاح في Alert
-//                                              let alert = CustomAlertViewController()
-//                                              alert.alertDelegate = self
-//                                              alert.show("Password Reset Successfully", message, buttonTitle: "Sign in")
-//                                          } else {
-//                                              // تنفيذ الكود عند الفشل
-//                                              print("Failure: \(message)")  // يمكن عرض رسالة الخطأ في Alert
-//                                              let alert = CustomAlertViewController()
-//                                              alert.show("Failure", message, buttonTitle: "Try Again")
-//                                          }
-//                                      })
-//            }
-        }
+        //            remainingTime = 40
+        //                resendCodeButton.isEnabled = false
+        //                startCountdown()
+        //            viewModel.updatePassword(phone: UserDefaults.standard.string(forKey: "phone") ?? "",
+        //                                      password: UserDefaults.standard.string(forKey: "password") ?? "",
+        //                                      otp: otpTF.text ?? "",
+        //                                      completion: { success, message in
+        //                                          if success {
+        //                                              // تنفيذ الكود عند النجاح
+        //                                              print(message)  // يمكن عرض رسالة النجاح في Alert
+        //                                              let alert = CustomAlertViewController()
+        //                                              alert.alertDelegate = self
+        //                                              alert.show("Password Reset Successfully", message, buttonTitle: "Sign in")
+        //                                          } else {
+        //                                              // تنفيذ الكود عند الفشل
+        //                                              print("Failure: \(message)")  // يمكن عرض رسالة الخطأ في Alert
+        //                                              let alert = CustomAlertViewController()
+        //                                              alert.show("Failure", message, buttonTitle: "Try Again")
+        //                                          }
+        //                                      })
+        //            }
     }
+}
 
-    
+
 
 
 
@@ -215,24 +259,24 @@ extension VerificationViewController: CustomAlertDelegate {
 }
 
 extension VerificationViewController {
-
+    
     private func startCountdown() {
         resendCodeButton.isEnabled = false
-        updateResendButtonTitle() 
+        updateResendButtonTitle()
         
         countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
     }
     
     @objc private func updateCountdown() {
         if remainingTime > 0 {
-                remainingTime -= 1
-                updateResendButtonTitle()
-            } else {
-                countdownTimer?.invalidate()
-                countdownTimer = nil
-                resendCodeButton.isEnabled = true
-                resendCodeButton.setTitle("Resend Code", for: .normal)
-            }
+            remainingTime -= 1
+            updateResendButtonTitle()
+        } else {
+            countdownTimer?.invalidate()
+            countdownTimer = nil
+            resendCodeButton.isEnabled = true
+            resendCodeButton.setTitle("Resend Code", for: .normal)
+        }
     }
     
     private func updateResendButtonTitle() {
@@ -247,6 +291,6 @@ extension VerificationViewController {
 }
 
 
-    
-   
+
+
 

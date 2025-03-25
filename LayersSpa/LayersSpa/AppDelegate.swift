@@ -8,15 +8,26 @@
 import UIKit
 import CoreData
 import IQKeyboardManagerSwift
+import FirebaseCore
+import FirebaseMessaging
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         IQKeyboardManager.shared.enable = true
-
+        FirebaseApp.configure()
+        UNUserNotificationCenter.current().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) {
+            success, error in
+            if error != nil {
+                print("Error requesting authorization: \(error)")
+            }
+        }
+         application.registerForRemoteNotifications()
         return true
     }
 //    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -97,3 +108,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+
+
+extension AppDelegate{
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: any Error) {
+        print("Fair to register for remote notifications: \(error.localizedDescription)")
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("will gets called when app is in foreground and we want to show banner")
+        completionHandler([.alert, .sound ,.badge])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("will gets called when user tap on notification")
+        completionHandler()
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+            if let token = fcmToken {
+                print("Firebase Token: \(token)")
+            }
+        }
+}

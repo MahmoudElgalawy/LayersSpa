@@ -187,6 +187,23 @@
         }
       }
     },
+    "alreadyBook" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لقد حجزت بالفعل خدمة في هذا الوقت ، يرجى اختيار وقت مختلف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have already booked a service at this time,Please choose different time"
+          }
+        }
+      }
+    },
     "Alreadyhaveanaccount" : {
       "localizations" : {
         "ar" : {
@@ -898,6 +915,23 @@
         }
       }
     },
+    "emptyGalleryMSG" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يبدو أنه ليس لديك أي صور في المعرض. ابدأ في استكشاف خدماتنا الآن\n"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It looks like you don’t have any photos in gallery. Start exploring our services now"
+          }
+        }
+      }
+    },
     "enter3DigitsCvvNumber" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1168,6 +1202,57 @@
         }
       }
     },
+    "guestcart" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يجب ان تقوم بتسجيل الدخول قبل ان تضيف عنصر الي السلة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You should login before add item to cart"
+          }
+        }
+      }
+    },
+    "guestLogin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "تسجيل الدخول كضيف؟"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sign in as guest?"
+          }
+        }
+      }
+    },
+    "guestwish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يجب ان تقوم بتسجيل الدخول قبل ان تضيف عنصر الي المفضلة "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You should login before add item to wishlist"
+          }
+        }
+      }
+    },
     "history" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1198,6 +1283,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Invalid"
+          }
+        }
+      }
+    },
+    "item" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عنصر"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "item"
           }
         }
       }
@@ -1525,6 +1627,23 @@
         }
       }
     },
+    "noResult" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عفوا! لم يتم العثور على نتائج"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oops! No Results Found"
+          }
+        }
+      }
+    },
     "noServiceMSG" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1538,6 +1657,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "There Is No Services At This Category Please Choose Another Category"
+          }
+        }
+      }
+    },
+    "noSpaces" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا يسمح بوجود مسافات في رقم الهاتف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No spaces are allowed in the phone number"
           }
         }
       }
@@ -2102,6 +2238,23 @@
         }
       }
     },
+    "saveImage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حفظ الصورة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Image"
+          }
+        }
+      }
+    },
     "search" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2115,6 +2268,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search"
+          }
+        }
+      }
+    },
+    "searchService" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "البحث عن الخدمات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "search Services"
           }
         }
       }
@@ -2357,6 +2527,23 @@
         }
       }
     },
+    "selecttimefirst" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يرجى تحديد وقت الخدمة قبل المتابعة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select a time for service before continuing"
+          }
+        }
+      }
+    },
     "selectTimeForAllServices" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2527,6 +2714,23 @@
         }
       }
     },
+    "Unfortunately" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لسوء الحظ ، لم نتمكن من العثور على أي خدمات تطابق معايير البحث الخاصة بك"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unfortunately, we couldn't find any services that match your search criteria"
+          }
+        }
+      }
+    },
     "upcoming" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2540,6 +2744,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "UpComing"
+          }
+        }
+      }
+    },
+    "UpdatePhoneNumber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تحديث رقم الهاتف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Phone Number"
           }
         }
       }
@@ -2828,6 +3049,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your Cart is Empty"
+          }
+        }
+      }
+    },
+    "yourGalleryIsEmpty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معرض الصور الخاص بك فارغ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "your Gallery Is Empty"
           }
         }
       }

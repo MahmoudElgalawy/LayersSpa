@@ -64,95 +64,116 @@ extension CheckOutViewModel {
     
     // Save Cart
     func firstRequest() {
-        print("pID:\(productsId),,,UID:2311,,,,IQ:\(itemCount)")
-        
+        print("✅ firstRequest - بيانات الطلب:")
+     //   print("🔹 UserID: \(Defaults.sharedInstance.userData?.userId ?? "N/A")")
+        print("🔹 Products ID: \(productsId)")
+        print("🔹 Item Count: \(itemCount)")
+
         LocalDataManager.sharedInstance.getLikeProductsListFromCoreData(.cart) { [weak self] services in
             guard let self = self else { return }
             
-            // إنشاء قاموس يربط بين الـ productId و عدد المنتجات
             var productCountMap: [String: Int] = [:]
             for service in services {
                 productCountMap[service.productId] = service.productCount
             }
             
-            // ترتيب itemCount بناءً على ترتيب productsId
             self.itemCount = self.productsId.map { productCountMap[$0] ?? 0 }
             
-            // إرسال البيانات بعد الترتيب
-            self.transactionRemote.SaveCartProduct((Defaults.sharedInstance.userData?.userId)!, self.productsId, self.itemCount)
-            
+            print("📦 Final Data Sent to Server:")
+            print("   ➡️ Products: \(self.productsId)")
+            print("   ➡️ Quantities: \(self.itemCount)")
+
+            self.transactionRemote.SaveCartProduct((Defaults.sharedInstance.userData?.userId) ?? 0, self.productsId, self.itemCount)
+
             self.transactionRemote.savedToCart = { [weak self] id in
                 self?.orderID = id
+                print("✅ Order Saved! Order ID: \(id)")
             }
         }
     }
+
     
     func abandonedState(completion: @escaping (Bool) -> ()) {
-        print("Ordddddddddeeeeeeeeeerrrrrrrr iiiiiiidddddddddd ======== \(orderID ?? 0)")
-        transactionRemote.abandonedState("\((Defaults.sharedInstance.userData?.userId)!)", orderID ?? 0){ flag in
-            if flag{
-                completion(true)
-            }else{
-                completion(false)
-            }
+        let userId = "\((Defaults.sharedInstance.userData?.userId ) ?? 0)"
+        let currentOrderID = orderID ?? 0
+
+        print("🚨 abandonedState Request:")
+        print("🔹 UserID: \(userId)")
+        print("🔹 OrderID: \(currentOrderID)")
+
+        transactionRemote.abandonedState(userId, currentOrderID) { flag in
+            print("✅ abandonedState Response: \(flag ? "Success" : "Failed")")
+            completion(flag)
         }
     }
+
     
     func reservation(completion: @escaping (Bool) -> ()) {
-        let userId = Int((Defaults.sharedInstance.userData?.userId)!)
-        let date = UserDefaults.standard.string(forKey: "selectedDate")
+        let userId = Defaults.sharedInstance.userData?.userId ?? 0
+        let date = UserDefaults.standard.string(forKey: "selectedDate") ?? getCurrentDateString()
+
+        print("📌 Starting Reservation Request:")
+        print("🔹 User ID: \(userId)")
+        print("🔹 Date: \(date)")
         
         guard let savedEmployeeIds = UserDefaults.standard.array(forKey: "selectedEmployeeIds") as? [Int] else {
-            return print("Saved Employee IDs: savedEmployeeIds")
+            print("❌ No Employee IDs found!")
+            return
         }
         
         LocalDataManager.sharedInstance.getLikeProductsListFromCoreData(.cart) { [weak self] services in
             guard let self = self else { return }
-            
-            guard let savedTimes = UserDefaults.standard.dictionary(forKey: "selectedServiceTime") as? [String: String] else { return }
-            
-            // تحويل الـ services إلى قاموس ليسهل الوصول إليها باستخدام الـ productId
+
+            guard let savedTimes = UserDefaults.standard.dictionary(forKey: "selectedServiceTime") as? [String: String] else {
+                print("❌ No Service Times found!")
+                return
+            }
+
             let servicesMap = Dictionary(uniqueKeysWithValues: services.map { ($0.productId, $0) })
-            
-            // ترتيب الخدمات بناءً على ترتيب `productsId`
             let sortedServices = self.productsId.compactMap { servicesMap[$0] }
             
+            // 🔹 **تصفية الخدمات حسب النوع "service"**
+            let filteredServices = sortedServices.filter { $0.type == "service" }
+
             var startTime = [String]()
             var endTime = [String]()
             var serviceQty = [Int]()
             var period = [Int]()
-            
-            self.calcTotalPrice(sortedServices)
-            
-            for service in sortedServices {
+
+            self.calcTotalPrice(filteredServices)
+
+            for service in filteredServices {
                 if let fullTime = savedTimes["\(service.productId)"] {
-                    
                     let arabicDigits = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"]
                     let englishDigits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
                     var convertedString = fullTime
                     for (index, arabicDigit) in arabicDigits.enumerated() {
                         convertedString = convertedString.replacingOccurrences(of: arabicDigit, with: englishDigits[index])
                     }
-                    
+
                     let totalTime = convertedString.split(separator: "-")
                     startTime.append(totalTime[0].trimmingCharacters(in: .whitespaces))
                     endTime.append(totalTime[1].trimmingCharacters(in: .whitespaces))
                 }
-                
-                print("📌 المنتج: \(service.productId) - الكمية: \(service.productCount)") // ✅ لمتابعة القيم اللي بتتضاف
+
+                print("📌 المنتج: \(service.productId) - الكمية: \(service.productCount)")
                 serviceQty.append(service.productCount)
                 period.append(service.unit ?? 1)
             }
-            
-            print("🛒 سعر المنتجات: \(totalPrice)")
-            
+
+            print("🔹 Total Price: \(totalPrice)")
+            print("🔹 Filtered Services: \(filteredServices.map { $0.productId })")
+            print("🔹 Service Qty: \(serviceQty)")
+            print("🔹 Start Time: \(startTime)")
+            print("🔹 End Time: \(endTime)")
+
             self.transactionRemote.createReservation(
                 customerId: userId,
-                startDate: date ?? getCurrentDateString(),
-                endDate: date ?? getCurrentDateString(),
+                startDate: date,
+                endDate: date,
                 ecommOrderId: orderID ?? 0,
                 branchId: Defaults.sharedInstance.branchId?.id ?? "2",
-                serviceId: productsId.compactMap { Int($0) },
+                serviceId: filteredServices.compactMap { Int($0.productId) },
                 serviceQty: serviceQty,
                 employeeId: savedEmployeeIds,
                 startTime: startTime,
@@ -160,18 +181,22 @@ extension CheckOutViewModel {
             ) { [weak self] response in
                 switch response {
                 case .success(let data):
+                    print("✅ Reservation Success! Data: \(data)")
                     if data.status == true {
                         self?.reservationData = data.data
                         completion(true)
                     } else {
                         completion(false)
                     }
-                case .failure(_):
+                case .failure(let error):
+                    print("❌ Reservation Failed! Error: \(error)")
                     completion(false)
                 }
             }
         }
     }
+
+
 
     
     func  bookingConfirmation(completion: @escaping (Bool) -> ()){
@@ -191,7 +216,7 @@ extension CheckOutViewModel {
     func  PaymentConfirmation(name: String, visaNumber: String, month: String, year: String, cvc: String, total: String, completion: @escaping (Bool) -> ()){
       
     
-        paymentRemote.bookingConfirmation(name: name, visaNumber: visaNumber, month: month, year: year, cvc: cvc, total: total, customerId: "\((Defaults.sharedInstance.userData?.userId)!)", ecommOrderId: "\((orderID)!)"){ flag in
+        paymentRemote.bookingConfirmation(name: name, visaNumber: visaNumber, month: month, year: year, cvc: cvc, total: total, customerId: "\((Defaults.sharedInstance.userData?.userId) ?? 0)", ecommOrderId: "\((orderID)!)"){ flag in
             if flag{
                 completion(true)
             }else{

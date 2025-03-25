@@ -8,28 +8,25 @@
 import Foundation
 import Alamofire
 
-// ✅ تعريف البروتوكول لضمان الالتزام بطريقة جلب البيانات
  protocol MyAccountRemoteProtocol {
     func fetchUserProfile(completion: @escaping (Result<APIResponse, Error>) -> Void)
-     func updateUserProfile(token: String, firstName: String, email: String, phone: String, image: Data?, completion: @escaping (Result<String, Error>) -> Void)
+    func updateUserProfile(token: String, firstName: String, email: String, phone: String, image: Data?, completion: @escaping (Result<String, Error>) -> Void)
 }
 
-// ✅ كلاس لجلب بيانات البروفايل
 class MyAccountRemote: MyAccountRemoteProtocol {
 
     let baseURL = "https://taccounting.vodoerp.com"
     
     func fetchUserProfile(completion: @escaping (Result<APIResponse, Error>) -> Void) {
         
-        let path = "/api/show_customer/\((Defaults.sharedInstance.userData?.userId)!)" // تأكد من تمرير ID المستخدم بشكل ديناميكي عند الحاجة
-
+        let path = "/api/show_customer/\((Defaults.sharedInstance.userData?.userId) ?? 0)"
         let headers: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130",
             "platform": "android",
             "platform-key": "387666a26a0ad869c9.00802837",
             "Accept-Language":"\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)",
             "apikey": "efe2db322a53",
-            "user-token": "\((Defaults.sharedInstance.userData?.token)!)"
+            "user-token": "\((Defaults.sharedInstance.userData?.token) ?? "0")"
         ]
 
         let url = "\(baseURL)\(path)"
@@ -37,7 +34,6 @@ class MyAccountRemote: MyAccountRemoteProtocol {
         print("🔵 Sending request to: \(url)")
         print("📌 Headers: \(headers)")
 
-        // ⏳ إرسال الطلب عبر Alamofire
         AF.request(url, method: .get, headers: headers)
             .validate()
             .responseDecodable(of: APIResponse.self) { response in
@@ -58,34 +54,25 @@ class MyAccountRemote: MyAccountRemoteProtocol {
             completion(.failure(NSError(domain: "UserID Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
             return
         }
-        
+
         let url = "\(baseURL)/api/edit_customer/\(userId)"
 
         let headers: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130",
             "platform": "android",
             "platform-key": "387666a26a0ad869c9.00802837",
-            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)", // يمكن تغييره إلى "en" عند الحاجة
+            "Accept-Language": (UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String) ?? "en",
             "apikey": "efe2db322a53",
             "user-token": token
         ]
 
-        print("🔵 Sending update request to: \(url)")
-
         AF.upload(multipartFormData: { multipartFormData in
-            // إضافة الاسم
-            let fullName = "\(firstName)"
-            multipartFormData.append(fullName.data(using: .utf8)!, withName: "name")
+            multipartFormData.append(Data(firstName.utf8), withName: "name")
+            multipartFormData.append(Data(email.utf8), withName: "email")
+            multipartFormData.append(Data(phone.utf8), withName: "phone")
 
-            // إضافة البريد الإلكتروني
-            multipartFormData.append(email.data(using: .utf8)!, withName: "email")
-
-            // إضافة رقم الهاتف
-            multipartFormData.append(phone.data(using: .utf8)!, withName: "phone")
-
-            // إضافة الصورة إذا كانت موجودة
             if let imageData = image {
-                multipartFormData.append(imageData, withName: "image", fileName: "profile.jpg", mimeType: "image/jpeg")
+                multipartFormData.append(imageData, withName: "image", fileName: "\(email)\(Date().timeIntervalSince1970).jpg", mimeType: "image/jpeg")
             }
 
         }, to: url, method: .post, headers: headers)
@@ -101,5 +88,7 @@ class MyAccountRemote: MyAccountRemoteProtocol {
             }
         }
     }
+
+
 }
 

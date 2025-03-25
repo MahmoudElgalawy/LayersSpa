@@ -39,7 +39,7 @@ open class Remote {
         decoder: JSONDecoder = JSONDecoder(),
         completion: @escaping (Result<D, Error>) -> Void
     ) {
-        print("Request: \(request)")
+      //  print("Request: \(request)")
         network.responseData(for: request) { result in
             switch result {
             case let .success(data):

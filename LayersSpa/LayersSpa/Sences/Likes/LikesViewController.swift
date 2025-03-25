@@ -255,5 +255,11 @@ extension LikesViewController: AddToCartAlerts {
     func alertButtonClicked() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func showGuestAlert(msg: String) {
+        let alert = CustomAlertViewController()
+        alert.alertDelegate = self
+        alert.show(String(localized: "warning") + "!!", "\(msg)", buttonTitle: String(localized: "ok"), navigateButtonTitle: "", .redColor, .warning, flag: true)
+    }
 }
 

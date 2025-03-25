@@ -45,33 +45,39 @@ class MyAccountViewController: UIViewController {
     }
 
     // MARK: Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupActivityIndicator()
+        if UserDefaults.standard.bool(forKey: "guest"){
+            
+        }else{
+            setupActivityIndicator()
+            activityIndicator.startAnimating()
+        }
+        bindViewStyle()
+        tableViewSetup()
         
-        // تشغيل الـ Indicator قبل تحميل البيانات
-        activityIndicator.startAnimating()
-    
-    viewModel.fetchUserProfile()
-    viewModel.onUserProfileFetched = { [weak self] user in
-            DispatchQueue.main.async {
-                self?.activityIndicator.stopAnimating() // إيقاف الـ Indicator
-                
-                if let user = user {
-                    self?.userName.text = "\(user.firstName) \(user.lastName ?? "")"
-                    self?.userPhoneNumber.text = "\(user.phone)"
-                    let imgURL = URL(string: "\(user.image)")
-                    self?.userImage.kf.setImage(with: imgURL, placeholder: UIImage(named: "Avatar1"))
+        viewModel.onUserProfileFetched = { [weak self] user in
+                DispatchQueue.main.async {
+                    self?.activityIndicator.stopAnimating()
+                    if let user = user {
+                        self?.userName.text = "\(user.firstName) \(user.lastName ?? "")"
+                        self?.userPhoneNumber.text = "\(user.phone)"
+                        let imgURL = URL(string: "\(user.image)")
+                        self?.userImage.kf.setImage(with: imgURL, placeholder: UIImage(named: "Avatar1"))
+                        Defaults.sharedInstance.userData?.name = "\(user.firstName) \(user.lastName ?? "")"
+                        Defaults.sharedInstance.userData?.email = user.email
+                    }
                 }
             }
-        }
-    bindViewStyle()
-    tableViewSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        if !UserDefaults.standard.bool(forKey: "guest") {
+            viewModel.fetchUserProfile()
+        }
     }
 }
 
@@ -140,9 +146,13 @@ extension MyAccountViewController : UITableViewDelegate {
             let vc = WalletViewController(viewModel: WalletViewModel())
             navigationController?.pushViewController(vc, animated: true)
         case 3:
-            let alertVC = CustomAlertViewController()
-            alertVC.show(String(localized: "warning") + "!", String(localized: "youAreAboutToSignOut"), buttonTitle: String(localized: "signOut"),navigateButtonTitle: String(localized: "cancel"), .redColor, .warning, flag: false)
-            alertVC.alertDelegate = self
+            if UserDefaults.standard.bool(forKey: "guest"){
+                
+            }else{
+                let alertVC = CustomAlertViewController()
+                alertVC.show(String(localized: "warning") + "!", String(localized: "youAreAboutToSignOut"), buttonTitle: String(localized: "signOut"),navigateButtonTitle: String(localized: "cancel"), .redColor, .warning, flag: false)
+                alertVC.alertDelegate = self
+            }
         default:
             print("Default")
         }

@@ -124,7 +124,18 @@ extension SelectProfessionalPerServiceViewController: UITableViewDataSource {
         cell.configureService(service)
         cell.layoutIfNeeded()
         
-        // الحالة 1: anyProf مفعل (أقل موظف مشغول لجميع الخدمات)
+        // Handle product services
+        guard service.type == "service" else {
+            // Reset selections for products
+            selectedProfessionalsPerService.removeValue(forKey: Int(service.productId) ?? 0)
+            selectedTimesPerService.removeValue(forKey: Int(service.productId) ?? 0)
+            cell.resetSelections()
+            cell.selectProfessionalView.isUserInteractionEnabled = false
+            cell.selectTimeView.isUserInteractionEnabled = false
+            return cell
+        }
+        
+        // Existing logic for services...
         if anyProf {
             if let defaultEmployee = viewModel.members.first {
                 selectedProfessionalsPerService[Int(service.productId) ?? 0] = defaultEmployee
@@ -135,13 +146,8 @@ extension SelectProfessionalPerServiceViewController: UITableViewDataSource {
                     cell.resetTimeSelection()
                 }
             }
-            return cell
-        }
-        // الحالة 2: oneProf مفعل (موظف واحد لجميع الخدمات)
-        else if oneProf {
-            // لا نعيّن موظفًا افتراضيًا هنا
+        } else if oneProf {
             if let selectedEmployee = selectedProfessionalsPerService.values.first {
-                // تطبيق الموظف المختار على جميع الخدمات
                 selectedProfessionalsPerService[Int(service.productId) ?? 0] = selectedEmployee
                 cell.applySelectedProfessional(selectedEmployee)
                 if let selectedTime = selectedTimesPerService[Int(service.productId) ?? 0] {
@@ -150,13 +156,9 @@ extension SelectProfessionalPerServiceViewController: UITableViewDataSource {
                     cell.resetTimeSelection()
                 }
             } else {
-                // الخلية تبقى فارغة حتى يقوم المستخدم باختيار موظف
                 cell.resetSelections()
             }
-            return cell
-        }
-        // الحالة 3: موظف لكل خدمة
-        else {
+        } else {
             if let selectedProfessional = selectedProfessionalsPerService[Int(service.productId) ?? 0] {
                 cell.applySelectedProfessional(selectedProfessional)
                 if let selectedTime = selectedTimesPerService[Int(service.productId) ?? 0] {
@@ -165,11 +167,11 @@ extension SelectProfessionalPerServiceViewController: UITableViewDataSource {
                     cell.resetTimeSelection()
                 }
             } else {
-                // الخلية تبقى فارغة حتى يقوم المستخدم باختيار موظف
                 cell.resetSelections()
             }
-            return cell
         }
+        
+        return cell
     }
 }
 

@@ -30,10 +30,12 @@ class MyProfileViewController: UIViewController {
     @IBOutlet weak var saveChangesButton: UIButton!
     @IBOutlet weak var navBar: NavigationBarWithBack!
    // @IBOutlet weak var lastNametxt: UITextField!
-    
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var editButton: UIButton!
+    
+    @IBOutlet weak var updatePhoneButton: UIButton!
+    
+    
     // MARK: Properties
 
    // private let viewModel: MyProfileViewModelType
@@ -62,22 +64,40 @@ class MyProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.bool(forKey: "guest"){
+            phoneTF.isUserInteractionEnabled = false
+            emailTF.isUserInteractionEnabled = false
+            nameTF.isUserInteractionEnabled = false
+            editButton.isUserInteractionEnabled = false
+        }
+        saveChangesButton.isUserInteractionEnabled = false
         indicator.startAnimating()
         indicator.color = UIColor.primaryColor
         indicator.center = view.center
+       
         viewModel.fetchUserProfile()
         viewModel.onUserProfileFetched = { [weak self] user in
-                DispatchQueue.main.async {
-                    self?.indicator.stopAnimating() // إيقاف الـ Indicator
-                    
-                    if let user = user {
-                       
-                        let imgURL = URL(string: "\(user.image)")
-                        self?.userImage.kf.setImage(with: imgURL, placeholder: UIImage(named: "Avatar1"))
-
-                    }
+        guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.indicator.stopAnimating()
+                self.nameTF.text = user?.firstName
+                self.emailTF.text = user?.email
+                
+                if let user = user {
+                    let imgURL = URL(string: "\(user.image)")
+                    self.userImage.kf.setImage(with: imgURL, placeholder: UIImage(named: "Avatar1"))
                 }
             }
+        if let countryCode = UserDefaults.standard.string(forKey: "CoutryCode"),
+               let phoneNumber = Defaults.sharedInstance.userData?.phone {
+                
+            let cleanedPhone = self.removeCountryCode(from: phoneNumber, countryCode: countryCode)
+                
+            self.phoneTF.countryLabel.text = countryCode
+            self.phoneTF.phoneTextField.text = cleanedPhone
+           
+            }
+        }
         navBar.delegate = self
         navBar.updateTitle(String(localized: "myProfile"))
         bindViewStyle()
@@ -86,33 +106,22 @@ class MyProfileViewController: UIViewController {
         bindSaveButton()
         setTextFieldsHeader()
         userImageView.alpha = 0.5
-        if let countryCode = UserDefaults.standard.string(forKey: "CoutryCode"),
-               let phoneNumber = Defaults.sharedInstance.userData?.phone {
-                
-                let cleanedPhone = removeCountryCode(from: phoneNumber, countryCode: countryCode)
-                
-            phoneTF.countryLabel.text = countryCode
-            phoneTF.phoneTextField.text = cleanedPhone
-            print("cleanedPhone::::::::::::::::::::::::::::::::::::::::::::::::::\(cleanedPhone)")
-            }
-        
         phoneTF.isUserInteractionEnabled = false
-        nameTF.text = Defaults.sharedInstance.userData?.name
-        emailTF.text = Defaults.sharedInstance.userData?.email
         if let editImage = UIImage(named: "selectImage")?.withRenderingMode(.alwaysTemplate) {
             editButton.setImage(editImage, for: .normal)
-            editButton.tintColor = .primaryColor  // تغيير اللون إلى الأحمر
+            editButton.tintColor = .primaryColor
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-     
-        }
+        
+    }
        
     
     
     @IBAction func editPhotoBtn(_ sender: Any) {
+        saveChangesButton.isUserInteractionEnabled = true
         var config = YPImagePickerConfiguration()
           config.screens = [.library, .photo]
           config.library.mediaType = .photo
@@ -127,23 +136,24 @@ class MyProfileViewController: UIViewController {
               if cancelled {
                   print("اختيار المستخدم تم إلغاؤه")
               } else {
-                  for item in items {
-                      switch item {
-                      case .photo(let photo):
-                          print("تم اختيار صورة: \(photo.image)")
-                          self.userImage.image = photo.image.circleMasked
-                          
-                          // تحويل الصورة إلى Data
-                          if let imageData = photo.image.jpegData(compressionQuality: 0.8) {
-                              self.selectedImage = imageData
-                              print("تم تحويل الصورة إلى Data بنجاح!")
-                          } else {
-                              print("فشل في تحويل الصورة إلى بيانات")
-                          }
-                      case .video(_):
-                          print("تم اختيار فيديو")
+                
+                  guard let item = items.first else { return }
+                  
+                  switch item {
+                  case .photo(let photo):
+                      print("تم اختيار صورة: \(photo.image)")
+                      self.userImage.image = photo.image.circleMasked
+                      
+                      if let imageData = photo.image.jpegData(compressionQuality: 0.5) {
+                          self.selectedImage = imageData
+                          print("تم تحويل الصورة إلى Data بنجاح!")
+                      } else {
+                          print("فشل في تحويل الصورة إلى بيانات")
                       }
+                  case .video(_):
+                      print("تم اختيار فيديو")
                   }
+                  
               }
               picker.dismiss(animated: true, completion: nil)
           }
@@ -152,11 +162,21 @@ class MyProfileViewController: UIViewController {
     }
 
     
+    @IBAction func updatePhoneTapped(_ sender: Any) {
+        saveChangesButton.isUserInteractionEnabled = true
+        let vc = SignupViewController(viewModel: SignupViewModel())
+        vc.update = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - Actions
 
-extension MyProfileViewController {}
+extension MyProfileViewController {
+    @objc func textFieldDidChange() {
+        saveChangesButton.isUserInteractionEnabled = true
+    }
+}
 
 // MARK: - Configurations
 
@@ -184,13 +204,16 @@ extension MyProfileViewController {
     
     func bindTextFields() {
         emailTF.applyBordertextFieldStyle("Enter your email")
+        emailTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         nameTF.applyBordertextFieldStyle("Enter your name")
+        nameTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     func bindSaveButton() {
         saveChangesButton.setTitle(String(localized: "saveChanges"), for: .normal)
         saveChangesButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
         saveChangesButton.applyButtonStyle(.filled)
+        updatePhoneButton.setTitle(String(localized: "UpdatePhoneNumber"), for: .normal)
     }
 }
 
@@ -207,8 +230,8 @@ private extension MyProfileViewController {
                   indicator.stopAnimating()
                 return
             }
-        let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: " ", with: "")
-            viewModel.updateUserProfile(firstName: name, email: email, phone: "\(countryCode)\(cleanedPhoneNumber)", image: selectedImage) { [weak self] result in
+        //let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: " ", with: "")
+            viewModel.updateUserProfile(firstName: name, email: email, phone: "\(countryCode)\(phoneNumber)", image: selectedImage) { [weak self] result in
                 switch result {
                 case .success(let message):
                     print(message)

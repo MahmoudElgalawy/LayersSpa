@@ -27,7 +27,7 @@ class ServiceDetailsViewController: UIViewController, CustomAlertDelegate {
     var isProduct = true
     var homeViewModel = HomeViewModel()
     var servicesList: [ProductVM] = []
-
+    var guest = false
     // MARK: Init
 
     init(viewModel: ServiceDetailsViewModelType) {
@@ -73,25 +73,29 @@ class ServiceDetailsViewController: UIViewController, CustomAlertDelegate {
     }
     
     @objc func AddButtonTapped() {
-        guard let branchId = Defaults.sharedInstance.branchId?.id else {
-            showInCorrectBranchAlert()
-            return
-        }
-        if product.branchesId.contains("\(branchId)") {
-            if addToCartButton.titleLabel?.text == "Add To Cart" {
-                LocalDataManager.sharedInstance.addLikeProductsToCoreData(productsList: product, .cart)
-                updateFavAndAddButtons()
-            }else{
-                LocalDataManager.sharedInstance.deleteProduct(product.productId, .cart) { [weak self] deleted in
-                    if deleted{
-                        self?.updateFavAndAddButtons()
+        if UserDefaults.standard.bool(forKey: "guest"){
+            guest = true
+            showGuestAlert(msg: String(localized: "guestcart"))
+        }else{
+            guard let branchId = Defaults.sharedInstance.branchId?.id else {
+                showInCorrectBranchAlert()
+                return
+            }
+            if product.branchesId.contains("\(branchId)") {
+                if addToCartButton.titleLabel?.text == "Add To Cart" {
+                    LocalDataManager.sharedInstance.addLikeProductsToCoreData(productsList: product, .cart)
+                    updateFavAndAddButtons()
+                }else{
+                    LocalDataManager.sharedInstance.deleteProduct(product.productId, .cart) { [weak self] deleted in
+                        if deleted{
+                            self?.updateFavAndAddButtons()
+                        }
                     }
                 }
+            }else{
+                showInCorrectBranchAlert()
             }
-        }else{
-            showInCorrectBranchAlert()
         }
-        
     }
     
     func bindBackButton() {
@@ -103,27 +107,32 @@ class ServiceDetailsViewController: UIViewController, CustomAlertDelegate {
     }
     
     @IBAction func favButtonTapped(_ sender: Any) {
-        if likeButton.imageView?.image == UIImage(systemName: "heart.fill"){
-            if isProduct{
-                LocalDataManager.sharedInstance.deleteProduct(product.productId, .product) { [weak self] deleted in
-                    if deleted{
-                        self?.updateFavAndAddButtons()
-                    }
-                }
-            }else{
-                LocalDataManager.sharedInstance.deleteProduct(product.productId, .service) { [weak self] deleted in
-                    if deleted{
-                        self?.updateFavAndAddButtons()
-                    }
-                }
-            }
+        if UserDefaults.standard.bool(forKey: "guest"){
+            guest = true
+            showGuestAlert(msg:  String(localized: "guestwish"))
         }else{
-            if isProduct{
-                LocalDataManager.sharedInstance.addLikeProductsToCoreData(productsList: product, .product)
-                updateFavAndAddButtons()
+            if likeButton.imageView?.image == UIImage(systemName: "heart.fill"){
+                if isProduct{
+                    LocalDataManager.sharedInstance.deleteProduct(product.productId, .product) { [weak self] deleted in
+                        if deleted{
+                            self?.updateFavAndAddButtons()
+                        }
+                    }
+                }else{
+                    LocalDataManager.sharedInstance.deleteProduct(product.productId, .service) { [weak self] deleted in
+                        if deleted{
+                            self?.updateFavAndAddButtons()
+                        }
+                    }
+                }
             }else{
-                LocalDataManager.sharedInstance.addLikeProductsToCoreData(productsList: product, .service)
-                updateFavAndAddButtons()
+                if isProduct{
+                    LocalDataManager.sharedInstance.addLikeProductsToCoreData(productsList: product, .product)
+                    updateFavAndAddButtons()
+                }else{
+                    LocalDataManager.sharedInstance.addLikeProductsToCoreData(productsList: product, .service)
+                    updateFavAndAddButtons()
+                }
             }
         }
     }
@@ -341,17 +350,26 @@ extension ServiceDetailsViewController: AddToCartAlerts {
     }
     
     func alertButtonClicked() {
-        Defaults.sharedInstance.navigateToAppoinment(false)
-        let customTabBarController = CustomTabBarViewController()
-        let navigationController = UINavigationController(rootViewController: customTabBarController)
-        guard let window = UIApplication.shared.currentWindow else {
-            print("No current window found")
-            return
+        if guest{
+            
+        }else{
+            Defaults.sharedInstance.navigateToAppoinment(false)
+            let customTabBarController = CustomTabBarViewController()
+            let navigationController = UINavigationController(rootViewController: customTabBarController)
+            guard let window = UIApplication.shared.currentWindow else {
+                print("No current window found")
+                return
+            }
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
         }
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
     }
     
+    func showGuestAlert(msg: String) {
+        let alert = CustomAlertViewController()
+        alert.alertDelegate = self
+        alert.show(String(localized: "warning") + "!!", "\(msg)", buttonTitle: String(localized: "ok"), navigateButtonTitle: "", .redColor, .warning, flag: true)
+    }
 
 }
 

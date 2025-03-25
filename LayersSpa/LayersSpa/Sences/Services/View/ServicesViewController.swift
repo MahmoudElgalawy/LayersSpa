@@ -18,6 +18,7 @@ class ServicesViewController: UIViewController, CustomAlertDelegate {
     // MARK: Properties
     var isProduct = true
     private var viewModel: ServicesViewModelType
+    var guest = false
 
     // MARK: Init
 
@@ -185,7 +186,7 @@ extension ServicesViewController: RegistrationNavigationBarDelegate {
 }
 
 extension ServicesViewController : AddToCartAlerts {
-    
+  
     func showInCorrectBranchAlert() {
         let alert =  CustomAlertViewController()
         alert.alertDelegate = self
@@ -193,15 +194,19 @@ extension ServicesViewController : AddToCartAlerts {
     }
     
     func alertButtonClicked() {
-        Defaults.sharedInstance.navigateToAppoinment(false)
-        let customTabBarController = CustomTabBarViewController()
-        let navigationController = UINavigationController(rootViewController: customTabBarController)
-        guard let window = UIApplication.shared.currentWindow else {
-            print("No current window found")
-            return
+        if guest {
+            
+        }else{
+            Defaults.sharedInstance.navigateToAppoinment(false)
+            let customTabBarController = CustomTabBarViewController()
+            let navigationController = UINavigationController(rootViewController: customTabBarController)
+            guard let window = UIApplication.shared.currentWindow else {
+                print("No current window found")
+                return
+            }
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
         }
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
     }
 
     
@@ -210,6 +215,13 @@ extension ServicesViewController : AddToCartAlerts {
 //        alertVC.show("Warning", msg, buttonTitle: btnTitle, .redColor, .warning)
 //        present(alertVC, animated: true, completion: nil)
 //    }
+    
+    func showGuestAlert(msg: String) {
+        guest = true
+        let alert = CustomAlertViewController()
+        alert.alertDelegate = self
+        alert.show(String(localized: "warning") + "!!", "\(msg)", buttonTitle: String(localized: "ok"), navigateButtonTitle: "", .redColor, .warning, flag: true)
+    }
 }
 
 

@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, CustomAlertDelegate {
     
     private var viewModel: HomeViewModel
     private var cancellables = Set<AnyCancellable>()
+    var guest = false
     
     // MARK: Init
     
@@ -40,15 +41,15 @@ class HomeViewController: UIViewController, CustomAlertDelegate {
     
     override func viewDidLoad() {
             super.viewDidLoad()
-           
+        setupTableView()
+        bindViewModel()
+        topView.delegate = self
+        homeTableView.reloadData()
         }
         
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            setupTableView()
-            bindViewModel()
-            topView.delegate = self
-            homeTableView.reloadData()
+           
         }
         
         // MARK: - Setup
@@ -103,6 +104,7 @@ class HomeViewController: UIViewController, CustomAlertDelegate {
 //            alert.addAction(UIAlertAction(title: "OK", style: .default))
 //            present(alert, animated: true)
 //        }
+    
     }
 
 
@@ -159,6 +161,13 @@ extension HomeViewController: ViewAllDelegation {
         let alert = CustomAlertViewController()
         alert.alertDelegate = self
         alert.show(String(localized: "warning") + "!!", "\(msg)", buttonTitle: String(localized: "selectBranch"), navigateButtonTitle: "", .redColor, .warning, flag: true)
+    }
+    
+    func showGuestAlert(msg: String, buttonTitle: String) {
+        guest = true
+        let alert = CustomAlertViewController()
+        alert.alertDelegate = self
+        alert.show(String(localized:"warning") + "!!", "\(msg)", buttonTitle: String(localized:"ok"), navigateButtonTitle: "", .redColor, .warning, flag: true)
     }
     
     //Please select a branch before adding item to cart
@@ -220,19 +229,22 @@ extension HomeViewController: HomeTopViewDelegation {
     
     func navigateToSearch() {
         let searchServicesVC = SearchServicesViewController(viewModel: SearchServicesViewModel(true))
+       // searchServicesVC.navigationItem.title = String(localized: "searchService")
         navigationController?.pushViewController(searchServicesVC, animated: true)
        }
     
     func alertButtonClicked() {
         //showBranchSelection()
-        self.dismiss(animated: true) { [weak self] in
-               // 2. بعد الإغلاق، عرض شاشة الفروع
-               guard let self = self else { return }
-               let vc = FilterViewController()
-               vc.delegate = self
-               vc.show(self.viewModel.getBrancesList(), String(localized: "selectBranch"), true)
-              // self.present(vc, animated: true)
-           }
+        if guest {
+        }else {
+            self.dismiss(animated: true) { [weak self] in
+                   guard let self = self else { return }
+                   let vc = FilterViewController()
+                   vc.delegate = self
+                   vc.show(self.viewModel.getBrancesList(), String(localized: "selectBranch"), true)
+                  // self.present(vc, animated: true)
+               }
+        }
     }
 }
 
@@ -258,6 +270,7 @@ protocol ViewAllDelegation: AnyObject {
     func navigateToDetails(_ serviceId: String,_ product: ProductVM,_ flag: Bool)
     func navigateToCategoryServices(_ title: String, _ categotyId: String)
     func showIncorrectBranchAlert(msg: String, buttonTitle: String)
+    func showGuestAlert(msg: String, buttonTitle: String)
 }
 
 

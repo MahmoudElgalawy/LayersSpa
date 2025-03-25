@@ -16,7 +16,6 @@ public struct CheckPhoneExist: Codable {
 struct OTPResponse: Codable {
     let status: Bool
     let message: String
-    let data: Int
 }
 
 

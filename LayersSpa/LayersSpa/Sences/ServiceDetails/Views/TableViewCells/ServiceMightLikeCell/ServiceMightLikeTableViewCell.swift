@@ -17,7 +17,8 @@ class ServiceMightLikeTableViewCell: UITableViewCell, IdentifiableView, CustomAl
     private let layout = UICollectionViewFlowLayout()
 
     
-   var servicesList: [ProductVM] = []
+    var servicesList: [ProductVM] = []
+    var guest = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -113,15 +114,25 @@ extension ServiceMightLikeTableViewCell: UICollectionViewDelegate, UICollectionV
     }
     
     func alertButtonClicked() {
-        Defaults.sharedInstance.navigateToAppoinment(false)
-        let customTabBarController = CustomTabBarViewController()
-        let navigationController = UINavigationController(rootViewController: customTabBarController)
-        guard let window = UIApplication.shared.currentWindow else {
-            print("No current window found")
-            return
+        if UserDefaults.standard.bool(forKey: "guest"){
+            
+        }else{
+            Defaults.sharedInstance.navigateToAppoinment(false)
+            let customTabBarController = CustomTabBarViewController()
+            let navigationController = UINavigationController(rootViewController: customTabBarController)
+            guard let window = UIApplication.shared.currentWindow else {
+                print("No current window found")
+                return
+            }
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
         }
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
+    }
+    
+    func showGuestAlert(msg: String) {
+        let alert = CustomAlertViewController()
+        alert.alertDelegate = self
+        alert.show(String(localized: "warning") + "!!", "\(msg)", buttonTitle: String(localized: "ok"), navigateButtonTitle: "", .redColor, .warning, flag: true)
     }
 }
 

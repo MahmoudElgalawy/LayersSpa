@@ -17,8 +17,9 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
         return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
     }
     
-    // MARK: Init
+    weak var tabBarDelegate: UITabBarControllerDelegate?
     
+    // MARK: Init
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,15 +33,12 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
+        tabBarDelegate = self
+        delegate = tabBarDelegate
         setupTabBarUI()
         setupColoredView()
         adjustLayoutForCurrentLanguage()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        updateColoredViewPosition(animated: false)
+       ///\ selectedIndex = isRTL ? (viewControllers?.count ?? 1) - 1 : 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,42 +46,56 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
         navigationController?.setNavigationBarHidden(true, animated: animated)
         setupViewControllersBasedOnLanguage()
         
-        print("Should navigate to appointments: \(Defaults.sharedInstance.getIsNavigateToAppoinment())")
-        
-        if Defaults.sharedInstance.getIsNavigateToAppoinment() {
-            let appointmentsIndex = isRTL ? 2 : 1
-            selectedIndex = appointmentsIndex
-            Defaults.sharedInstance.navigateToAppoinment(false) // إعادة تعيين القيمة إلى false بعد الانتقال
-        } else {
-            selectedIndex = isRTL ? 3 : 0
+        DispatchQueue.main.async {
+            if Defaults.sharedInstance.getIsNavigateToAppoinment() {
+                self.selectedIndex = self.isRTL ? 3 : 1
+                Defaults.sharedInstance.navigateToAppoinment(false)
+            } else {
+                let lastSelectedIndex = UserDefaults.standard.integer(forKey: "lastSelectedTabIndex")
+                    self.selectedIndex = lastSelectedIndex
+                
+            }
         }
-        
-        print("Selected index: \(selectedIndex)")
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
+//        setupViewControllersBasedOnLanguage()
+//        let lastSelectedIndex = UserDefaults.standard.integer(forKey: "lastSelectedTabIndex")
+//        self.selectedIndex = lastSelectedIndex
+//    }
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        updateColoredViewPosition(animated: true)
+        UserDefaults.standard.set(selectedIndex, forKey: "lastSelectedTabIndex")
+    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        coloredView.removeFromSuperview()
+//        self.viewControllers?.forEach { $0.removeFromParent() }
+//        self.viewControllers = nil
+//    }
     
     // MARK: - Layout Adjustments
     
     private func adjustLayoutForCurrentLanguage() {
-        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
-            tabBar.semanticContentAttribute = .forceRightToLeft
-        } else {
-            tabBar.semanticContentAttribute = .forceLeftToRight
-        }
+        tabBar.semanticContentAttribute = isRTL ? .forceRightToLeft : .forceLeftToRight
     }
-    
     
     private func setupViewControllersBasedOnLanguage() {
         let home = bindHomeViewController()
+        let gallery = bindGalleryViewController() // Added
         let appointments = bindAppointmentsViewController()
         let cart = bindCartViewController()
         let myAccount = bindMyAccountViewController()
         
         var controllers: [UIViewController]
         
-        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
-            controllers = [myAccount, cart, appointments, home]
+        if isRTL {
+            controllers = [myAccount, cart,gallery, appointments, home] // Modified
         } else {
-            controllers = [home, appointments, cart, myAccount]
+            controllers = [home, appointments, gallery, cart, myAccount] // Modified
         }
         
         self.viewControllers = controllers
@@ -92,19 +104,11 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
     // MARK: - Colored View Positioning
     
     private func updateColoredViewPosition(animated: Bool) {
-        guard let items = tabBar.items, !items.isEmpty else { return }
-        guard let selectedItem = tabBar.selectedItem else { return }
-        guard let index = items.firstIndex(of: selectedItem) else { return }
+        guard let items = tabBar.items, let selectedItem = tabBar.selectedItem, let index = items.firstIndex(of: selectedItem) else { return }
         
         let totalItems = CGFloat(items.count)
         let itemWidth = tabBar.bounds.width / totalItems
-        let xPosition: CGFloat
-        
-        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
-            xPosition = tabBar.bounds.width - (itemWidth * (CGFloat(index) + 1))
-        } else {
-            xPosition = itemWidth * CGFloat(index)
-        }
+        let xPosition = isRTL ? tabBar.bounds.width - (itemWidth * (CGFloat(index) + 1)) : itemWidth * CGFloat(index)
         
         let coloredViewWidth: CGFloat = 60
         let coloredViewHeight: CGFloat = 40
@@ -130,92 +134,61 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
     private func setupTabBarUI() {
         tabBar.backgroundColor = .white
         tabBar.layer.cornerRadius = 30
-        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBar.tintColor = .blackColor
         tabBar.unselectedItemTintColor = .unselectedIcon
-        
-        if #available(iOS 13.0, *) {
-            let appearance = tabBar.standardAppearance
-            appearance.shadowImage = nil
-            appearance.shadowColor = nil
-            tabBar.standardAppearance = appearance
-        } else {
-            tabBar.shadowImage = UIImage()
-            tabBar.backgroundImage = UIImage()
-        }
     }
     
     private func setupColoredView() {
-           coloredView.backgroundColor = .grayLight
-           coloredView.layer.cornerRadius = 15
-           coloredView.clipsToBounds = true
-           tabBar.addSubview(coloredView)
-           tabBar.sendSubviewToBack(coloredView)
-       }
-       
+        coloredView.backgroundColor = .grayLight
+        coloredView.layer.cornerRadius = 15
+        tabBar.addSubview(coloredView)
+        tabBar.sendSubviewToBack(coloredView)
+    }
     
     // MARK: - View Controllers Binding
+    
+    private func createTabItem(image: UIImage, rtlImage: UIImage) -> UITabBarItem {
+        let iconImage = isRTL ? rtlImage : image
+        return UITabBarItem(title: "", image: iconImage.withRenderingMode(.alwaysOriginal), selectedImage: iconImage.withRenderingMode(.alwaysOriginal))
+    }
+    
+    // MARK: - Delegate Methods
+//    
+//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+//        updateColoredViewPosition(animated: true)
+//    }
+    
     
     private func bindHomeViewController() -> UIViewController {
         let vc = HomeViewController(viewModel: HomeViewModel())
         vc.tabBarItem = createTabItem(image: .home, rtlImage: .home)
         return vc
     }
-    
+
     private func bindAppointmentsViewController() -> UIViewController {
         let vc = AppointmentsViewController(viewModel: AppointmentsViewModel())
         vc.tabBarItem = createTabItem(image: .appointment, rtlImage: .appointment)
         return vc
     }
-    
+
     private func bindCartViewController() -> UIViewController {
         let vc = CartViewController(viewModel: CartViewModel())
         vc.tabBarItem = createTabItem(image: .cart, rtlImage: .cart)
         return vc
     }
-    
+
     private func bindMyAccountViewController() -> UIViewController {
         let vc = MyAccountViewController(viewModel: MyAccountViewModel())
         vc.tabBarItem = createTabItem(image: .myAccount, rtlImage: .myAccount)
         return vc
     }
     
-    private func createTabItem(image: UIImage, rtlImage: UIImage) -> UITabBarItem {
-        let iconImage = UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? rtlImage : image
-        let item = UITabBarItem(title: "", image: iconImage, selectedImage: iconImage)
-        item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        return item
+    private func bindGalleryViewController() -> UIViewController {
+        let vc = GalleryViewController(viewModel: GalleryViewModel())
+        vc.tabBarItem = createTabItem(image: .products, rtlImage: .products)
+        return vc
     }
-    
-    // MARK: - Language Change Handling
-    
-    func reloadForLanguageChange() {
-        adjustLayoutForCurrentLanguage()
-        setupViewControllersBasedOnLanguage()
-        resetSelectedIndex()
-        updateColoredViewPosition(animated: true)
-    }
-    
-    // MARK: - Delegate Methods
-    
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        updateColoredViewPosition(animated: true)
-    }
-    
-    private func resetSelectedIndex() {
-        if !Defaults.sharedInstance.getIsNavigateToAppoinment() {
-            selectedIndex = 0 // تحديد أول تابة بشكل ي
-        }
-    }
-    
-    ////    func bindGalleryViewController() -> UIViewController {
-    ////        let item = GalleryViewController(viewModel: GalleryViewModel())
-    ////        item.view.backgroundColor = .grayLight
-    ////        let icon = UITabBarItem(title: "", image: .products, selectedImage: .products)
-    ////        icon.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-    ////        item.tabBarItem = icon
-    ////        return item
-    ////    }
+
 }
 
 

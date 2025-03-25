@@ -21,6 +21,7 @@
             <connections>
                 <outlet property="activityIndicator" destination="Iw7-oO-cVT" id="hNB-Tg-YWc"/>
                 <outlet property="forgetPasswordButton" destination="An8-fa-smv" id="b3v-cs-118"/>
+                <outlet property="guestButton" destination="Bam-zK-SxU" id="KDv-Ua-ekH"/>
                 <outlet property="haveAccountLabel" destination="hmk-8p-mKh" id="ST9-fr-bsv"/>
                 <outlet property="loginButton" destination="aS2-k8-vmh" id="a20-mk-4s4"/>
                 <outlet property="loginTitleLabel" destination="Akp-7o-0o7" id="bqc-2H-bS6"/>
@@ -49,8 +50,8 @@
                     <rect key="frame" x="8" y="339" width="396" height="47.333333333333314"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Iw7-oO-cVT">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Iw7-oO-cVT">
+                    <rect key="frame" x="0.0" y="44" width="414" height="450"/>
                     <color key="color" name="grayText"/>
                 </activityIndicatorView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="oQv-Kc-mFa">
@@ -96,25 +97,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M91-1c-i3y">
-                    <rect key="frame" x="87.333333333333329" y="630.33333333333337" width="239.33333333333337" height="30.666666666666629"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hmk-8p-mKh">
-                            <rect key="frame" x="0.0" y="6.6666666666666288" width="160" height="17.666666666666668"/>
-                            <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo" pointSize="15"/>
-                            <color key="textColor" name="Black(Texts)"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6j-zo-jZR">
-                            <rect key="frame" x="160" y="0.0" width="79.333333333333314" height="30.666666666666668"/>
-                            <color key="tintColor" name="Blue(main)"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Register">
-                                <fontDescription key="titleFontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="14"/>
-                            </buttonConfiguration>
-                        </button>
-                    </subviews>
-                </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="An8-fa-smv">
                     <rect key="frame" x="238.33333333333337" y="508.66666666666669" width="165.66666666666663" height="30.666666666666686"/>
                     <color key="tintColor" name="Blue(main)"/>
@@ -156,6 +138,36 @@
                     <color key="textColor" name="redColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bam-zK-SxU">
+                    <rect key="frame" x="83.666666666666686" y="620" width="247" height="30.666666666666629"/>
+                    <color key="tintColor" name="Blue(main)"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="login as guest">
+                        <fontDescription key="titleFontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="14"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="guestButtonTapped:" destination="-1" eventType="touchUpInside" id="Hkk-Pm-jmF"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M91-1c-i3y">
+                    <rect key="frame" x="87.333333333333329" y="659" width="239.33333333333337" height="30.666666666666629"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hmk-8p-mKh">
+                            <rect key="frame" x="0.0" y="6.6666666666666288" width="160" height="17.666666666666668"/>
+                            <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo" pointSize="15"/>
+                            <color key="textColor" name="Black(Texts)"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6j-zo-jZR">
+                            <rect key="frame" x="160" y="0.0" width="79.333333333333314" height="30.666666666666668"/>
+                            <color key="tintColor" name="Blue(main)"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Register">
+                                <fontDescription key="titleFontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="14"/>
+                            </buttonConfiguration>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vtr-oi-Gzr"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -178,6 +190,7 @@
                 <constraint firstItem="Pnu-Qg-ork" firstAttribute="top" secondItem="csd-AC-5Hg" secondAttribute="bottom" constant="7" id="NEh-sM-aah"/>
                 <constraint firstItem="dFT-vz-Ocn" firstAttribute="leading" secondItem="vtr-oi-Gzr" secondAttribute="leading" constant="8" id="P73-V9-OcL"/>
                 <constraint firstItem="M91-1c-i3y" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0342262" id="PB3-yX-VmK"/>
+                <constraint firstItem="M91-1c-i3y" firstAttribute="top" secondItem="Bam-zK-SxU" secondAttribute="bottom" constant="8.3333333333333712" id="PZs-uk-uGd"/>
                 <constraint firstItem="Iw7-oO-cVT" firstAttribute="leading" secondItem="vtr-oi-Gzr" secondAttribute="leading" id="Pbh-I6-HQe"/>
                 <constraint firstItem="M91-1c-i3y" firstAttribute="centerX" secondItem="vtr-oi-Gzr" secondAttribute="centerX" id="QwD-jK-6sk"/>
                 <constraint firstItem="ml3-lS-j98" firstAttribute="leading" secondItem="dFT-vz-Ocn" secondAttribute="leading" id="VeK-Ng-lHx"/>
@@ -193,7 +206,6 @@
                 <constraint firstItem="dFT-vz-Ocn" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.980676" id="eGR-xM-vSa"/>
                 <constraint firstItem="oQv-Kc-mFa" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="fMT-Ux-qqR"/>
                 <constraint firstItem="cEK-cp-C7I" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.81401" id="fkC-j6-BaX"/>
-                <constraint firstItem="M91-1c-i3y" firstAttribute="top" secondItem="aS2-k8-vmh" secondAttribute="bottom" constant="33.000000000000114" id="hgB-9d-9cH"/>
                 <constraint firstItem="ml3-lS-j98" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.053" id="iqe-XW-ILK"/>
                 <constraint firstItem="An8-fa-smv" firstAttribute="top" secondItem="Pnu-Qg-ork" secondAttribute="bottom" constant="15" id="izy-S7-FxG"/>
                 <constraint firstItem="vtr-oi-Gzr" firstAttribute="trailing" secondItem="Iw7-oO-cVT" secondAttribute="trailing" id="lmf-wW-XjB"/>
@@ -201,8 +213,12 @@
                 <constraint firstItem="aS2-k8-vmh" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.961353" id="mAg-Lm-zcd"/>
                 <constraint firstItem="Pnu-Qg-ork" firstAttribute="leading" secondItem="csd-AC-5Hg" secondAttribute="leading" id="mNM-Si-CNw"/>
                 <constraint firstItem="dFT-vz-Ocn" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0226935" id="mWs-Yz-QAu"/>
+                <constraint firstItem="Bam-zK-SxU" firstAttribute="centerX" secondItem="vtr-oi-Gzr" secondAttribute="centerX" id="o2J-Sq-adm"/>
+                <constraint firstItem="Bam-zK-SxU" firstAttribute="top" secondItem="aS2-k8-vmh" secondAttribute="bottom" constant="22.666666666666629" id="ofM-1B-HWm"/>
                 <constraint firstItem="vtr-oi-Gzr" firstAttribute="trailing" secondItem="An8-fa-smv" secondAttribute="trailing" constant="10" id="pvr-hD-Z7O"/>
+                <constraint firstItem="Bam-zK-SxU" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0342262" id="rsS-dk-yUa"/>
                 <constraint firstItem="Iw7-oO-cVT" firstAttribute="top" secondItem="vtr-oi-Gzr" secondAttribute="top" id="tgz-S0-FVY"/>
+                <constraint firstItem="Bam-zK-SxU" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.596618" id="wf8-gE-d5p"/>
                 <constraint firstItem="An8-fa-smv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.4" id="zJX-ka-EEp"/>
             </constraints>
             <point key="canvasLocation" x="1.4492753623188408" y="-113.16964285714285"/>

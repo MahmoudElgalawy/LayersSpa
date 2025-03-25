@@ -26,8 +26,8 @@ class ProductAndServiceCollectionViewCell: UICollectionViewCell, IdentifiableVie
         var isAddedToCart = false
         var isService = true
         var cellProduct: ProductVM?
-        var delegate: CoreDataDelegation?
-        var showAlertDelegate: AddToCartAlerts?
+        weak var delegate: CoreDataDelegation?
+        weak var showAlertDelegate: AddToCartAlerts?
         
         override func awakeFromNib() {
             super.awakeFromNib()
@@ -43,20 +43,36 @@ class ProductAndServiceCollectionViewCell: UICollectionViewCell, IdentifiableVie
             addToWishListButton.roundCorners(radius: 8)
             addToWishListButton.backgroundColor = UIColor.black20
         }
-        
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        image.image = nil
+        image.kf.cancelDownloadTask() // لإلغاء أي تحميل صورة قيد التشغيل
+    }
+
         // Configure cell for displaying products
-        func configureCellForProduct(_ product: ProductVM) {
-            isService = false
-            let url = URL(string: product.productImage)
-            image.kf.setImage(with: url)
-            nameLabel.text = product.productName
-            priceLabel.text = "\(product.productPrice)"
-            sizeLabel.text = product.productSize
-            serviceRatingStackView.isHidden = true
-            sizeLabel.isHidden = false
-            cellProduct = product
-            updateWishListAndCartButtons()
+    func configureCellForProduct(_ product: ProductVM) {
+        isService = false
+        let url = URL(string: product.productImage)
+        
+        image.kf.setImage(with: url) { [weak self] result in
+            switch result {
+            case .success:
+                break // الصورة تم تحميلها بنجاح
+            case .failure:
+                self?.image.image = UIImage(named: "placeholder") // ضع صورة افتراضية عند الفشل
+            }
         }
+        
+        nameLabel.text = product.productName
+        priceLabel.text = "\(product.productPrice)"
+        sizeLabel.text = product.productSize
+        serviceRatingStackView.isHidden = true
+        sizeLabel.isHidden = false
+        cellProduct = product
+        updateWishListAndCartButtons()
+    }
+
+    
         
         // Configure cell for displaying services
         func configureCellForService(_ service: ProductVM) {
@@ -114,7 +130,11 @@ class ProductAndServiceCollectionViewCell: UICollectionViewCell, IdentifiableVie
         }
         
         // Handle the action when the like button is tapped
-        @objc func likeTapped() {
+    @objc func likeTapped() {
+        if UserDefaults.standard.bool(forKey: "guest"){
+            showAlertDelegate?.showGuestAlert(msg: String(localized: "guestwish"))
+        }else {
+            
             guard let product = cellProduct else { return }
             let productType: CoreDataProductType = isService ? .service : .product
             
@@ -130,6 +150,7 @@ class ProductAndServiceCollectionViewCell: UICollectionViewCell, IdentifiableVie
             updateWishListAndCartButtons()
         }
     }
+    }
 
     extension ProductAndServiceCollectionViewCell {
         
@@ -140,16 +161,20 @@ class ProductAndServiceCollectionViewCell: UICollectionViewCell, IdentifiableVie
         
         // Handle the action when the Add to Cart button is tapped
         @objc func addToCartTapped() {
-            guard let product = cellProduct else { return }
-            
-            if isAddedToCart {
-                LocalDataManager.sharedInstance.deleteProduct(product.productId, .cart) { [weak self] result in
-                NotificationCenter.default.post(name:  Notification.Name("flag")
-                                                    , object: nil, userInfo: ["flag": "true"])
-                    self?.updateCartButton()
+            if UserDefaults.standard.bool(forKey: "guest"){
+                showAlertDelegate?.showGuestAlert(msg: String(localized: "guestcart"))
+            }else {
+                guard let product = cellProduct else { return }
+                
+                if isAddedToCart {
+                    LocalDataManager.sharedInstance.deleteProduct(product.productId, .cart) { [weak self] result in
+                        NotificationCenter.default.post(name:  Notification.Name("flag")
+                                                        , object: nil, userInfo: ["flag": "true"])
+                        self?.updateCartButton()
+                    }
+                } else {
+                    handleCartProduct(product)
                 }
-            } else {
-                handleCartProduct(product)
             }
         }
         
@@ -192,14 +217,22 @@ class ProductAndServiceCollectionViewCell: UICollectionViewCell, IdentifiableVie
 //        func SomeThingWentWrong(msg: String, btnTitle: String) {
 //            CustomAlertViewController().show("Warning", "\(msg)", buttonTitle: "\(btnTitle)", .redColor, .warning)
 //        }
+        
+        override func willMove(toSuperview newSuperview: UIView?) {
+            if newSuperview == nil {
+                image.image = nil
+            }
+        }
+
     }
 
-    protocol CoreDataDelegation {
+protocol CoreDataDelegation:AnyObject {
         func reloadDataAfterDelete(_ type: CoreDataProductType)
     }
 
-    protocol AddToCartAlerts {
+protocol AddToCartAlerts:AnyObject {
         func showInCorrectBranchAlert()
+        func showGuestAlert(msg: String)
     }
 
 

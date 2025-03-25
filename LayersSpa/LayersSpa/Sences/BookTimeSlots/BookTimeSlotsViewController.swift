@@ -191,7 +191,7 @@ extension BookTimeSlotsViewController: UICollectionViewDelegate, UICollectionVie
         
         
         if !isTimeSlotAvailable(selectedTime, existingSlots: allTimeSlots) {
-            showNoTimeSelectedAlert(msg: "You have already booked a service at this time,Please choose different time", btnTitle: "Ok")
+            showNoTimeSelectedAlert(msg: String(localized: "alreadyBook") , btnTitle:String(localized: "ok"))
             return
         }
         // التأكد من أن serviceId ليس nil
@@ -245,7 +245,7 @@ private extension BookTimeSlotsViewController {
     
     @objc func continueTapped() {
         guard let selectedIndexPath = timeSlotsCollectionView.indexPathsForSelectedItems?.first else {
-            showNoTimeSelectedAlert(msg: "Please select a time for service before continuing", btnTitle: "Select Time")
+            showNoTimeSelectedAlert(msg: String(localized:"selectTimeForAllServices"), btnTitle: String(localized:"selectTime"))
             return
         }
         let selectedTime = times[selectedIndexPath.row]
@@ -301,7 +301,7 @@ extension BookTimeSlotsViewController{
     
     func showNoTimeSelectedAlert(msg:String, btnTitle: String) {
         let alertVC = CustomAlertViewController()
-        alertVC.show("Warning", msg, buttonTitle: btnTitle,navigateButtonTitle: "", .redColor, .warning, flag: true)
+        alertVC.show(String(localized:"warning"), msg, buttonTitle: btnTitle,navigateButtonTitle: "", .redColor, .warning, flag: true)
         present(alertVC, animated: true, completion: nil)
     }
 }

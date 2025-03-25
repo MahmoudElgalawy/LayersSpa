@@ -80,10 +80,13 @@ extension SettingViewController: UITableViewDelegate {
 
         switch sectionItem.type {
         case .Delete:
-            if let cell = tableView.cellForRow(at: indexPath) as? SettingTableViewCell {
-                cell.showAlertDelegate?.showInCorrectBranchAlert()
+            if UserDefaults.standard.bool(forKey: "guest"){
+               
+            }else{
+                if let cell = tableView.cellForRow(at: indexPath) as? SettingTableViewCell {
+                    cell.showAlertDelegate?.showInCorrectBranchAlert()
+                }
             }
-
         case .appLanguage:
             
             let selectedLanguage = (indexPath.row == 0) ? "ar" : "en"
@@ -250,6 +253,12 @@ extension SettingViewController : RegistrationNavigationBarDelegate {
         alert.alertDelegate = self
         change = true
         alert.show(String(localized: "warning") + "!", String(localized: "changeLanguage"), buttonTitle: String(localized: "Change"), navigateButtonTitle: String(localized: "cancel"), .redColor, .warning, flag: false)
+    }
+    
+    func showGuestAlert(msg: String) {
+        let alert = CustomAlertViewController()
+        alert.alertDelegate = self
+        alert.show(String(localized: "warning") + "!!", "\(msg)", buttonTitle: String(localized: "ok"), navigateButtonTitle: "", .redColor, .warning, flag: true)
     }
 }
 

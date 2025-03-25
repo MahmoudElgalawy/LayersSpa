@@ -197,7 +197,7 @@ extension SelectProfessionalOptionsViewController{
     func calculateWorkingTime(workingHours: WorkingHours, busyEvents: [OtherEvent], date: Date) -> Int {
         let calendar = Calendar.current
         
-        let workStartTime = toLocalTime(workingHours.from!)
+        let workStartTime = toLocalTime(workingHours.from ?? "0")
         let workEndTime = toLocalTime(workingHours.to!)
         
         let todayStart = calendar.date(bySettingHour: workStartTime.hour ?? 0, minute: workStartTime.minute ?? 0, second: 0, of: date)!
@@ -233,6 +233,7 @@ extension SelectProfessionalOptionsViewController {
         let calendar = Calendar.current
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
+        formatter.locale = Locale(identifier: "en_US") // فرض عرض التوقيت بالإنجليزية
 
         let workStartTime = toLocalTime(employee.workingHours.from!)
         let workEndTime = toLocalTime(employee.workingHours.to!)
@@ -268,16 +269,14 @@ extension SelectProfessionalOptionsViewController {
         return freeSlots
     }
 
-
-    func showSelectOtherAlert(msg:String, btnTitle: String) {
+    func showSelectOtherAlert(msg: String, btnTitle: String) {
         let alertVC = CustomAlertViewController()
         alertVC.alertDelegate = self
-        alertVC.show(String(localized: "weAreSorry"), msg, buttonTitle: btnTitle,navigateButtonTitle: "", .redColor, .warning, flag: true)
+        alertVC.show(String(localized: "weAreSorry"), msg, buttonTitle: btnTitle, navigateButtonTitle: "", .redColor, .warning, flag: true)
         present(alertVC, animated: true, completion: nil)
     }
     
     func alertButtonClicked() {
         self.navigationController?.popViewController(animated: true)
     }
-    
 }

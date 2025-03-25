@@ -9,8 +9,8 @@ import UIKit
 import UILayerSpa
 import Networking
 
-class SignupViewController: UIViewController, CustomAlertDelegate {
-
+class SignupViewController: UIViewController, CustomAlertDelegate, RegistrationNavigationBarDelegate {
+   
     // MARK: Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loginButton: UIButton!
@@ -24,10 +24,14 @@ class SignupViewController: UIViewController, CustomAlertDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var warningPhone: UILabel!
     
+    @IBOutlet weak var alreadyHaeAccountStack: UIStackView!
+    @IBOutlet weak var navBar: RegistrationNavigationBar!
+    
+    
     // MARK: Properties
     
     private var viewModel: SignupViewModelType
-    
+    var update = false
     // MARK: Init
     
     init(viewModel: SignupViewModelType) {
@@ -44,6 +48,11 @@ class SignupViewController: UIViewController, CustomAlertDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if update{
+            navBar.isHidden = false
+            navBar.logo.isHidden = true
+            navBar.navDelegate = self
+        }
         phoneNumberLabel.text = String(localized: "phoneNumberLbl")
         warningPhone.text = String(localized: "Phoneblank")
         navigationController?.navigationBar.isHidden = true
@@ -101,13 +110,27 @@ extension SignupViewController {
             guard let self = self else { return }
             
             if result.state {
-                
-                let vc = VerificationViewController(viewModel: VerificationViewModel(remote: VerficationRemote(network: AlamofireNetwork())))
-                vc.phoneNumber = phoneNumberTFView.getFullPhoneNumber()
-                vc.viewModel.getOTP(phone: phoneNumberTFView.getFullPhoneNumber())
-                vc.register = true
-                UserDefaults.standard.set(phoneNumberTFView.countryLabel.text, forKey: "CoutryCode")
-                navigationController?.pushViewController(vc, animated: true)
+                if update {
+                    // udate phone
+                    let vc = VerificationViewController(viewModel: VerificationViewModel(remote: VerficationRemote(network: AlamofireNetwork())))
+                    vc.update = true
+                    vc.phoneNumber = phoneNumberTFView.getFullPhoneNumber()
+                    vc.viewModel.getOTP(phone: phoneNumberTFView.getFullPhoneNumber())
+                    vc.register = true
+                    UserDefaults.standard.set(phoneNumberTFView.countryLabel.text, forKey: "CoutryCode")
+                    Defaults.sharedInstance.userData?.phone = phoneNumberTFView.getFullPhoneNumber()
+                    print("Update Phone:  \(phoneNumberTFView.getFullPhoneNumber())")
+                    navigationController?.pushViewController(vc, animated: true)
+                }else{
+                    // create an account
+                    let vc = VerificationViewController(viewModel: VerificationViewModel(remote: VerficationRemote(network: AlamofireNetwork())))
+                    vc.update = false
+                    vc.phoneNumber = phoneNumberTFView.getFullPhoneNumber()
+                    vc.viewModel.getOTP(phone: phoneNumberTFView.getFullPhoneNumber())
+                    vc.register = true
+                    UserDefaults.standard.set(phoneNumberTFView.countryLabel.text, forKey: "CoutryCode")
+                    navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
         
@@ -131,23 +154,39 @@ extension SignupViewController {
         }
     }
     
+    func back() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 // MARK: - Configurations
 
 extension SignupViewController {
     func bindLabels() {
-        titleLabel.applyLabelStyle(.screenTitle)
-        titleLabel.text = String(localized: "CreateAccount")
-        phoneNumberLabel.applyLabelStyle(.textFieldTitleLabel)
-        haveAccountLabel.applyLabelStyle(.textFieldTitleLabel)
-        haveAccountLabel.text = String(localized: "Alreadyhaveanaccount")
+        if update{
+            titleLabel.text = String(localized: "UpdatePhoneNumber")
+            alreadyHaeAccountStack.isHidden = true
+        }else{
+            alreadyHaeAccountStack.isHidden = false
+            titleLabel.applyLabelStyle(.screenTitle)
+            titleLabel.text = String(localized: "CreateAccount")
+            phoneNumberLabel.applyLabelStyle(.textFieldTitleLabel)
+            haveAccountLabel.applyLabelStyle(.textFieldTitleLabel)
+            haveAccountLabel.text = String(localized: "Alreadyhaveanaccount")
+        }
     }
     
     func bindLoginButton() {
-        signupButton.setTitle(String(localized: "SignUp"), for: .normal)
-        signupButton.applyButtonStyle(.filled)
-        signupButton.addTarget(self, action: #selector(signupIsTapped), for: .touchUpInside)
+        if update{
+            signupButton.setTitle(String(localized: "Change"), for: .normal)
+            signupButton.applyButtonStyle(.filled)
+            signupButton.addTarget(self, action: #selector(signupIsTapped), for: .touchUpInside)
+        }else{
+            signupButton.setTitle(String(localized: "SignUp"), for: .normal)
+            signupButton.applyButtonStyle(.filled)
+            signupButton.addTarget(self, action: #selector(signupIsTapped), for: .touchUpInside)
+        }
     }
     
     func bindSignupButton() {
@@ -182,18 +221,28 @@ extension SignupViewController {
 //        vc.phoneNumber = phoneNumberTFView.phoneTextField.text ?? ""
 //        navigationController?.pushViewController(vc, animated: true)
         let phone = phoneNumberTFView.getFullPhoneNumber()
-        if phone.count > 4 {
-            viewModel.checkPhoneExist(phone){}
-            phoneNumberTFView.layer.borderColor = UIColor.border.cgColor
-            warningPhone.text = String(localized: "Phoneblank")
-            warningPhone.isHidden = true
-            UserDefaults.standard.set(phone, forKey: "phone")
-            UserDefaults.standard.set(phoneNumberTFView.countryLabel.text, forKey: "CoutryCode")
-        }else {
-            //showError("invalid", "phone is required")
-            phoneNumberTFView.layer.borderColor = UIColor.redColor.cgColor
-            phoneNumberTFView.layer.borderWidth = 1.0
-            warningPhone.isHidden = false
+        
+        if phone.contains(" ") {
+               phoneNumberTFView.layer.borderColor = UIColor.redColor.cgColor
+               phoneNumberTFView.layer.borderWidth = 1.0
+            warningPhone.text = String(localized: "noSpaces")
+               warningPhone.isHidden = false
+               return
+        }else{
+            
+            if phone.count > 4 {
+                viewModel.checkPhoneExist(phone){}
+                phoneNumberTFView.layer.borderColor = UIColor.border.cgColor
+                warningPhone.text = String(localized: "Phoneblank")
+                warningPhone.isHidden = true
+                UserDefaults.standard.set(phone, forKey: "phone")
+                UserDefaults.standard.set(phoneNumberTFView.countryLabel.text, forKey: "CoutryCode")
+            }else {
+                //showError("invalid", "phone is required")
+                phoneNumberTFView.layer.borderColor = UIColor.redColor.cgColor
+                phoneNumberTFView.layer.borderWidth = 1.0
+                warningPhone.isHidden = false
+            }
         }
     }
     

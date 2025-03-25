@@ -24,7 +24,7 @@ class PhoneNumberTextFieldView: UIViewFromNib {
         "UK": "+44"
     ]
     
-    var defaultCountryCode: String = "+966" { // القيمة الافتراضية
+    var defaultCountryCode: String = "+966" {
             didSet {
                 countryLabel.text = defaultCountryCode
             }
@@ -41,7 +41,6 @@ class PhoneNumberTextFieldView: UIViewFromNib {
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
             guard let self = self else { return }
                print("Selected item: \(item) at index: \(index)")
-               
                self.countryLabel.text = countryCodes[item] ?? ""
         }
         phoneTextField.addTarget(self, action: #selector(validatePhoneNumber), for: .editingChanged)
@@ -52,9 +51,9 @@ class PhoneNumberTextFieldView: UIViewFromNib {
     
     @objc func validatePhoneNumber() {
         if isPhoneNumberValid() {
-            phoneTextField.layer.borderColor = UIColor.green.cgColor // صحيح ✅
+            phoneTextField.layer.borderColor = UIColor.green.cgColor
         } else {
-            phoneTextField.layer.borderColor = UIColor.red.cgColor // خطأ ❌
+            phoneTextField.layer.borderColor = UIColor.red.cgColor
         }
     }
     
@@ -85,7 +84,7 @@ class PhoneNumberTextFieldView: UIViewFromNib {
               let phoneNumber = phoneTextField.text  else {
             return false
         }
-        return phoneNumber.hasPrefix(countryCode) // التحقق مما إذا كان الرقم يبدأ بالكود
+        return phoneNumber.hasPrefix(countryCode)
     }
     
     func getFullPhoneNumber() -> String {
@@ -94,11 +93,9 @@ class PhoneNumberTextFieldView: UIViewFromNib {
                 return ""
             }
             
-            // إزالة أي مسافات أو رموز غير مرغوب فيها من رقم الهاتف
-            let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: " ", with: "")
+          //  let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: " ", with: "")
             
-            // دمج كود الدولة مع رقم الهاتف
-            return "\(countryCode)\(cleanedPhoneNumber)"
+            return "\(countryCode)\(phoneNumber)"
         }
     
     
@@ -110,9 +107,8 @@ class PhoneNumberTextFieldView: UIViewFromNib {
                 defaultCountryCode = "+20"
             case "US":
                 defaultCountryCode = "+1"
-            // أضف باقي الدول هنا
             default:
-                defaultCountryCode = "+966" // افتراضي
+                defaultCountryCode = "+966"
             }
         }
 }

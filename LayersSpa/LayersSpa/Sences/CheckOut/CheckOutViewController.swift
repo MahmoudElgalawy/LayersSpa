@@ -219,6 +219,9 @@ private extension CheckOutViewController {
     }
     
     @objc func continueTapped() {
+        
+        let value = String(localized: "visa")
+        
         if viewModel.selectedPaymentMethod != nil{
             
             // Mark:- Service not product
@@ -226,8 +229,10 @@ private extension CheckOutViewController {
             if isService{
                 
                 // Mark:- Choose Visa Method
+                
+                
 
-                if viewModel.selectedPaymentMethod == "Visa"{
+                if viewModel.selectedPaymentMethod == value{
                     
                     // Mark:- Select Card
 
@@ -333,7 +338,7 @@ private extension CheckOutViewController {
                 }
             }else{
                 // Mark:- product not Service
-                if viewModel.selectedPaymentMethod == "Visa"{
+                if viewModel.selectedPaymentMethod == value{
                     if viewModel.visa != nil {
                         
                         indicator.startAnimating()
@@ -393,7 +398,7 @@ private extension CheckOutViewController {
                     }
                 }
             }
-            }else{
+            } else{
                 self.method = false
                 self.showAlert(title: String(localized: "warning") + "!!", msg: String(localized: "selectPaymentMSG"), btnTitle: String(localized: "ok"))
             }
@@ -477,9 +482,8 @@ extension CheckOutViewController: CustomAlertDelegate {
 
             print("إجمالي التكلفة: \(self.cost)")
             
-            // يمكنك تحديث واجهة المستخدم هنا إذا كنت بحاجة لذلك
             DispatchQueue.main.async {
-                self.totalNumLabel.text = "\(cost) "  // كمثال لو عندك label في الواجهة
+                self.totalNumLabel.text = "\(cost) "
             }
         }
     }

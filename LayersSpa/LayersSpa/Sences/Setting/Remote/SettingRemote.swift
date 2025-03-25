@@ -20,7 +20,7 @@ import Networking
  class SettingRemote: Remote, SettingRemoteProtocol {
 
      func LogOut( completion: @escaping (Result<Login, Error>) -> Void) {
-        let path = "api/customers/deactive_customer/\((Defaults.sharedInstance.userData?.userId)!)"
+        let path = "api/customers/deactive_customer/\((Defaults.sharedInstance.userData?.userId) ?? 0)"
 
         
         let request = LayersApiRequest(method: .post, base: Settings.registrationsApiBaseURL, path: path,header: [

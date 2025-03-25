@@ -21,7 +21,8 @@ protocol GalleryViewModelInput {
 /// Gallery ViewModel Output
 ///
 protocol GalleryViewModelOutput {
-    func getPhotosNum() -> Int
-    var onReloadData: (() -> Void) { get set }
-    func getPhoto(_ index: Int) -> UIImage?
+   // func getPhotosNum() -> Int
+    var onReloadData: ((Bool) -> Void) { get set }
+    var photos: [String] { get set}
+   // func getPhoto(_ index: Int) -> UIImage?
 }

@@ -46,12 +46,12 @@ enum CustomError: Error {
 }
 
 public struct loginVM: Codable {
-    let name: String
-    let image: String
-    let phone: String
-    let email: String
-    let token: String
-    let userId: Int
+    var name: String
+    var image: String
+    var phone: String
+    var email: String
+    var token: String
+    var userId: Int
     
 }
 

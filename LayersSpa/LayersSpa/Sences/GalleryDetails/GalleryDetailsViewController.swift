@@ -7,14 +7,17 @@
 
 import UIKit
 import UILayerSpa
+import Kingfisher
 
 class GalleryDetailsViewController: UIViewController {
-    var pageImage: UIImage?
+    var pageImage: String?
 
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var viewButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var backButton: UIButton!
+    
+    @IBOutlet weak var saveImage: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,7 @@ class GalleryDetailsViewController: UIViewController {
         setupBackgroundView()
         if let pageImage = pageImage {
             print("image get")
-            imageView.image = pageImage
+            imageView.kf.setImage(with: URL(string:pageImage))
         }else {
             print("nil")
         }
@@ -37,6 +40,13 @@ class GalleryDetailsViewController: UIViewController {
         backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
     }
     
+    func bindLoginButton() {
+        //loginButton.setTitle("Sign in", for: .normal)
+        saveImage.applyButtonStyle(.filled)
+        saveImage.applyButtonStyle(.plain)
+        saveImage.setTitle(String(localized: "saveImage"), for: .normal)
+    }
+    
     private func bindViewButton() {
         viewButton.applyButtonStyle(.filled)
      //   viewButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
@@ -45,5 +55,11 @@ class GalleryDetailsViewController: UIViewController {
     @objc func backTapped() {
         self.navigationController?.popViewController(animated: true)
     }
-
+    
+    
+    @IBAction func saveImageBtn(_ sender: Any) {
+        
+        
+    }
+    
 }

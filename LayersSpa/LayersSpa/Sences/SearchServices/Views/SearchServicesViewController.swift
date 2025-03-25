@@ -14,13 +14,16 @@ class SearchServicesViewController: UIViewController, CustomAlertDelegate, AddTo
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var viewBack: UIView!
     @IBOutlet weak var EmptyStateView: EmptyStateView!
+    @IBOutlet weak var cancelBtn: UIBarButtonItem!
+    
+    
     
     // MARK: Properties
        
        var isProduct = true
        private var viewModel: SearchServicesViewModelProtocol
        var indicator : UIActivityIndicatorView?
-
+       var guest = false
        // MARK: Init
 
        init(viewModel: SearchServicesViewModelProtocol) {
@@ -37,6 +40,8 @@ class SearchServicesViewController: UIViewController, CustomAlertDelegate, AddTo
     
        override func viewDidLoad() {
            super.viewDidLoad()
+           self.navigationBar.topItem?.title = String(localized: "searchService")
+           cancelBtn.title = String(localized: "cancel")
            setIndicator()
            bindViewModel()
            self.hideKeyboardWhenTappedAround()
@@ -194,7 +199,7 @@ class SearchServicesViewController: UIViewController, CustomAlertDelegate, AddTo
     }
     
     func bindEmptyStateView() {
-        EmptyStateView.configeView(.noSearchResult, "Oops! No Results Found", "Unfortunately, we couldn't find any services that match your search criteria.")
+        EmptyStateView.configeView(.noSearchResult, String(localized: "noResult"), String(localized: "Unfortunately"))
     }
     
     func showInCorrectBranchAlert() {
@@ -202,6 +207,13 @@ class SearchServicesViewController: UIViewController, CustomAlertDelegate, AddTo
         alert.alertDelegate = self
         alert.show(String(localized: "warning"), String(localized: "selectABranchMSG"), buttonTitle: String(localized: "navigateToHome"),navigateButtonTitle: String(localized: "cancel"), .redColor, .warning, flag: false)
     }
+     
+     func showGuestAlert(msg: String) {
+         let alert = CustomAlertViewController()
+         alert.alertDelegate = self
+         alert.show(String(localized: "warning") + "!!", "\(msg)", buttonTitle: String(localized: "ok"), navigateButtonTitle: "", .redColor, .warning, flag: true)
+     }
+     
     
     @objc func navigateToDetails(_ sender: UITapGestureRecognizer){
         guard let tappedView = sender.view else { return }
@@ -222,7 +234,11 @@ extension SearchServicesViewController: UISearchBarDelegate {
         }
     
     func alertButtonClicked() {
-        navigationController?.popViewController(animated: true)
+        if UserDefaults.standard.bool(forKey: "guest"){
+            
+        }else{
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 

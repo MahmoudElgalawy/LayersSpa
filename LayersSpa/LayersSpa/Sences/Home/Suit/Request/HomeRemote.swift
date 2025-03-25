@@ -11,7 +11,6 @@ import Networking
 
 /// Protocol for `LoginRemote` mainly used for mocking.
 ///
-import Foundation
 
 public protocol HomeRemoteProtocol {
     func getHomeData(_ branchId: String, completion: @escaping (Result<Home, Error>) -> Void)
@@ -24,8 +23,8 @@ public class HomeRemote: HomeRemoteProtocol {
 
     public init(session: URLSession = {
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 10
-        configuration.timeoutIntervalForResource = 20
+       // configuration.timeoutIntervalForRequest = 60
+       // configuration.timeoutIntervalForResource = 20
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
         return URLSession(configuration: configuration)
     }()) {
@@ -81,6 +80,10 @@ public class HomeRemote: HomeRemoteProtocol {
                 completion(.failure(error))
             }
         }
+        
+//        for metric in metrics.transactionMetrics {
+//            print(task.response?.url ?? "", metric.fetchStartDate?.description(with: .current) ?? "")
+//        }
         task.resume()
     }
 

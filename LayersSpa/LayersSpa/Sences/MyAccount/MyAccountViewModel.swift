@@ -10,21 +10,16 @@ import Foundation
 
 class MyAccountViewModel {
     
-    // ✅ تعريف الريموت لجلب البيانات
     private let remote: MyAccountRemoteProtocol
     
-    // ✅ تخزين بيانات البروفايل بعد جلبها
     var userProfile: UserData?
     
-    // ✅ Callback لتحديث الـ UI عند جلب البيانات
     var onUserProfileFetched: ((UserData?) -> Void)?
     
-    // ✅ تهيئة الـ ViewModel مع الريموت
     init(remote: MyAccountRemoteProtocol = MyAccountRemote()) {
         self.remote = remote
     }
     
-    // ✅ جلب بيانات المستخدم من الريموت
     func fetchUserProfile() {
         remote.fetchUserProfile { [weak self] result in
             DispatchQueue.main.async {
@@ -41,12 +36,11 @@ class MyAccountViewModel {
         }
     }
 
-    // ✅ تحديث بيانات المستخدم
     func updateUserProfile(firstName: String, email: String, phone: String, image: Data?, completion: @escaping (Result<String, Error>) -> Void) {
         
       
         
-        remote.updateUserProfile(token: (Defaults.sharedInstance.userData?.token)!, firstName: firstName, email: email, phone: phone, image: image) { [weak self] result in
+        remote.updateUserProfile(token: (Defaults.sharedInstance.userData?.token) ?? "0", firstName: firstName, email: email, phone: phone, image: image) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(_): break

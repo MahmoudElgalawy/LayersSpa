@@ -39,40 +39,45 @@ class AppointmentsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = String(localized: "myAppointments")
-        indicator.startAnimating()
-              //  appointmentTableView.isHidden = true // إخفاء الجدول حتى اكتمال التحميل
-                
-                // إعداد الأزرار
-        segmentedButtonsView.updateButtonsTitles(String(localized: "history"), String(localized:"upcoming"))
-                segmentedButtonsView.delegate = self
-                
-             //  firstButtonTapped()
-               secondButtonTapped()
+        if UserDefaults.standard.bool(forKey: "guest"){
+            segmentedButtonsView.updateButtonsTitles(String(localized: "history"), String(localized:"upcoming"))
+        }else{
+            titleLabel.text = String(localized: "myAppointments")
+            indicator.startAnimating()
+            //  appointmentTableView.isHidden = true
             
-        viewModel.reload = { [weak self] in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                if self.viewModel.isDataLoaded {
-                    self.indicator.stopAnimating()
-                    self.appointmentTableView.isHidden = self.viewModel.calenders.isEmpty // إخفاء الجدول إذا كانت البيانات فارغة
-                    self.appointmentTableView.reloadData()
-                } else {
-                    self.indicator.startAnimating()
-                    self.appointmentTableView.isHidden = true
+            segmentedButtonsView.updateButtonsTitles(String(localized: "history"), String(localized:"upcoming"))
+            segmentedButtonsView.delegate = self
+            
+            //  firstButtonTapped()
+            secondButtonTapped()
+            
+            viewModel.reload = { [weak self] in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    if self.viewModel.isDataLoaded {
+                        self.indicator.stopAnimating()
+                        self.appointmentTableView.isHidden = self.viewModel.calenders.isEmpty
+                        
+                        self.appointmentTableView.reloadData()
+                    } else {
+                        self.indicator.startAnimating()
+                        self.appointmentTableView.isHidden = true
+                    }
+                    
+                    if self.viewModel.calenders.isEmpty {
+                        self.appointmentTableView.isHidden = true
+                        self.emptyAlertView.isHidden = false
+                    } else {
+                        self.appointmentTableView.isHidden = false
+                        self.emptyAlertView.isHidden = true
+                    }
+                    self.tableViewSetup()
+                    self.bindCalenderButton()
                 }
-                
-                if self.viewModel.calenders.isEmpty {
-                    self.appointmentTableView.isHidden = true
-                    self.emptyAlertView.isHidden = false
-                } else {
-                    self.appointmentTableView.isHidden = false
-                    self.emptyAlertView.isHidden = true
-                }
-                self.tableViewSetup()
-                self.bindCalenderButton()
             }
         }
+            
                    
     }
     
@@ -201,7 +206,7 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
                 
                 if flag {
                     if self?.viewModel.calenders.isEmpty == true {
-                        self?.bindEmptyStateView(msg: String(localized: "youDon'tHaveAnyPreviousAppointments") + ".")
+                        self?.bindEmptyStateView(msg: String(localized: "youDon'tHaveAnyPreviousAppointments"))
                         self?.emptyAlertView.isHidden = false
                         self?.appointmentTableView.isHidden = true
                     } else {
@@ -229,7 +234,7 @@ extension AppointmentsViewController: SegmantedButtonsDelegation {
                 
                 if flag {
                     if self?.viewModel.calenders.isEmpty == true {
-                        self?.bindEmptyStateView(msg: String(localized: "youDon'tHaveAnyUpcomingAppointments") + ".")
+                        self?.bindEmptyStateView(msg: String(localized: "youDon'tHaveAnyUpcomingAppointments"))
                         self?.emptyAlertView.isHidden = false
                         self?.appointmentTableView.isHidden = true
                     } else {
@@ -256,7 +261,6 @@ extension AppointmentsViewController: EmptyStateDelegation {
     }
     
     func showErrorAlert(title: String, msg: String, btnTitle: String) {
-        // التحقق من عدم وجود عرض بالفعل
         if self.presentedViewController == nil {
             let alertVC = CustomAlertViewController()
             alertVC.show(title, msg, buttonTitle: btnTitle,navigateButtonTitle: "", .redColor, .warning, flag: true)

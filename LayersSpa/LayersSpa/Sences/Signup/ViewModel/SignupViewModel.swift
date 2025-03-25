@@ -12,9 +12,11 @@ import Networking
 
 class SignupViewModel {
     private var useCase: CheckPhoneExistUseCase
+    var remote: VerficationRemoteProtocol!
     
-    init(useCase: CheckPhoneExistUseCase = CheckPhoneExistUseCase()) {
+    init(useCase: CheckPhoneExistUseCase = CheckPhoneExistUseCase(), remote: VerficationRemoteProtocol = VerficationRemote(network: AlamofireNetwork())) {
         self.useCase = useCase
+        self.remote = remote
     }
     
     private var checkPhoneExistViewModels: CheckPhoneExistVM? {
@@ -70,6 +72,17 @@ extension SignupViewModel: SignupViewModelInput {
                     self.alertNetworkErrorMessage = errorDesc
                     
                 }
+            }
+        }
+    }
+    
+    func getOTP(phone: String){
+        remote.getOTP(phone) { [weak self] result in
+            switch result {
+            case .success(let data):
+                print(data)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }

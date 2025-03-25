@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import Networking
+import FirebaseMessaging
 
 /// Protocol for `LoginRemote` mainly used for mocking.
 ///
@@ -22,6 +23,9 @@ public class SignupRemote: Remote, SignupRemoteProtocol {
     public func Signup(_ phoneNumber: String, _ password: String, _ email: String, _ name: String, _ lang: String, completion: @escaping (Result<Signup, Error>) -> Void) {
         
         let path = "api/customers/store_business_customer"
+        guard let token = Messaging.messaging().fcmToken else{return}
+        print("Firebase Token: \(token)")
+        
         let parameters: Parameters = [
             "phone": phoneNumber,
             "password": password,
@@ -33,7 +37,8 @@ public class SignupRemote: Remote, SignupRemoteProtocol {
             "secure-business-key": "4765066450c0bd66325.48403130",
             "platform": "android",
             "platform-key": "387666a26a0ad869c9.00802837",
-            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
+            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)",
+            "kiosk-token" : token
         ]
 
         

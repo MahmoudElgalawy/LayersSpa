@@ -25,6 +25,12 @@ class CategoriesTableViewCell: UITableViewCell, IdentifiableView {
         bindViewAllButton()
         selectionStyle = .none
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        arrowImage.image = nil
+        categoriesInfo.removeAll()
+        categoriesCollectionView.reloadData()
+    }
     
     func configeCell(_ categories:  [CategoriesVM]) {
         categoriesInfo = categories
@@ -32,6 +38,11 @@ class CategoriesTableViewCell: UITableViewCell, IdentifiableView {
         viewAllButton.setTitle(String(localized: "viewAll"), for: .normal)
         rotateImageBasedOnLanguage()
         categoriesCollectionView.reloadData()
+    }
+    override func willMove(toSuperview newSuperview: UIView?) {
+        if newSuperview == nil {
+            arrowImage.image = nil
+        }
     }
     
     func rotateImageBasedOnLanguage() {
@@ -41,15 +52,17 @@ class CategoriesTableViewCell: UITableViewCell, IdentifiableView {
     }
     
     func bindViewAllButton() {
+        viewAllButton.removeTarget(nil, action: nil, for: .allEvents) // إزالة جميع الأوامر السابقة
         viewAllButton.addTarget(self, action: #selector(navigateToCategories), for: .touchUpInside)
     }
-    
-    
+
     func collectionViewSetup() {
-        categoriesCollectionView.register(CategoriesCollectionViewCell.self)
+        let nib = UINib(nibName: "CategoriesCollectionViewCell", bundle: nil)
+        categoriesCollectionView.register(nib, forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
     }
+
     
     func collectionViewLayout() {
         layout.scrollDirection = .horizontal

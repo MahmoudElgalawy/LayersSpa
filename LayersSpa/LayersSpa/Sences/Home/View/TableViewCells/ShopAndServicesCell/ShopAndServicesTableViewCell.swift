@@ -9,7 +9,7 @@ import UIKit
 import UILayerSpa
 
 class ShopAndServicesTableViewCell: UITableViewCell, IdentifiableView {
-
+    
     @IBOutlet private weak var productAndServiceCollectionView: UICollectionView!
     @IBOutlet private weak var viewAllArrow: UIImageView!
     @IBOutlet private weak var viewAllButton: UIButton!
@@ -26,6 +26,19 @@ class ShopAndServicesTableViewCell: UITableViewCell, IdentifiableView {
         super.awakeFromNib()
         selectionStyle = .none
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("flag"), object: nil)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        productsList.removeAll()
+        servicesList.removeAll()
+        productAndServiceCollectionView.reloadData()
+    }
+
+    override func willMove(toSuperview newSuperview: UIView?) {
+        if newSuperview == nil {
+            viewAllArrow.image = nil
+        }
     }
     
     override func layoutSubviews() {
@@ -60,7 +73,7 @@ class ShopAndServicesTableViewCell: UITableViewCell, IdentifiableView {
     
     func bindViewAllButton() {
         viewAllButton.removeTarget(nil, action: nil, for: .allEvents)
-
+        
         if isProductCell {
             viewAllButton.addTarget(self, action: #selector(navigateToProducts), for: .touchUpInside)
         } else {
@@ -147,6 +160,10 @@ extension ShopAndServicesTableViewCell {
 //}
 
 extension ShopAndServicesTableViewCell: AddToCartAlerts {
+    func showGuestAlert(msg: String) {
+        delegate?.showGuestAlert(msg: msg, buttonTitle: String(localized: "ok") )
+    }
+    
     
     func showInCorrectBranchAlert() {
         delegate?.showIncorrectBranchAlert(msg: String(localized: "selectABranchMSG"), buttonTitle: String(localized: "selectBranch") )

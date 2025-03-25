@@ -197,7 +197,7 @@ class TransactionRemote: Remote, TransactionRemoteProtocol {
         let headers: HTTPHeaders = [
             "secure-business-key": "4765066450c0bd66325.48403130",
             "Content-Type": "application/json",
-            "user-token" : "\((Defaults.sharedInstance.userData?.token)!)",
+            "user-token" : "\((Defaults.sharedInstance.userData?.token) ?? "0")",
             "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
         ]
 

@@ -72,7 +72,7 @@ public class VerficationRemote: Remote, VerficationRemoteProtocol {
                      print("✅ Success: \(data)")
                     
                  case .failure(let error):
-                     print("❌ Request Failed: \(error.localizedDescription)")
+                     print("❌ Request to get otp Failed: \(error.localizedDescription)")
                  }
              }
       

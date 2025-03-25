@@ -36,9 +36,9 @@ extension AppointmentsViewModel: AppointmentsViewModelOutput {
     func getAppointment(type: String, completion: @escaping (Bool) -> Void) {
         let userId = Defaults.sharedInstance.userData?.userId ?? 0
         isDataLoaded = false
-        reload() // تحديث الواجهة لإخفاء الجدول وعرض الـ indicator
+        reload()
         
-        calenderRemote.getAppointment(userId: userId, type: type, filterDate: "") { [weak self] result in
+        calenderRemote.getAppointment(userId: userId, type: type, filterDate: "", page: 1) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -65,7 +65,7 @@ extension AppointmentsViewModel: AppointmentsViewModelOutput {
                 
             case .failure(let error):
                 print("❌ Failed to fetch appointments: \(error.localizedDescription)")
-                self.isDataLoaded = true // تعيين isDataLoaded إلى true لإيقاف المؤشر
+                self.isDataLoaded = true
                 DispatchQueue.main.async {
                     self.reload()
                 }
@@ -120,17 +120,46 @@ extension AppointmentsViewModel: AppointmentsViewModelOutput {
     }
         
     private func printIDsComparison() {
-        print("🔹 OrderDetails IDs vs. Calenders ecommOrderIDs 🔹")
+        print("\n🔹🔹🔹 Final Matching Results 🔹🔹🔹")
         
-        let maxCount = max(ordersDetails.count, calenders.count)
+        let ordersDict = Dictionary(uniqueKeysWithValues: ordersDetails.map { ("\($0.id)", $0) })
         
-        for i in 0..<maxCount {
-            let orderID = i < ordersDetails.count ? "\(ordersDetails[i].id)" : "N/A"
-            let calenderID = i < calenders.count ? "\(calenders[i].ecommOrderID ?? "N/A")" : "N/A"
+        let sortedOrders = ordersDetails.sorted { $0.id < $1.id }
+        let sortedCalenders = calenders.sorted { ($0.ecommOrderID ?? "") < ($1.ecommOrderID ?? "") }
+        
+        let minCount = min(sortedOrders.count, sortedCalenders.count)
+        let maxCount = max(sortedOrders.count, sortedCalenders.count)
+        
+        for i in 0..<minCount {
+            let orderID = "\(sortedOrders[i].id)"
+            let calenderID = sortedCalenders[i].ecommOrderID ?? "N/A"
+            let status = ordersDict[calenderID] != nil ? "✅" : "❌"
             
-            print("🔹 OrderDetails ID: \(orderID)  |  Calender ecommOrderID: \(calenderID)")
+            print("\(status) OrderDetails ID: \(orderID) | Calender ecommOrderID: \(calenderID)")
         }
+        
+        if sortedOrders.count > sortedCalenders.count {
+            for i in minCount..<maxCount {
+                print("❌ OrderDetails ID: \(sortedOrders[i].id) | Calender ecommOrderID: N/A")
+            }
+        } else if sortedCalenders.count > sortedOrders.count {
+            for i in minCount..<maxCount {
+                print("❌ OrderDetails ID: N/A | Calender ecommOrderID: \(sortedCalenders[i].ecommOrderID ?? "N/A")")
+            }
+        }
+        
+        let successfulMatches = sortedOrders.filter { order in
+            sortedCalenders.contains { $0.ecommOrderID == "\(order.id)" }
+        }.count
+        
+        print("\n🔹 Matching Summary:")
+        print("Total Orders: \(sortedOrders.count)")
+        print("Total Calenders: \(sortedCalenders.count)")
+        print("Successful Matches: \(successfulMatches)")
     }
+
+    
+    
     }
 
 // MARK: Private Handlers

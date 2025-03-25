@@ -11,7 +11,8 @@ import UILayerSpa
 class RegistrationNavigationBar: UIViewFromNib {
     
     @IBOutlet private weak var backButton: UIButton!
-    var navDelegate: RegistrationNavigationBarDelegate?
+    @IBOutlet weak var logo: UIImageView!
+    weak var navDelegate: RegistrationNavigationBarDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

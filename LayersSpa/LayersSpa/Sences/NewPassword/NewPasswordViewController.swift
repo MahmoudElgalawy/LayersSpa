@@ -10,9 +10,9 @@ import UILayerSpa
 import Networking
 
 class NewPasswordViewController: UIViewController {
-
+    
     // MARK: Outlets
-
+    
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var confirmPasswordTF: UITextField!
     @IBOutlet weak var confirmPasswordLabel: UILabel!
@@ -21,30 +21,29 @@ class NewPasswordViewController: UIViewController {
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var navBar: RegistrationNavigationBar!
-    
     @IBOutlet weak var blankPassword: UILabel!
     @IBOutlet weak var blankconfirmPassword: UILabel!
     
     
     // MARK: Properties
-
+    
     private let viewModel: ForgotPasswordViewModel
     var viewModel2 = VerificationViewModel(remote: VerficationRemote(network: AlamofireNetwork()))
     
     // MARK: Init
-
+    
     init(viewModel: ForgotPasswordViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = String(localized: "NewPassword")
@@ -54,8 +53,8 @@ class NewPasswordViewController: UIViewController {
         resetPasswordButton.setTitle(String(localized: "ForgotTitle"), for: .normal)
         blankPassword.text = String(localized: "passwordBlank")
         blankconfirmPassword.text = String(localized: "ConfirmpasswordBlank")
-        
-        
+        blankPassword.isHidden = true
+        blankconfirmPassword.isHidden = true
         
         self.view.setGradientBackground(startColor: .primaryColor, endColor: .whiteColor)
         navBar.navDelegate = self
@@ -64,7 +63,8 @@ class NewPasswordViewController: UIViewController {
         bindResetPasswordButton()
     }
     
-    @objc func textFieldDidChange() {blankPassword.isHidden = true
+    @objc func textFieldDidChange() {
+        blankPassword.isHidden = true
         blankPassword.isHidden = true
         blankconfirmPassword.isHidden = true
         passwordTF.layer.borderColor = UIColor.border.cgColor
@@ -88,9 +88,11 @@ extension NewPasswordViewController {
     
     func bindTextFields() {
         passwordTF.applyBordertextFieldStyle(String(localized: "passwordTextField"))
+        passwordTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordTF.addPasswordToggle()
         confirmPasswordTF.applyBordertextFieldStyle(String(localized: "passwordTextField"))
         confirmPasswordTF.addPasswordToggle()
+        confirmPasswordTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     func bindResetPasswordButton() {
@@ -102,29 +104,29 @@ extension NewPasswordViewController {
 // MARK: - Private Handlers
 
 private extension NewPasswordViewController {
-//    @objc func resetPasswordIsTapped() {
-//            guard let password = passwordTF.text, !password.isEmpty else {
-//                showError("Invalid Password", "Password field cannot be empty.")
-//                return
-//            }
-//
-//            guard let confirmPassword = confirmPasswordTF.text, !confirmPassword.isEmpty else {
-//                showError("Invalid Password", "Confirm Password field cannot be empty.")
-//                return
-//            }
-//
-//            guard password == confirmPassword else {
-//                showError("Password Mismatch", "Password and Confirm Password do not match.")
-//                return
-//            }
-//
-//            viewModel.resetPassword( UserDefaults.standard.string(forKey: "userEmail") ?? "")
-//            UserDefaults.standard.set(passwordTF.text, forKey: "password")
-//            let alert = CustomAlertViewController()
-//            alert.alertDelegate = self
-////            alert.show("Password Reset Successfully", "Your password has been reset. You can now sign in with your new password.", buttonTitle: "Sign in")
-//            alert.show("Successful Step ✔️", "The Verfication Code It Was Sent To Your Email", buttonTitle: "Write The Verfication Code")
-//        }
+    //    @objc func resetPasswordIsTapped() {
+    //            guard let password = passwordTF.text, !password.isEmpty else {
+    //                showError("Invalid Password", "Password field cannot be empty.")
+    //                return
+    //            }
+    //
+    //            guard let confirmPassword = confirmPasswordTF.text, !confirmPassword.isEmpty else {
+    //                showError("Invalid Password", "Confirm Password field cannot be empty.")
+    //                return
+    //            }
+    //
+    //            guard password == confirmPassword else {
+    //                showError("Password Mismatch", "Password and Confirm Password do not match.")
+    //                return
+    //            }
+    //
+    //            viewModel.resetPassword( UserDefaults.standard.string(forKey: "userEmail") ?? "")
+    //            UserDefaults.standard.set(passwordTF.text, forKey: "password")
+    //            let alert = CustomAlertViewController()
+    //            alert.alertDelegate = self
+    ////            alert.show("Password Reset Successfully", "Your password has been reset. You can now sign in with your new password.", buttonTitle: "Sign in")
+    //            alert.show("Successful Step ✔️", "The Verfication Code It Was Sent To Your Email", buttonTitle: "Write The Verfication Code")
+    //        }
     
     @objc func resetPasswordIsTapped() {
         guard let password = passwordTF.text, !password.isEmpty else {
@@ -133,24 +135,24 @@ private extension NewPasswordViewController {
             passwordTF.layer.borderWidth = 1
             return
         }
-
+        
         guard let confirmPassword = confirmPasswordTF.text, !confirmPassword.isEmpty else {
             blankconfirmPassword.isHidden = false
             confirmPasswordTF.layer.borderColor = UIColor.red.cgColor
             confirmPasswordTF.layer.borderWidth = 1
             return
         }
-
+        
         guard password == confirmPassword else {
             blankconfirmPassword.text = String(localized:"matchpassword")
             confirmPasswordTF.layer.borderColor = UIColor.red.cgColor
             confirmPasswordTF.layer.borderWidth = 1
-            passwordTF.layer.borderColor = UIColor.red.cgColor
-            passwordTF.layer.borderWidth = 1
+//            passwordTF.layer.borderColor = UIColor.red.cgColor
+//            passwordTF.layer.borderWidth = 1
             blankconfirmPassword.isHidden = false
             return
         }
-
+        
         guard password.count >= 6 else {
             blankPassword.isHidden = false
             passwordTF.layer.borderColor = UIColor.red.cgColor
@@ -158,10 +160,10 @@ private extension NewPasswordViewController {
             blankPassword.text = String(localized:"PassNums")
             return
         }
-
+        
         let hasUppercase = password.range(of: "[A-Z]", options: .regularExpression) != nil
         let hasLowercase = password.range(of: "[a-z]", options: .regularExpression) != nil
-
+        
         guard hasUppercase, hasLowercase else {
             blankPassword.isHidden = false
             passwordTF.layer.borderColor = UIColor.red.cgColor
@@ -169,29 +171,27 @@ private extension NewPasswordViewController {
             blankPassword.text = String(localized:"passContain")
             return
         }
-
+        
         viewModel2.updatePassword(phone: UserDefaults.standard.string(forKey: "phone") ?? "",
                                   password: passwordTF.text ?? "",
-                                             otp: UserDefaults.standard.string(forKey: "otp") ?? "",
-                                             completion: { success, message in
-                        if success {
-                            // تنفيذ الكود عند النجاح
-                            print(message)  // يمكن عرض رسالة النجاح في Alert
-                           
-                            let alert = CustomAlertViewController()
-                            alert.alertDelegate = self
-                            alert.show(String(localized:"resetPassSuccess"), message, buttonTitle:  String(localized:"LoginButton"), navigateButtonTitle: "",.primaryColor,.alertImage, flag: true)
-                          
-                        } else {
-                            // تنفيذ الكود عند الفشل
-                            print("Failure: \(message)")  // يمكن عرض رسالة الخطأ
-                            self.showIncorrectBranchAlert(title: String(localized:"Invalid"), msg: message, btn: String(localized:"Retry"))
-
-                        }
-                    })
+                                  otp: UserDefaults.standard.string(forKey: "otp") ?? "",
+                                  completion: { success, message in
+            if success {
+                
+                print(message)
+                let alert = CustomAlertViewController()
+                alert.alertDelegate = self
+                alert.show(String(localized:"resetPassSuccess"), message, buttonTitle:  String(localized:"LoginButton"), navigateButtonTitle: "",.primaryColor,.alertImage, flag: true)
+                
+            } else {
+                
+                print("Failure: \(message)")
+                self.showIncorrectBranchAlert(title: String(localized:"Invalid"), msg: message, btn: String(localized:"Retry"))
+            }
+        })
     }
     
-    }
+}
 
 
 extension NewPasswordViewController: RegistrationNavigationBarDelegate {

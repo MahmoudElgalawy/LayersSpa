@@ -55,11 +55,14 @@ class WalletViewController: UIViewController {
         transactionsTableView.isHidden = true
         withdrawButton.isHidden = true
         rechargeButton.isHidden = true
-        
-        viewModel.getCustomerBalance { balance in
-            DispatchQueue.main.async { [weak self] in
-                self?.indicator.stopAnimating()
-                self?.cardBalanceLabel.text = "\(balance)"
+        if UserDefaults.standard.bool(forKey: "guest"){
+            self.indicator.stopAnimating()
+        }else{
+            viewModel.getCustomerBalance { balance in
+                DispatchQueue.main.async { [weak self] in
+                    self?.indicator.stopAnimating()
+                    self?.cardBalanceLabel.text = "\(balance)"
+                }
             }
         }
     }

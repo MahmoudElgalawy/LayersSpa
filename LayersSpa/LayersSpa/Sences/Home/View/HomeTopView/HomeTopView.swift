@@ -21,7 +21,7 @@ class HomeTopView: UIViewFromNib {
     @IBOutlet weak var favCount: UILabel!
     @IBOutlet weak var viewBak: UIView!
     
-    var delegate: HomeTopViewDelegation?
+    weak var delegate: HomeTopViewDelegation?
     private var cancellables = Set<AnyCancellable>()
     var searchTextSubject = PassthroughSubject<String, Never>()
     
@@ -116,7 +116,7 @@ extension HomeTopView {
 
 }
 
-protocol HomeTopViewDelegation {
+protocol HomeTopViewDelegation:AnyObject {
     func navigateToLikes()
     func navigateToNotification()
     func navigateToSearch()

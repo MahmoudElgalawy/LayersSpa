@@ -33,7 +33,7 @@ class EmployeeIdRemote: EmployeeIdRemoteProtocol {
         let headers: HTTPHeaders = [
             "secure_business_key": "4765066450c0bd66325.48403130",
             "uuid": "630ca2f4885f8",
-            "Accept-Language": "\((UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String)!)"
+            "Accept-Language": "en"
         ]
         
         print("🔵 Sending request to: \(url)")

@@ -52,6 +52,7 @@ class SelectLocationAndDateViewController: UIViewController {
         bindContinueButton()
         LocalDataManager.sharedInstance.getLikeProductsListFromCoreData(.cart) { products in
             let skillIDs = products.compactMap { $0.productId }
+            print("skill IDs : \(skillIDs)")
             self.viewModel.fetchEmployeeSkills(skillIDs: skillIDs)
         }
         viewModel.errorAlert = {[weak self] in

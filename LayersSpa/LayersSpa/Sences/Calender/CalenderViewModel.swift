@@ -21,7 +21,7 @@ class CalenderViewModel {
     var ordersDetails = [Order?]()
     var data = [Calender]()
     var reload: () -> Void = {}
-    var isDataLoaded = false // إضافة حالة التحميل
+    var isDataLoaded = false 
 }
 
 // MARK: - CalenderViewModelOutput
@@ -30,9 +30,9 @@ extension CalenderViewModel: CalenderViewModelOutput, CalenderViewModelInput {
     func getAppointment(date: String, completion: @escaping (Bool) -> Void) {
         let userId = Defaults.sharedInstance.userData?.userId ?? 0
         isDataLoaded = false
-        reload() // إظهار مؤشر التحميل
+        reload()
         
-        calenderRemote.getAppointment(userId: userId, type: "", filterDate: date) { [weak self] result in
+        calenderRemote.getAppointment(userId: userId, type: "", filterDate: date, page: 1) { [weak self] result in
             guard let self = self else { return }
             
             switch result {

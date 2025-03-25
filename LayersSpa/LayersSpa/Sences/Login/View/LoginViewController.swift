@@ -7,6 +7,7 @@
 
 import UIKit
 import UILayerSpa
+import Networking
 
 class LoginViewController: UIViewController, CustomAlertDelegate {
     
@@ -28,6 +29,8 @@ class LoginViewController: UIViewController, CustomAlertDelegate {
     
     @IBOutlet weak var phoneBlankWarning: UILabel!
     @IBOutlet weak var passwordBlank: UILabel!
+    
+    @IBOutlet weak var guestButton: UIButton!
     
     
     // MARK: Properties
@@ -87,6 +90,14 @@ class LoginViewController: UIViewController, CustomAlertDelegate {
         passwordBlank.isHidden = true
         phoneBlankWarning.text = String(localized: "Phoneblank")
     }
+    
+    
+    @IBAction func guestButtonTapped(_ sender: Any) {
+        UserDefaults.standard.set(true, forKey: "guest")
+        clearStoredData()
+        let customTabBarController = CustomTabBarViewController()
+        self.navigationController?.pushViewController(customTabBarController, animated: true)
+    }
 }
 
 // MARK: - Actions
@@ -111,6 +122,7 @@ extension LoginViewController {
             //            UserDefaults.standard.set(true, forKey: "isLoggedIn")
             //            UserDefaults.standard.set(result.token, forKey: "userToken")
             print(result.name, result.phone)
+            UserDefaults.standard.set(false, forKey: "guest")
             NavigateToCustomTabBar()
         }
         
@@ -160,8 +172,10 @@ extension LoginViewController {
     func bindLoginButton() {
         //loginButton.setTitle("Sign in", for: .normal)
         loginButton.applyButtonStyle(.filled)
+        guestButton.applyButtonStyle(.plain)
         loginButton.addTarget(self, action: #selector(loginIsTapped), for: .touchUpInside)
         loginButton.setTitle(String(localized: "LoginButton"), for: .normal)
+        guestButton.setTitle(String(localized: "guestLogin"), for: .normal)
         forgetPasswordButton.setTitle(String(localized: "forgetPass"), for: .normal)
     }
     
@@ -247,6 +261,7 @@ extension LoginViewController {
     
     @objc func signupIsTapped() {
         let vc = SignupViewController(viewModel: SignupViewModel())
+        vc.update = false
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -267,4 +282,12 @@ extension LoginViewController {
     func alertButtonClicked() {
         
     }
+     
+     private func clearStoredData() {
+         let defaults = UserDefaults.standard
+         defaults.removeObject(forKey: "selectedEmployeeIds")
+         defaults.removeObject(forKey: "selectedServiceTime")
+         Defaults.sharedInstance.userData = nil
+         LocalDataManager.sharedInstance.deleteAllData(.cart)
+     }
 }

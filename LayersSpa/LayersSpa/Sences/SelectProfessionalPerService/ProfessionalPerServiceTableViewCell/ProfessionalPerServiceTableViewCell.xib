@@ -74,18 +74,6 @@
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7c-UJ-aaK">
-                                                        <rect key="frame" x="269" y="12" width="24" height="24"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="24" id="Ahk-K8-cs4"/>
-                                                            <constraint firstAttribute="height" constant="24" id="tye-QR-RbC"/>
-                                                        </constraints>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" backgroundImage="editIcon"/>
-                                                        <connections>
-                                                            <action selector="editButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="10l-bs-tTu"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrk-rT-7Vy">
@@ -226,13 +214,23 @@
                                     <constraint firstAttribute="bottom" secondItem="atQ-zN-4RE" secondAttribute="bottom" constant="8" id="zXQ-Vd-l0o"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVe-gf-DSm">
+                                <rect key="frame" x="254" y="35" width="47" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Iqj-1M-gex" firstAttribute="width" secondItem="OFX-vj-aYf" secondAttribute="width" multiplier="0.893333" id="2JW-Hf-thC"/>
                             <constraint firstItem="bjB-9E-ptk" firstAttribute="top" secondItem="OFX-vj-aYf" secondAttribute="top" constant="16" id="4Wm-jt-z0m"/>
                             <constraint firstItem="Iqj-1M-gex" firstAttribute="leading" secondItem="OFX-vj-aYf" secondAttribute="leading" constant="16" id="6zK-Ad-A27"/>
+                            <constraint firstItem="rVe-gf-DSm" firstAttribute="height" secondItem="OFX-vj-aYf" secondAttribute="height" multiplier="0.107692" id="APJ-aO-CQm"/>
                             <constraint firstItem="Iqj-1M-gex" firstAttribute="height" secondItem="OFX-vj-aYf" secondAttribute="height" multiplier="0.188235" id="Aa5-rz-sRn"/>
+                            <constraint firstItem="rVe-gf-DSm" firstAttribute="top" secondItem="OFX-vj-aYf" secondAttribute="top" constant="35" id="KFb-pB-RYr"/>
+                            <constraint firstItem="rVe-gf-DSm" firstAttribute="width" secondItem="OFX-vj-aYf" secondAttribute="width" multiplier="0.156146" id="Zuw-mc-hHh"/>
+                            <constraint firstAttribute="trailing" secondItem="rVe-gf-DSm" secondAttribute="trailing" id="cyb-WH-XJ6"/>
                             <constraint firstItem="Iqj-1M-gex" firstAttribute="top" secondItem="bjB-9E-ptk" secondAttribute="bottom" constant="20" id="eJ0-zD-yPJ"/>
                             <constraint firstItem="bjB-9E-ptk" firstAttribute="leading" secondItem="OFX-vj-aYf" secondAttribute="leading" constant="16" id="gZx-a4-4Td"/>
                             <constraint firstAttribute="trailing" secondItem="bjB-9E-ptk" secondAttribute="trailing" constant="16" id="mJ3-k8-czR"/>
@@ -253,7 +251,7 @@
                 <outlet property="arrowImage" destination="WoX-Lw-i9g" id="37J-b3-ghU"/>
                 <outlet property="arrowImage2" destination="Kxi-Bk-ic3" id="RR6-ae-rsb"/>
                 <outlet property="containerView" destination="OFX-vj-aYf" id="E5e-QE-Dcb"/>
-                <outlet property="editButton" destination="a7c-UJ-aaK" id="92Q-VU-7Ew"/>
+                <outlet property="itemsCountLabel" destination="rVe-gf-DSm" id="Lo9-pK-LbH"/>
                 <outlet property="lblSelectedTime" destination="tV1-Eg-4Cf" id="zL8-qg-qDx"/>
                 <outlet property="prfessionalLabel" destination="jpu-dN-zPl" id="iWv-xL-bTz"/>
                 <outlet property="profImage" destination="RDu-pF-x7g" id="86r-4H-7CN"/>
@@ -277,7 +275,6 @@
         <image name="addedprof" width="32" height="32.333332061767578"/>
         <image name="brownArrow" width="5.3333334922790527" height="9.3333330154418945"/>
         <image name="cartProduct" width="48" height="48"/>
-        <image name="editIcon" width="24" height="24.333333969116211"/>
         <image name="grayClock" width="16.333333969116211" height="16"/>
         <image name="profMember" width="28" height="28.333333969116211"/>
         <namedColor name="DarkTextColor">

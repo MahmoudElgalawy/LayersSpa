@@ -27,11 +27,13 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
     @IBOutlet weak var timeImg: UIImageView!
     @IBOutlet weak var selectProfessionalLabel: UILabel!
     @IBOutlet weak var selectTimeLabel: UILabel!
-    weak var delegate: ProfessionalPerServiceTableViewCellDelegation?
-    var selectedServiceId: String?
     @IBOutlet weak var arrowImage: UIImageView!
     @IBOutlet weak var arrowImage2: UIImageView!
     @IBOutlet weak var prfessionalLabel: UILabel!
+    @IBOutlet weak var itemsCountLabel: UILabel!
+    
+    weak var delegate: ProfessionalPerServiceTableViewCellDelegation?
+    var selectedServiceId: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,7 +63,7 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
     override func prepareForReuse() {
         super.prepareForReuse()
         selectedProfInfoStackView.isHidden = true
-        editButton.isHidden = true
+       // editButton.isHidden = true
         showSelectedStack.isHidden = false
         selectProfessionalView.isUserInteractionEnabled = true
         profNameLabel.text = ""
@@ -80,7 +82,7 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
     
     func resetSelections() {
         selectedProfInfoStackView.isHidden = true
-        editButton.isHidden = true
+       // editButton.isHidden = true
         showSelectedStack.isHidden = false
         selectProfessionalView.isUserInteractionEnabled = true
         profNameLabel.text = ""
@@ -98,9 +100,9 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
     func applySelectedProfessional(_ professionalInfo: Employee) {
         if professionalInfo.empData.name != ""{
             selectedProfInfoStackView.isHidden = false
-            editButton.isHidden = false
+          //  editButton.isHidden = false
             showSelectedStack.isHidden = true
-            selectProfessionalView.isUserInteractionEnabled = false
+           // selectProfessionalView.isUserInteractionEnabled = false
             let proImageUel = URL(string: "\(professionalInfo.empData.profileInfo.profileImage)")
             profImage.kf.setImage(with: proImageUel)
             profNameLabel.text = professionalInfo.empData.name
@@ -111,7 +113,7 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
     
     func applySelectedTime(time:String){
         stackViewSelectTime.isHidden = true
-        selectTimeView.isUserInteractionEnabled = false
+        //selectTimeView.isUserInteractionEnabled = false
         lblSelectedTime.text = time
         lblSelectedTime.isHidden = false
     }
@@ -124,6 +126,7 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
                 selectProfessionalView.isHidden = true
                 lblSelectedTime.isHidden = true
                 stackViewSelectTime.isHidden = true
+                itemsCountLabel.isHidden = true
         } else {
             timeImg.image = UIImage(named: "time")
             timeLabel.text = "\((service.unit)! * service.productCount) m"
@@ -131,6 +134,13 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
             selectProfessionalView.isHidden = false
             lblSelectedTime.isHidden = true
             stackViewSelectTime.isHidden = false
+            itemsCountLabel.isHidden = false
+        }
+        
+        if service.productCount > 1 {
+            itemsCountLabel.text = "\(service.productCount) \(String(localized: "items"))"
+        }else {
+            itemsCountLabel.text = "\(service.productCount) \(String(localized: "item"))"
         }
             
             let imgUrl = URL(string: "\(service.productImage)")
@@ -144,11 +154,11 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
             }
             selectedServiceId = service.productId
             ServiceTitle.text = service.productName
-          
+            //editButton.setTitle("\(service.productCount) items", for: .normal)
             
             // Reset professional info
             selectedProfInfoStackView.isHidden = true
-            editButton.isHidden = true
+           // editButton.isHidden = true
             showSelectedStack.isHidden = false
             selectProfessionalView.isUserInteractionEnabled = true
             profNameLabel.text = ""
@@ -189,43 +199,38 @@ class ProfessionalPerServiceTableViewCell: UITableViewCell,IdentifiableView{
     }
     
     @objc func selectTimeViewTapped(_ sender: UITapGestureRecognizer) {
-            // تحقق مما إذا كان الموظف محددًا
             if profNameLabel.text?.isEmpty == true || profImage.image == nil {
-                // إظهار رسالة تنبيه
                 CustomAlertViewController().show(String(localized: "warning") + "!", String(localized: "pleaseSelectProfessionalFirst"), buttonTitle: String(localized: "ok"),navigateButtonTitle: "", .redColor, .warning, flag: true)
                 return
             }
             
-            // إذا كان الموظف محددًا، انتقل إلى اختيار الوقت
             delegate?.selectTime(self) { [weak self] time in
                 self?.applySelectedTime(time: time)
             }
         }
     
     @IBAction func editButtonTapped(_ sender: Any) {
-        delegate?.selectProfessional(self) { [weak self] employee in
-               if employee.empData.profileInfo.name != "" {
-                   self?.selectedProfInfoStackView.isHidden = false
-                   self?.editButton.isHidden = false
-                   self?.showSelectedStack.isHidden = true
-                   self?.selectProfessionalView.isUserInteractionEnabled = false
-                   let proImageUrl = URL(string: "\(employee.empData.profileInfo.profileImage)")
-                   self?.profImage.kf.setImage(with: proImageUrl)
-                   self?.profNameLabel.text = employee.empData.profileInfo.name
-                   
-                   // إعادة تعيين الوقت
-                   self?.lblSelectedTime.text = ""
-                   self?.lblSelectedTime.isHidden = true
-                   self?.stackViewSelectTime.isHidden = false
-                   self?.selectTimeView.isUserInteractionEnabled = true
-                   
-                   // حذف الوقت من UserDefaults
-                   guard let serviceId = self?.selectedServiceId else { return }
-                   var userSettings = UserDefaults.standard.dictionary(forKey: "selectedServiceTime") as? [String: String] ?? [:]
-                   userSettings[serviceId] = nil
-                   UserDefaults.standard.set(userSettings, forKey: "selectedServiceTime")
-               }
-           }
+//        delegate?.selectProfessional(self) { [weak self] employee in
+//               if employee.empData.profileInfo.name != "" {
+//                   self?.selectedProfInfoStackView.isHidden = false
+//                   self?.editButton.isHidden = false
+//                   self?.showSelectedStack.isHidden = true
+//                   self?.selectProfessionalView.isUserInteractionEnabled = false
+//                   let proImageUrl = URL(string: "\(employee.empData.profileInfo.profileImage)")
+//                   self?.profImage.kf.setImage(with: proImageUrl)
+//                   self?.profNameLabel.text = employee.empData.profileInfo.name
+//                   
+//                   self?.lblSelectedTime.text = ""
+//                   self?.lblSelectedTime.isHidden = true
+//                   self?.stackViewSelectTime.isHidden = false
+//                   self?.selectTimeView.isUserInteractionEnabled = true
+//                   
+//                   guard let serviceId = self?.selectedServiceId else { return }
+//                   var userSettings = UserDefaults.standard.dictionary(forKey: "selectedServiceTime") as? [String: String] ?? [:]
+//                   userSettings[serviceId] = nil
+//                   UserDefaults.standard.set(userSettings, forKey: "selectedServiceTime")
+//               }
+//           }
     }
     
 }

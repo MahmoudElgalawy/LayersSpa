@@ -80,7 +80,12 @@
 		3CC431CA2C60E953000E99B8 /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC431C62C60E953000E99B8 /* WithdrawViewController.swift */; };
 		3CC431CB2C60E953000E99B8 /* WithdrawViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC431C72C60E953000E99B8 /* WithdrawViewModel.swift */; };
 		3CC431CC2C60E953000E99B8 /* WithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CC431C82C60E953000E99B8 /* WithdrawViewController.xib */; };
+		405143E12D7DFAEE0087E7F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 405143E02D7DFAEE0087E7F5 /* GoogleService-Info.plist */; };
 		40541AF42D7796530068FD32 /* Bundel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40541AF32D7796440068FD32 /* Bundel.swift */; };
+		40541BD42D7CFE500068FD32 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 40541BD32D7CFE500068FD32 /* FirebaseInAppMessaging-Beta */; };
+		40541BD62D7CFE500068FD32 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 40541BD52D7CFE500068FD32 /* FirebaseMessaging */; };
+		407A087A2D8F47000061A031 /* GalleryRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A08792D8F46F30061A031 /* GalleryRemote.swift */; };
+		407A087D2D8FFF960061A031 /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A087C2D8FFF8F0061A031 /* GalleryModel.swift */; };
 		431F3C1B2C6051E20052DFAA /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F3C192C6051E20052DFAA /* AccountTableViewCell.swift */; };
 		431F3C1C2C6051E20052DFAA /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 431F3C1A2C6051E20052DFAA /* AccountTableViewCell.xib */; };
 		431F3C222C6063590052DFAA /* MyProfileViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F3C1E2C6063590052DFAA /* MyProfileViewModelType.swift */; };
@@ -413,7 +418,11 @@
 		3CC431C62C60E953000E99B8 /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
 		3CC431C72C60E953000E99B8 /* WithdrawViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewModel.swift; sourceTree = "<group>"; };
 		3CC431C82C60E953000E99B8 /* WithdrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawViewController.xib; sourceTree = "<group>"; };
+		405143E02D7DFAEE0087E7F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		40541AF32D7796440068FD32 /* Bundel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundel.swift; sourceTree = "<group>"; };
+		40541BD72D7D059A0068FD32 /* LayersSpa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LayersSpa.entitlements; sourceTree = "<group>"; };
+		407A08792D8F46F30061A031 /* GalleryRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryRemote.swift; sourceTree = "<group>"; };
+		407A087C2D8FFF8F0061A031 /* GalleryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryModel.swift; sourceTree = "<group>"; };
 		431F3C192C6051E20052DFAA /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		431F3C1A2C6051E20052DFAA /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		431F3C1E2C6063590052DFAA /* MyProfileViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModelType.swift; sourceTree = "<group>"; };
@@ -678,9 +687,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40541BD62D7CFE500068FD32 /* FirebaseMessaging in Frameworks */,
 				1EAB1B0F2D59F8940000D48E /* SVProgressHUD in Frameworks */,
 				43F487AB2C41F00000961B31 /* Networking in Frameworks */,
 				1EAB1B0C2D59ECC50000D48E /* YPImagePicker in Frameworks */,
+				40541BD42D7CFE500068FD32 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				43D837622C6C032800597837 /* IQKeyboardManagerSwift in Frameworks */,
 				43F487AD2C41F00000961B31 /* UILayerSpa in Frameworks */,
 				B4D1737A8436D22D9EABA707 /* libPods-LayersSpa.a in Frameworks */,
@@ -747,7 +758,6 @@
 				43E1FCC92C618A3500B010C5 /* EnterAmount */,
 				3CC431BB2C60E902000E99B8 /* Recharge */,
 				3CC431C42C60E938000E99B8 /* Withdraw */,
-				435202112C5060490018DFA6 /* Gallery */,
 			);
 			path = FeatureWillAdded;
 			sourceTree = "<group>";
@@ -1077,6 +1087,22 @@
 			path = Withdraw;
 			sourceTree = "<group>";
 		};
+		407A08782D8F46E30061A031 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				407A08792D8F46F30061A031 /* GalleryRemote.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		407A087B2D8FFF840061A031 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				407A087C2D8FFF8F0061A031 /* GalleryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		431F3C182C6051AD0052DFAA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1203,6 +1229,7 @@
 		43328FE12C405BA900CDF41F = {
 			isa = PBXGroup;
 			children = (
+				405143E02D7DFAEE0087E7F5 /* GoogleService-Info.plist */,
 				1E25EDEA2D75E3D1001F1342 /* Localizable.xcstrings */,
 				43328FEC2C405BA900CDF41F /* LayersSpa */,
 				43328FEB2C405BA900CDF41F /* Products */,
@@ -1222,6 +1249,7 @@
 		43328FEC2C405BA900CDF41F /* LayersSpa */ = {
 			isa = PBXGroup;
 			children = (
+				40541BD72D7D059A0068FD32 /* LayersSpa.entitlements */,
 				1ECA76462D331C2D0045BB92 /* Extensions */,
 				432580292C5EC3E8003281C8 /* Local Data */,
 				43F4A3922C44C509008A65A0 /* Fonts */,
@@ -1272,6 +1300,8 @@
 		435202112C5060490018DFA6 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				407A087B2D8FFF840061A031 /* Model */,
+				407A08782D8F46E30061A031 /* Remote */,
 				43C0EF5C2C8927B700064F35 /* GalleryCell */,
 				435202122C5060940018DFA6 /* GalleryViewModelType.swift */,
 				435202132C5060940018DFA6 /* GalleryViewController.swift */,
@@ -1984,6 +2014,7 @@
 		43CE0D002C41CB47003BD008 /* Sences */ = {
 			isa = PBXGroup;
 			children = (
+				435202112C5060490018DFA6 /* Gallery */,
 				3CC431A82C60C2B5000E99B8 /* Wallet */,
 				1E5631E22D59E6410082F264 /* FeatureWillAdded */,
 				1ECA76372D32BFA50045BB92 /* SearchServices */,
@@ -2484,6 +2515,8 @@
 				3CBA24A22C70137200FAD9EC /* Kingfisher */,
 				1EAB1B0B2D59ECC50000D48E /* YPImagePicker */,
 				1EAB1B0E2D59F8940000D48E /* SVProgressHUD */,
+				40541BD32D7CFE500068FD32 /* FirebaseInAppMessaging-Beta */,
+				40541BD52D7CFE500068FD32 /* FirebaseMessaging */,
 			);
 			productName = LayersSpa;
 			productReference = 43328FEA2C405BA900CDF41F /* LayersSpa.app */;
@@ -2519,6 +2552,7 @@
 				3CBA24A12C70137200FAD9EC /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				1EAB1B0A2D59ECC50000D48E /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 				1EAB1B0D2D59F8940000D48E /* XCRemoteSwiftPackageReference "SVProgressHUD" */,
+				40541BD22D7CFE500068FD32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 43328FEB2C405BA900CDF41F /* Products */;
 			projectDirPath = "";
@@ -2626,6 +2660,7 @@
 				4354690B2C58686B0063DBC3 /* SelectProfessionalOptionsTableViewCell.xib in Resources */,
 				43328FF52C405BA900CDF41F /* Main.storyboard in Resources */,
 				433290062C407E9F00CDF41F /* swiftgen.yml in Resources */,
+				405143E12D7DFAEE0087E7F5 /* GoogleService-Info.plist in Resources */,
 				1E25EDED2D764C68001F1342 /* SignUpLocalizable.xcstrings in Resources */,
 				43C986232C4C32BE00BE1C5F /* HomeViewController.xib in Resources */,
 			);
@@ -2702,6 +2737,7 @@
 				1EBF33662D4FD778004BFC4F /* MyAccountRemote.swift in Sources */,
 				3CC431982C5A44DB000E99B8 /* BookingSummeryViewModelType.swift in Sources */,
 				43CF80F82C670E8400D9E7D6 /* PrivacyPolicyViewModel.swift in Sources */,
+				407A087D2D8FFF960061A031 /* GalleryModel.swift in Sources */,
 				43D8376C2C6C166A00597837 /* SignupRemote.swift in Sources */,
 				43C32EEC2C8574BC00D5A443 /* LikeUseCase.swift in Sources */,
 				43F477712C6959BF00069AAF /* ServiceDetailsViewModel.swift in Sources */,
@@ -2810,6 +2846,7 @@
 				3CC431B92C60DF38000E99B8 /* TransactionsTableViewCell.swift in Sources */,
 				1E5631D22D589E6E0082F264 /* CalenderModel.swift in Sources */,
 				3CC431C92C60E953000E99B8 /* WithdrawViewModelType.swift in Sources */,
+				407A087A2D8F47000061A031 /* GalleryRemote.swift in Sources */,
 				432683F42C5DB86D00BBE220 /* AddNewPaymentViewModel.swift in Sources */,
 				43328FEE2C405BA900CDF41F /* AppDelegate.swift in Sources */,
 				43DFB4BB2C44DE6100F18C07 /* LoginViewModelType.swift in Sources */,
@@ -3069,9 +3106,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LayersSpa/LayersSpa.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.2.1;
 				DEVELOPMENT_TEAM = 33ETF9Y8XU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LayersSpa/Info.plist;
@@ -3087,7 +3125,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mediahouseiOS.layersspa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3103,9 +3141,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LayersSpa/LayersSpa.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.2.1;
 				DEVELOPMENT_TEAM = 33ETF9Y8XU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LayersSpa/Info.plist;
@@ -3121,7 +3160,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mediahouseiOS.layersspa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3179,6 +3218,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		40541BD22D7CFE500068FD32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.9.0;
+			};
+		};
 		43D837602C6C032800597837 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
@@ -3204,6 +3251,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3CBA24A12C70137200FAD9EC /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		40541BD32D7CFE500068FD32 /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 40541BD22D7CFE500068FD32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		40541BD52D7CFE500068FD32 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 40541BD22D7CFE500068FD32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		43D837612C6C032800597837 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
