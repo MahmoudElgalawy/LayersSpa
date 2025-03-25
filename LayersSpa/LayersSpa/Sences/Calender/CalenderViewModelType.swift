@@ -17,6 +17,8 @@ protocol CalenderViewModelInput {
     var calenders: [Calender] {get set}
     var ordersDetails : [Order?] {get set}
     var isDataLoaded: Bool {get set}
+    var currentPage: Int {get}
+    var lastPage: Int {get}
 }
 
 /// Calender ViewModel Output
@@ -24,4 +26,5 @@ protocol CalenderViewModelInput {
 protocol CalenderViewModelOutput {
     func getAppointment(date:String, completion: @escaping (Bool) -> Void)
     func fetchAppointmentDetails(completion: @escaping (Bool) -> Void)
+    func reset()
 }
