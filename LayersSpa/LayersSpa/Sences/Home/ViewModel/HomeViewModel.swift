@@ -66,13 +66,12 @@ class HomeViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let data):
-                if self.branchesList.count == 1 { // Only "All Branches" exists
+                if self.branchesList.count == 1 {
                     self.branchesList.append(contentsOf: data.branches)
                 }
                 self.updateState(.loaded)
                 completion(self.branchesList)
                 
-                // Cache branches
                 if let encodedData = try? JSONEncoder().encode(self.branchesList) {
                     UserDefaults.standard.set(encodedData, forKey: "Branches")
                 }

@@ -45,7 +45,11 @@ class SearchServicesViewController: UIViewController, CustomAlertDelegate, AddTo
            setIndicator()
            bindViewModel()
            self.hideKeyboardWhenTappedAround()
-           searchBar.isEnabled = false
+           if #available(iOS 16.4, *) {
+               searchBar.isEnabled = false
+           } else {
+               // Fallback on earlier versions
+           }
            collectionViewSetup()
            navigationBar.layer.borderWidth = 0
            navigationBar.shadowImage = UIImage()
@@ -127,7 +131,11 @@ class SearchServicesViewController: UIViewController, CustomAlertDelegate, AddTo
            viewModel.onReloadData = {[weak self] in
                guard let self = self else { return }
                self.indicator?.stopAnimating()
-               self.searchBar.isEnabled = true
+               if #available(iOS 16.4, *) {
+                   self.searchBar.isEnabled = true
+               } else {
+                   // Fallback on earlier versions
+               }
                if self.viewModel.servicesArray == [] {
                    SearchCollection.isHidden = true
                    EmptyStateView.isHidden = false

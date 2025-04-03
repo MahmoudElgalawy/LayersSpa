@@ -41,6 +41,17 @@ class HomeViewController: UIViewController, CustomAlertDelegate {
     
     override func viewDidLoad() {
             super.viewDidLoad()
+        viewModel.getBranches { [weak self] branches in
+            guard let self else { return }
+            
+            if let branch = Defaults.sharedInstance.branchId, !branch.id.isEmpty {
+                self.viewModel.getHomeData(branch.id)
+                self.topView.updateBranchName(branch.name)
+            } else {
+                self.viewModel.getHomeData("")
+                self.topView.updateBranchName(String(localized: "allBranches"))
+            }
+        }
         setupTableView()
         bindViewModel()
         topView.delegate = self
@@ -74,15 +85,7 @@ class HomeViewController: UIViewController, CustomAlertDelegate {
                // self?.showAlert(message: message)
             }
             
-            viewModel.getBranches { [weak self] branches in
-                if let branch = Defaults.sharedInstance.branchId, !branch.id.isEmpty {
-                    self?.viewModel.getHomeData(branch.id)
-                    self?.topView.updateBranchName(branch.name)
-                } else {
-                    self?.viewModel.getHomeData("")
-                    self?.topView.updateBranchName(String(localized: "allBranches"))
-                }
-            }
+            
         }
         
         private func updateLoadingStatus(_ state: ViewState) {
